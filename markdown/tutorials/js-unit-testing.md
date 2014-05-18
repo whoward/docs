@@ -3,7 +3,7 @@
   description: "How to run JavaScript unit tests on Sauce Labs",
   category: "Tutorials",
   index: 5,
-  image: "/images/tutorials/JavaScript.png"
+  image: "/images/tutorials/javascript.png"
 }
 
 ![karma-plus-sauce](/images/tutorials/js-unit-testing/karma-plus-sauce.png)

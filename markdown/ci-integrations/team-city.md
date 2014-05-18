@@ -31,7 +31,7 @@ To demonstrate the Sauce plugin for TeamCity, let's create a new TeamCity projec
 
 To create a new project, first click the `Administration` link on the top-right of the page.
 
-![Administration](/images/ci-integrations/teamcity/administration.png)
+![Administration](/images/ci-integrations/team-city/administration.png)
 
 Click the `Create Project` button.
 
@@ -39,15 +39,15 @@ Enter `Sauce Demo` in the `Name` field, this should populate the `Project ID` fi
 
 Click the `Create` button.
 
-![Create New Plan](/images/ci-integrations/teamcity/create-new-project.png)
+![Create New Plan](/images/ci-integrations/team-city/create-new-project.png)
 
 Click the `VCS Roots` link.
 
-![VCS Root Link](/images/ci-integrations/teamcity/vcs-root-link.png)
+![VCS Root Link](/images/ci-integrations/team-city/vcs-root-link.png)
 
 Click the `Create VCS Root` button.
 
-![VCS Root Button](/images/ci-integrations/teamcity/vcs-root-button.png)
+![VCS Root Button](/images/ci-integrations/team-city/vcs-root-button.png)
 
 Enter `https://github.com/rossrowe/sauce-ci-java-demo.git` in the `Fetch URL` field.
 
@@ -55,23 +55,23 @@ Enter `master` in the `Default Branch` field.
 
 Click the `Save Button`.
 
-![Source Repository Details](/images/ci-integrations/teamcity/plan-git.png)
+![Source Repository Details](/images/ci-integrations/team-city/plan-git.png)
 
 Click the `Create Build Configuration` button.
 
-![Create Build Configuration](/images/ci-integrations/teamcity/create-build-configuration.png)
+![Create Build Configuration](/images/ci-integrations/team-city/create-build-configuration.png)
 
 Enter `Maven` in the `Name` field
 
 Click the `VCS Settings` button.
 
-![Build Settings](/images/ci-integrations/teamcity/build-settings.png)
+![Build Settings](/images/ci-integrations/team-city/build-settings.png)
 
 Select the `https://github.com/rossrowe/sauce-ci-java-demo.git#master` option within the `attach existing VCS root` drop down list.
 
 Click the `Add Build Step` button.
 
-![Build Git](/images/ci-integrations/teamcity/build-git.png)
+![Build Git](/images/ci-integrations/team-city/build-git.png)
 
 Select `Maven` from the `Runner type` drop down list.
 
@@ -79,15 +79,15 @@ Enter `test` in the `Goals` field.
 
 Click the `Save` button.
 
-![Build Maven](/images/ci-integrations/teamcity/build-maven.png)
+![Build Maven](/images/ci-integrations/team-city/build-maven.png)
 
 Click the `Add Build Feature` button.
 
-![Add Build Feature](/images/ci-integrations/teamcity/add-build-feature.png)
+![Add Build Feature](/images/ci-integrations/team-city/add-build-feature.png)
 
 Select `Sauce Labs Build Feature` from the drop down list.
 
-![Sauce build feature](/images/ci-integrations/teamcity/sauce-build-feature.png)
+![Sauce build feature](/images/ci-integrations/team-city/sauce-build-feature.png)
 
 Enter the values of the username and access key you wish the Sauce plugin to use in the `Sauce User` and `Sauce Access Key` fields.
 
@@ -128,7 +128,7 @@ The plugin will set a series of environment variables based on the information p
 * `SAUCE_USER_NAME` - The user name used to invoke Sauce OnDemand
 * `SAUCE_API_KEY` - The access key for the user used to invoke Sauce OnDemand
 
-![Sauce options](/images/ci-integrations/teamcity/sauce-options.png)
+![Sauce options](/images/ci-integrations/team-city/sauce-options.png)
 
 Click the `Save` button.  That's it, our configuration is all setup, let's run the tests!
 Integrating tests with the TeamCity Sauce OnDemand plugin
@@ -136,7 +136,7 @@ Integrating tests with the TeamCity Sauce OnDemand plugin
 
 To run the tests, go the TeamCity dashboard. Click the `Run` button.
 
-![Run build](/images/ci-integrations/teamcity/run-build.png)
+![Run build](/images/ci-integrations/team-city/run-build.png)
 
 This should compile and run three tests.
 
@@ -145,11 +145,11 @@ This should compile and run three tests.
 
 Once the build has finished, click on the build results link and navigate to the `Sauce Labs Results` tab.
 
-![Build Results](/images/ci-integrations/teamcity/build-results.png)
+![Build Results](/images/ci-integrations/team-city/build-results.png)
 
 Clicking on one of the links will present a page containing the Sauce report, which will allow you to view the steps performed and watch a video of the test.
 
-![Sauce Report](/images/ci-integrations/teamcity/sauce-report.png)
+![Sauce Report](/images/ci-integrations/team-city/sauce-report.png)
 
 That's it, we've successfully configured TeamCity to run our tests against Sauce Labs!
 

@@ -3,7 +3,7 @@
   description: "How to run Selenium tests on Sauce Labs using Java",
   category: 'Tutorials',
   index: 0,
-  image: "/images/tutorials/Java.png"
+  image: "/images/tutorials/java.png"
 }
 
 ## Getting Started

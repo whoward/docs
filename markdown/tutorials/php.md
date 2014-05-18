@@ -3,7 +3,7 @@
   description: "How to run Selenium tests on Sauce Labs using PHP",
   category: 'Tutorials',
   index: 2,
-  image: '/images/tutorials/PHP-logo.png'
+  image: '/images/tutorials/php.png'
 }
 
 ## Getting started with the Sausage library

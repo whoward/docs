@@ -3,7 +3,7 @@
   description: "How to run Selenium tests on Sauce Labs using python",
   category: 'Tutorials',
   index: 3,
-  image: "/images/tutorials/Python.png"
+  image: "/images/tutorials/python.png"
 }
 ## Setting Up a Project
 

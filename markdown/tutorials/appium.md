@@ -3,7 +3,7 @@
   description: "How to run Appium tests on Sauce Labs",
   category: 'Tutorials',
   index: 7,
-  image: "/images/tutorials/Appium.png",
+  image: "/images/tutorials/appium.png",
 }
 Appium on Sauce Labs
 ====================
