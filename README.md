@@ -5,7 +5,7 @@ This repo contains the markdown documentation for Sauce Labs.
 
 ## Editing Markdown
 
-Every markdown document in the `docs` folder of this repo has a required metadata section which should contain the `title`, `description`(used in the meta description), `category`(used in the nav and URL), and the `index`(used to determine the document's position in the navigation relative to other documents in the same category). You can also optionally include an `image` for a doc which will be used in the nav, search results, and title section on the doc's page. The supported version of markdown is GitHub flavored markdown as described [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+Every markdown document in the `markdown` folder of this repo has a required metadata section which should contain the `title`, `description`(used in the meta description), `category`(used in the nav and URL), and the `index`(used to determine the document's position in the navigation relative to other documents in the same category). You can also optionally include an `image` for a doc which will be used in the nav, search results, and title section on the doc's page. The supported version of markdown is GitHub flavored markdown as described [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 
 ## Custom Markdown processing
 
