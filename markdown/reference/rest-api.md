@@ -15,10 +15,10 @@ The Sauce Labs REST API allows customers to retrieve information about Sauce Lab
 You can use one of our below API libraries to conveniently access our API:
 
 <ul class="list-inline inline-container">
-  <li><a href="https://github.com/saucelabs/saucerest-java"><img src="/images/tutorials/Java.png" alt="Java"></a></li>
+  <li><a href="https://github.com/saucelabs/saucerest-java"><img src="/images/tutorials/java.png" alt="Java"></a></li>
   <li><a href="https://github.com/holidayextras/node-saucelabs"><img src="/images/tutorials/nodejs.png" alt="Node.js"></a></li>
-  <li><a href="https://github.com/saucelabs/sauce_whisk"><img src="/images/tutorials/Ruby_logo.png" alt=""></a></li>
-  <li><a href="https://github.com/jlipps/sausage"><img src="/images/tutorials/PHP-logo.png" alt=""></a></li>
+  <li><a href="https://github.com/saucelabs/sauce_whisk"><img src="/images/tutorials/ruby.png" alt=""></a></li>
+  <li><a href="https://github.com/jlipps/sausage"><img src="/images/tutorials/php.png" alt=""></a></li>
 
 </ul>
 
