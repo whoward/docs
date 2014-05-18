@@ -1,15 +1,14 @@
 {
   title: "JS Unit Testing",
-  description: "Run JavaScript unit tests on Sauce Labs browsers",
+  description: "How to run JavaScript unit tests on Sauce Labs",
   category: "Tutorials",
-  image: "/images/tutorials/JavaScript.png",
-  index: 5
+  index: 5,
+  image: "/images/tutorials/JavaScript.png"
 }
 
-![karma-plus-sauce
-](/images/tutorials/js-unit-testing/karma-plus-sauce.png)
+![karma-plus-sauce](/images/tutorials/js-unit-testing/karma-plus-sauce.png)
 
-In this tutorial we will use the [Karma](http://karma-runner.github.io/) test runner to run JavaScript unit tests on Sauce Labs. To get testing, you can either check out the docs for [karma-sauce-launcher](https://github.com/karma-runner/karma-sauce-launcher) to add Sauce Labs testing to an existing Karma config, or follow along to setup a new project.
+In this tutorial we will use the [Karma](http://karma-runner.github.io/) test runner to run JavaScript unit tests on Sauce Labs. To get testing, you can either check out the docs for the [karma-sauce-launcher](https://github.com/karma-runner/karma-sauce-launcher) to add Sauce Labs testing to an existing Karma config, or follow along to setup a new project.
 
 ## Installation
 
@@ -19,7 +18,7 @@ Start by cloning the [karma-sauce-example](https://github.com/saucelabs/karma-sa
 git clone https://github.com/saucelabs/karma-sauce-example.git && cd karma-sauce-example
 ```
 
-Then run the following command to install the Karma command line interface globally and the repo's local node.js dependencies:
+Then run the following command to install the Karma command line interface globally and the sample repo's local node.js dependencies:
 
 ```bash
 npm install -g karma-cli && npm install 
@@ -36,11 +35,11 @@ karma start
 
 Try saving a source file in the `src` folder or a test file in the `test` folder to see Karma automatically re-run the tests on the latest source code.
 
-By default, this example runs [jasmine](http://jasmine.github.io/2.0/introduction.html) tests in Chrome and Firefox on your local machine, and you can add more browsers that you have installed in the `karma.conf.js`'s `browsers` array.
+By default, this example runs [jasmine](http://jasmine.github.io/2.0/introduction.html) tests in Chrome and Firefox on your local machine, and you can add more browsers that you have installed in the `karma.conf.js`'s `browsers` array or change the test framework in the `frameworks` array.
 
 ## Running Karma with the [karma-sauce-launcher](https://github.com/karma-runner/karma-sauce-launcher) plugin
 
-To use Karma with Sauce, export your Sauce Labs username and access key to your shell by running the following commands in your current terminal session, or adding them to your `~/.bash_profile` so that they will always be available:
+To use Karma with Sauce locally, export your Sauce Labs username and access key to your shell by running the following commands in your current terminal session, or adding them to your `~/.bash_profile` so that they will always be available:
 
 ```bash
 export SAUCE_USERNAME=sauceUsername
@@ -49,9 +48,9 @@ export SAUCE_ACCESS_KEY=sauceAccessKey
 
 You'll then need to re-load that profile with `source ~/.bash_profile`
 
-On Windows, open your environment variables settings window (Instructions [here](http://www.itechtalk.com/thread3595.html)) and set the following variables:
+On Windows, open your environment variables settings window (instructions [here](http://www.itechtalk.com/thread3595.html)) and set the following variables:
 
-```
+```yaml
     Name: SAUCE_USERNAME
     Value: sauceUsername
 
@@ -83,4 +82,4 @@ The `karma-sauce-example` repo demonstrates using Sauce with Travis CI. Here is 
 
 ## Conclusion
 
-You can take the Karma config files resulting from this tutorial and add them to your project, you will simply need to modify the `src` and `test` config properties to point at your files. If you are using grunt or gulp you can also use the the [grunt plugin](https://github.com/karma-runner/grunt-karma) or [gulp integration](https://github.com/karma-runner/gulp-karma).
+You can take the Karma config files resulting from this tutorial and add them to your project, you will simply need to modify the `src` and `test` config properties to point at your files. If you are using grunt or gulp you can also use the the [grunt plugin](https://github.com/karma-runner/grunt-karma) or [gulp integration](https://github.com/karma-runner/gulp-karma). Happy testing!

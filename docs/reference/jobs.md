@@ -1,6 +1,6 @@
 {
   title: "Jobs",
-  description: "Docs on how to configure your jobs on Sauce Labs.",
+  description: "How to configure your jobs on Sauce Labs",
   category: "Reference",
   index: 1
 }
@@ -158,11 +158,11 @@ Advanced format:
 Our advanced format involves submitting a JSON-encoded dictionary as the value of sauce:job-info. You can set as many or as few of the fields as you wish. For example, in Java, include the following code in your test to add information to a job:
 
 
-      this.selenium.setContext("sauce:job-info={\"name\": \"my job name\"," %2B
-                                    "\"tags\": [\"tag1\", \"tag2\", \"tag3\"]," %2B
-                                    "\"passed\": true,"%2B
-                                    "\"build\": \"103\","%2B
-                                    "\"custom-data\": {\"field\": \"value\"}"%2B
+      this.selenium.setContext("sauce:job-info={\"name\": \"my job name\"," /
+                                    "\"tags\": [\"tag1\", \"tag2\", \"tag3\"]," /
+                                    "\"passed\": true,"/
+                                    "\"build\": \"103\","/
+                                    "\"custom-data\": {\"field\": \"value\"}"/
                                     }");
 
 
@@ -172,9 +172,9 @@ Our REST API provides a way to set the same additional information in jobs via a
 
 Selenium 2 tests, which can't leverage the setContext command, can use this API and some custom code to set job info even after the test is over. Here's an example of setting job info using curl, from the command line:
 
-
-      $ curl -H "Content-Type:text/json" -s -X PUT -d '{"name": "my job name 2"}' http://:@saucelabs.com/rest/v1//jobs/
-
+```bash
+curl -H "Content-Type:text/json" -s -X PUT -d '{"name": "my job name 2"}' http://:@saucelabs.com/rest/v1//jobs/
+```
 
 If you were to use this from your tests, you would probably want to build a simple set of functions that do the request for you. We've created a [Java library][6] for this, and here are some examples for [Python][7] and [Ruby][8]. We would love to see users share libraries for other languages!
 
@@ -302,7 +302,7 @@ Value type
 str
 
 Example
-`"selenium-version": "2.8.0"`
+`"selenium-version": "2.41.0"`
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -733,27 +733,22 @@ In addition to full job results, we offer a simple way to embed videos as well. 
 
 For more advanced usage and integrations, you should read our [REST API](/reference/rest-api/) documentation.
 
-### Getting Help
-
-We're constantly working to expand our documentation. If anything here has left you with questions, please ask for help or contribute to our [our user forums][20].
-
-   [1]: https://saucelabs.com#json-config
-   [2]: https://saucelabs.com#desired-capabilities
-   [3]: https://saucelabs.com#alternative-annotation-methods
+   [1]: #selenium-1-tests-the-json-configuration
+   [2]: #selenium-2-tests-desired-capabilities
+   [3]: #alternative-job-annotation-methods
    [4]: http://www.json.org
    [5]: http://code.google.com/p/selenium/wiki/RemoteWebDriver
    [6]: https://github.com/saucelabs/saucerest-java
    [7]: https://gist.github.com/1644439
    [8]: https://gist.github.com/DylanLacey/5218959
-   [9]: https://saucelabs.com/docs/rest
-   [10]: https://saucelabs.com#passed
-   [11]: https://saucelabs.com#disable-screenshots
+   [9]: /reference/rest-api/
+   [10]: #record-pass-fail-status
+   [11]: #disable-step-by-step-screenshots
    [12]: http://seleniumhq.org/docs/05_selenium_rc.html#multi-window-mode
    [13]: http://code.google.com/p/selenium/wiki/FirefoxDriver
    [14]: http://support.mozilla.com/en-US/kb/Managing-profiles
-   [15]: https://saucelabs.com/docs/connect#tunnel-identifier
-   [16]: https://saucelabs.com/docs/connect
-   [17]: https://saucelabs.com/docs/additional-config#desired-capabilities
+   [15]: /reference/sauce-connect/#managing-multiple-tunnels
+   [16]: /reference/sauce-connect/
+   [17]: #selenium-2-tests-desired-capabilities
    [18]: https://saucelabs.com/now
    [19]: https://saucelabs.com/docs/integration
-   [20]: http://support.saucelabs.com/forums

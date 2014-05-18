@@ -1,9 +1,9 @@
 {
   title: "C#",
-  description: "Using C# to run selenium tests on Sauce Labs",
+  description: "How to run Selenium tests on Sauce Labs using C#",
   category: 'Tutorials',
-  image: "/images/tutorials/csharp.png",
-  index: 10
+  index: 10,
+  image: "/images/tutorials/csharp.png"
 }
 
 ## Getting Started

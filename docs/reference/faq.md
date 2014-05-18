@@ -1,6 +1,6 @@
 {
   title: "FAQ",
-  description: "test",
+  description: "Frequently asked questions about Sauce Labs",
   category: "Reference",
   index: 7
 }

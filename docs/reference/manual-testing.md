@@ -1,6 +1,6 @@
 {
   title: "Manual Testing",
-  description: "test",
+  description: "How to run manual tests on Sauce Labs",
   category: "Reference",
   index: 5
 }

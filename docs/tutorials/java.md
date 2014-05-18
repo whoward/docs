@@ -1,9 +1,9 @@
 {
   title: "Java",
-  description: "Using Java to run selenium tests on Sauce Labs",
+  description: "How to run Selenium tests on Sauce Labs using Java",
   category: 'Tutorials',
-  image: "/images/tutorials/Java.png",
-  index: 0
+  index: 0,
+  image: "/images/tutorials/Java.png"
 }
 
 ## Getting Started
@@ -44,7 +44,7 @@ archetype generation to make sure that everything works.
 
 Run this command from your `sauce-project` directory:
 ```bash
-    mvn test
+mvn test
 ```
 This launches Maven and will download the dependencies, compiles the source code and run the tests. After a few
 moments you should see that JUnit/TestNG has started. You might not see any output instantaneously, but
@@ -261,7 +261,7 @@ already created by Maven for this tutorial):
 <dependency>
     <groupId>com.saucelabs</groupId>
     <artifactId>sauce_junit</artifactId>
-    <version><!-- SAUCE:PROP:sauce-java-version --></version>
+    <version>2.0.5</version>
     <scope>test</scope>
 </dependency>
 ```
@@ -368,7 +368,7 @@ was automatically created by Maven for this tutorial):
 <dependency>
     <groupId>com.saucelabs</groupId>
     <artifactId>sauce_testng</artifactId>
-    <version><!-- SAUCE:PROP:sauce-java-version --></version>
+    <version>2.0.5</version>
     <scope>test</scope>
 </dependency>
 ```
@@ -788,8 +788,8 @@ public void testRegisterFailsWithBadEmail() throws Exception {
 }
 ```
 
-Next Steps
----
+## Next Steps for Testing
+
 
 As simple as they are, these signup/login/logout tests are extremely
 valuable. Running them before every deployment helps to ensure that
@@ -807,56 +807,6 @@ When you are comfortable with writing these types of tests, you can
 move on to learn more about how Sauce Labs lets you do more with
 Selenium.
 
-* _Next_: [Testing local apps with Sauce Connect](##05-Sauce-Connect.md##)
-
-Testing Local Apps with Sauce Connect
-=======
-
-Developing apps on localhost is extremely quick and efficient. However, localhost is not a publicly-accessible
-address on the Internet, so by default the browsers in the Sauce Labs Selenium cloud cannot 
-load and test an app that you are running locally.
-
-To get around this limitation, we created [Sauce Connect](https://saucelabs.com/docs/connect). Sauce Connect uses a 
-secure tunnel protocol that gives specific Selenium servers in the Sauce cloud access to your local network. 
-Sauce Connect sessions are sandboxed from outside data flows and are a convenient way to securely test apps that 
-aren't ready to be deployed on the Internet.
-
-
-To install Sauce Connect, [download](https://saucelabs.com/downloads/Sauce-Connect-latest.zip) the Sauce Connect 
-zip file and extract it to your filesystem.
-
-Sauce Connect is a fairly large binary file, so it may take a little while to download. After you 
-unzip the zip file, and execute the following command from the directory that contains the extracted files (the 
-directory that contains the `Sauce-Connect.jar` file):
-
-
-
-```bash
-java -jar Sauce-Connect.jar sauceUsername sauceAccessKey
-```
-
-It takes a while for Sauce Connect to load because it's provisioning a new clean virtual machine in the Sauce Labs cloud 
-to handle the secure connection. When it says "Connected! You may start your tests..." you are good to go.
-
-To update your tests to run using Sauce Connect, you will need to change the URL used to create the WebDriver instance 
-to point to `localhost:4445` instead of `ondemand.saucelabs.com:80` as shown below:
-
-
-```java
-this.driver = new RemoteWebDriver(
-        new URL("http://sauceUsername:sauceAccessKey@localhost:4445/wd/hub"),
-        capabilities);
-```
-
-Note: When Sauce Connect is running, all tests that you run using your Sauce Labs account use the network on the machine 
-on which Sauce Connect is located.
-
-To exit Sauce Connect, enter `Ctrl-C`.
-
-For more information about Sauce Connect, or to download and configure the
-Java binary on your own, see the [Sauce Connect documentation](https://saucelabs.com/docs/connect).
-
-* _Next_: [Running tests in parallel](##06-Parallelism.md##)
 
 Running Tests in Parallel
 =====
@@ -874,8 +824,8 @@ clean virtual machines on standby, we encourage you to run as many tests
 as you can at once. For an overview of how many tests you can run in parallel, see the parallelization section of the
 [Sauce plan page](http://saucelabs.com/pricing).
 
-JUnit
-===
+### Parallel Tests in JUnit
+
 
 Tests can be run in parallel using JUnit, but it takes a bit of work.
 The [Java helper library](https://github.com/saucelabs/sauce-java) includes a `Parallelized`
@@ -964,8 +914,8 @@ tests](##03-First-Test.md##), you should see these tests running in
 parallel on the [Sauce Labs tests page](https://saucelabs.com/tests).
 
 
-TestNG
-===
+### Parallel Tests in TestNG
+
 
 TestNG has built in support for running tests in parallel that is configured by the following line in the
 `src\test\resources\xml\testng.xml` file:

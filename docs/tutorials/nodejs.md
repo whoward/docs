@@ -1,9 +1,9 @@
  {
   title: "Node.js",
-  description: "Use node.js to run Selenium tests on Sauce Labs",
+  description: "How to run Selenium tests on Sauce Labs using node.js",
   category: 'Tutorials',
-  image: '/images/tutorials/nodejs.png',
-  index: 4
+  index: 4,
+  image: '/images/tutorials/nodejs.png'
 }
 
 ## Getting Started
@@ -96,8 +96,7 @@ grunt test:sauce:firefox
 grunt test:sauce:explorer
 ```
 
-*5* Running tests in parallel
----
+## Running tests in parallel
 
 In the terminal run the following:
 

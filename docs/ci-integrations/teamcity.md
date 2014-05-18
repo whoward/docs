@@ -1,9 +1,9 @@
 {
   title: "Team City",
-  description: "test",
+  description: "Run automated tests on Sauce Labs using Team City",
   category: "CI Integrations",
+  index: 2,
   image: "/images/ci-integrations/team-city.png",
-  index: 2
 }
 
 Sauce Labs and JetBrains TeamCity Tutorials

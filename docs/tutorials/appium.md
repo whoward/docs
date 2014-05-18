@@ -1,9 +1,9 @@
  {
   title: "Appium",
-  description: "Runnin Appium tests on Sauce Labs",
+  description: "How to run Appium tests on Sauce Labs",
   category: 'Tutorials',
+  index: 7,
   image: "/images/tutorials/Appium.png",
-  index: 7
 }
 Appium on Sauce Labs
 ====================
@@ -30,27 +30,50 @@ Getting started with Appium on Sauce Labs is easy:
 
 For information on writing, configuring, and running your tests in Sauce Labs' cloud, check out our Getting Started Guides:
 
-  - [iOS Getting Started guide](##01-iOS-on-Sauce.md##)
-  - [Android Getting Started guide](##02-Android-on-Sauce.md##)
+  - [iOS Getting Started guide](#appium-for-ios-on-sauce-labs)
+  - [Android Getting Started guide](#appium-for-android-on-sauce-labs)
 
-WebDriver Client Libraries
+Appium Client Libraries
 ---
 
-Appium works with WebDriver's client bindings, so you'll need to install the bindings for your favorite language. This tutorial provides examples for node.js, PHP, Ruby, and Python, but other languages with a WebDriver client library will work including Java, C#, and Perl.
+Appium works with an extension of WebDriver's client bindings, so you'll need to install the bindings for your favorite language:
+
+* Ruby - [https://github.com/appium/ruby_lib](https://github.com/appium/ruby_lib)
+* Java - [https://github.com/appium/java-client](https://github.com/appium/java-client)
+* PHP - [https://github.com/appium/php-client](https://github.com/appium/php-client)
+* JavaScript - [https://github.com/admc/wd](https://github.com/admc/wd)
+* Python - [https://github.com/appium/python-client](https://github.com/appium/python-client)
+* C# - [https://github.com/appium/appium-dotnet-driver](https://github.com/appium/appium-dotnet-driver)
 
 Complete Tutorial
 ---
 
 Want to know all the ins and outs of testing your iOS app with Appium on Sauce? Then you're in the right place. These tutorials explain how to automate testing of your apps with Appium.
 
-We assume that you have some familiarity with Selenium, your operating system, and the fundamentals of automated testing. However, even if this is your first time automating an app, you should still be able to follow along!
+We assume that you have some familiarity with Selenium WebDriver (the protocol and libraries on which the Appium server and Appium clients are based), your operating system, and the fundamentals of automated testing. However, even if this is your first time automating an app, you should still be able to follow along!
 
 Let's get started! Click the first link below:
 
-  - [Running iOS Tests on Sauce](##01-iOS-on-Sauce.md##)
-  - [Running Android Tests on Sauce](##02-Android-on-Sauce.md##)
-  - [Tips for Writing Better Appium Tests](##03-Tips.md##)
-  - [Next Steps and More Information](##04-Next-Steps.md##)
+  - [Running iOS Tests on Sauce](#appium-for-ios-on-sauce-labs)
+  - [Running Android Tests on Sauce](#appium-for-android-on-sauce-labs)
+  - [Next Steps and More Information](#next-steps)
+
+Appium Resources
+---
+
+For more information, feel free to visit the resources listed below:
+
+  - [Appium](http://appium.io)
+  - [Introduction to Appium Concepts](http://appium.io/introduction.html)
+  - [Appium Docs](http://appium.io/slate/en/v1.0.0/)
+  - [Appium Mailing List](https://groups.google.com/forum/#!forum/appium-discuss)
+  - [Appium on Github](http://github.com/appium/appium)
+  - [Selenium WebDriver JSON Wire Protocol](http://code.google.com/p/selenium/wiki/JsonWireProtocol) 
+  - [Selenium](http://www.seleniumhq.org)
+  - [Apple UI Automation Documentation](http://developer.apple.com/library/ios/#documentation/DeveloperTools/Reference/UIAutomationRef/_index.html)
+  - [Android UI Testing Documentation](http://developer.android.com/tools/testing/testing_ui.html)
+  - [Sauce Labs Rest API](http://saucelabs.com/docs/rest)
+  - [Sauce Connect](https://saucelabs.com/docs/connect)
 
 Appium for iOS on Sauce Labs
 ===
@@ -69,8 +92,6 @@ Let's get started with running iOS tests on Sauce Labs! This section is a bit lo
 Your first test will run against our Test Application, which is hosted on Sauce. When you run your own tests you'll need to provide your own app. Instructions for providing your own app are provided in the [Setup](#setting-up-tests) section.
 
 To run your first test, simply run the quick start code below. Our example is in Ruby using RSpec, though Appium can be used with almost any language and test framework:
-
-
 
 To run the Ruby example, you need to have rspec installed, in addition to the Selenium WebDriver client library. To install these, and download a simple example test, run:
 
@@ -97,12 +118,12 @@ You may notice that Appium tests take a bit longer than regular selenium tests. 
 
 You'll need the following to start testing your app using Appium on Sauce:
 
-  - A computer running Mac OS 10.7.4 or higher
-  - Xcode and the iOS 6 SDK or higher
+  - A computer running Mac OS 10.8.5 or higher
+  - Xcode and the iOS 7 SDK or higher
   - The Xcode command line tools installed
   - Your app source code or a prebuilt .app bundle for your app
   - A [Sauce Labs account](https://saucelabs.com/account)
-  - A Selenium WebDriver client library for your langauge of choice (see the [Tutorial Introduction](##00-Introduction.md##))
+  - An Appium client library for your langauge of choice (see the [Tutorial Introduction](##00-Introduction.md##))
 
 If you do not have a Mac, you will not be able to compile your app for Appium. However, you only need a Mac for compiling the app, so if you already have a compiled '.app' folder, then you can run your tests from Windows, Mac, or Linux.
 
@@ -119,8 +140,8 @@ To compile the app, use the `xcodebuild` command line utility with the TARGETED_
 
 So, for example, to build an app to launch in the iPhone simulator, change to the command prompt for the top level directory of your app's source code (before it's been built), then run the following command:
 
-```
-xcodebuild -sdk iphonesimulator6.0 TARGETED_DEVICE_FAMILY=1
+```bash
+xcodebuild -sdk iphonesimulator7.0 TARGETED_DEVICE_FAMILY=1
 ```
 
 After your app compiles you'll have a `build/<*target*>` directory in your app's source code that contains a `.app` directory. Change to the command prompt for your `build/<*target*>` directory, zip the entire `.app` directory, and use it as the value for the `app` capability in your DesiredCapabilities object as discussed in [Running Your First Test](#run-test).
@@ -140,12 +161,13 @@ Then, in your test code, point your RemoteWebDriver instance to `http://sauceUse
 
 You'll also need to add the following fields (key/value pairs) to DesiredCapabilities:
 
-  - `app`: `sauce-storage:my_app.zip` The URL of a zip file containing your `.app` directory. (Usually a `sauce-storage:` URL to access files uploaded to Sauce temporary storage.)
-  - `device`: `iPhone Simulator`
-  - `platform`: `OS X 10.8`
-  - `version`: `6.0`
+  - `appium-version`: `"1.0"`
+  - `app`: `"sauce-storage:my_app.zip"` The URL of a zip file containing your `.app` directory. (Usually a `sauce-storage:` URL to access files uploaded to Sauce temporary storage.)
+  - `platformName`: `"iOS"`
+  - `platformVersion`: `"7.1"`
+  - `deviceName`: `"iPhone Simulator"`
 
-**Note:** The `iPhone Simulator` value for the `device` key will launch an iPhone or iPad simulator depending on whether your app was compiled with `1`, `2`, or `1,2` as the `TARGETED_DEVICE_FAMILY`  as discussed in the [Compiling Your App for Sauce](#compiling) section.
+**Note:** The `iPhone Simulator` value for the `deviceName` key will launch an iPhone or iPad simulator depending on whether your app was compiled with `1`, `2`, or `1,2` as the `TARGETED_DEVICE_FAMILY`  as discussed in the [Compiling Your App for Sauce](#compiling) section.
 
 That's it! You're ready to run your test script against your app on Appium on Sauce!
 
@@ -164,7 +186,7 @@ Appium hides all of this complexity from your test script (and from you!). Your 
 
 Before you can run your apps on Appium you'll need the .app directory created by XCode for your app. Sometimes, using special build settings will make Appium more useful; these are covered in the [Compiling Your App for Sauce](#compiling) section.
 
-To specify an Appium session in Sauce, simply use the same DesiredCapabilities object that you already use in your Selenium tests, with a few added fields. Your test script remains the same, assuming that it's using [Selenium commands supported by Appium](https://github.com/appium/appium/wiki/JSON-Wire-Protocol:-Supported-Methods). Configuring DesiredCapabilities is discussed in the [Setting Up Your Tests](#setting-up-tests) section.
+To specify an Appium session in Sauce, simply use the same DesiredCapabilities object that you already use in your Selenium tests, with a slightly different set of fields. Configuring DesiredCapabilities is discussed in the [Setting Up Your Tests](#setting-up-tests) section.
 
 Appium for Android on Sauce Labs
 ===
@@ -182,20 +204,14 @@ Now let's get started with Android tests on Sauce Labs. Here's what this section
 Your first test will run against our Test Application, which is hosted on Sauce. When you run your own tests you'll need to provide your own app. Instructions for providing your own app are provided in the [Setup](#setting-up-tests) section.
 
 To run your first test, simply run the quick start code below. Our example is in Ruby using RSpec, though Appium can be used with almost any language and test framework:
- 
 
-
-To run the Ruby example, you need to have rspec installed, in addition to the Selenium WebDriver client library. To install these, run:
+To run the Ruby example, you need to have rspec installed, in addition to the Selenium WebDriver client library. Run the simple install script by copying and pasting:
 
 ```bash
-sudo gem install rspec selenium-webdriver net-http-persistent rest_client
+curl -L https://raw.github.com/saucelabs/appium-tutorial/master/bin/install_tutorial_android_ruby.sh | bash -s
 ```
 
-Then download the example test:
-
-```bash
-curl -s https://raw.github.com/appium/appium/master/sample-code/examples/ruby/android_on_sauce.rb > AndroidSauce.rb
-```
+This will create a file `AndroidSauce.rb` in the current directory, and make sure your environment is correct.
 
 Now you are ready to run your first test! The `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` environment variables authenticate you with Sauce Labs:
 
@@ -217,7 +233,7 @@ You may notice that Appium tests take a bit longer than regular selenium tests. 
 
   - Your app compiled as an .apk.
   - A [Sauce Labs account](https://saucelabs.com/account)
-  - A Selenium WebDriver client library for your langauge of choice (see the [Tutorial Introduction](##00-Introduction.md##))
+  - A Selenium WebDriver client library for your langauge of choice (see the [Tutorial Introduction](#appium-on-sauce-labs))
 
 <a name='setting-up-tests'></a>Setting Up Your Tests for Sauce
 ---
@@ -225,20 +241,28 @@ You may notice that Appium tests take a bit longer than regular selenium tests. 
 First, upload your app to Sauce Labs temporary storage using our [Temporary Storage REST API](http://saucelabs.com/docs/rest#storage):
 
 ```bash
-$ zip -r my_app.zip MyApp.apk/
-...
-$ curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY -X POST "http://saucelabs.com/rest/v1/storage/$SAUCE_USERNAME/my_app.zip?overwrite=true" -H "Content-Type: application/octet-stream" --data-binary @my_app.zip 
+$ curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY -X POST "http://saucelabs.com/rest/v1/storage/$SAUCE_USERNAME/my_app.apk?overwrite=true" -H "Content-Type: application/octet-stream" --data-binary @my_app.apk
 ```
 
 Then, in your test code, point your RemoteWebDriver instance to `http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub`.
 
 You'll also need to add the following fields (key/value pairs) to DesiredCapabilities:
 
-  - `app`: `"sauce-storage:my_app.zip"` The URL of a zip file containing your `.apk` directory. (Usually a `sauce-storage:` URL to access files uploaded to Sauce temporary storage.)
-  - `app-package`: The package name of your app, like `"com.example.android.notepad"`
-  - `app-activity`: The name of the activity to start, with a dot in front of it, like `".NotesList"` in the example. This is appended to the package to start your app, like `com.example.android.notepad.NotesList`.
-  - `device`: `"android"` 
-  - `version`: `4.2` (Currently we support 2.3, 4.0, 4.1, 4.2 and 4.3)
+  - `appium-version`: `"1.0"`
+  - `apk`: `"sauce-storage:my_app.apk"` The URL of your `.apk` directory. (Usually a `sauce-storage:` URL to access files uploaded to Sauce temporary storage.)
+  - `platformName`: `"Android"`
+  - `platformVersion`: `"4.2"` (Currently we support 2.3, 4.0, 4.1, 4.2 and 4.3. See below for using 2.3, 4.0, and 4.1)
+  - `deviceName`: `"Android Emulator"`
+  - `deviceType`: `"phone"` (the default if this field is missing), or `"tablet"`
+
+If you want to test against earlier versions like 2.3, 4.0, or 4.1, you'll need to access Appium's built-in [Selendroid](http://selendroid.io) support by using the `automationName` capability:
+
+  - `appium-version`: `"1.0"`
+  - `apk`: `"sauce-storage:my_app.apk"`
+  - `automationName`: `"Selendroid"`
+  - `platformName`: `"Android"`
+  - `platformVersion`: `"2.3"`
+  - `deviceName`: `"Android Emulator"`
   - `deviceType`: `"phone"` (the default if this field is missing), or `"tablet"`
 
 That's it! You're ready to run your test script against your app on Appium on Sauce!
@@ -248,13 +272,11 @@ For a complete list of supported Appium platforms and code examples for using th
 <a name='understanding-appium'></a>Understanding Appium for Android on Sauce
 ---
 
-Appium automates Android using the UIAutomator library, which is provided by Google as part of the Android SDK, for the purpose of automating your app. When you change the configuration of your tests to point to the Sauce Labs cloud, we handle the command, launch the emulator, download your app, and install and launch the app in the emulator. Then as each command is sent by your script, it is converted to a UIAutomator command, and run against your app in the emulator. 
+Appium automates Android using the UIAutomator library, which is provided by Google as part of the Android SDK, for the purpose of automating your app. When you change the configuration of your tests to point to the Sauce Labs cloud, we handle the command, launch the emulator, download your app, and install and launch the app in the emulator. Then as each command is sent by your script, it is converted to a UIAutomator command, and run against your app in the emulator.
 
-The responses from your app (whether a success or an error) are converted from UIAutomator responses back into Selenium JSON responses, and are sent back to your script. 
+The responses from your app (whether a success or an error) are converted from UIAutomator responses back into Selenium JSON responses, and are sent back to your script.
 
-Appium hides all this complexity from you and your script. Your test script thinks it's communicating with your test app using the Selenium JSON Wire Protocol, but it's really communicating with an Appium server via the Selenium API. 
-
-Next: [Tips and Tricks for Writing Appium Tests](##03-Tips.md##)
+Appium hides all this complexity from you and your script. Your test script thinks it's communicating with your test app using the Selenium JSON Wire Protocol, but it's really communicating with an Appium server via the Selenium API.
 
 Tips for Writing Better Appium Tests
 ===
@@ -268,27 +290,24 @@ Because Appium uses the UI Automation framework for running tests, it's a good i
 
 Fortunately, this is something that everyone should be doing already, and it's easy to do while writing your apps. UI Automation looks for the UIViews `accesibilityLabel` attribute. For information about setting accessibility information, check out the [UI Automation accessibility documentation](http://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/UsingtheAutomationInstrument/UsingtheAutomationInstrument.html#//apple_ref/doc/uid/TP40004652-CH20-SW86).
 
-Timeouts
+Next Steps and More Information
+===
+
+Congratulations! You're all set up to test your iOS apps using Appium on the Sauce Labs cloud of Selenium servers. 
+
+There are many resources available to help you write the best tests possible, some of which are listed below.
+
+Documentation
 ---
-
-Appium uses the Instruments default timeout of 5 seconds. Although this timeout can be adjusted, it is not recommended as it can take UI Automation some time to resolve elements in the UI, especially for larger applications. For more information, check out the [UIAutomation timeouts documentation](http://developer.apple.com/library/ios/documentation/ToolsLanguages/Reference/UIATargetClassReference/UIATargetClass/UIATargetClass.html#//apple_ref/javascript/instm/UIATarget/setTimeout).
-
-[Next Steps and More Information](##04-Next-Steps.md##)
-
-
-Appium Resources
----
-
-For more information, feel free to visit the resources listed below:
 
   - [Appium](http://appium.io)
+  - [Introduction to Appium Concepts](http://appium.io/introduction.html)
+  - [Appium Docs](http://appium.io/slate/en/v1.0.0/)
   - [Appium Mailing List](https://groups.google.com/forum/#!forum/appium-discuss)
   - [Appium on Github](http://github.com/appium/appium)
-  - [Supported Selenium WebDriver JSON Wire Protocol methods on Appium](https://github.com/appium/appium/wiki/JSON-Wire-Protocol:-Supported-Methods). We'll update the list as we add more Selenium support to Appium, so check back from time to time to see what's new.
   - [Selenium WebDriver JSON Wire Protocol](http://code.google.com/p/selenium/wiki/JsonWireProtocol) 
   - [Selenium](http://www.seleniumhq.org)
   - [Apple UI Automation Documentation](http://developer.apple.com/library/ios/#documentation/DeveloperTools/Reference/UIAutomationRef/_index.html)
   - [Android UI Testing Documentation](http://developer.android.com/tools/testing/testing_ui.html)
   - [Sauce Labs Rest API](http://saucelabs.com/docs/rest)
   - [Sauce Connect](https://saucelabs.com/docs/connect)
-

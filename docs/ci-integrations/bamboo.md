@@ -1,9 +1,9 @@
 {
   title: "Bamboo",
-  description: "test",
+  description: "Run automated tests on Sauce Labs using Atlassian Bamboo",
   category: "CI Integrations",
+  index: 3,
   image: "/images/ci-integrations/bamboo.png",
-  index: 3
 }
 
 This tutorial explains how to use integrate [Atlassian Bamboo](http://www.atlassian.com/software/bamboo) with tests run with the Sauce Labs cloud of Selenium servers.

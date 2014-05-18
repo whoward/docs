@@ -1,9 +1,9 @@
 {
   title: "Jenkins",
-  description: "Integrate Jenkins with Sauce Labs",
+  description: "Run automated tests on Sauce Labs using Jenkins",
   category: "CI Integrations",
+  index: 0,
   image: "/images/ci-integrations/jenkins.png",
-  index: 0
 }
 
 ## Sauce Labs and Jenkins Tutorials

@@ -21,7 +21,7 @@ You can also use Sauce Connect:
 ##  Getting started
 
 **Before you begin** 
-1. Make sure port 443 is not proxied and can be opened for outbound connections. 
+1. Make sure port 443 can be opened for outbound connections. 
 2. Get Sauce Connect v4:
 <ul>
 <li><a href="https://saucelabs.com/downloads/sc-latest-osx.zip"><i class="fa fa-apple"></i> Download Sauce Connect for OS X</a><br>
@@ -45,7 +45,7 @@ bin/sc -u sauceUsername -k sauceAccessKey
 
 Though starting up a tunnel using Sauce Connect may take a few seconds, our tunneling method allows for the highest possible security. We spin up a secure tunnel sandbox environment for each tunnel connection in order to provide greater tunnel security and isolation from other customers.
 
-Data transmitted by Sauce Connect is encrypted through industry-standard TLS, using the AES-256 cipher. SC also uses a caching web proxy to minimize data transfer. To read more about security on Sauce, read our [security white paper][2].
+Data transmitted by Sauce Connect is encrypted through industry-standard TLS, using the AES-256 cipher. Sauce Connect also uses a caching web proxy to minimize data transfer. To read more about security on Sauce, read our [security white paper][2].
 
 Within your infrastructure, Sauce Connect needs access to the application under test, but can be firewalled from the rest of your internal network. We recommend running Sauce Connect in a firewall DMZ, on a dedicated machine, and setting up firewall rules to restrict access from that DMZ to your internal network.
 
@@ -84,56 +84,60 @@ The `sc` command line program accepts the following parameters:
 
 
     Usage: ./sc
-    -u, --user            The environment variable
+    -u, --user <username>           The environment variable
                                     SAUCE_USERNAME can also be used.
-    -k, --api-key          The environment variable
+    -k, --api-key <api-key>         The environment variable
                                     SAUCE_ACCESS_KEY can also be used.
-    -B, --no-ssl-bump-domains  Comma-separated list of domains.
+    -B, --no-ssl-bump-domains       Comma-separated list of domains.
                                     Requests whose host matches one of
                                     these will not be SSL re-encrypted.
-    -D, --direct-domains       Comma-separated list of domains.
+    -D, --direct-domains            Comma-separated list of domains.
                                     Requests whose host matches one of
                                     these will be relayed directly
                                     through the internet, instead of
                                     through the tunnel.
     -v, --verbose                   Enable verbose debugging.
-    -F, --fast-fail-regexps    Comma-separated list of regular
+    -F, --fast-fail-regexps         Comma-separated list of regular
                                     expressions. Requests matching one
                                     of these will get dropped instantly
                                     and will not go through the tunnel.
-    -i, --tunnel-identifier     Don't automatically assign jobs to
+    -i, --tunnel-identifier <id>    Don't automatically assign jobs to
                                     this tunnel. Jobs will use it only
                                     by explicitly providing the right
                                     identifier.
-    -l, --logfile 
-    -P, --se-port             Port on which Sauce Connect's
+    -l, --logfile <file>
+    -P, --se-port <port>            Port on which Sauce Connect's
                                     Selenium relay will listen for
                                     requests. Selenium commands
                                     reaching Connect on this port will
                                     be relayed to Sauce Labs securely
                                     and reliably through Connect's
                                     tunnel. Defaults to 4445.
-    -p, --proxy          Proxy host and port that Sauce
+    -p, --proxy <host:port>         Proxy host and port that Sauce
                                     Connect should use to connect
                                     to the Sauce Labs cloud.
-    -w, --proxy-userpwd   Username and password required to
+    -w, --proxy-userpwd <user:pwd>  Username and password required to
                                     access the proxy configured with -p.
     -T, --proxy-tunnel              Use the proxy configured with -p
                                     for the tunnel connection.
     -s, --shared-tunnel             Let sub-accounts of the tunnel
                                     owner use the tunnel if requested.
-    -x, --rest-url             Advanced feature: Connect to Sauce
+    -x, --rest-url <arg>            Advanced feature: Connect to Sauce
                                     REST API at alternative URL. Use
                                     only if directed to do so by Sauce
                                     Labs support.
-    -f, --readyfile           File that will be touched to signal
+    -f, --readyfile                 File that will be touched to signal
                                     when tunnel is ready.
-    -a, --auth  Perform basic authentication when
+    -a, --auth <host:port:user:pwd> Perform basic authentication when
                                     an URL on  asks for a
                                     username and password. This option
                                     can be used multiple times.
-    -z, --log-stats        Log statistics about HTTP traffic
-                                    every .
+    -z, --log-stats                 Log statistics about HTTP traffic
+                                    every.
+        --max-logsize <bytes>       Rotate logfile after reaching
+                                    <bytes> size. Disabled by default.                                    
+        --pac <url>                 Proxy autoconfiguration. Can be a
+                                    http(s) or local file:// URL.                                     
     -h, --help                      Display this help text.
 
 ##  Managing multiple tunnels

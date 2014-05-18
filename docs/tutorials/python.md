@@ -1,9 +1,9 @@
  {
   title: "Python",
-  description: "Using PHP to run selenium tests on Sauce Labs",
+  description: "How to run Selenium tests on Sauce Labs using python",
   category: 'Tutorials',
-  image: "/images/tutorials/Python.png",
-  index: 3
+  index: 3,
+  image: "/images/tutorials/Python.png"
 }
 ## Setting Up a Project
 

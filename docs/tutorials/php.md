@@ -1,9 +1,9 @@
- {
+{
   title: "PHP",
-  description: "Using PHP to run selenium tests on Sauce Labs",
+  description: "How to run Selenium tests on Sauce Labs using PHP",
   category: 'Tutorials',
-  image: '/images/tutorials/PHP-logo.png',
-  index: 2
+  index: 2,
+  image: '/images/tutorials/PHP-logo.png'
 }
 
 ## Getting started with the Sausage library
@@ -19,7 +19,7 @@ to use Sauce, this tutorial will assume that this as our framework.
 
 Although this tutorial is not a comprehensive guide for getting PHP set up on
 your system, here are some guidelines:
-<div class="mac">
+
 ## PHP Setup for Mac
 
 Mac OS X comes with PHP installed, so no further steps are required to get PHP
@@ -41,13 +41,14 @@ easily install PHP and several important libraries with these two commands:
 
 ```bash
 sudo apt-get update
+```
+
+```bash
 sudo apt-get install php-pear php5-curl php5-xdebug
 ```
 
 * Continue to [Sausage setup for Linux](#sausage_linux)
-</div>
 
-<div class="windows">
 PHP Setup for Windows
 ---
 **Note:** Windows 7 has an extra level of security, so to complete the following
@@ -60,16 +61,23 @@ Log in and the command prompt opens in Administrator mode.
 2.  Unzip the files into `C:\PHP`
 3.  From the console, navigate to `C:\PHP` and prepare the php.ini file:
 
-        cd C:\PHP
-        copy php.ini-development php.ini
+```bat
+cd C:\PHP
+```
+
+```bat
+copy php.ini-development php.ini
+```
 
 4.  In order to enable the PHP [curl](http://curl.haxx.se/) library, edit
     the `C:\PHP\php.ini` file and uncomment each of these lines by removing
     the semi-colon (`;`) which is in front of them:
 
-        extension_dir = "ext"
-        extension=php_curl.dll
-        extension=php_openssl.dll
+```ini
+extension_dir = "ext"
+extension=php_curl.dll
+extension=php_openssl.dll
+```
 
 5.  Now we need to add `php.exe` to our Windows `PATH` so we can run it from
     anywhere in the console by typing `php`. If you're not familiar with PHP,
@@ -87,11 +95,9 @@ set up curl/OpenSSL support for PHP, do the following steps:
 
 
 * Continue to [Sausage setup for Windows](#sausage_win)
-</div>
 
-<div class="mac linux">
-<a id="sausage_mac"></a><a id="sausage_linux"></a>Sausage Setup for Mac and Linux
----
+## Sausage Setup for Mac and Linux
+
 First, let's create a project directory that we'll use for this tutorial:
 
 ```bash
@@ -101,26 +107,24 @@ mkdir ~/sauce-tutorial && cd ~/sauce-tutorial
 Now we can use this curl one-liner to download and install Sausage using your username and your Sauce access key. You can
 find your Sauce access key on your [Sauce account page](https://saucelabs.com/account):
 
-
-
 ```bash
 curl -s https://raw.github.com/jlipps/sausage-bun/master/givememysausage.php | SAUCE_USERNAME=sauceUsername SAUCE_ACCESS_KEY=sauceAccessKey php
 ```
 
 This will start the download script and install Sausage in the `~/sauce-tutorial`
+
 directory. Sausage checks for a number of requirements. If any are
 not met, notification messages display in the terminal. Fix any issues then run the curl command again.
 
-</div>
-
-<div class="windows">
 Sausage Setup for Windows
 ---
 
 1.  Let's create a new directory for this tutorial project, say `C:\sauce-tutorial`:
-```bash
-        C:\> mkdir C:\sauce-tutorial
+
+```bat
+mkdir C:\sauce-tutorial
 ```
+
 2.  To download the Sausage setup file, right-click
     [givememysausage.php](https://raw.github.com/jlipps/sausage-bun/master/givememysausage.php),
     select `Save Link As...` from the popup menu, and save the
@@ -129,25 +133,27 @@ Sausage Setup for Windows
 3.  Navigate to the `C:\sauce-tutorial` directory in the command prompt, then
     run the script with PHP, setting your user credentials along the way:
 
-        C:\> cd C:\sauce-tutorial
-        C:\sauce-tutorial> php givememysausage.php -t sauceUsername sauceAccessKey
+```bash
+cd C:\sauce-tutorial
+```
 
-    Sausage checks for a number of requirements (this may take a while). If any
-    are not met, notifiaction messages display in the terminal. Fix any issues
-    then run the php command again. **Note:** See the next step for manually
-    configuring Sauce with your username and Sauce access key.
+```bash
+php givememysausage.php -t sauceUsername sauceAccessKey
+```
 
-</div>
+Sausage checks for a number of requirements (this may take a while). If any
+are not met, notifiaction messages display in the terminal. Fix any issues
+then run the php command again. **Note:** See the next step for manually
+configuring Sauce with your username and Sauce access key.
 
 You're all set up!
 
-Running your first test
-=====
+## Running your first test
+
 
 Now that you've got PHP and Sausage set up, let's try running a simple test
 to make sure that everything works.
 
-<!-- SAUCE:BEGIN_PLATFORM:MAC|LINUX -->
 **Mac/Linux:**
 
 If you're using Mac or Linux, run this command from your `sauce-tutorial` directory:
@@ -155,8 +161,7 @@ If you're using Mac or Linux, run this command from your `sauce-tutorial` direct
 ```bash
 vendor/bin/phpunit WebDriverDemo.php
 ```
-<!-- SAUCE:END_PLATFORM -->
-<!-- SAUCE:BEGIN_PLATFORM:WIN -->
+
 **Windows:**
 
 If you're using Windows, run this command from your `sauce-tutorial` directory:
@@ -164,7 +169,6 @@ If you're using Windows, run this command from your `sauce-tutorial` directory:
 ```bat
 vendor\bin\phpunit.bat WebDriverDemo.php
 ```
-<!-- SAUCE:END_PLATFORM -->
 
 **Mac/Linux/Windows:**
 
@@ -213,7 +217,7 @@ class WebDriverDemo extends Sauce\Sausage\WebDriverTestCase
             'browserName' => 'firefox',
             'desiredCapabilities' => array(
                 'version' => '15',
-                'platform' => 'Windows 2012',
+                'platform' => 'Windows 2012'
             )
         )//,
         // run Chrome on Linux on Sauce
@@ -294,6 +298,7 @@ Our `WebDriverDemo` class makes use of Sausage's `WebDriverTestCase`
 functionality.
 
 ```php
+<?php
 public static $browsers = array(
     // run Firefox v15 on Vista on Sauce
     array(
@@ -328,6 +333,7 @@ If you have your own Selenium server set up and running, you can use
 it by setting in the `local` flag to true.
 
 ```php
+<?php
 public function setUpPage()
 {
     $this->url('http://saucelabs.com/test/guinea-pig');
@@ -340,6 +346,7 @@ page that we set up at Sauce). So Selenium will point the browser to that URL
 before each test.
 
 ```php
+<?php
 public function testTitle()
 {
     $this->assertContains("I am a page title", $this->title());
@@ -354,6 +361,7 @@ calling `$this->title()` tells the Selenium session to return the title of the
 currently-loaded page.
 
 ```php
+<?php
 public function testLink()
 {
     $link = $this->byId('i am a link');
@@ -370,6 +378,7 @@ to click on that link. In this case, clicking on the link takes us to a
 new page with a different title, which we verify.
 
 ```php
+<?php
 public function testTextbox()
 {
     $test_text = "This is some text";
@@ -386,6 +395,7 @@ browser a sequence of keystrokes. Finally, we check that the text we sent
 matches the value of the textbox.
 
 ```php
+<?php
 public function testSubmitComments()
 {
     $comment = "This is a very insightful comment.";
@@ -418,10 +428,7 @@ and fails if it does not show up after a certain amount of time.
 That's it! You've seen how to run several important Selenium commands
 in the context of a custom PHPUnit test suite.
 
-* _Next_: [Running tests against web applications](##04-Testing-Apps.md##)
-
-Running Tests Against Web Applications
-====
+## Running Tests Against Web Applications
 
 Testing a static sandbox is one thing. Testing a real application's functionality
 is another. In this tutorial we'll run tests against a real live app sitting
@@ -430,8 +437,7 @@ behaviors. Once we're done you'll have a good idea how to write Selenium
 tests for login and signup in your own app, and you'll have a general understanding
 of how to test other site functionality as well.
 
-The Test App
----
+## The Test App
 
 We have a demo app set up at <a href="http://tutorialapp.saucelabs.com"
 target="_blank">http://tutorialapp.saucelabs.com</a> that we can run Selenium
@@ -450,18 +456,15 @@ these 8 tests before we examine them, and you can view them in your [Sauce Labs
 tests page](https://saucelabs.com/tests) just like we did during the first
 test:
 
-<!-- SAUCE:BEGIN_PLATFORM:MAC|LINUX -->
 **Mac/Linux:**
-
+```bash
     vendor/bin/phpunit WebDriverDemoShootout.php
+```
 
-<!-- SAUCE:END_PLATFORM -->
-<!-- SAUCE:BEGIN_PLATFORM:WIN -->
 **Windows:**
-
+```bat
     vendor\bin\phpunit.bat WebDriverDemoShootout.php
-
-<!-- SAUCE:END_PLATFORM -->
+```
 And here's the test suite:
 
 ```php
@@ -615,6 +618,7 @@ Setting `$base_url` allows us to relativize all further uses of `$this->url()`
 to a particular domain or URL.
 
 ```php
+<?php
 protected $base_url = 'http://tutorialapp.saucelabs.com';
 ```
 
@@ -623,6 +627,7 @@ and login tests. The randomness is important because it allows our tests to
 run in parallel as many times as we want without fear of collisions.
 
 ```php
+<?php
 protected function randomUser()
 {
     $id = uniqid();
@@ -642,6 +647,7 @@ etc. However, since we're testing an app on the Internet whose backend is inacce
 to us, we're using these Selenium commands to put the user into these states.
 
 ```php
+<?php
 protected function doLogin($username, $password)
 {
     $this->url('/');
@@ -680,6 +686,7 @@ values by asserting that we get a login failure message when we put in random
 text.
 
 ```php
+<?php
 public function testLoginFailsWithBadCredentials()
 {
     $fake_username = uniqid();
@@ -700,6 +707,7 @@ the `doLogin()` helper function to assert that the successful login message
 appears.
 
 ```php
+<?php
 public function testLogout()
 {
     $this->doRegister($this->randomUser(), true);
@@ -718,6 +726,7 @@ registration helper function to create a new user, then we assert that the
 user is logged in (which happens after a successful registration).
 
 ```php
+<?php
 public function testRegister()
 {
     $user = $this->randomUser();
@@ -733,6 +742,7 @@ confirmation generate the desired error, and then we test to make sure that the 
 registration if various incorrect email formats are used.
 
 ```php
+<?php
 public function testRegisterFailsWithoutUsername()
 {
     $user = $this->randomUser();
@@ -806,8 +816,8 @@ that it looks like this:
 ```json
 {
   "require": {
-    "sauce/sausage": ">=<!-- SAUCE:PROP:sausage-version -->",
-    "sauce/connect": ">=<!-- SAUCE:PROP:connect-version -->"
+    "sauce/sausage": ">=0.8.1",
+    "sauce/connect": ">=3.0"
   }
 }
 ```
@@ -821,22 +831,19 @@ php composer.phar update
 Sauce Connect is a fairly large binary file, so it may take a little while to
 download. After it finishes downloading run this command:
 
-<!-- SAUCE:BEGIN_PLATFORM:MAC|LINUX -->
 **Mac/Linux:**
 
 ```bash
 vendor/bin/sauce_connect
 ```
 
-<!-- SAUCE:END_PLATFORM -->
-<!-- SAUCE:BEGIN_PLATFORM:WIN -->
+
 **Windows:**
 
 ```bat
 vendor\bin\sauce_connect.bat
 ```
 
-<!-- SAUCE:END_PLATFORM -->
 
 Since we already configured the Sauce credentials in an earlier tutorial,
 Sauce Connect starts up without further ado. It takes a while to load because
@@ -849,8 +856,6 @@ account use the network on the machine where Sauce Connect is located.
 
 For more information about Sauce Connect, or to download and configure the
 Java binary on your own, see the [Sauce Connect documentation](https://saucelabs.com/docs/connect).
-
-* _Next_: [Running tests in parallel](##06-Parallelism.md##)
 
 Running tests in parallel
 =====
@@ -875,20 +880,17 @@ Navigate to the project directory and run the following command. This command
 specifies the path to the test file we want to run and tells Paratest that we
 want to simultaneously run two instances of PHPUnit.
 
-<!-- SAUCE:BEGIN_PLATFORM:MAC|LINUX -->
 **Mac/Linux:**
 
 ```bash
 vendor/bin/paratest -p 2 -f --phpunit=vendor/bin/phpunit WebDriverDemo.php
 ```
-<!-- SAUCE:END_PLATFORM -->
-<!-- SAUCE:BEGIN_PLATFORM:WIN -->
+
 **Windows:**
 
 ```bat
 vendor\bin\paratest.bat -p 2 -f --phpunit=vendor\bin\phpunit.bat WebDriverDemo.php
 ```
-<!-- SAUCE:END_PLATFORM -->
 
 
 Your tests should run approximately twice as fast as before. You can see the
@@ -900,8 +902,6 @@ By default tests running in parallel may
 execute in any order. In the next section we'll talk about
 this and discuss some tips for avoiding potential snags when speeding up
 test suites using parallelism.
-
-* _Next_: [Tips for better Selenium test performance](##07-Tips.md##)
 
 Tips for better Selenium test performance
 =====
@@ -949,6 +949,7 @@ there are no dependencies:
 
 
 ```php
+<?php
 function doLogin()
 {
     // do some stuff to trigger a login
@@ -1005,6 +1006,7 @@ This kind of assertion only fails after retrying periodically over a specified a
 The definition of the spinAssert function in Sausage looks like this:
 
 ```php
+<?php
 public function spinAssert($msg, $test, $args=array(), $timeout=10)
 ```
 
@@ -1025,6 +1027,7 @@ assertion fails.
 If spinAssert example earlier in the tutorial didn't have a spinAssert it would have looked like this:
 
 ```php
+<?php
 public function testSubmitComments()
 {
     $comment = "This is a very insightful comment.";
@@ -1044,6 +1047,7 @@ bit longer.
 Let's look at the same function using spinAssert:
 
 ```php
+<?php
 public function testSubmitComments()
 {
     $comment = "This is a very insightful comment.";
@@ -1182,9 +1186,4 @@ So you can see, getting going on Sauce with your existing tests is really quite
 simple. However, by migrating to Sausage you get several useful features in
 addition to a more convenient interface. Pass/fail reporting, spinAsserts,
 and more streamlined browser configuration, etc...
-
-If you're interested in seeing how to install and configure Sausage, check out
-the [Setup
-tutorial](##02-Setup.md##).
-Meanwhile, happy testing!
 
