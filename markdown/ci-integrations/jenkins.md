@@ -318,7 +318,7 @@ Click on the `WebDriver` radio button and select a browser to run our tests agai
 
 ![Sauce Configure](/images/ci-integrations/jenkins/sauce-configure.png)
 
-Further details on the environment variables set by the Sauce plugin can be found on the [Java sample project tutorial page](/images/ci-integrations/jenkins/04-Job-Configuration.md)
+Further details on the environment variables set by the Sauce plugin can be found on the [Java sample project tutorial page](/tutorials/java/)
 
 To enable this, select the `Add post-build Action` within the `Post-build Actions` section. 
 
