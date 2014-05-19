@@ -793,9 +793,6 @@ exactly what we want. Simple as they are, these login/signup tests are extremely
 Running them before every deployment will help ensure that you can 
 welcome new users into your community and get them where they need to go.
 
-
-* _Next_: [Testing local apps with Sauce Connect](##05-Sauce-Connect.md##)
-
 Testing local apps with Sauce Connect
 =======
 
@@ -1077,15 +1074,11 @@ the Selenium `text()` command until its value is what we expect or we hit 10 sec
 Using spinAssert functions is a great way to make tests less brittle and more
 accepting of differences in network speeds, surges in traffic, and other challenges in the test environment.
 
-* _Finally_: [Next steps and more information](##08-Info.md##)
-
 Integrating Sauce into existing PHPUnit WebDriver Tests
 =======
 
 Do you already have a test suite running WebDriver tests? While we recommend
-using
-[Sausage](##02-Setup.md##),
-it's also possible to integrate with Sauce in whichever test framework you
+usingSausage, it's also possible to integrate with Sauce in whichever test framework you
 happen to be using -- you'll just miss out on a lot of features you get for
 free in Sausage (like automatic pass/fail reporting).  Let's take a look at an
 example `PHPUnit_Extensions_Selenium2TestCase` test suite, so we can see what
