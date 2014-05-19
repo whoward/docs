@@ -63,12 +63,9 @@ You will need the add the following content to your `.travis.yml` file:
 
 ```yaml
 addons:
-  sauce_connect:
-    username:
-      secure: "The secure string output by the first `travis encrypt` above"
-    access_key:
-      secure: "The secure string output by the second `travis encrypt` above"
+  sauce_connect: true
 ```
+*Note: this assumes that the `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` environment variables are set*
 
 ## Provide Additional Details to Sauce
 
