@@ -19,8 +19,8 @@ Since we believe video and screenshots are helpful features for debugging, we ha
 
 Here's our documentation on how to do that:
 
-- [Disable video recording](/reference/job-configuration/#disable-video-recording)
-- [Disable automatic screenshot capture](/reference/job-configuration/#disable-step-by-step-screenshots)
+- [Disable video recording](/reference/jobs/#disable-video-recording)
+- [Disable automatic screenshot capture](/reference/jobs/#disable-step-by-step-screenshots)
 
 ### What OS and browser combinations do you support?
 
@@ -102,7 +102,7 @@ Sauce Labs:
 
 Notice that we use the same criteria for other kinds of failures, such as a Selenium exception for trying to click on a non-existent element. The reality is that tests on your end could be coded in such a way that failures won't always end up as a failed job.
 
-**The good news is that you can let Sauce know what actually happened with your tests. ** Check out our [Pass/Fail API](/reference/job-configuration/#record-pass-fail-status) to do it from within your Selenium tests.
+**The good news is that you can let Sauce know what actually happened with your tests. ** Check out our [Pass/Fail API](/reference/jobs/#record-pass-fail-status) to do it from within your Selenium tests.
 
 ### Your service is down. What should I do?
 
