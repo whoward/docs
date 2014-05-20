@@ -59,7 +59,7 @@ Now you can access the `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` environment varia
 
 Some test tools will start [Sauce Connect](/reference/sauce-connect) for you, but if the one you are using doesn't, you can [configure Travis to start Sauce Connect](http://docs.travis-ci.com/user/sauce-connect/).
 
-You will need the add the following content to your `.travis.yml` file:
+To do so, you will need to add the following content to your `.travis.yml` file:
 
 ```yaml
 addons:
