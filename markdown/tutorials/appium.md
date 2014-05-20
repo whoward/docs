@@ -249,7 +249,7 @@ Then, in your test code, point your RemoteWebDriver instance to `http://sauceUse
 You'll also need to add the following fields (key/value pairs) to DesiredCapabilities:
 
   - `appium-version`: `"1.0"`
-  - `apk`: `"sauce-storage:my_app.apk"` The URL of your `.apk` directory. (Usually a `sauce-storage:` URL to access files uploaded to Sauce temporary storage.)
+  - `app`: `"sauce-storage:my_app.apk"` The URL of your `.apk` directory. (Usually a `sauce-storage:` URL to access files uploaded to Sauce temporary storage.)
   - `platformName`: `"Android"`
   - `platformVersion`: `"4.2"` (Currently we support 2.3, 4.0, 4.1, 4.2 and 4.3. See below for using 2.3, 4.0, and 4.1)
   - `deviceName`: `"Android Emulator"`
