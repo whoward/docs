@@ -16,10 +16,10 @@ In Selenium 1 tests, Sauce-specific settings are given inside Selenium's "browse
 ```json
 {
   "username": "**your username here**",
-        "access-key": "**your access key here**",
-        "os": "Linux",
-        "browser": "firefox",
-        "browser-version": "3"
+  "access-key": "**your access key here**",
+  "os": "Linux",
+  "browser": "firefox",
+  "browser-version": "3"
 }
 ```
 
@@ -42,7 +42,10 @@ Value type
 str
 
 Example
-`"name": "my example name"`
+
+```json
+"name": "my example name"
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -57,7 +60,10 @@ Value type
 str
 
 Example
-`"build": "build-1234"`
+
+```json
+"build": "build-1234"
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -72,7 +78,10 @@ Value type
 list
 
 Example
-`"tags": [ "tag1", "tag2", "tag3" ]`
+
+```json
+"tags": [ "tag1", "tag2", "tag3" ]
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -89,7 +98,10 @@ Value type
 bool
 
 Example
-`"passed": true`
+
+```json
+"passed": true
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -104,7 +116,14 @@ Value type
 object
 
 Example
-`"custom-data": { "release": "1.0", "commit": "0k392a9dkjr", "staging": true, "execution_number": 5, "server": "test.customer.com" }`
+
+```json
+"custom-data": { "release": "1.0",
+                 "commit": "0k392a9dkjr",
+                 "staging": true,
+                 "execution_number": 5,
+                 "server": "test.customer.com" }
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -124,18 +143,19 @@ In both setContext and the REST API, the JSON object to update the job's informa
 
 Here's an example of the JSON you can send with either of these methods:
 
-
-      {
-          "name": "my job name",
-          "passed": true,
-          "public": "public",
-          "tags": ["tag1", "tag2", "tag3"],
-          "build": 234,
-          "custom-data": {
-              "release": "1.0",
-              "server": "test.customer.com"
-          }
-      }
+```json
+{
+    "name": "my job name",
+    "passed": true,
+    "public": "public",
+    "tags": ["tag1", "tag2", "tag3"],
+    "build": 234,
+    "custom-data": {
+        "release": "1.0",
+        "server": "test.customer.com"
+    }
+}
+```
 
 
 #### setContext()
@@ -146,25 +166,25 @@ We allow two formats for setContext: basic and advanced. The basic format lets y
 
 Basic format:
 
-
-      this.selenium.setContext("sauce:job-tags=tag1,tag2,tag3")
-      this.selenium.setContext("sauce:job-name=My awesome job")
-      this.selenium.setContext("sauce:job-result=passed")
-      this.selenium.setContext("sauce:job-result=failed")
-
+```java
+this.selenium.setContext("sauce:job-tags=tag1,tag2,tag3")
+this.selenium.setContext("sauce:job-name=My awesome job")
+this.selenium.setContext("sauce:job-result=passed")
+this.selenium.setContext("sauce:job-result=failed")
+```
 
 Advanced format:
 
 Our advanced format involves submitting a JSON-encoded dictionary as the value of sauce:job-info. You can set as many or as few of the fields as you wish. For example, in Java, include the following code in your test to add information to a job:
 
-
-      this.selenium.setContext("sauce:job-info={\"name\": \"my job name\"," /
-                                    "\"tags\": [\"tag1\", \"tag2\", \"tag3\"]," /
-                                    "\"passed\": true,"/
-                                    "\"build\": \"103\","/
-                                    "\"custom-data\": {\"field\": \"value\"}"/
-                                    }");
-
+```java
+this.selenium.setContext("sauce:job-info={\"name\": \"my job name\"," /
+                              "\"tags\": [\"tag1\", \"tag2\", \"tag3\"]," /
+                              "\"passed\": true,"/
+                              "\"build\": \"103\","/
+                              "\"custom-data\": {\"field\": \"value\"}"/
+                              }");
+```
 
 #### Update jobs via our REST API
 
@@ -193,7 +213,10 @@ Value type
 bool
 
 Example
-`"record-video": false`
+
+```json
+"record-video": false
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -206,7 +229,10 @@ Value type
 bool
 
 Example
-`"video-upload-on-pass": false`
+
+```json
+"video-upload-on-pass": false
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -221,7 +247,10 @@ Value type
 bool
 
 Example
-`"record-screenshots": false`
+
+```json
+"record-screenshots": false
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -236,7 +265,10 @@ Value type
 bool
 
 Example
-`"record-logs": false`
+
+```json
+"record-logs": false
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -251,7 +283,10 @@ Value type
 bool
 
 Example
-`"capture-html": true`
+
+```json
+"capture-html": true
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -268,7 +303,10 @@ Value type
 bool
 
 Example
-`"webdriver.remote.quietExceptions": false`
+
+```json
+"webdriver.remote.quietExceptions": false
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -283,7 +321,10 @@ Value type
 bool
 
 Example
-`"sauce-advisor": false`
+
+```json
+"sauce-advisor": false
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -302,7 +343,10 @@ Value type
 str
 
 Example
-`"selenium-version": "2.41.0"`
+
+```json
+"selenium-version": "2.41.0"
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -323,7 +367,10 @@ Value type
 bool
 
 Example
-`"single-window": true`
+
+```json
+"single-window": true
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -340,7 +387,10 @@ Value type
 list
 
 Example
-`"user-extensions-url": [ "http://saucelabs.com/ext/flex.js", "ftp://username:password@server.com/bleh.js" ]`
+
+```json
+"user-extensions-url": [ "http://saucelabs.com/ext/flex.js", "ftp://username:password@server.com/bleh.js" ]
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -361,7 +411,10 @@ Value type
 str
 
 Example
-`"firefox-profile-url": "http://saucelabs.com/example_files/notls.zip"`
+
+```json
+"firefox-profile-url": "http://saucelabs.com/example_files/notls.zip"
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -380,7 +433,10 @@ Value type
 int
 
 Example
-`"max-duration": 300`
+
+```json
+"max-duration": 300
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -395,7 +451,10 @@ Value type
 int
 
 Example
-`"command-timeout": 300`
+
+```json
+"command-timeout": 300
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -410,7 +469,10 @@ Value type
 int
 
 Example
-`"idle-timeout": 60`
+
+```json
+"idle-timeout": 60
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -433,7 +495,11 @@ Value type
 object
 
 Example
-`"prerun": { "executable": "http://url.to/your/executable.exe", "args": [ "--silent", "-a", "-q" ], "background": true }`
+
+```json
+"prerun": { "executable": "http://url.to/your/executable.exe",
+            "args": [ "--silent", "-a", "-q" ], "background": true }
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -452,7 +518,10 @@ Value type
 str
 
 Example
-`"tunnel-identifier": "MyTunnel01"`
+
+```json
+"tunnel-identifier": "MyTunnel01"
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -473,7 +542,10 @@ Value type
 str
 
 Example
-`"screen-resolution": "1280x1024"`
+
+```json
+"screen-resolution": "1280x1024"
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -487,8 +559,11 @@ iedriver-version
 Value type	
 str
 
-Example	
-`"iedriver-version": "x64_2.41.0"`
+Example
+
+```json
+"iedriver-version": "x64_2.41.0"
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -506,7 +581,10 @@ Value type
 bool
 
 Example
-`"disable-popup-handler": true`
+
+```json
+"disable-popup-handler": true
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -523,7 +601,10 @@ Value type
 bool
 
 Example
-`"avoid-proxy": true`
+
+```json
+"avoid-proxy": true
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -540,7 +621,10 @@ Value type
 str
 
 Example
-`"public": "public"`
+
+```json
+"public": "public"
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -555,7 +639,10 @@ Value type
 str
 
 Example
-`"public": "public restricted"`
+
+```json
+"public": "public restricted"
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -570,7 +657,10 @@ Value type
 str
 
 Example
-`"public": "team"`
+
+```json
+"public": "team"
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -585,7 +675,10 @@ Value type
 str
 
 Example
-`"public": "share"`
+
+```json
+"public": "share"
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -600,7 +693,10 @@ Value type
 str
 
 Example
-`"public": "private"`
+
+```json
+"public": "private"
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -619,7 +715,10 @@ Value type
 str
 
 Example
-`"device-orientation": "landscape"`
+
+```json
+"device-orientation": "landscape"
+```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
@@ -651,7 +750,7 @@ Message: ``
 
 Here's an example in Python for generating the token for a job with id: 5f9fef27854ca50a3c132ce331cb6034
 
-```
+```python
 import hmac
 from hashlib import md5
 hmac.new("example_user:123456-asdf-8dcf81f1fc71", "5f9fef27854ca50a3c132ce331cb6034", md5).hexdigest()
@@ -709,8 +808,6 @@ curl -u sauceUsername:sauceAccessKey https://saucelabs.com/rest/v1/jhuggins/jobs
 
 We offer a simple way to embed job pages in CI test results or other test reports. Using the format below, add the HTML to any page you need to embed job results on, replacing **** with the ID of the job you want:
 
-
-      
 
 
 **Note**: this will only work for browsers logged in using your account, and authentication tokens can be used to make this work for anonymous viewers. Check out [no-login links to jobs][1] for directions on generating these tokens.
