@@ -43,7 +43,7 @@ str
 
 Example
 
-```json
+```python
 "name": "my example name"
 ```
 
@@ -61,7 +61,7 @@ str
 
 Example
 
-```json
+```python
 "build": "build-1234"
 ```
 
@@ -79,7 +79,7 @@ list
 
 Example
 
-```json
+```python
 "tags": [ "tag1", "tag2", "tag3" ]
 ```
 
@@ -99,7 +99,7 @@ bool
 
 Example
 
-```json
+```python
 "passed": true
 ```
 
@@ -117,7 +117,7 @@ object
 
 Example
 
-```json
+```python
 "custom-data": { "release": "1.0",
                  "commit": "0k392a9dkjr",
                  "staging": true,
@@ -143,7 +143,7 @@ In both setContext and the REST API, the JSON object to update the job's informa
 
 Here's an example of the JSON you can send with either of these methods:
 
-```json
+```python
 {
     "name": "my job name",
     "passed": true,
@@ -214,7 +214,7 @@ bool
 
 Example
 
-```json
+```python
 "record-video": false
 ```
 
@@ -230,7 +230,7 @@ bool
 
 Example
 
-```json
+```python
 "video-upload-on-pass": false
 ```
 
@@ -248,7 +248,7 @@ bool
 
 Example
 
-```json
+```python
 "record-screenshots": false
 ```
 
@@ -266,7 +266,7 @@ bool
 
 Example
 
-```json
+```python
 "record-logs": false
 ```
 
@@ -284,7 +284,7 @@ bool
 
 Example
 
-```json
+```python
 "capture-html": true
 ```
 
@@ -304,7 +304,7 @@ bool
 
 Example
 
-```json
+```python
 "webdriver.remote.quietExceptions": false
 ```
 
@@ -322,7 +322,7 @@ bool
 
 Example
 
-```json
+```python
 "sauce-advisor": false
 ```
 
@@ -344,7 +344,7 @@ str
 
 Example
 
-```json
+```python
 "selenium-version": "2.41.0"
 ```
 
@@ -368,7 +368,7 @@ bool
 
 Example
 
-```json
+```python
 "single-window": true
 ```
 
@@ -388,7 +388,7 @@ list
 
 Example
 
-```json
+```python
 "user-extensions-url": [ "http://saucelabs.com/ext/flex.js", "ftp://username:password@server.com/bleh.js" ]
 ```
 
@@ -412,7 +412,7 @@ str
 
 Example
 
-```json
+```python
 "firefox-profile-url": "http://saucelabs.com/example_files/notls.zip"
 ```
 
@@ -434,7 +434,7 @@ int
 
 Example
 
-```json
+```python
 "max-duration": 300
 ```
 
@@ -452,7 +452,7 @@ int
 
 Example
 
-```json
+```python
 "command-timeout": 300
 ```
 
@@ -470,7 +470,7 @@ int
 
 Example
 
-```json
+```python
 "idle-timeout": 60
 ```
 
@@ -496,7 +496,7 @@ object
 
 Example
 
-```json
+```python
 "prerun": { "executable": "http://url.to/your/executable.exe",
             "args": [ "--silent", "-a", "-q" ], "background": true }
 ```
@@ -519,7 +519,7 @@ str
 
 Example
 
-```json
+```python
 "tunnel-identifier": "MyTunnel01"
 ```
 
@@ -543,7 +543,7 @@ str
 
 Example
 
-```json
+```python
 "screen-resolution": "1280x1024"
 ```
 
@@ -561,7 +561,7 @@ str
 
 Example
 
-```json
+```python
 "iedriver-version": "x64_2.41.0"
 ```
 
@@ -582,7 +582,7 @@ bool
 
 Example
 
-```json
+```python
 "disable-popup-handler": true
 ```
 
@@ -602,7 +602,7 @@ bool
 
 Example
 
-```json
+```python
 "avoid-proxy": true
 ```
 
@@ -622,7 +622,7 @@ str
 
 Example
 
-```json
+```python
 "public": "public"
 ```
 
@@ -640,7 +640,7 @@ str
 
 Example
 
-```json
+```python
 "public": "public restricted"
 ```
 
@@ -658,7 +658,7 @@ str
 
 Example
 
-```json
+```python
 "public": "team"
 ```
 
@@ -676,7 +676,7 @@ str
 
 Example
 
-```json
+```python
 "public": "share"
 ```
 
@@ -694,7 +694,7 @@ str
 
 Example
 
-```json
+```python
 "public": "private"
 ```
 
@@ -716,7 +716,7 @@ str
 
 Example
 
-```json
+```python
 "device-orientation": "landscape"
 ```
 
