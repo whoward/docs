@@ -19,7 +19,7 @@ We also have a browser matrix widget that helps you keep track of the status of 
 If you just have one project, you can use your main Sauce account name.
 If you have multiple projects, you will want to [create a sub-account](/reference/user-management/) for each project.
 
-2. Run your tests for a given project on Sauce using that account's username and access key. If you are logged in as the account you want to use, you can find your credentials on the [account page](https://saucelabs.com/account). If you are logged in as a parent account, you can see your subaccount usernames and access keys on the [subaccounts](https://saucelabs.com/sub-accounts) page.
+2. Run your tests for a given project on Sauce using that account's username and access key. If you are logged in as the account you want to use, you can find your credentials on the [account page](https://saucelabs.com/account). If you are logged in as a parent account, you can see your sub-account usernames and access keys on the [sub-accounts](https://saucelabs.com/sub-accounts) page.
 
 3. Make sure to set a [build number](/reference/jobs/#record-the-build-number) and a [pass/fail](/reference/jobs/#record-pass-fail-status) status for every test that runs. You will be able to see that these are set correctly by seeing that your tests say "Pass" or "Failed" instead of "Finished" and that a build number is visible in the UI.
 
@@ -27,11 +27,15 @@ If you have multiple projects, you will want to [create a sub-account](/referenc
 
 ## Adding the Standard Badge
 
-Paste the following Markdown or HTML in your GitHub README or on your project site:
+![sauce-badge-passing](https://saucelabs.com/images/status-passing.png) ![sauce-badge-fail](https://saucelabs.com/images/status-failed.png) ![sauce-badge-unknown](https://saucelabs.com/images/status-unknown.png)
+
+You can copy/paste the following Markdown into your GitHub README:
 
 ```bash
 [![Sauce Test Status](https://saucelabs.com/buildstatus/sauceUsername)](https://saucelabs.com/u/sauceUsername)
 ```
+
+Or you can add the following HTML to your project site:
 
 ```html
 <a href="https://saucelabs.com/u/sauceUsername">
@@ -39,14 +43,17 @@ Paste the following Markdown or HTML in your GitHub README or on your project si
 </a>
 ```
 
+## Adding the Browser Matrix Widget
 
-## Adding the Browser Matrix Widget:
+![sauce-labs-browser-matrix](https://saucelabs.com/images/status-browser-matrix.svg)
 
-Paste the following Markdown or HTML in your GitHub README or on your project site:
+You can copy/paste the following Markdown into your GitHub README:
 
 ```bash
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/sauceUsername.svg)](https://saucelabs.com/u/sauceUsername)
 ```
+
+Or you can add the following HTML to your project site:
 
 ```html
 <a href="https://saucelabs.com/u/sauceUsername">
@@ -74,6 +81,4 @@ import hmac
 
 Once the auth token has been obtained, it can be appended to one of the above badge URLs as the value of the `auth` query like this:
 
-```bash
-![Sauce Test Status](https://saucelabs.com/browser-matrix/sauceUsername.svg?auth=AUTH_TOKEN)
-```
+**?auth=AUTH_TOKEN**
