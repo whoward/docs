@@ -17,7 +17,9 @@ You can easily navigate through multiple levels of the structure using our web u
 
 Minutes and Usage
 -------
-Individual accounts within a team utilize the minutes from the root parent account. This way, all team members are able to use the same minutes pool even if they are assigned to various groups. Keep in mind that when the root parent account is out of minutes, sub-accounts will be unable to run tests.
+Individual accounts within a team utilize the minutes from the root parent account. This way, all team members are able to use the same minutes pool even if they are assigned to various groups. Subaccount usage allocation is tied to the master account's settings - if the main account is set to disallow tests when out of minutes, subaccounts will also be unable to run tests when the main account runs out of minutes. If the master account is set to run into overages once out of minutes, the subaccount will also run into overages.
+
+Available concurrency is shared amongst all accounts.
 
 Account types
 -------------
@@ -29,7 +31,7 @@ This is a special type of account intended to be used only by highly-trusted tea
 
 
 ### Standard account
-Creating standard sub-accounts allows the user to utilize minutes of the parent user. Usage of minutes is completely transparent - each minute the sub-account consumes is taken from the parent account.
+Creating standard sub-accounts allows the user to utilize minutes of the parent user. Usage of minutes is completely transparent - each minute the sub-account consumes is taken from the parent account. Standard accounts can create subaccounts, but they can only manage subaccounts lower than them in the hierarchy, while admin accounts can manage all accounts.
 
 
 Rollup Mode
@@ -54,7 +56,7 @@ Then, when your admins log in, they'll be able to see the whole team and manage 
 
 Sending login links to sub-accounts
 --------------------------------
-If you're in charge of your Sauce admin account, you may want to create sub-accounts for other team members. Sending the login link will allow you to send password reset emails to users. This way, you don't have to set their passwords manually. You can click the **send login link** button and the user will be able to set his or her password.
+If you're in charge of your Sauce admin account, you may want to create sub-accounts for other team members. Sending the login link will allow you to send password reset emails to users so they can set their own passwords. If you create an account using the **Add** button, you will need to create a placeholder password. You can click the **send login link** button and the user will be able to reset his or her password.
 ![sub-account login link](/images/reference/user-management/send_login_link.png "sub-account login link")
 
 
