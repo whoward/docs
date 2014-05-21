@@ -733,7 +733,7 @@ To directly access a specific job, you will first need to note the session ID lo
 
     http://saucelabs.com/jobs/
 
-Notice that links to jobs in this format will only work if you are logged in with the account that ran the job or if that account is a subaccount of yours. For generating public links, read the section below, [ no-login links to jobs](#public-job-links).
+Notice that links to jobs in this format will only work if you are logged in with the account that ran the job or if that account is a sub-account of yours. For generating public links, read the section below, [ no-login links to jobs](#public-job-links).
 
 **Note**: Selenium 1's Java client does not give public access to the session ID attribute of the DefaultSelenium object. However, we store a `selenium.sessionId` JavaScript variable that you can access using [getEval](http://bit.ly/cI51Dv).
 
