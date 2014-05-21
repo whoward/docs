@@ -63,6 +63,7 @@ If you're in charge of your Sauce admin account, you may want to create sub-acco
 Converting normal accounts to sub-accounts
 -----------------------------------------
 ![Invite](/images/reference/user-management/invite.png "Invite")
+
 You can convert an existing account to a sub-account of another account (for example, team members at your company can have multiple Sauce accounts but you want them all of them to use the same parent account minutes).
 
 To convert a normal account to a sub-account, the user who will be the parent account should click on the **Invite** button at the top of the sub-accounts page. This will bring up a dialog box where you can enter the email address(es) of the users you with to convert to sub-accounts. Those users will receive an email with a link. Clicking the link will allow the user to convert the currently logged in account to a sub-account of the user who sent the invite. You can also use the invite button to invite team members to create new accounts that are automatically created as sub-accounts of the user who sent the invite.
