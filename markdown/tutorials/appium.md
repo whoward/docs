@@ -17,7 +17,7 @@ There are several advantages to using Appium on Sauce Labs to test your mobile a
   - Appium uses first-party automation frameworks from Apple and Google, so tests replicate user behavior very accurately.
   - With Appium on Sauce, your tests require no setup or virtualization, and can be scaled instantly.
 
-For an in-depth explanation of how Appium works, and the various technologies used to make Appium work, visit the [Appium Documentation](http://appium.io). 
+For an in-depth explanation of how Appium works, and the various technologies used to make Appium work, visit the [Appium Documentation](http://appium.io/documentation.html). 
 
 Writing Tests With Appium
 ---
