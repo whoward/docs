@@ -5,7 +5,7 @@
   index: 4
 }
 
-If you want to keep track of your project's latest test run on Sauce, you can add one of our status images to your repo or website. Here is what the general status badges look like:
+If you want to keep track of your project's latest test run on Sauce, you can add one of our status images to your repo or website. Here are what the general status badges look like:
 
 ![sauce-badge-passing](https://saucelabs.com/images/status-passing.png) ![sauce-badge-fail](https://saucelabs.com/images/status-failed.png) ![sauce-badge-unknown](https://saucelabs.com/images/status-unknown.png)
 
@@ -21,7 +21,7 @@ If you have multiple projects, you will want to [create a sub-account](/referenc
 
 2. Run your tests for a given project on Sauce using that account's username and access key. If you are logged in as the account you want to use, you can find your credentials on the [account page](https://saucelabs.com/account). If you are logged in as a parent account, you can see your subaccount usernames and access keys on the [subaccounts](https://saucelabs.com/sub-accounts) page.
 
-3. Make sure to set a [build](/reference/jobs/#record-the-build-number) and [pass/fail](/reference/jobs/#record-pass-fail-status) status for every test that runs. You will be able to see that these are set correctly by seeing that your tests say "Pass" or "Failed" instead of "Finished" and that a build number is visible in the UI.
+3. Make sure to set a [build number](/reference/jobs/#record-the-build-number) and a [pass/fail](/reference/jobs/#record-pass-fail-status) status for every test that runs. You will be able to see that these are set correctly by seeing that your tests say "Pass" or "Failed" instead of "Finished" and that a build number is visible in the UI.
 
 *Note: If your tests don't have a build or pass/fail status, you'll get the "Unknown" image for security reasons.*
 
@@ -34,7 +34,9 @@ Paste the following Markdown or HTML in your GitHub README or on your project si
 ```
 
 ```html
-<a href="https://saucelabs.com/u/sauceUsername"><img src="https://saucelabs.com/buildstatus/sauceUsername" alt="Sauce Test Status"></a>
+<a href="https://saucelabs.com/u/sauceUsername">
+    <img src="https://saucelabs.com/buildstatus/sauceUsername" alt="Sauce Test Status">
+</a>
 ```
 
 
@@ -47,7 +49,9 @@ Paste the following Markdown or HTML in your GitHub README or on your project si
 ```
 
 ```html
-<a href="https://saucelabs.com/u/sauceUsername"><img src="https://saucelabs.com/browser-matrix/sauceUsername.svg" alt="Sauce Test Status"></a>
+<a href="https://saucelabs.com/u/sauceUsername">
+    <img src="https://saucelabs.com/browser-matrix/sauceUsername.svg" alt="Sauce Test Status">
+</a>
 ```
 
 ## Status Images for Private Accounts
