@@ -7,26 +7,24 @@
 
 **API Version 1.1**
 
-## Introduction
 The Sauce Labs REST API allows customers to retrieve information about Sauce Labs resources programmatically over HTTP using JSON. Customers can retrieve job information, video replays of tests, Selenium logs of tests, start and stop SauceTunnels, and so on.
 
 ## Sauce API libraries
 
-You can use one of our below API libraries to conveniently access our API:
+If you use Java, Ruby, PHP or node.js, you can use one of the below API libraries to conveniently access our API:
 
 <ul class="list-inline inline-container">
   <li><a title="Java API Library" href="https://github.com/saucelabs/saucerest-java"><img src="/images/tutorials/java.png" alt="Java API Library"></a></li>
-  <li><a title="Node.js API Library" href="https://github.com/holidayextras/node-saucelabs"><img src="/images/tutorials/nodejs.png" alt="Node.js API Library"></a></li>
   <li><a title="Ruby API Library" href="https://github.com/saucelabs/sauce_whisk"><img src="/images/tutorials/ruby.png" alt="Ruby API Library"></a></li>
   <li><a title="PHP API Library" href="https://github.com/jlipps/sausage"><img src="/images/tutorials/php.png" alt="PHP API Library"></a></li>
-
+  <li><a title="Node.js API Library" href="https://github.com/holidayextras/node-saucelabs"><img src="/images/tutorials/nodejs.png" alt="Node.js API Library"></a></li>
 </ul>
 
-## Authentication
+## Authenticating with the API
 
 Users can authenticate using a [HTTP Basic Authentication][5] base64 encoded _Username_ and _API Access Key_. The easiest way to authenticate is to include the Sauce username and access key in the request URL.
 
-*Note: All headers **must** have `Content-Type` set to `application/json`.*
+*Note: All requests **must** have the `Content-Type` header set to `application/json`.*
 
 Here is an example retreiving a user's recent jobs:
 
@@ -148,6 +146,8 @@ Result:
 ### users/:username/usage
 > Access historical account usage data.
 
+**Accepted Query Params:**
+* `start`:
 Optional query parameters 'start' and 'end' in YYYY-MM-DD format. Returns array of ['YYYY-MM-DD', [, ]] pairs for each day that had activity )
 
 ```bash
@@ -186,31 +186,26 @@ Result:
 
 ## Jobs
 
-  All URL's listed below are assumed to be against the base url of
+**Available Job Attributes:**
 
-
-    https://username:accessKey@saucelabs.com
-
-Where _username_ is your Sauce Labs username, _accessKey_ is the Sauce Labs access key you can find on your accounts page.
-
-  * **Attributes:**
-    * 'id': [string] Job Id
-    * 'owner': [string] Job owner
-    * 'status': [string] Job status
-    * 'error': [string] Error (if any) for the job
-    * 'name': [string] Job name
-    * 'browser': [string] Browser the job is using
-    * 'browser_version': [string] Browser version the job is using
-    * 'os': [string] Operating system the job is using
-    * 'creation_time': [integer] The time the job was first requested
-    * 'start_time': [integer] The time the job began executing
-    * 'end_time': [integer] The time the job finished executing
-    * 'video_url': [string] Full URL to the video replay of the job
-    * 'log_url': [string] Full URL to the Selenium log of the job
-    * 'public': [string or boolean] [Visibility mode][6] [public, public restricted, share (true), team (false), private]
-    * 'tags': [array of strings] Tags assigned to a job
+* 'id': [string] Job Id
+* 'owner': [string] Job owner
+* 'status': [string] Job status
+* 'error': [string] Error (if any) for the job
+* 'name': [string] Job name
+* 'browser': [string] Browser the job is using
+* 'browser_version': [string] Browser version the job is using
+* 'os': [string] Operating system the job is using
+* 'creation_time': [integer] The time the job was first requested
+* 'start_time': [integer] The time the job began executing
+* 'end_time': [integer] The time the job finished executing
+* 'video_url': [string] Full URL to the video replay of the job
+* 'log_url': [string] Full URL to the Selenium log of the job
+* 'public': [string or boolean] [Visibility mode][6] [public, public restricted, share (true), team (false), private]
+* 'tags': [array of strings] Tags assigned to a job
 
 ### :username/jobs
+
 > List all job Id's belonging to a given user.
 
 Example getting last 100 job ids:
@@ -265,6 +260,8 @@ Example getting last 100 job ids using the CSV format:
 
 ### :username/jobs/:id
 > Show the full information for a job given its ID.
+
+
 Example:
 
 ```bash
@@ -272,43 +269,38 @@ curl https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USER
 ```
 
 ### :username/jobs/:id PUT
-* Response fields:
-  * name: [string] Change the job name
-      * tags: [array of strings] Change the job tags
-      * public: [string or boolean] Set [job visibility][6] to "public", "public restricted", "share" (true), "team" (false) or "private"
-      * passed: [boolean] Set whether the job passed or not on the user end
-      * build: [int] The AUT build number tested by this test
-      * custom-data: [JSON] a set of key-value pairs with any extra info that a user would like to add to the job
-    * Parameters: none
-    * Example:
+> Edit an existing job
 
+**Request fields:**
+* `name`: [string] Change the job name
+* `tags`: [array of strings] Change the job tags
+* `public`: [string or boolean] Set [job visibility][6] to "public", "public restricted", "share" (true), "team" (false) or "private"
+* `passed`: [boolean] Set whether the job passed or not on the user end
+* `build`: [int] The AUT build number tested by this test
+* `custom-data`: [JSON] a set of key-value pairs with any extra info that a user would like to add to the job
+
+Example:
 
 ```bash
-curl -X PUT https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs/ YOUR_JOB_ID\
+curl -X PUT https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs/YOUR_JOB_ID\
 -H "Content-Type: application/json" \
 -d '{"tags":["test","example","taggable"],"public":true,"name":"changed-job-name","passed": false, "custom-data":{"error":"step 17 failed"}}'
 ```
 
+### :username/jobs/:id DELETE
 
+> Removes the job from the system with all the linked assets.
 
-Delete - Removes the job from the system with all the linked assets.
-Relative URL: /rest/v1/:username/jobs/:id
-Method: DELETE
-Authentication: required
-Response fields: none
-Parameters: none
 Example:
 
 ```bash
 curl -v -X DELETE http://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs/YOUR_JOB_ID
 ```
 
-Stop - Terminates a running job.
-Relative URL: /rest/v1/:username/jobs/:id/stop
-Method: PUT
-Authentication: required
-Response fields: none
-Parameters: none
+### :username/jobs/:id/stop PUT
+
+> Stop - Terminates a running job.
+
 Example:
 
 ```bash
@@ -316,36 +308,36 @@ curl -X PUT https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAU
 -d ''
 ```
 
-List Job Assets - Get a details about the static assets collected for a specific job.
-Relative URL: /rest/v1/:username/jobs/:id/assets
-Method: GET
-Authentication: required
+### :username/jobs/:id/assets
+> Get a details about the static assets collected for a specific job.
+
 Response fields (each of these fields will be set to "null" if the specific asset isn't captured for a job):
-sauce-log: [string] Name of the Sauce log recorded for a job
-selenium-log: [string] Name of the selenium Server log file produced by a job
-video: [string] Name of the video file name recorded for a job
-screenshots: [array of strings] List of screenshot names captured by a job
-Parameters: none
+
+* `sauce-log`: [string] Name of the Sauce log recorded for a job
+* `selenium-log`: [string] Name of the selenium Server log file produced by a job
+* `video`: [string] Name of the video file name recorded for a job
+* `screenshots`: [array of strings] List of screenshot names captured by a job
+
 Example:
 ```bash
 curl https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs/YOUR_JOB_ID/assets
 ```
-Download Job Assets - You can download every asset created after your test runs on Sauce through our REST API. These include the video recording, Selenium log, and screenshots taken on crucial steps.
-Relative URL: /rest/v1/:username/jobs/:id/assets/:file_name
-Method: GET
-Authentication: required
-Parameters: none
+
+### :username/jobs/:id/assets/:file_name
+> Download Job Assets - You can download every asset created after your test runs on Sauce through our REST API. These include the video recording, Selenium log, and screenshots taken on crucial steps.
 
 Available Files:
 
-selenium-server.log
-video.flv
-XXXXscreenshot.png (where XXXX is a number between 0000 and 9999)
-final_screenshot.png
+* selenium-server.log
+* video.flv
+* XXXXscreenshot.png (where XXXX is a number between 0000 and 9999)
+* final_screenshot.png
 Example:
+
 ```bash
 curl -O https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs/YOUR_JOB_ID/assets/final_screenshot.png
 ```
+
 Remove Job Assets - You can delete all the data gathered during test run from our servers. That includes the video recording, Selenium log, and all the screenshots.
 Relative URL: /rest/v1/:username/jobs/:id/assets
 Method: DELETE
@@ -355,9 +347,12 @@ Example:
 ```bash
 curl -X DELETE https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs/YOUR_JOB_ID/assets
 ```
+
 ## Tunnels
 
 Tunnels are used by [Sauce Connect][7] to redirect traffic for a given domain to a server on your internal network. They are unique to users and will not affect any other users. For more information, please read our [Sauce Connect documentation][7]
+
+### :username/tunnels
 
 Attributes:
 'id': [string] Tunnel ID
@@ -376,29 +371,26 @@ Example:
 ```bash
 curl https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USERNAME/tunnels
 ```
-Show - Show the full information for a tunnel given its ID.
 
-Relative URL: /tunnels/:id
-Method: GET
-Authentication: required
-Response fields: none
-Parameters: none
+### :username/tunnels/:id
+> Show the full information for a tunnel given its ID.
+
 Example:
 
 ```bash
 curl https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USERNAME/tunnels/YOUR_JOB_ID
 ```
 
-Delete - Shuts down a tunnel given its ID.
-Relative URL: /tunnels/:id
-Method: DELETE
-Authentication: required
-Response fields: none
-Parameters: none
+### :username/tunnels/:id DELETE
+> Shuts down a tunnel given its ID.
+
 Example:
+
 ```bash
 curl -X DELETE https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USERNAME/tunnels/YOUR_JOB_ID
 ```
+
+
 ## Information
 
 Informational REST commands _do not_ require the username to be in the base URL. They are publicly available resources.
@@ -422,28 +414,19 @@ Result:
 ```
 
 
+### info/browsers/:selenum_version
+> Returns an array of strings corresponding to all the browsers currently supported on Sauce Labs. (Choose the termination that defines which list you need, bearing in mind that Selenium 1 [RC] and 2 [WebDriver] are compatible with different browser/OS combinations.)
 
-
-  * **Browsers** \- Returns an array of strings corresponding to all the browsers currently supported on Sauce Labs. (Choose the termination that defines which list you need, bearing in mind that Selenium 1 [RC] and 2 [WebDriver] are compatible with different browser/OS combinations.)
-
-Relative URLs: /info/browsers/all, /selenium-rc, /webdriver
-Method: GET
-Authentication: none
-Response fields: none
-Parameters: none
+Accepted Values for `:selenium_version`: `all`, `selenium-rc`, or `webdriver`
 Example:
 
 ```bash
 curl -X GET http://saucelabs.com/rest/v1/info/browsers/webdriver
 ```
 
-* **Counter** \- Returns the number of test executed so far on Sauce Labs.
+### info/counter
+> Returns the number of test executed so far on Sauce Labs.
 
-Relative URL: /info/counter
-Method: GET
-Authentication: none
-Response fields: none
-Parameters: none
 Example:
 
 ```bash
@@ -481,13 +464,19 @@ Unsubscribe a subaccount from it's Sauce Labs service plan.
 ```bash
 curl -X DELETE https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USERNAME/subscription
 ```
+
 ## Temporary Storage
 
 Sauce Labs provides temporary storage inside our network for mobile apps, Selenium jars, prerun executables, and other assets required by your tests. Storing assets in our network can eliminate network latency problems when sending big files to Sauce. Here's how you use our storage:
 
-  * \- Before tests start, upload the file via our REST API as described below.
-  * \- During tests, use a special URL for the file, in the following format: `"sauce-storage:your_file_name"`
-  * \- Sauce will find the file, download it through our fast internal network and get your tests started right away
+### storage/:username/:your_file_name
+
+**Accepted Query
+overwrite=true URL parameter allows files already stored in the Sauce network to be overwritten. It can be removed if you prefer to prevent overwriting.
+
+  * Before tests start, upload the file via our REST API as described below.
+  * During tests, use a special URL for the file, in the following format: `"sauce-storage:your_file_name"`
+  * Sauce will find the file, download it through our fast internal network and get your tests started right away
 
 To upload the file via our REST API:
 
@@ -496,7 +485,6 @@ curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 -X POST "http://saucelabs.com/rest/v1/storage/$SAUCE_USERNAME/your_file_name?overwrite=true" \
     -H "Content-Type: application/octet-stream" --data-binary @/path/to/your_file_name
 ```
-The overwrite=true URL parameter allows files already stored in the Sauce network to be overwritten. It can be removed if you prefer to prevent overwriting.
 
 This can be scripted in any programming language. Just make sure the HTTP method being used is POST and the Content-Type header is correct.
 
@@ -506,23 +494,32 @@ Please note that our temporary storage retains files for only 24 hours. We recom
 
 If you already have JS unit tests, running them on Sauce using the REST API is simple.
 
-Start your tests on as many browsers as you like with a single request:
+### :username/js-tests POST
+
+> Start your tests on as many browsers as you like with a single request:
+
+Required POST data:
+
+`url`:  should point to the page that hosts your tests.
+`framework` can be `"qunit"`, `"jasmine"`, `"YUI Test"`, `"mocha"`, or `"custom"`.
+
+The `"custom"` framework allows you to display generic test information on the Sauce Labs website. Set `window.global_test_results` on the javascript on your unit test page to an object that looks like the following and Sauce will report any failing tests: `
+
+Example:
 
 ```bash
     curl -X POST https://saucelabs.com/rest/v1/$SAUCE_USERNAME/js-tests \
         -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
         -H 'Content-Type: application/json' \
         --data '{
-            "platforms": [["Windows 7", "firefox", "20"],
+            "platforms": [["Windows 7", "firefox", "27"],
                           ["Linux", "googlechrome", ""]],
             "url": "https://saucelabs.com/test_helpers/front_tests/index.html",
             "framework": "jasmine"}'
 ```
 
-`url` should point to the page that hosts your tests.
-`framework` can be `"qunit"`, `"jasmine"`, `"YUI Test"`, `"mocha"`, or `"custom"`.
 
-The `"custom"` framework allows you to display generic test information on the Sauce Labs website. Set `window.global_test_results` on the javascript on your unit test page to an object that looks like the following and Sauce will report any failing tests: `
+Response:
 
 ```json
 {
@@ -561,8 +558,8 @@ The `"custom"` framework allows you to display generic test information on the S
 
 Hosting your tests on your LAN or your laptop? You'll need to run [Sauce Connect][9] to bridge Sauce Labs to your local network. Optional parameters related to Sauce Connect include:
 
-`tunnel_identifier` \- specifies the ID of a specific tunnel when using multiple Sauce Connect tunnels.
-`parent_tunnel` \- specifies the username of a parent account whose shared Sauce Connect tunnel your tests should use.
+`tunnel_identifier` specifies the ID of a specific tunnel when using multiple Sauce Connect tunnels.
+`parent_tunnel` specifies the username of a parent account whose shared Sauce Connect tunnel your tests should use.
 
 Any other parameters get passed on as [Optional Desired Capabilities][10] for the selenium server. This means you can set things like: `max-duration`
 
@@ -578,7 +575,11 @@ The response will look something like this:
   ]
 }
 ```
-To check the result, POST that response back to `.../js-tests/status` verbatim, like so:
+
+
+### :username/js-tests/status
+
+> Get the status of your JS Unit Tests
 
 ```bash
 curl -X POST https://saucelabs.com/rest/v1/$SAUCE_USERNAME/js-tests/status \
@@ -586,6 +587,7 @@ curl -X POST https://saucelabs.com/rest/v1/$SAUCE_USERNAME/js-tests/status \
         -H 'Content-Type: application/json' \
         --data '{"js tests": ["064df78366ea4b25b32f88878c9d7aa4", "1e5ed949711545bd952456ac37479ada"]}'
 ```
+
 Do that a few times as the tests run, waiting until the response contains `"completed": true`.
 
 Once the tests are completed, the result will look something like this:
@@ -629,7 +631,7 @@ Once the tests are completed, the result will look something like this:
   ]
 }
 ```
-You can control the job attached to the JS Unit test via the job_id.
+You can control the job attached to the JS unit test via the `job_id`.
 
 ## Bugs
 
@@ -653,7 +655,10 @@ Result:
   }
 ]
 ```
-Get description of each field for a particular bug type
+
+### bugs/types/:bug_id
+
+> Get description of each field for a particular bug type
 
 ```bash
 curl https://saucelabs.com/rest/v1/bugs/types/bug-type-example-id-1234
@@ -674,7 +679,10 @@ Result:
   }
 ]
 ```
-Get detailed info for a particular bug
+
+### bugs/details/:bug_id
+
+> Get detailed info for a particular bug
 
 ```bash
 curl https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/bugs/detail/YOUR_JOB_ID
@@ -695,7 +703,9 @@ Result:
 }
 ```
 
-Get detailed info for a specified list of bugs
+### bugs/query/ids=[:id_1,:id_2]
+
+> Get detailed info for a specified list of bugs
 
 ```bash
 curl -G https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/bugs/query/ --data-urlencode 'ids=[""YOUR_JOB_ID, "0123401234-example-id-12345"]'
@@ -704,10 +714,12 @@ Result:
 
     List of JSON objects containing detailed info on each queried bug id
 
+### bugs/update/:job_id
+
 Update bug id ''YOUR_JOB_ID with specified key-value pairs
 
 ```bash
-curl -G https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/bugs/update/ YOUR_JOB_ID--data-urlencode 'update={"Property-name-1": "Property-Value-1", "Property-name-2": "Property-Value-2"}
+curl -G https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/bugs/update/YOUR_JOB_ID --data-urlencode 'update={"Property-name-1": "Property-Value-1", "Property-name-2": "Property-Value-2"}
 ```
 
 **Valid keys: **Only following bug properties can be modified with the API: 'Title', 'Description'.
