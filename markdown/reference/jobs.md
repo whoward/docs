@@ -549,6 +549,16 @@ Example
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
+### Custom Time Zones
+
+Sauce has recently added support for setting custom time zones using the "time-zone" key. This feature should work on all operating systems, however time zones on Windows machines are approximate. They will default to the time zone that the provided location falls into. A complete list of valid locations [can be found here, on wikipedia][20]. Sauce takes only location names, not their paths, like in the example below.
+
+Example
+
+```python
+"time-zone": "Samoa"
+```
+
 ###64-Bit Internet Explorer Driver
 
 We have recently added support for launching 64-bit IE on our 64-bit vms: Windows 7, Windows 8, and Windows 8.1. This provides a workaround for a known selenium bug where screencaptures using the 32-bit driver on a 64-bit operating system do not capture the whole web page. If you would like to use a 64-bit IE Driver, you can do so using this key.
@@ -849,3 +859,4 @@ For more advanced usage and integrations, you should read our [REST API](/refere
    [17]: #selenium-2-tests-desired-capabilities
    [18]: https://saucelabs.com/now
    [19]: https://saucelabs.com/docs/integration
+   [20]: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
