@@ -15,16 +15,16 @@ The Sauce Labs REST API allows customers to retrieve information about Sauce Lab
 You can use one of our below API libraries to conveniently access our API:
 
 <ul class="list-inline inline-container">
-  <li><a href="https://github.com/saucelabs/saucerest-java"><img src="/images/tutorials/java.png" alt="Java"></a></li>
-  <li><a href="https://github.com/holidayextras/node-saucelabs"><img src="/images/tutorials/nodejs.png" alt="Node.js"></a></li>
-  <li><a href="https://github.com/saucelabs/sauce_whisk"><img src="/images/tutorials/ruby.png" alt=""></a></li>
-  <li><a href="https://github.com/jlipps/sausage"><img src="/images/tutorials/php.png" alt=""></a></li>
+  <li><a title="Java API Library" href="https://github.com/saucelabs/saucerest-java"><img src="/images/tutorials/java.png" alt="Java API Library"></a></li>
+  <li><a title="Node.js API Library" href="https://github.com/holidayextras/node-saucelabs"><img src="/images/tutorials/nodejs.png" alt="Node.js API Library"></a></li>
+  <li><a title="Ruby API Library" href="https://github.com/saucelabs/sauce_whisk"><img src="/images/tutorials/ruby.png" alt="Ruby API Library"></a></li>
+  <li><a title="PHP API Library" href="https://github.com/jlipps/sausage"><img src="/images/tutorials/php.png" alt="PHP API Library"></a></li>
 
 </ul>
 
 ## Authentication
 
-Users can authenticate using a [HTTP Basic Authentication][5] base64 encoded _Username_ and _API Access Key_. The easiest way to authenticate is to include the Sauce username and access key in the URL.
+Users can authenticate using a [HTTP Basic Authentication][5] base64 encoded _Username_ and _API Access Key_. The easiest way to authenticate is to include the Sauce username and access key in the request URL.
 
 *Note: All headers **must** have `Content-Type` set to `application/json`.*
 
@@ -57,11 +57,11 @@ Result:
 }
 ```
 
-## Account Settings
+## Account
 
-Access account details.
+> Access account information and create new sub-accounts.
 
-(Includes the number of minutes available.)
+### users/:username
 
 ```bash
 curl https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/users/$SAUCE_USERNAME
@@ -78,21 +78,8 @@ Result:
   "id": "sauce_username"
 }
 ```
-Check account limits.
 
-```bash
-curl https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/users/v1/$SAUCE_USERNAME/concurrency
-```
-Result:
-
-```json
-{
-  "timestamp": 1397657955659,
-  "concurrency": 10
-}
-```
-
-Create a new subaccount.
+### users/:username POST
 
 ```bash
 curl -X POST https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/users/$SAUCE_USERNAME \
@@ -109,9 +96,25 @@ Result:
 }
 ```
 
-## Usage
+### users/:username/concurrency
 
-Access current account activity.
+> Check account concurrency limits.
+
+```bash
+curl https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/users/v1/$SAUCE_USERNAME/concurrency
+```
+Result:
+
+```json
+{
+  "timestamp": 1397657955659,
+  "concurrency": 10
+}
+```
+
+## Test Activity
+
+> Access current test activity.
 
 Returns active job counts broken down by job status and subaccount.
 
@@ -142,7 +145,8 @@ Result:
 }
 ```
 
-Access historical account usage data.
+### users/:username/usage
+> Access historical account usage data.
 
 Optional query parameters 'start' and 'end' in YYYY-MM-DD format. Returns array of ['YYYY-MM-DD', [, ]] pairs for each day that had activity )
 
@@ -206,66 +210,68 @@ Where _username_ is your Sauce Labs username, _accessKey_ is the Sauce Labs acce
     * 'public': [string or boolean] [Visibility mode][6] [public, public restricted, share (true), team (false), private]
     * 'tags': [array of strings] Tags assigned to a job
 
-  * **List** \- List all job Id's belonging to a given user.
-    * Relative URL: /rest/v1/:username/jobs
-    * Method: GET
-    * Authentication: **required**
-    * Response fields: none
-    * Parameters (optional):
-      * [GET] limit -> displays the specified number of jobs, instead of truncating the list at the default 100.
-      * [GET] full -> forces full job information to be returned, rather than just IDs.
-      * [GET] skip -> skips the specified number of jobs.
-      * [GET] from -> returns jobs since the specified time (in epoch time, calculated from UTC).
-      * [GET] to -> returns jobs up until the specified time (in epoch time, calculated from UTC).
-      * [GET] format -> returns jobs is specified format. Currently we support 'json' and 'csv' and the default one is 'json'
+### :username/jobs
+> List all job Id's belonging to a given user.
 
 Example getting last 100 job ids:
 ```bash
 curl https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs
 ```
 
+Optional params:
+
+#### ?limit
+Description: Displays the specified number of jobs, instead of truncating the list at the default 100.
+Default: `100`
+
 Example getting last 200 job ids:
 ```bash
 curl https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs?limit=200
 ```
+
+#### ?full
+Description: Forces full job information to be returned, rather than just IDs.
+Default: `false`
 
 Example getting full information about last 100 jobs:
 ```bash
 curl https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs?full=true
 ```
 
+#### ?skip
+Description: Skips the specified number of jobs.
+Default: `0`
+
 Example getting last 100 job ids skipping 20 most recent jobs:
 ```bash
 curl https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs?skip=20
 ```
+
+#### ?to and ?from
+Returns jobs since/until the specified time (in epoch time, calculated from UTC).
+
+```bash
+curl https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs?from=1357747500&to=1357748700
+```
+
+#### ?format
+Description: Returns jobs is specified format. Currently we support 'json' and 'csv'.
+Default: `json`
 
 Example getting last 100 job ids using the CSV format:
 ```bash
  curl https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs?format=csv
 ```
 
-Example retrieving
-```bash
-curl https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs?from=1357747500&to=1357748700
-```
-
-Show - Show the full information for a job given its ID.
-Relative URL: /rest/v1/:username/jobs/id
-Method: GET
-Authentication: required
-Response fields: none
-Parameters: none
+### :username/jobs/:id
+> Show the full information for a job given its ID.
 Example:
 
 ```bash
 curl https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs/YOUR_JOB_ID
 ```
-Create - Jobs cannot be created via API. They must be created/started via the selenium client, such as SauceIDE, or the Selenium bindings for the language of your choice.
 
-* **Update** \- Changes a pre-existing job.
-* Relative URL: /rest/v1/:username/jobs/:id
-* Method: PUT
-* Authentication: **required**
+### :username/jobs/:id PUT
 * Response fields:
   * name: [string] Change the job name
       * tags: [array of strings] Change the job tags
@@ -282,6 +288,9 @@ curl -X PUT https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$SAU
 -H "Content-Type: application/json" \
 -d '{"tags":["test","example","taggable"],"public":true,"name":"changed-job-name","passed": false, "custom-data":{"error":"step 17 failed"}}'
 ```
+
+
+
 Delete - Removes the job from the system with all the linked assets.
 Relative URL: /rest/v1/:username/jobs/:id
 Method: DELETE
@@ -394,14 +403,9 @@ curl -X DELETE https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/$
 
 Informational REST commands _do not_ require the username to be in the base URL. They are publicly available resources.
 
-  * **Status** \- Returns the current status of Sauce Labs' services.
-    * Relative URL: /info/status
-    * Method: GET
-    * Authentication: none
-    * Response fields: none
-    * Parameters: none
-    * Examples:
+### info/status
 
+> Returns the current status of Sauce Labs' services.
 
 ```bash
 curl -X GET http://saucelabs.com/rest/v1/info/status
@@ -416,6 +420,9 @@ Result:
   "status_message": "Basic service status checks passed."
 }
 ```
+
+
+
 
   * **Browsers** \- Returns an array of strings corresponding to all the browsers currently supported on Sauce Labs. (Choose the termination that defines which list you need, bearing in mind that Selenium 1 [RC] and 2 [WebDriver] are compatible with different browser/OS combinations.)
 
@@ -628,7 +635,9 @@ You can control the job attached to the JS Unit test via the job_id.
 
 Interacting with Jobs bug tracking system
 
-Get list of available bug types
+### bugs/types
+
+> Get list of available bug types
 
 ```bash
 curl https://saucelabs.com/rest/v1/bugs/types
