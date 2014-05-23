@@ -916,6 +916,7 @@ of performance from a single test.
 What are dependencies? Imagine if we had a test suite with these two tests:
 
 ```php
+<?php
 function testLogin()
 {
     // do some stuff to trigger a login
