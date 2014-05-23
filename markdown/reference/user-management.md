@@ -1,6 +1,6 @@
 {
-  title: "User Management",
-  description: "How to create and manage sub-accounts on Sauce Labs",
+  title: "Team Management",
+  description: "How to create and manage subaccounts on Sauce Labs",
   category: "Reference",
   index: 3
 }
