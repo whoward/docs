@@ -1,6 +1,6 @@
 {
-  title: "Test Configuration",
-  description: "How to configure your tests on Sauce Labs",
+  title: "Jobs",
+  description: "How to configure your jobs on Sauce Labs",
   category: "Reference",
   index: 1
 }
@@ -31,11 +31,17 @@ In Selenium 2 tests, Sauce specific settings are provided using the Desired Capa
 
 Find more about RemoteDriver and the Desired Capabilities object in [Selenium's RemoteDriver wiki][5].
 
-### name
-Type: `String`
+### Name Your Jobs
+
 To make it easier to find and identify individual tests, use the _name_ setting to record test names on your jobs:
 
-Example:
+Key
+name
+
+Value type
+str
+
+Example
 
 ```python
 "name": "my example name"
@@ -43,10 +49,15 @@ Example:
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
-### build
-Type: `String`
+### Record the Build Number
 
 When looking through test results on our website, you'll probably want to know which version of your app the test was running against. Use this setting to annotate test jobs with a build number or app version. Once you set the build info on your job, it will be displayed on the job results page.
+
+Key
+build
+
+Value type
+str
 
 Example
 
@@ -56,26 +67,37 @@ Example
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
-### tags
-Type: `Array`
-To filter and group jobs more easily, users can provide `tags` for them.
+### Tag Your Jobs
 
-Example:
+To filter and group jobs more easily, users can provide tags for them.
+
+Key
+tags
+
+Value type
+list
+
+Example
 
 ```python
-"tags": [ "Selenium 2", "CI", "Master Branch" ]
+"tags": [ "tag1", "tag2", "tag3" ]
 ```
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
-### passed
-Type: `Boolean`
+### Record Pass/Fail Status
 
-Selenium handles sending commands to control a browser, but doesn't report to the server whether a test passed or failed. To record pass/fail status in Sauce, set the `passed` flag on the job.
+Selenium handles sending commands to control a browser, but doesn't report to the server whether a test passed or failed. To record pass/fail status in Sauce, set the _passed_ flag on the job.
 
 Since you can't know in advance whether a test passed or failed, this flag can't be set in the initial configuration. Instead, you'll need to use one of our [alternative job annotation methods][3].
 
-Example:
+Key
+passed
+
+Value type
+bool
+
+Example
 
 ```python
 "passed": true
