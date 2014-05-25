@@ -723,4 +723,4 @@ Result(After successful command execution):
    [7]: /reference/sauce-connect/
    [8]: https://saucelabs.com/sub-accounts
    [9]: /reference/sauce-connect/
-   [10]: /reference/jobs/
+   [10]: /reference/test-configuration/

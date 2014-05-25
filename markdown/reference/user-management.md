@@ -9,11 +9,11 @@ Sauce is great for teams with multiple users. By using the sub-account feature, 
 
 The typical sub-account structure looks as follows:
 
-!["Sauce Labs sub-accounts feature"](/images/reference/user-management/02-basic2.png "Sauce Labs sub-accounts feature")
+!["Sauce Labs sub-accounts feature"](/images/reference/team-management/02-basic2.png "Sauce Labs sub-accounts feature")
 
 You can easily navigate through multiple levels of the structure using our web user interface:
 
-!["Sub-accounts multiple levels"](/images/reference/user-management/03-embedded.png "Sub-accounts multiple levels")
+!["Sub-accounts multiple levels"](/images/reference/team-management/03-embedded.png "Sub-accounts multiple levels")
 
 Minutes and Usage
 -------
@@ -36,7 +36,7 @@ Creating standard sub-accounts allows the user to utilize minutes of the parent 
 
 Rollup Mode
 -----------
-![Rollup Mode for Sauce Labs sub-accounts](/images/reference/user-management/04a-rollup-mode-300x96.png "Rollup Mode for Sauce Labs sub-accounts")
+![Rollup Mode for Sauce Labs sub-accounts](/images/reference/team-management/04a-rollup-mode-300x96.png "Rollup Mode for Sauce Labs sub-accounts")
 
 If you want to see the total account usage for your team, switch into rollup mode. This is a convenient way to compare usage for different subsections of your team.
 
@@ -44,25 +44,25 @@ If you want to see the total account usage for your team, switch into rollup mod
 Creating sub-accounts
 -------------------
 Setting up a hierarchy is easy with our team management tool. Simply click "Add" on the sub-accounts page, or "Edit" on an existing user. You'll now be able to say which account should own the account you are editing or creating.
-![Creating sub-accounts - step 1](/images/reference/user-management/06-create-new-300x257.png "Creating sub-accounts - step 1")
+![Creating sub-accounts - step 1](/images/reference/team-management/06-create-new-300x257.png "Creating sub-accounts - step 1")
 
 If you're the main account, you can also designate which sub-accounts should be admins by checking the "Is admin?" box in the account creation or edit forms:
-![Creating sub-accounts - step 2](/images/reference/user-management/07-edit-admin-300x285.png "Creating sub-accounts - step 2")
+![Creating sub-accounts - step 2](/images/reference/team-management/07-edit-admin-300x285.png "Creating sub-accounts - step 2")
 
 Then, when your admins log in, they'll be able to see the whole team and manage other sub-accounts for you, and they'll be notified about why they're seeing all these accounts:
 
-![Creating sub-accounts - step 3](/images/reference/user-management/08-as-admin-300x212.png "Creating sub-accounts - step 3")
+![Creating sub-accounts - step 3](/images/reference/team-management/08-as-admin-300x212.png "Creating sub-accounts - step 3")
 
 
 Sending login links to sub-accounts
 --------------------------------
 If you're in charge of your Sauce admin account, you may want to create sub-accounts for other team members. Sending the login link will allow you to send password reset emails to users so they can set their own passwords. If you create an account using the **Add** button, you will need to create a placeholder password. You can click the **send login link** button and the user will be able to reset his or her password.
-![sub-account login link](/images/reference/user-management/send_login_link.png "sub-account login link")
+![sub-account login link](/images/reference/team-management/send_login_link.png "sub-account login link")
 
 
 Converting normal accounts to sub-accounts
 -----------------------------------------
-![Invite](/images/reference/user-management/invite.png "Invite")
+![Invite](/images/reference/team-management/invite.png "Invite")
 
 You can convert an existing account to a sub-account of another account (for example, team members at your company can have multiple Sauce accounts but you want them all of them to use the same parent account minutes).
 

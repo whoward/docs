@@ -1,5 +1,5 @@
 {
-  title: "Jobs",
+  title: "Test Configuration",
   description: "How to configure your jobs on Sauce Labs",
   category: "Reference",
   index: 1
@@ -563,10 +563,10 @@ Example
 
 We have recently added support for launching 64-bit IE on our 64-bit vms: Windows 7, Windows 8, and Windows 8.1. This provides a workaround for a known selenium bug where screencaptures using the 32-bit driver on a 64-bit operating system do not capture the whole web page. If you would like to use a 64-bit IE Driver, you can do so using this key.
 
-Key	
+Key
 iedriver-version
 
-Value type	
+Value type
 str
 
 Example
@@ -827,13 +827,13 @@ We offer a simple way to embed job pages in CI test results or other test report
 In addition to full job results, we offer a simple way to embed videos as well. Using the format below, add the HTML to any page you need to embed job videos on, replacing **** with the ID of the job you want:
 
 ```html
-<script type="text/javascript" src="https://saucelabs.com/video-embed/<job_id>.js"></script>      
+<script type="text/javascript" src="https://saucelabs.com/video-embed/<job_id>.js"></script>
 ```
 
 **Note**: this will only work for browsers logged in using your account, and authentication tokens can be used to make this work for anonymous viewers. Check out [no-login links to jobs][1] for directions on generating these tokens. Here's how such a script might look:
 
 ```html
-<script src="https://saucelabs.com/video-embed/7dcb077bfcfd43a0a9d50011dd3bc01c.js?auth=6a7dcf9f2d8e7039699bd0280a7f4504"></script>   
+<script src="https://saucelabs.com/video-embed/7dcb077bfcfd43a0a9d50011dd3bc01c.js?auth=6a7dcf9f2d8e7039699bd0280a7f4504"></script>
 ```
 
 ## REST API
