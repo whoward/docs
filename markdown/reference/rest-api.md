@@ -233,7 +233,7 @@ curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jo
 ```
 
 #### ?format
-> Returns jobs is specified format. Currently we support 'json' and 'csv'.
+> Returns jobs in specified format. Currently we support `json` and `csv`.
 
 Default: `json`
 
@@ -242,7 +242,7 @@ Example getting last 100 job ids using the CSV format:
  curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs?format=csv
 ```
 
-### :username/jobs/:id
+### :username/jobs/:job_id
 > Show the full information for a job given its ID.
 
 Example:
@@ -251,7 +251,7 @@ Example:
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID
 ```
 
-### :username/jobs/:id PUT
+### :username/jobs/:job_id PUT
 > Edit an existing job
 
 **Request fields:**
@@ -270,7 +270,7 @@ curl -X PUT https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUser
 -d '{"tags":["test","example","taggable"],"public":true,"name":"changed-job-name","passed": false, "custom-data":{"error":"step 17 failed"}}'
 ```
 
-### :username/jobs/:id DELETE
+### :username/jobs/:job_id DELETE
 
 > Removes the job from the system with all the linked assets.
 
@@ -280,9 +280,9 @@ Example:
 curl -v -X DELETE http://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID
 ```
 
-### :username/jobs/:id/stop PUT
+### :username/jobs/:job_id/stop PUT
 
-> Stop - Terminates a running job.
+> Terminates a running job.
 
 Example:
 
@@ -291,7 +291,8 @@ curl -X PUT https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUser
 -d ''
 ```
 
-### :username/jobs/:id/assets
+### :username/jobs/:job_id/assets
+
 > Get a details about the static assets collected for a specific job.
 
 Response fields (each of these fields will be set to "null" if the specific asset isn't captured for a job):
@@ -306,10 +307,11 @@ Example:
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/assets
 ```
 
-### :username/jobs/:id/assets/:file_name
+### :username/jobs/:job_id/assets/:file_name
+
 > Download Job Assets - You can download every asset created after your test runs on Sauce through our REST API. These include the video recording, Selenium log, and screenshots taken on crucial steps.
 
-Available Files:
+Available Values for `:file_name`:
 
 * selenium-server.log
 * video.flv
@@ -321,7 +323,7 @@ Example:
 curl -O https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/assets/final_screenshot.png
 ```
 
-### :username/jobs/:id/assets DELETE
+### :username/jobs/:job_id/assets DELETE
 
 > Delete all the data gathered during test run from our servers. That includes the video recording, Selenium log, and all the screenshots.
 
@@ -350,28 +352,28 @@ Example:
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/tunnels
 ```
 
-### :username/tunnels/:id
+### :username/tunnels/:tunnel_id
 > Show the full information for a tunnel given its ID.
 
 Example:
 
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/tunnels/YOUR_JOB_ID
+curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/tunnels/YOUR_TUNNEL_ID
 ```
 
-### :username/tunnels/:id DELETE
+### :username/tunnels/:tunnel_id DELETE
 > Shuts down a tunnel given its ID.
 
 Example:
 
 ```bash
-curl -X DELETE https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/tunnels/YOUR_JOB_ID
+curl -X DELETE https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/tunnels/YOUR_TUNNEL_ID
 ```
 
 
 ## Information
 
-Informational REST commands _do not_ require the username to be in the base URL. They are publicly available resources.
+Information resources are publicly available data about Sauce Lab's service.
 
 ### info/status
 
@@ -393,6 +395,7 @@ Result:
 
 
 ### info/browsers/:selenum_version
+
 > Returns an array of strings corresponding to all the browsers currently supported on Sauce Labs. (Choose the termination that defines which list you need, bearing in mind that Selenium 1 [RC] and 2 [WebDriver] are compatible with different browser/OS combinations.)
 
 Accepted Values for `:selenium_version`: `all`, `selenium-rc`, or `webdriver`
@@ -403,6 +406,7 @@ curl -X GET http://saucelabs.com/rest/v1/info/browsers/webdriver
 ```
 
 ### info/counter
+
 > Returns the number of test executed so far on Sauce Labs.
 
 Example:
@@ -663,7 +667,7 @@ Result:
 > Get detailed info for a particular bug
 
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/bugs/detail/YOUR_JOB_ID
+curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/bugs/detail/YOUR_BUG_ID
 ```
 Result:
 
@@ -686,18 +690,18 @@ Result:
 > Get detailed info for a specified list of bugs
 
 ```bash
-curl -G https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/bugs/query/ --data-urlencode 'ids=[""YOUR_JOB_ID, "0123401234-example-id-12345"]'
+curl -G https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/bugs/query/ --data-urlencode 'ids=[""YOUR_BUG_ID, "0123401234-example-id-12345"]'
 ```
 Result:
 
     List of JSON objects containing detailed info on each queried bug id
 
-### bugs/update/:job_id
+### bugs/update/:bug_id
 
-> Update bug id ''YOUR_JOB_ID with specified key-value pairs
+> Update bug id `:bug_id` with specified key-value pairs
 
 ```bash
-curl -G https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/bugs/update/YOUR_JOB_ID --data-urlencode 'update={"Property-name-1": "Property-Value-1", "Property-name-2": "Property-Value-2"}
+curl -G https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/bugs/update/YOUR_BUG_ID --data-urlencode 'update={"Property-name-1": "Property-Value-1", "Property-name-2": "Property-Value-2"}
 ```
 
 **Valid keys: **Only following bug properties can be modified with the API: 'Title', 'Description'.
