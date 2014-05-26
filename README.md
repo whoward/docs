@@ -8,7 +8,7 @@ Every [markdown](http://daringfireball.net/projects/markdown/) document in the `
 
 ### Naming conventions
 
-All markdown file names should be lowercase, dasherized, and be placed inside the corresponding category folder. For example a doc with the category `Tutorials` entitled `Sample Tutorial` would be located at `markdown/tutorials/sample-tutorial.md`. Images relating to docs are found in thhe same relative location as markdown files. A main doc `image` would be located at `markdown/tutorials/sample-tutorial.png` while an image in the content of the doc would be located at `markdown/tutorials/sample-tutorial/content-image.png`.
+All markdown file names should be lowercase, dasherized, and be placed inside the corresponding category folder. For example a doc with the category `Tutorials` entitled `Sample Tutorial` would be located at `markdown/tutorials/sample-tutorial.md`. Images relating to docs are found in the same relative location as markdown files. A main doc `image` would be located at `markdown/tutorials/sample-tutorial.png` while an image in the content of the doc would be located at `markdown/tutorials/sample-tutorial/content-image.png`.
 
 ## Custom Markdown processing
 
