@@ -1,11 +1,14 @@
 # Sauce Labs Docs
 
-This repo contains the markdown documentation for Sauce Labs.
-
+> This repo contains the markdown documentation for Sauce Labs.
 
 ## Editing Markdown
 
 Every [markdown](http://daringfireball.net/projects/markdown/) document in the `markdown` folder of this repo has a required metadata section which should be valid a JavaScript object containing the `title`, `description`(used in the meta description), `category`(used in the nav and URL), and the `index`(used to determine the document's position in the navigation relative to other documents in the same category). You can also optionally include an `image` for a doc which will be used in the nav, search results, and title section on the doc's page. The supported version of markdown is GitHub flavored markdown as described [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+
+### Naming conventions
+
+All markdown file names should be lowercase, dasherized, and be placed inside the corresponding category folder. For example a doc with the category `Tutorials` entitled `Sample Tutorial` would be located at `markdown/tutorials/sample-tutorial.md`. Images relating to docs are found in thhe same relative location as markdown files. A main doc `image` would be located at `markdown/tutorials/sample-tutorial.png` while an image in the content of the doc would be located at `markdown/tutorials/sample-tutorial/content-image.png`.
 
 ## Custom Markdown processing
 
