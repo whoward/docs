@@ -32,7 +32,7 @@ php -v
 
 As long as you have a PHP version greater than 5.3 you should be good to go.
 
-* Continue to [Sausage setup for Mac](#sausage_mac)
+* Continue to [Sausage setup for Mac](#sausage-setup-for-mac-and-linux)
 
 PHP Setup for Linux
 ---
@@ -47,7 +47,7 @@ sudo apt-get update
 sudo apt-get install php-pear php5-curl php5-xdebug
 ```
 
-* Continue to [Sausage setup for Linux](#sausage_linux)
+* Continue to [Sausage setup for Linux](#sausage-setup-for-mac-and-linux)
 
 PHP Setup for Windows
 ---
@@ -94,7 +94,7 @@ set up curl/OpenSSL support for PHP, do the following steps:
     * Save and close your `PHP.ini` file.
 
 
-* Continue to [Sausage setup for Windows](#sausage_win)
+* Continue to [Sausage setup for Windows](#sausage-setup-for-windows)
 
 ## Sausage Setup for Mac and Linux
 

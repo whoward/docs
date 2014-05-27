@@ -56,7 +56,6 @@ Let's get started! Click the first link below:
 
   - [Running iOS Tests on Sauce](#appium-for-ios-on-sauce-labs)
   - [Running Android Tests on Sauce](#appium-for-android-on-sauce-labs)
-  - [Next Steps and More Information](#next-steps)
 
 Appium Resources
 ---
@@ -75,19 +74,10 @@ For more information, feel free to visit the resources listed below:
   - [Sauce Labs Rest API](http://saucelabs.com/docs/rest)
   - [Sauce Connect](https://saucelabs.com/docs/connect)
 
-Appium for iOS on Sauce Labs
-===
+## Appium for iOS on Sauce Labs
 
-Let's get started with running iOS tests on Sauce Labs! This section is a bit long, so here's what we'll cover:
 
-  - [Running Your First Test](#run-test)
-  - [System Requirements](#system-requirements)
-  - [Compiling to Specify a Simulator](#compiling)
-  - [Setting Up Your Tests for Sauce](#setting-up-tests)
-  - [Understanding Appium on Sauce](#understanding-appium)
-
-<a name="run-test"></a>Running Your First Test
----
+## Running Your First Test
 
 Your first test will run against our Test Application, which is hosted on Sauce. When you run your own tests you'll need to provide your own app. Instructions for providing your own app are provided in the [Setup](#setting-up-tests) section.
 
@@ -123,11 +113,11 @@ You'll need the following to start testing your app using Appium on Sauce:
   - The Xcode command line tools installed
   - Your app source code or a prebuilt .app bundle for your app
   - A [Sauce Labs account](https://saucelabs.com/account)
-  - An Appium client library for your langauge of choice (see the [Tutorial Introduction](##00-Introduction.md##))
+  - An Appium client library for your langauge of choice (see the Tutorial Introduction)
 
 If you do not have a Mac, you will not be able to compile your app for Appium. However, you only need a Mac for compiling the app, so if you already have a compiled '.app' folder, then you can run your tests from Windows, Mac, or Linux.
 
-<a name="compiling"></a>Compiling to Specify a Simulator
+## Compiling to Specify a Simulator
 ---
 
 Your app can optionally be compiled to support only the simulator you want your test app to run in. If your app is compiled as a Universal app (typically the default) it will launch in an iPad simulator. To launch your app in an iPhone simulator compile the app for iPhone.

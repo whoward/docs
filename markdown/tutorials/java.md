@@ -452,11 +452,6 @@ behaviours. When you have finished this tutorial, you'll have a good
 idea how to write Selenium tests for basic, multi-page interactions
 with a web app.
 
-If you're already familiar with Selenium, you can safely skip this
-step and move on to [Testing local apps with Sauce
-Connect](##05-Sauce-Connect.md##), which covers Sauce Labs specific
-functionality.
-
 
 The Test App
 ---
@@ -909,8 +904,8 @@ parallel. Let's fix that! Add a few more platforms or browser versions
 (you might need to refer to [the Selenium
 `org.openqa.selenium.Platform`
 documentation](http://selenium.googlecode.com/git/docs/api/java/index.html?org/openqa/selenium/Platform.html)
-to specify other platforms). Now, when you [run the
-tests](##03-First-Test.md##), you should see these tests running in
+to specify other platforms). Now, when you run the
+tests, you should see these tests running in
 parallel on the [Sauce Labs tests page](https://saucelabs.com/tests).
 
 
