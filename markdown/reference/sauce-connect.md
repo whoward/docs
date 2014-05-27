@@ -197,6 +197,30 @@ Do you need a different port? [Please let us know!][4] We do our best to support
 
 Please note that because an additional proxy is required for localhost URLs, tests may perform better when using a locally-defined domain name (which can be set in your [hosts file][5]) rather than localhost. Using a locally-defined domain name also allows access to applications on any port.
 
+##  Troubleshooting Sauce Connect
+When troubleshooting your Sauce Connect agent please make sure it has been configured to generate sc.log files by starting Sauce Connect with -vv
+
+### Connectivity check list
+- Is there a firewall in place between the machine running Sauce Connect and Sauce Labs (www.saucelabs.com:443)?
+- Is a proxy server required to connect to the internet, or route traffic from saucelabs.com to an internal site?
+
+### Checking network connectivity to Sauce Labs
+Make sure that saucelabs.com is accessible from the machine running Sauce Connect. This can be tested issuing a ping, telnet or cURL command to sacuelabs.com from the machine's command line interface. If any of these commands fail please work with your internal network team to resolve them.
+- ping saucelabs.com, this command should return an IP address of 67.23.20.87
+- telnet saucelabs.com 443, this command should return a status message of "connected to saucelabs.com"
+- curl -v https://saucelabs.com/
+
+
+### For more help
+
+If you need additional help, please contact help@saucelabs.com for a better response from our support team regarding Sauce Connect please provide our team with the following information.
+- Re-start Sauce Connect with the following command: 
+```bash
+./sc -vv -l sc.txt -u USERNAME -k ACCESSKEY or sc.exe -vv -l sc.txt -u USERNAME -k ACCESSKEY
+```
+- Attach log file called "sc.txt" to your support request.
+
+For more advance troubleshooting steps please refer to http://support.saucelabs.com/entries/22485469-Sauce-Connect-Troubleshooting-Tips
 
    [1]: http://sauceio.com/index.php/2011/09/security-through-purity/
    [2]: http://info.saucelabs.com/SecurityWhitepaperDownload_SecurityWhitepaperLP.html
