@@ -8,16 +8,10 @@
 
 ## Getting Started
 
-In this tutorial of how to run tests on Sauce Labs using node.js we will use the following tools:
-[Grunt](http://gruntjs.com/),
-[Mocha](http://visionmedia.github.io/mocha/) and
-[WD.js](https://github.com/admc/wd).
+In this tutorial of how to run tests on Sauce Labs using node.js we will use [Grunt](http://gruntjs.com/) to automate running tasks, [Mocha](http://visionmedia.github.io/mocha/) to run tests and [WD.js]([WD.js](https://github.com/admc/wd)) to run selenium commands.
 
 However it is also possible to use Sauce with other libraries or
-frameworks, for instance
-[WebDriverJS](https://code.google.com/p/selenium/wiki/WebDriverJs)
-and [Jasmine](https://github.com/pivotal/jasmine).
-More tutorials are available [here](https://github.com/saucelabs/node-tutorial).
+frameworks, for instance [WebDriverJS](https://code.google.com/p/selenium/wiki/WebDriverJs) and [Jasmine](https://github.com/pivotal/jasmine). More tutorials are available [here](https://github.com/saucelabs/node-tutorial).
 
 ## Setting up a project
 
