@@ -61,15 +61,29 @@ source ~/.bash_profile
 
 On Windows, open your environment variables settings window (instructions [here](http://www.itechtalk.com/thread3595.html)) and set the following variables:
 
-```yaml
-    Name: SAUCE_USERNAME
-    Value: sauceUsername
+Set the following variable:
 
-    Name: SAUCE_ACCESS_KEY
-    Value: sauceAccessKey
+```bash
+SAUCE_USERNAME
+```
+
+Equal to:
+```bash
+sauceUsername
+```
+
+Then set the following variable:
+```bash
+SAUCE_ACCESS_KEY
+```
+
+Equal to:
+```bash
+sauceAccessKey
 ```
 
 Now that your credentials are set, you can now run the unit tests on Sauce with the following command:
+
 ```bash
 karma start karma.conf-ci.js
 ```
@@ -78,7 +92,7 @@ Note that this will by default start [Sauce Connect](/reference/sauce-connect/) 
 
 ## Using the karma-sauce-launcher in CI
 
-It is cool to run your unit tests on Sauce locally while you develop, but even cooler to run them on a continuous integration system with every commit to your codebase. To integrate your CI with Sauce check out the instructions for [Travis](/ci-integrations/travis-ci/), [Jenkins](/ci-integrations/jenkins/), [Team City](/ci-integrations/team-city/), or [Bamboo](/ci-integrations/bamboo/).
+It is cool to run your unit tests on Sauce locally while you develop, but even cooler to run them on a continuous integration system with every commit to your codebase. To integrate your CI with Sauce check out the instructions for [Travis](/ci-integrations/travis-ci/), [Jenkins](/ci-integrations/jenkins/), [Team City](/ci-integrations/teamcity/), or [Bamboo](/ci-integrations/bamboo/).
 
 The provided `karma.conf-ci.js` file already is set up to read environment variables on CI so you shouldn't need to modify it as long as the `process.env.SAUCE_USERNAME` and `process.env.SAUCE_ACCESS_KEY` are set properly during the build.
 
