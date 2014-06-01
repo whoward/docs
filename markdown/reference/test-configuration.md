@@ -5,9 +5,15 @@
   index: 1
 }
 
-In Sauce, we refer to an individual run of a single Selenium test as a **job**. For example, if your test suite contains 100 Selenium tests, and you run the whole suite 3 times, Sauce will keep records of 300 jobs, one for each browser session. The following are additional settings you can use to annotate your jobs and configure Sauce on a per-job basis. This is done differently depending on the Selenium version you are using: [Selenium 1][1] or [Selenium 2][2] or with our [alternative job annotation methods][3].
+When running Selenium tests on Sauce Labs, there is additional configuration you can add to your tests to annotate jobs, collect more data, improve performance, set timeouts, etc.
 
-Here you can find configurations for:
+This configuration is done differently depending on the Selenium major version you are using. Check out how to configure these properties in [Selenium 2][2] or [Selenium 1][1] below.
+
+### Selenium 2 tests: Desired Capabilities
+
+In Selenium 2 tests, Sauce specific settings are provided using the Desired Capabilities object that Remote Webdriver libraries provide. Basically any key-value pair specified in this documentation can be set through this hash-like object.
+
+Find more about RemoteDriver and the Desired Capabilities object in [Selenium's RemoteDriver wiki][5].
 
 ### Selenium 1 tests: The JSON Configuration
 
@@ -25,13 +31,11 @@ In Selenium 1 tests, Sauce-specific settings are given inside Selenium's "browse
 
 Any key-value pair specified in this documentation can be set through this JSON object.
 
-### Selenium 2 tests: Desired Capabilities
+## Anotating Tests
 
-In Selenium 2 tests, Sauce specific settings are provided using the Desired Capabilities object that Remote Webdriver libraries provide. Basically any key-value pair specified in this documentation can be set through this hash-like object.
+The following properties are using to annotate your tests on Sauce Labs. Note that these annotations can be added after the test is run via [the job update endpoint in the Sauce Labs REST API](/reference/rest-api/#-username-jobs-job_id-put).
 
-Find more about RemoteDriver and the Desired Capabilities object in [Selenium's RemoteDriver wiki][5].
-
-### Name Your Jobs
+### name
 
 To make it easier to find and identify individual tests, use the _name_ setting to record test names on your jobs:
 
@@ -50,7 +54,7 @@ Example:
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
-### Record the Build Number
+### build
 
 When looking through test results on our website, you'll probably want to know which version of your app the test was running against. Use this setting to annotate test jobs with a build number or app version. Once you set the build info on your job, it will be displayed on the job results page.
 
@@ -68,7 +72,7 @@ Example:
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
-### Tag Your Jobs
+### tags
 
 To filter and group jobs more easily, users can provide tags for them.
 
@@ -86,7 +90,7 @@ Example:
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
-### Record Pass/Fail Status
+### passed
 
 Selenium handles sending commands to control a browser, but doesn't report to the server whether a test passed or failed. To record pass/fail status in Sauce, set the _passed_ flag on the job.
 
@@ -106,7 +110,7 @@ Example:
 
 Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
-### Record Custom Data
+### custom-data
 
 To give you an extensible way to annotate and differentiate tests, Sauce provides a custom annotation you can set that will accept any valid JSON object. This field is limited to 64KB in size.
 
@@ -798,29 +802,6 @@ Message:&lt;job-id&gt;
 
 The date range can take two formats: **YYYY-MM-DD-HH** and **YYYY-MM-DD**. These **should be set in UTC time** and will only work during the date or hour chosen and the following.
 
-## Downloading job assets
-
-You can download every asset created after your test runs on Sauce through our REST API. These include the video recording, Selenium log, and screenshots taken on crucial steps. After a standard job execution, the following files are created:
-
-  * selenium-server.log
-  * video.flv
-  * XXXXscreenshot.png (where XXXX is a number between 0000 and 9999)
-  * final_screenshot.png
-
-To pull them, make a request matching the following pattern:
-
-
-      GET https://saucelabs.com/rest/v1/<sauceUsername>/jobs/<job_id>/assets/<file_name>
-
-
-Sauce uses HTTP Basic Authentication. Each request needs to include an authorization HTTP header with your username and access key.
-
-Here's an example using curl to download selenium-server.log:
-
-```bash
-curl -u sauceUsername:sauceAccessKey https://saucelabs.com/rest/v1/jhuggins/jobs/2z234fd4c4006b1e73faf3fa3cdadc75/assets/selenium-server.log
-```
-
 ## Embedding Results in HTML Pages
 
 ### Embedding full job pages
@@ -846,10 +827,6 @@ In addition to full job results, we offer a simple way to embed videos as well. 
 ```html
 <script src="https://saucelabs.com/video-embed/7dcb077bfcfd43a0a9d50011dd3bc01c.js?auth=6a7dcf9f2d8e7039699bd0280a7f4504"></script>
 ```
-
-## REST API
-
-For more advanced usage and integrations, you should read our [REST API](/reference/rest-api/) documentation.
 
    [1]: #selenium-1-tests-the-json-configuration
    [2]: #selenium-2-tests-desired-capabilities
