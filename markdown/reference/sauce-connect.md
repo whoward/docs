@@ -203,6 +203,7 @@ When troubleshooting your Sauce Connect agent please make sure it has been confi
 ###	Connectivity check list
 - Is there a firewall in place between the machine running Sauce Connect and Sauce Labs (www.saucelabs.com:443)?
 - Is a proxy server required to connect to the internet, or route traffic from saucelabs.com to an internal site?
+- Sauce Connect needs to establish two outbound connects. The first is to saucelabs.com (67.23.20.87) and the second is to one of many host maikiXXXXX.miso.saucelabs.com (162.222.76.0/21).
 
 ###	Checking network connectivity to Sauce Labs
 Make sure that saucelabs.com is accessible from the machine running Sauce Connect. This can be tested issuing a ping, telnet or cURL command to sacuelabs.com from the machine's command line interface. If any of these commands fail please work with your internal network team to resolve them.
