@@ -215,11 +215,12 @@ Make sure that saucelabs.com is accessible from the machine running Sauce Connec
 
 If you need additional help, please contact help@saucelabs.com for a better response from our support team regarding Sauce Connect please provide our team with the following information.
 
-- Re-start Sauce Connect with the following command:
+Re-start Sauce Connect with the following command:
 ```bash
-./sc -vv -l sc.txt -u USERNAME -k ACCESSKEY or sc.exe -vv -l sc.txt -u USERNAME -k ACCESSKEY
+./sc -vv -l sc.txt -u sauceUsername -k sauceAccessKey or sc.exe -vv -l sc.txt -u sauceUsername -k sauceAccessKey
 ```
-- Attach log file called "sc.txt" to your support request.
+
+Attach log file called "sc.txt" to your support request.
 
 For more advance troubleshooting steps please refer to http://support.saucelabs.com/entries/22485469-Sauce-Connect-Troubleshooting-Tips
 
