@@ -31,7 +31,7 @@ In Selenium 1 tests, Sauce-specific settings are given inside Selenium's "browse
 
 Any key-value pair specified in this documentation can be set through this JSON object.
 
-## Anotating Tests
+## Annotating Tests
 
 The following properties are using to annotate your tests on Sauce Labs. Note that these annotations can be added after the test is run via [the job update endpoint in the Sauce Labs REST API](/reference/rest-api/#-username-jobs-job_id-put).
 
