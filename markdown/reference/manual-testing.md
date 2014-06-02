@@ -15,8 +15,6 @@ Early users reported uses for Sauce beyond bug logging:
   2. By graphic designers, to solve gnarly CSS issues in IE
   3. By documentation people, to show how a feature works
 
-Can you think of other uses? Tell us! We offer a complimentary one-month "[Medium Spicy](https://saucelabs.com/pricing)" plan for all users we publish.
-
 ## Record a bug
 
 After launching a browser, use it to navigate your site as you would any other computer. If you find anything out of place, click the **Bug** icon, then name and describe the issue. When you note a bug, we'll create a report on your [snapshots page](https://saucelabs.com/snapshots) containing the screenshot and video of the bug.
