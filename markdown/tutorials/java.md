@@ -50,17 +50,17 @@ This launches Maven and will download the dependencies, compiles the source code
 moments you should see that JUnit/TestNG has started. You might not see any output instantaneously, but
 eventually you will see the following output:
 ```
-  ------------------------------------------------------
-   T E S T S
-  -------------------------------------------------------
-  Running WebDriverTest
-  Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.384 sec
-  Running WebDriverWithHelperTest
-  Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.743 sec
+------------------------------------------------------
+T E S T S
+-------------------------------------------------------
+Running WebDriverTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.384 sec
+Running WebDriverWithHelperTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.743 sec
 
-  Results :
+Results :
 
-  Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
 ```
 (The exact output will depend on the test framework you chose, but you
 should see all tests passing.)
@@ -153,12 +153,12 @@ platform running on Sauce Labs servers to execute the test.
 Next, we write a simple test (annotated with org.junit.Test):
 
 ```java
-    @Test
-    public void webDriver() throws Exception {
-        // Make the browser get the page and check its title
-        driver.get("http://www.amazon.com/");
-        assertEquals("Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more", driver.getTitle());
-    }
+@Test
+public void webDriver() throws Exception {
+    // Make the browser get the page and check its title
+    driver.get("http://www.amazon.com/");
+    assertEquals("Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more", driver.getTitle());
+}
 ```
 
 The test accesses www.amazon.com and uses a [JUnit assertion](https://github.com/junit-team/junit/wiki/Assertions)
@@ -169,10 +169,10 @@ that tells Selenium to return the title of the
 current page.
 
 ```java
-  @After
-  public void tearDown() throws Exception {
-      driver.quit();
-  }
+@After
+public void tearDown() throws Exception {
+  driver.quit();
+}
 ```
 
 Finally, the `tearDown()` method is run after every test in the class (by virtue of the JUnit `org.junit.After` annotation).  We call `driver.quit()` to close the Selenium session.

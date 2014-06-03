@@ -31,11 +31,11 @@ specifying the browser, version, and platform to test, then creates a
 `webdriver.Remote` to run the tests remotely:
 
 ```python
-        sauce_url = "http://%s:%s@ondemand.saucelabs.com:80/wd/hub"
-        self.driver = webdriver.Remote(
-            desired_capabilities=self.desired_capabilities,
-            command_executor=sauce_url % (USERNAME, ACCESS_KEY)
-        )
+sauce_url = "http://%s:%s@ondemand.saucelabs.com:80/wd/hub"
+self.driver = webdriver.Remote(
+    desired_capabilities=self.desired_capabilities,
+    command_executor=sauce_url % (USERNAME, ACCESS_KEY)
+)
 ```
 
 The `webdriver.Remote` is a standard Selenium interface, so you can do
@@ -59,14 +59,14 @@ py.test -n2 --boxed example.py
 ```
 
 Eventually you will see output like this:
-
-        ============================== test session starts ==============================
-        platform darwin -- Python 2.7.5 -- pytest-2.5.1
-        plugins: xdist
-        gw0 [2] / gw1 [2]
-        scheduling tests via LoadScheduling
-        ..
-        =========================== 2 passed in 17.30 seconds ===========================
-
+```
+============================== test session starts ==============================
+platform darwin -- Python 2.7.5 -- pytest-2.5.1
+plugins: xdist
+gw0 [2] / gw1 [2]
+scheduling tests via LoadScheduling
+..
+=========================== 2 passed in 17.30 seconds ===========================
+```
 (The exact output will depend on your setup, but you should see all
 tests passing.)

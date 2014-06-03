@@ -458,12 +458,12 @@ test:
 
 **Mac/Linux:**
 ```bash
-    vendor/bin/phpunit WebDriverDemoShootout.php
+vendor/bin/phpunit WebDriverDemoShootout.php
 ```
 
 **Windows:**
 ```bat
-    vendor\bin\phpunit.bat WebDriverDemoShootout.php
+vendor\bin\phpunit.bat WebDriverDemoShootout.php
 ```
 And here's the test suite:
 
