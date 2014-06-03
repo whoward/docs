@@ -56,6 +56,14 @@ Within your infrastructure, Sauce Connect needs access to the application under 
 
 The initial outbound connect created by Sauce Connect is over port 443 to *.saucelabs.com. The response to this request contains instructions which Sauce Connect will use to establish a secure tunnel between Sauce Connect and Sauce Labs client cloud. Now that Connect has it’s instructions it will create another outbound connect to *.saucelabs.com also over 443. Once the connection is established all traffic between Sauce Labs and Sauce Connect will be multiplexed over a single encrypted TLS connection.
 
+![SetupProcess](/images/reference/sauce-connect/sc-setup-process.png)
+
+1. Sauce Connect makes a HTTPS REST call to saucelabs.com:443 using the username and access key provided when starting Sauce Connect.
+2. Sauce Labs creates a dedicated virtual machine which will server as the endpoint of the second connection created by Sauce Connect.
+3. Sauce Labs responses with a unique ID of the virtual machine created up in step 2.
+4. Sauce Connect establishes a TLS connection directly to the dedicated virtual machine created in step 2. (makiXXXXX.miso.saucelabs.com).
+5. At this point a secure connection is created between Sauce Connect and Sauce Labs. This is a persistent  connection with all activity initiated from the Sauce Connect client running in a customers environment.
+
 ##  Teardown process
 
 Once Sauce Connect is asked terminated (typically via ctrl-c), a call will be made from Sauce Connect to the REST API with instructions to terminate the tunnel VM. Sauce Connect will continue to poll the REST API until the tunnel VM has been halted and deleted.
