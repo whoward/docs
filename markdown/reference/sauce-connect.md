@@ -62,7 +62,7 @@ The initial outbound connect created by Sauce Connect is over port 443 to *.sauc
 2. Sauce Labs creates a dedicated virtual machine which will server as the endpoint of the second connection created by Sauce Connect.
 3. Sauce Labs responses with a unique ID of the virtual machine created up in step 2.
 4. Sauce Connect establishes a TLS connection directly to the dedicated virtual machine created in step 2. (makiXXXXX.miso.saucelabs.com).
-5. At this point a secure connect is created between Sauce Connect and Sauce Labs. This is a persistent  connection with all activity initiated from the Sauce Connect client running in a customers environment.
+5. At this point a secure connection is created between Sauce Connect and Sauce Labs. This is a persistent  connection with all activity initiated from the Sauce Connect client running in a customers environment.
 
 ##  Teardown process
 
