@@ -210,11 +210,11 @@ Make sure that saucelabs.com is accessible from the machine running Sauce Connec
 ```bash
  ping saucelabs.com
 ```
-this command should return an IP address of 67.23.20.87
+This command should return an IP address of 67.23.20.87
 ```bash
 telnet saucelabs.com 443
 ```
-this command should return a status message of "connected to saucelabs.com"
+This command should return a status message of "connected to saucelabs.com"
 ```bash
 curl -v https://saucelabs.com/
 ```
