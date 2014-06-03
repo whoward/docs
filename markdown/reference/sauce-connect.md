@@ -207,10 +207,17 @@ When troubleshooting your Sauce Connect agent please make sure it has been confi
 
 ###	Checking network connectivity to Sauce Labs
 Make sure that saucelabs.com is accessible from the machine running Sauce Connect. This can be tested issuing a ping, telnet or cURL command to sacuelabs.com from the machine's command line interface. If any of these commands fail please work with your internal network team to resolve them.
-
-- ping saucelabs.com, this command should return an IP address of 67.23.20.87
-- telnet saucelabs.com 443, this command should return a status message of "connected to saucelabs.com"
-- curl -v https://saucelabs.com/
+```bash
+ ping saucelabs.com
+```
+this command should return an IP address of 67.23.20.87
+```bash
+telnet saucelabs.com 443
+```
+this command should return a status message of "connected to saucelabs.com"
+```bash
+curl -v https://saucelabs.com/
+```
 
 ###	For more help
 
