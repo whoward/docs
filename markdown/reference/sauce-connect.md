@@ -50,7 +50,7 @@ Data transmitted by Sauce Connect is encrypted through industry-standard TLS, us
 Within your infrastructure, Sauce Connect needs access to the application under test, but can be firewalled from the rest of your internal network. We recommend running Sauce Connect in a firewall DMZ, on a dedicated machine, and setting up firewall rules to restrict access from that DMZ to your internal network.
 
 
-![How is Sauce Secured][3]
+![How is Sauce Secured](/images/reference/sauce-connect/sc.png)
 
 ##  Setup process
 
