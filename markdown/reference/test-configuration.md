@@ -9,13 +9,13 @@ When running Selenium tests on Sauce Labs, there is additional configuration you
 
 This configuration is done differently depending on the Selenium major version you are using. Check out how to configure these properties in [Selenium 2][2] or [Selenium 1][1] below.
 
-### Selenium 2 tests: Desired Capabilities
+## Selenium 2 tests: Desired Capabilities
 
 In Selenium 2 tests, Sauce specific settings are provided using the Desired Capabilities object that Remote Webdriver libraries provide. Basically any key-value pair specified in this documentation can be set through this hash-like object.
 
 Find more about RemoteDriver and the Desired Capabilities object in [Selenium's RemoteDriver wiki][5].
 
-### Selenium 1 tests: The JSON Configuration
+## Selenium 1 tests: The JSON Configuration
 
 In Selenium 1 tests, Sauce-specific settings are given inside Selenium's "browser" parameter. This is generally a string in the form "\*browser" (e.g. "\*iexplore", "\*firefox"), but will now need to be a full [JSON object][4] like this:
 
@@ -33,9 +33,9 @@ Any key-value pair specified in this documentation can be set through this JSON 
 
 ## Annotating Tests
 
-The following properties are using to annotate your tests on Sauce Labs. Note that these annotations can be added after the test is run via [the job update endpoint in the Sauce Labs REST API](/reference/rest-api/#-username-jobs-job_id-put).
+The following properties are used to annotate your tests on Sauce Labs. Note that these annotations can be added after the test is run via [the job update endpoint in the Sauce Labs REST API](/reference/rest-api/#-username-jobs-job_id-put).
 
-### name
+### Name your tests
 
 To make it easier to find and identify individual tests, use the _name_ setting to record test names on your jobs:
 
@@ -52,9 +52,8 @@ Example:
 "name": "my example name"
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
-### build
+### Record the build number
 
 When looking through test results on our website, you'll probably want to know which version of your app the test was running against. Use this setting to annotate test jobs with a build number or app version. Once you set the build info on your job, it will be displayed on the job results page.
 
@@ -70,9 +69,8 @@ Example:
 "build": "build-1234"
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
-### tags
+### Tag Your Jobs
 
 To filter and group jobs more easily, users can provide tags for them.
 
@@ -88,9 +86,8 @@ Example:
 "tags": [ "tag1", "tag2", "tag3" ]
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
-### passed
+### Record Pass/Fail Status
 
 Selenium handles sending commands to control a browser, but doesn't report to the server whether a test passed or failed. To record pass/fail status in Sauce, set the _passed_ flag on the job.
 
@@ -108,9 +105,8 @@ Example:
 "passed": true
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
-### custom-data
+### Record custom data
 
 To give you an extensible way to annotate and differentiate tests, Sauce provides a custom annotation you can set that will accept any valid JSON object. This field is limited to 64KB in size.
 
@@ -130,7 +126,6 @@ Example:
                  "server": "test.customer.com" }
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ### Alternative Job Annotation Methods
 
@@ -230,7 +225,6 @@ Example:
 "record-video": false
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 As an alternative, the _video-upload-on-pass_ setting will let you discard videos for passing tests identified using the<a href="#record-pass-fail-status"><em>passed</em> setting</a>. This disables video post-processing and uploading that may otherwise consume some extra time after your test is complete.
 
@@ -246,7 +240,6 @@ Example:
 "video-upload-on-pass": false
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ### Disable Step By Step Screenshots
 
@@ -264,7 +257,6 @@ Example:
 "record-screenshots": false
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ### Disable Logs Gathering
 
@@ -282,7 +274,6 @@ Example:
 "record-logs": false
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ### Enable HTML Source Captures
 
@@ -300,7 +291,6 @@ Example:
 "capture-html": true
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ### Enable Selenium 2's Automatic Screenshots
 
@@ -320,7 +310,6 @@ Example:
 "webdriver.remote.quietExceptions": false
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ### Disable Sauce Advisor
 
@@ -338,7 +327,6 @@ Example:
 "sauce-advisor": false
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ## Selenium Specific Modifications
 
@@ -360,7 +348,6 @@ Example:
 "selenium-version": "2.41.0"
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 The current version being used as default is: **`2.30.0`**.<br/>
 The list of supported versions you can choose from:<br/>
@@ -384,7 +371,6 @@ Example:
 "single-window": true
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ### Selenium RC's User Extensions
 
@@ -404,7 +390,6 @@ Example:
 "user-extensions-url": [ "http://saucelabs.com/ext/flex.js", "ftp://username:password@server.com/bleh.js" ]
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ### Selenium RC's Custom Firefox Profiles
 
@@ -430,7 +415,6 @@ Example:
 
 **Note**: If you actually zip the directory, it will not work. The zip file needs to contain the contents of the profile, not a directory with the contents of it.
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ## Timeouts
 
@@ -450,7 +434,6 @@ Example:
 "max-duration": 300
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ### Command Timeout
 
@@ -468,7 +451,6 @@ Example
 "command-timeout": 300
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ### Idle Test Timeout
 
@@ -486,7 +468,6 @@ Example:
 "idle-timeout": 60
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ## Sauce Specific
 
@@ -513,7 +494,6 @@ Example:
             "args": [ "--silent", "-a", "-q" ], "background": true }
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 **AutoIt**: If you want to run an AutoIt script during your test, compile it as an exe, send it using this capability and set _background_ to _true_ so it stays running throughout the full duration of your test.
 
@@ -535,7 +515,6 @@ Example:
 "tunnel-identifier": "MyTunnel01"
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ### Use specific screen resolution
 
@@ -553,7 +532,6 @@ Example:
 "screen-resolution": "1280x1024"
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 Valid values for Windows XP, Windows 7, and OSX 10.6 are:<br/> `800x600` `1024x768` `1280x1024` `1440x900` `1920x1200`
 
@@ -588,7 +566,6 @@ Example:
 "iedriver-version": "x64_2.41.0"
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 The list of supported IE Drivers you can choose from:<br/>
 `x64_2.29.0` `x64_2.39.0` `x64_2.40.0` `x64_2.41.0`
@@ -609,7 +586,6 @@ Example:
 "disable-popup-handler": true
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ### Avoid Selenium Proxy
 
@@ -629,7 +605,6 @@ Example:
 
 **Note**: Using Selenium 1, avoid-proxy doesn't work with `*safariproxy`, `*firefoxproxy`, `*iexploreproxy` or `*opera` browsers. This flag is currently incompatible with [Sauce Connect][16].
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ## Job Sharing
 
@@ -649,7 +624,6 @@ Example:
 "public": "public"
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ### Restrict What's Shown in Public Jobs
 
@@ -667,7 +641,6 @@ Example:
 "public": "public restricted"
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ### Share with co-workers
 
@@ -685,7 +658,6 @@ Example:
 "public": "team"
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ### Share only with friends
 
@@ -703,7 +675,6 @@ Example:
 "public": "share"
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ### Do not allow anyone to view your jobs - set them to Private
 
@@ -723,7 +694,6 @@ Example:
 
 **Note**: For more details about sharing jobs, check our [Job Results Integration][19] docs.
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ## Mobile Testing Options
 
@@ -743,7 +713,6 @@ Example:
 "device-orientation": "landscape"
 ```
 
-Learn more about how to configure your tests with these settings in [Selenium 1][1] or [Selenium 2][2] tests.
 
 ## Building links to jobs
 
@@ -756,13 +725,13 @@ To directly access a specific job, you will first need to note the session ID lo
 
     http://saucelabs.com/jobs/<jobid>
 
-Notice that links to jobs in this format will only work if you are logged in with the account that ran the job or if that account is a sub-account of yours. For generating public links, read the section below, [ no-login links to jobs](#public-job-links).
+Notice that links to jobs in this format will only work if you are logged in with the account that ran the job or if that account is a sub-account of yours. For generating public links, read the section below, [ no-login links to jobs](#no-login-links-to-jobs).
 
 **Note**: Selenium 1's Java client does not give public access to the session ID attribute of the DefaultSelenium object. However, we store a `selenium.sessionId` JavaScript variable that you can access using [getEval](http://bit.ly/cI51Dv).
 
 ### No-login links to jobs
 
-The links generated in [login required links to jobs](#login-links) can be made in a way that doesn't require anonymous viewers to login and use your credentials. This mechanism is based in authentication tokens.
+The links generated in [login required links to jobs](#login-required-links-to-jobs) can be made in a way that doesn't require anonymous viewers to login and use your credentials. This mechanism is based in authentication tokens.
 
 Auth tokens are generated on a per-job basis and give the receiver access using an [hmac-based algorithm](http://en.wikipedia.org/wiki/HMAC). You can also find [hmac implementations for different programming languages](http://en.wikipedia.org/wiki/HMAC#External_links).
 
@@ -850,7 +819,7 @@ In addition to full job results, we offer a simple way to embed videos as well. 
    [20]: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
    [21]: #setcontext-
    [22]: #update-jobs-via-our-rest-api
-   [23]: #name-your-jobs
+   [23]: #name-your-tests
    [24]: #make-your-jobs-public
    [25]: #tag-your-jobs
    [26]: #record-the-build-number

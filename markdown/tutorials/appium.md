@@ -79,7 +79,7 @@ For more information, feel free to visit the resources listed below:
 
 ## Running Your First Test
 
-Your first test will run against our Test Application, which is hosted on Sauce. When you run your own tests you'll need to provide your own app. Instructions for providing your own app are provided in the [Setup](#setting-up-tests) section.
+Your first test will run against our Test Application, which is hosted on Sauce. When you run your own tests you'll need to provide your own app. Instructions for providing your own app are provided in the Setup section.
 
 To run your first test, simply run the quick start code below. Our example is in Ruby using RSpec, though Appium can be used with almost any language and test framework:
 
@@ -97,7 +97,7 @@ SAUCE_USERNAME=sauceUsername SAUCE_ACCESS_KEY=sauceAccessKey rspec SauceTest.rb
 
 Take a look at SauceTest.rb to see what an Appium test looks like in Ruby.
 
-<a name="your-account"></a>Your Account Page
+Your Account Page
 ---
 Congratulations! You've run your first Appium test on Sauce! To see the output from your test, head over to your [Sauce account page](https://saucelabs.com/account) where you can see the important data from your test run, plus video, screenshots, and logs.
 
@@ -134,9 +134,9 @@ So, for example, to build an app to launch in the iPhone simulator, change to th
 xcodebuild -sdk iphonesimulator7.0 TARGETED_DEVICE_FAMILY=1
 ```
 
-After your app compiles you'll have a `build/<*target*>` directory in your app's source code that contains a `.app` directory. Change to the command prompt for your `build/<*target*>` directory, zip the entire `.app` directory, and use it as the value for the `app` capability in your DesiredCapabilities object as discussed in [Running Your First Test](#run-test).
+After your app compiles you'll have a `build/<*target*>` directory in your app's source code that contains a `.app` directory. Change to the command prompt for your `build/<*target*>` directory, zip the entire `.app` directory, and use it as the value for the `app` capability in your DesiredCapabilities object as discussed in [Running Your First Test](#running-your-first-test).
 
-<a name="setting-up-tests"></a>Setting Up Your Tests for Sauce
+Setting Up Your Tests for Sauce
 ---
 
 First, zip and upload your app to Sauce Labs temporary storage using our [Temporary Storage REST API](http://saucelabs.com/docs/rest#storage):
@@ -157,13 +157,13 @@ You'll also need to add the following fields (key/value pairs) to DesiredCapabil
   - `platformVersion`: `"7.1"`
   - `deviceName`: `"iPhone Simulator"`
 
-**Note:** The `iPhone Simulator` value for the `deviceName` key will launch an iPhone or iPad simulator depending on whether your app was compiled with `1`, `2`, or `1,2` as the `TARGETED_DEVICE_FAMILY`  as discussed in the [Compiling Your App for Sauce](#compiling) section.
+**Note:** The `iPhone Simulator` value for the `deviceName` key will launch an iPhone or iPad simulator depending on whether your app was compiled with `1`, `2`, or `1,2` as the `TARGETED_DEVICE_FAMILY`  as discussed in the [Compiling Your App for Sauce](#compiling-to-specify-a-simulator) section.
 
 That's it! You're ready to run your test script against your app on Appium on Sauce!
 
 For a complete list of supported Appium platforms and code examples for using them, see our [Appium platforms documentation](https://saucelabs.com/docs/platforms/appium).
 
-<a name="understanding-appium"></a>Understanding Appium on Sauce
+Understanding Appium on Sauce
 ---
 
 Here's how running tests on Appium on Sauce work.
@@ -174,24 +174,24 @@ The responses from your test app are received by Instruments, sent to UI Automat
 
 Appium hides all of this complexity from your test script (and from you!). Your test script thinks it's communicating with your test app, but it's really communicating with Appium's implementation of the Selenium API. The fact that Appium is running your app in the appropriate simulator and wrapping UI Automation, Instruments, and all of the communications with your test app including the conversions to and from JavaScript and JSON remains completely hidden, and your test script is none the wiser.
 
-Before you can run your apps on Appium you'll need the .app directory created by XCode for your app. Sometimes, using special build settings will make Appium more useful; these are covered in the [Compiling Your App for Sauce](#compiling) section.
+Before you can run your apps on Appium you'll need the .app directory created by XCode for your app. Sometimes, using special build settings will make Appium more useful; these are covered in the [Compiling Your App for Sauce](#compiling-to-specify-a-simulator) section.
 
-To specify an Appium session in Sauce, simply use the same DesiredCapabilities object that you already use in your Selenium tests, with a slightly different set of fields. Configuring DesiredCapabilities is discussed in the [Setting Up Your Tests](#setting-up-tests) section.
+To specify an Appium session in Sauce, simply use the same DesiredCapabilities object that you already use in your Selenium tests, with a slightly different set of fields. Configuring DesiredCapabilities is discussed in the [Setting Up Your Tests](#setting-up-your-tests-for-sauce) section.
 
 Appium for Android on Sauce Labs
 ===
 
 Now let's get started with Android tests on Sauce Labs. Here's what this section covers:
 
-  - [Running Your First Test](#run-test)
+  - [Running Your First Test](#running-your-first-test)
   - [System Requirements](#system-requirements)
-  - [Setting Up Your Tests for Sauce](#setting-up-tests)
-  - [Understanding Appium for Android on Sauce](#understanding-appium)
+  - [Setting Up Your Tests for Sauce](#setting-up-your-tests-for-sauce)
+  - [Understanding Appium for Android on Sauce](#understanding-appium-on-sauce)
 
-<a name="run-test"></a>Running Your First Test
+Running Your First Test
 ---
 
-Your first test will run against our Test Application, which is hosted on Sauce. When you run your own tests you'll need to provide your own app. Instructions for providing your own app are provided in the [Setup](#setting-up-tests) section.
+Your first test will run against our Test Application, which is hosted on Sauce. When you run your own tests you'll need to provide your own app. Instructions for providing your own app are provided in the [Setup](#setting-up-your-tests-for-sauce) section.
 
 To run your first test, simply run the quick start code below. Our example is in Ruby using RSpec, though Appium can be used with almost any language and test framework:
 
@@ -218,14 +218,14 @@ Congratulations! You've run your first Appium test on Sauce! To see the output f
 
 You may notice that Appium tests take a bit longer than regular selenium tests. This is due to the additional startup time required by the Android Emulator- something we are looking to alleviate in the near future.
 
-<a name='system-requirements'></a>System Requirements
+System Requirements
 ---
 
   - Your app compiled as an .apk.
   - A [Sauce Labs account](https://saucelabs.com/account)
   - A Selenium WebDriver client library for your langauge of choice (see the [Tutorial Introduction](#appium-on-sauce-labs))
 
-<a name='setting-up-tests'></a>Setting Up Your Tests for Sauce
+Setting Up Your Tests for Sauce
 ---
 
 First, upload your app to Sauce Labs temporary storage using our [Temporary Storage REST API](http://saucelabs.com/docs/rest#storage):
