@@ -44,17 +44,11 @@ To use Sauce Labs locally, you will need to export your Sauce Labs username and 
 *Note: if you don't have an account, you can sign up [here](https://saucelabs.com/signup/plan/free) for free.*
 
 ### Export Credentials on Mac/Linux
-To export your Sauce credentials to your terminal session, add the following content to to your `~/.bash_profile` so that they will always be available in future terminal sessions:
+If you don't already have `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` available as environment variables, run the following command:
 
 ```bash
-export SAUCE_USERNAME=sauceUsername
-export SAUCE_ACCESS_KEY=sauceAccessKey
-```
-
-You'll then need to reload that profile with the following command:
-
-```bash
-source ~/.bash_profile
+echo "export SAUCE_USERNAME=sauceUsername
+export SAUCE_ACCESS_KEY=sauceAccessKey" >> ~/.bash_profile && source ~/.bash_profile
 ```
 
 ### Export Credentials on Windows
