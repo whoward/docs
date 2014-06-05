@@ -21,8 +21,7 @@ You can also use Sauce Connect:
 ##  Getting started
 
 **Before you begin** 
-
-1. Make sure port 443 can be opened for outbound connections.
+1. Make sure port 443 can be opened for outbound connections. 
 2. Get Sauce Connect v4:
 <ul>
 <li><a href="https://saucelabs.com/downloads/sc-latest-osx.zip"><i class="fa fa-apple"></i> Download Sauce Connect for OS X</a><br>
@@ -62,7 +61,7 @@ The initial outbound connect created by Sauce Connect is over port 443 to *.sauc
 1. Sauce Connect makes a HTTPS REST call to saucelabs.com:443 using the username and access key provided when starting Sauce Connect.
 2. Sauce Labs creates a dedicated virtual machine which will server as the endpoint of the second connection created by Sauce Connect.
 3. Sauce Labs responses with a unique ID of the virtual machine created up in step 2.
-4. Sauce Connect establishes a TLS connection directly to the dedicated virtual machine created in step 2. (*.miso.saucelabs.com).
+4. Sauce Connect establishes a TLS connection directly to the dedicated virtual machine created in step 2. (makiXXXXX.miso.saucelabs.com).
 5. At this point a secure connection is created between Sauce Connect and Sauce Labs. This is a persistent  connection with all activity initiated from the Sauce Connect client running in a customers environment.
 
 ##  Teardown process
