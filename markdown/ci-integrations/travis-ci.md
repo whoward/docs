@@ -3,7 +3,7 @@
   description: "Run automated tests on Sauce Labs using Travis CI",
   category: "CI Integrations",
   index: 1,
-  image: "/images/ci-integrations/travis.png",
+  image: "/images/ci-integrations/travis-ci.png",
 }
 
 ## Getting Started
@@ -14,7 +14,7 @@ In this tutorial we will get you setup to run automated tests on
 
 ## Securely use your Sauce Credentials on Travis CI
 
-To test with Sauce on Travis, you need to make sure your Sauce credentials are available to your tests. To do so, use the [Travis gem](https://rubygems.org/gems/travis) to encrypt your credentials as environment variables so that they aren't visible in your source code, but instead available as global variables. 
+To test with Sauce on Travis, you need to make sure your Sauce credentials are available to your tests. To do so, use the [Travis gem](https://rubygems.org/gems/travis) to encrypt your credentials as environment variables so that they aren't visible in your source code, but instead available as global variables.
 
 ### Setting up Travis
 
