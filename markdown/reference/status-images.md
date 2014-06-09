@@ -7,11 +7,11 @@
 
 If you want to keep track of your project's latest test run on Sauce, you can add one of our status images to your repo or website. Here are what the general status badges look like:
 
-![sauce-badge-passing](https://saucelabs.com/images/status-passing.png) ![sauce-badge-fail](https://saucelabs.com/images/status-failed.png) ![sauce-badge-unknown](https://saucelabs.com/images/status-unknown.png)
+![sauce-badge-passing](/images/reference/status-images/status-passing.png) ![sauce-badge-fail](/images/reference/status-images/status-failed.png) ![sauce-badge-unknown](/images/reference/status-images/status-unknown.png)
 
 We also have a browser matrix widget that helps you keep track of the status of your tests on different browsers:
 
-![sauce-labs-browser-matrix](https://saucelabs.com/images/status-browser-matrix.svg)
+![sauce-labs-browser-matrix](/images/reference/status-images/status-browser-matrix.svg)
 
 ## Reporting test results for badge status
 
@@ -27,7 +27,7 @@ If you have multiple projects, you will want to [create a sub-account](/referenc
 
 ## Adding the Standard Badge
 
-![sauce-badge-passing](https://saucelabs.com/images/status-passing.png) ![sauce-badge-fail](https://saucelabs.com/images/status-failed.png) ![sauce-badge-unknown](https://saucelabs.com/images/status-unknown.png)
+![sauce-badge-passing](/images/reference/status-images/status-passing.png) ![sauce-badge-fail](/images/reference/status-images/status-failed.png) ![sauce-badge-unknown](/images/reference/status-images/status-unknown.png)
 
 You can copy/paste the following Markdown into your GitHub README:
 
@@ -45,7 +45,7 @@ Or you can add the following HTML to your project site:
 
 ## Adding the Browser Matrix Widget
 
-![sauce-labs-browser-matrix](https://saucelabs.com/images/status-browser-matrix.svg)
+![sauce-labs-browser-matrix](/images/reference/status-images/status-browser-matrix.svg)
 
 You can copy/paste the following Markdown into your GitHub README:
 
