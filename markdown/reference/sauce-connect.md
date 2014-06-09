@@ -74,15 +74,11 @@ These vary depending on the number of parallel tests you plan to run. Here are s
 
 # Parallel Ram Processor
 
-10 tests (Use your dev machine)
-4gb
-4GHz
+| Parallel Tests      | Ram  | Processor |
+| -------------       | :-------------: | :-------------: |
+| 10 tests (Use your dev machine)  | 4gb | 4GHz |
+| 100 tests<br/>+ use a dedicated Connect server<br/>+ ulimit -n 8192| 8gb  | 4GHz |
 
-100 tests
-%2B use a dedicated Connect server
-%2B ulimit -n 8192
-8gb
-4GHz
 For increased reliability and security, use a dedicated server.
 
 ##  Advanced configuration
