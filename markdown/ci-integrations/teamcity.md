@@ -6,8 +6,8 @@
   image: "/images/ci-integrations/teamcity.png",
 }
 
-Sauce Labs and JetBrains TeamCity Tutorials
-============
+## Sauce Labs and JetBrains TeamCity Tutorials
+
 These tutorials explain how to use integrate [TeamCity](http://www.jetbrains.com/teamcity) with tests run with the Sauce Labs cloud of Selenium servers.
 
 We assume that you have some familiarity with TeamCity and the fundamentals of automated testing. However, even if this is your first time using TeamCity and automated testing you should be able to successfully follow these step-by-step instructions.
@@ -24,8 +24,8 @@ After the plugin has been installed, we will need to restart TeamCity for the pl
 
 Once TeamCity has been restarted, we can then configure the plugin to work with our environment.
 
-TeamCity Configuration for a Java-based Project
-=============
+## TeamCity Configuration for a Java-based Project
+
 
 To demonstrate the Sauce plugin for TeamCity, let's create a new TeamCity project for a Java project.
 
@@ -131,8 +131,8 @@ The plugin will set a series of environment variables based on the information p
 ![Sauce options](/images/ci-integrations/teamcity/sauce-options.png)
 
 Click the `Save` button.  That's it, our configuration is all setup, let's run the tests!
-Integrating tests with the TeamCity Sauce OnDemand plugin
-=============
+## Integrating tests with the TeamCity Sauce OnDemand plugin
+
 
 To run the tests, go the TeamCity dashboard. Click the `Run` button.
 

@@ -146,8 +146,8 @@ The values for the `SELENIUM_HOST` and `SELENIUM_PORT` environment variables can
 
 ![Sauce Configure](/images/ci-integrations/jenkins/sauce-configure.png)
 
-Embedding Sauce Reports
----
+## Embedding Sauce Reports
+
 
 The plugin also supports the embedding of Sauce Job reports within the display of test results.  This requires the tests executed by the Jenkins job to produce result files in the [JUnit XML]() report format. 
 
@@ -232,8 +232,8 @@ private void printSessionId() {
     }
 ```
 
-Selenium Client Factory
----
+## Selenium Client Factory
+
 An alternative to explicitly referencing the environment variables in your test code is to use the [Selenium Client Factory]() library.  This allows you to construct your SeleniumRC or WebDriver instances in a single line, eg.
 
 ```java
@@ -281,8 +281,8 @@ Select the `Add post-build Action` action again, and select the `Additional test
 
 That's it, our configuration is all setup, let's run the tests!
 
-Jenkins Configuration for a Python-based Project
-=============
+## Jenkins Configuration for a Python-based Project
+
 
 Now let's create a new Jenkins Freestyle project for a Python project.
 
