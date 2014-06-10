@@ -5,7 +5,7 @@
   index: 3
 }
 
-Sauce is great for teams with multiple users. By using the sub-account feature, you can easily create and manage group or individual accounts within your organization, allowing everyone to test from the same batch of usage. Our team management tool allows you to create a tree-like structure within your account to better understand testing usage across multiple accounts.
+Sauce is great for teams with multiple users. By using the subaccount feature, you can easily create and manage group or individual accounts within your organization, allowing everyone to test from the same batch of usage. Our team management tool allows you to create a tree-like structure within your account to better understand testing usage across multiple accounts.
 
 The typical sub-account structure looks as follows:
 
