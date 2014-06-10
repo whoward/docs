@@ -19,7 +19,7 @@ Any code block containing `sauceUsername` or `sauceAccessKey` will either get re
 Work should be done in branches so that it can be reviewed before being deployed. Follow the below instructions to improve the docs without using the command line:
 
 1. Download [GitHub for Mac](https://mac.github.com/) or [Windows](https://windows.github.com/).
-2. Click `Clone in Desktop` in the fixed right nav of this repo.
+2. Click `Clone in Desktop` in the right nav of this repo above.
 3. [Make a branch from master](https://help.github.com/articles/branching-out).
 4. [Make changes](https://help.github.com/articles/making-changes).
 5. [Push branch changes](https://help.github.com/articles/how-can-i-push-or-pull)
