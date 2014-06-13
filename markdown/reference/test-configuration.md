@@ -92,7 +92,7 @@ Our advanced format involves submitting a JSON-encoded dictionary as the value o
 ## Job Annotation
 
 ### Recording Test Names
-To make it easier to find and identify individual tests, use the _name_ setting to record test names on your jobs:
+To make it easier to find and identify individual tests, use the `name` setting to record test names on your jobs:
 
 Key: `name`
 
@@ -131,7 +131,7 @@ Example:
 ```
 
 ### Recording Pass/Fail Status
-Selenium and Appium handle sending commands to control a browser or app, but don't report to the server whether a test passed or failed. To record pass/fail status on Sauce, set the _passed_ flag on the job.
+Selenium and Appium handle sending commands to control a browser or app, but don't report to the server whether a test passed or failed. To record pass/fail status on Sauce, set the `passed` flag on the job.
 
 Since you can't know in advance whether a test passed or failed, this flag can't be set in the initial configuration. Instead, you'll need to use one of our alternative job annotation methods, such as our [REST API][3].
 
@@ -177,7 +177,7 @@ Example:
 "record-video": false
 ```
 
-As an alternative, the _video-upload-on-pass_ setting will let you discard videos for passing tests identified using the<a href="#record-pass-fail-status"><em>passed</em> setting</a>. This disables video post-processing and uploading that may otherwise consume some extra time after your test is complete.
+As an alternative, the `video-upload-on-pass` setting will let you discard videos for passing tests identified using the<a href="#record-pass-fail-status"><em>passed</em> setting</a>. This disables video post-processing and uploading that may otherwise consume some extra time after your test is complete.
 
 Key: `video-upload-on-pass`
 
@@ -382,7 +382,7 @@ Value type: JSON object, with 3 keys:
 
   * **executable**: The url to the executable that you want to be run before your browser session starts
   * **args**: A list of the command line parameters that you want the executable to receive
-  * **background**: A boolean that defines whether Sauce should wait for this executable to finish before your browser session starts. If background isn't set or is set to _false_, Sauce will wait for up to 90 seconds for the executable to finish. At that point, the browser will start and your test will proceed.
+  * **background**: A boolean that defines whether Sauce should wait for this executable to finish before your browser session starts. If background isn't set or is set to `false`, Sauce will wait for up to 90 seconds for the executable to finish. At that point, the browser will start and your test will proceed.
 
 Example:
 
@@ -391,7 +391,7 @@ Example:
             "args": [ "--silent", "-a", "-q" ], "background": true }
 ```
 
-**A Note about AutoIt:** If you want to run an AutoIt script during your test, compile it as an exe, send it using this capability and set _background_ to _true_ to allow AutoIt to continue running throughout the full duration of your test.
+**A Note about AutoIt:** If you want to run an AutoIt script during your test, compile it as an exe, send it using this capability and set `background` to `true` to allow AutoIt to continue running throughout the full duration of your test.
 
 **Multiple Pre-run Executables:** If you need to send multiple pre-run executables, the best way is to bundle them into a single executable file, such as a self-extracting zip file.
 
@@ -443,7 +443,7 @@ Example:
 
 ###Internet Explorer Driver Version
 
-The specific version of the IE Driver executable can be customized using the _iedriver-version_ key.
+The specific version of the IE Driver executable can be customized using the `iedriver-version` key.
 
 In particular, Sauce supports launching 64-bit IE on our 64-bit VMs: Windows 7, Windows 8, and Windows 8.1. This provides a workaround for a known Selenium bug causing screencaptures using the 32-bit driver on a 64-bit operating system to fail to capture the whole web page.
 
@@ -476,7 +476,7 @@ Example:
 ### Avoiding the Selenium Proxy
 By default, Sauce routes all traffic from browsers through the Selenium HTTP proxy server so that HTTPS connections with self-signed certificates work everywhere. The Selenium proxy server can cause problems for some users. If that's the case for you, you can configure Sauce to avoid using the proxy server and have browsers communicate directly with your servers.
 
-Note: This flag is currently incompatible with [Sauce Connect][16]. Under Selenium RC, _avoid-proxy_ is incompatibile with the safariproxy, firefoxproxy, iexploreproxy and opera browsers. 
+Note: This flag is currently incompatible with [Sauce Connect][16]. Under Selenium RC, `avoid-proxy` is incompatibile with the safariproxy, firefoxproxy, iexploreproxy and opera browsers. 
 
 Key: `avoid-proxy`
 
