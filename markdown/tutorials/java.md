@@ -819,6 +819,8 @@ clean virtual machines on standby, we encourage you to run as many tests
 as you can at once. For an overview of how many tests you can run in parallel, see the parallelization section of the
 [Sauce plan page](http://saucelabs.com/pricing).
 
+Keep in mind, Sauce Labs accounts have limits on the number of parallel tests they can run at once.  Try to start too many, and you'll end up with tests timing out.  You can find the number of parallel tests your account can run in the sidebar of your [account page](http://www.saucelabs.com/account).
+
 ### Parallel Tests in JUnit
 
 
@@ -908,6 +910,15 @@ to specify other platforms). Now, when you run the
 tests, you should see these tests running in
 parallel on the [Sauce Labs tests page](https://saucelabs.com/tests).
 
+### Setting a parallelism limit
+
+To stop tests from timing out when you're already using all your Sauce Labs parallel slots, we need to limit the number of threads.
+
+The Sauce Labs Parallelized JUnit runner we used above uses the `junit.parallel.threads` System property to control how many threads it runs.  Let's set this to 2, to match the limit for free accounts:
+
+```bash
+mvn test -Djunit.parallel.threads=2
+```
 
 ### Parallel Tests in TestNG
 
@@ -918,6 +929,8 @@ TestNG has built in support for running tests in parallel that is configured by 
 ```xml
 <suite name="ParallelTests" verbose="5" parallel="tests" thread-count="10">
 ```
+
+Don't forget to match the `thread-count` to your concurrency limit, as mentioned above.
 
 For more information about the options available for running parallel tests using TestNG, see the
 [TestNG website](http://testng.org/doc/documentation-main.html#parallel-running)
