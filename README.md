@@ -14,6 +14,10 @@ All markdown file names should be lowercase, dasherized, and be placed inside th
 
 Any code block containing `sauceUsername` or `sauceAccessKey` will either get replaced by the logged-in user's credentials or be replaced by `YOUR_USERNAME`, and `YOUR_ACCESS_KEY` respectively. If the user is logged out, there will be a button present when hovering over code blocks prompting the user to login. Additionally, code blocks with a programming language defined will have a button present on hover to allow users to copy code to their clipboard.
 
+### Linkable heading tags
+
+Each heading tag is turned into a [fragment identifier](http://en.wikipedia.org/wiki/Fragment_identifier) so that users can link into sections within docs. Because of this, be wary of changing section headings because you might break linking between docs.
+
 ## Non-dev contributors
 
 Work should be done in branches so that it can be reviewed before being deployed. Follow the below instructions to improve the docs without using the command line:
