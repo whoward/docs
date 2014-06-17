@@ -177,7 +177,7 @@ Example:
 "record-video": false
 ```
 
-As an alternative, the `video-upload-on-pass` setting will let you discard videos for passing tests identified using the<a href="#record-pass-fail-status"><em>passed</em> setting</a>. This disables video post-processing and uploading that may otherwise consume some extra time after your test is complete.
+As an alternative, the `video-upload-on-pass` setting will let you discard videos for passing tests identified using the<a href="#recording-pass-fail-status"><em>passed</em> setting</a>. This disables video post-processing and uploading that may otherwise consume some extra time after your test is complete.
 
 Key: `video-upload-on-pass`
 
@@ -632,8 +632,8 @@ In addition to full job results, we offer a simple way to embed videos as well. 
    [7]: https://gist.github.com/1644439
    [8]: https://gist.github.com/DylanLacey/5218959
    [9]: /reference/rest-api/
-   [10]: #record-pass-fail-status
-   [11]: #disable-step-by-step-screenshots
+   [10]: #recording-pass-fail-status
+   [11]: #disabling-step-by-step-screenshots
    [12]: http://seleniumhq.org/docs/05_selenium_rc.html#multi-window-mode
    [13]: http://code.google.com/p/selenium/wiki/FirefoxDriver
    [14]: http://support.mozilla.com/en-US/kb/Managing-profiles
