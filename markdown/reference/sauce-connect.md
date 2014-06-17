@@ -21,7 +21,7 @@ You can also use Sauce Connect:
 ##  Getting started
 
 **Before you begin** 
-1. Make sure port 443 can be opened for outbound connections. 
+1. Make sure port 443 can be opened for outbound connections, or configure Sauce Connect with a proxy that can reach saucelabs.com. 
 2. Get Sauce Connect v4:
 <ul>
 <li><a href="https://saucelabs.com/downloads/sc-latest-osx.zip"><i class="fa fa-apple"></i> Download Sauce Connect for OS X</a><br>
@@ -54,15 +54,15 @@ Within your infrastructure, Sauce Connect needs access to the application under 
 
 ##  Setup process
 
-The initial outbound connect created by Sauce Connect is over port 443 to *.saucelabs.com. The response to this request contains instructions which Sauce Connect will use to establish a secure tunnel between Sauce Connect and Sauce Labs client cloud. Now that Connect has it’s instructions it will create another outbound connect to *.saucelabs.com also over 443. Once the connection is established all traffic between Sauce Labs and Sauce Connect will be multiplexed over a single encrypted TLS connection.
+During startup, Sauce Connect issues a series of HTTPS requests to the Sauce Labs REST API. These are outbound connections to saucelabs.com on port 443. Using the REST API, Sauce Connect checks for updates and other running Sauce Connect sessions, and ultimately launches a remote tunnel endpoint VM. Once the VM is started, a tunnel connection is established to a makiXXXXX.miso.saucelabs.com address on port 443, and all traffic between Sauce Labs and Sauce Connect is then multiplexed over this single encrypted TLS connection.
 
 ![SetupProcess](/images/reference/sauce-connect/sc-setup-process.png)
 
-1. Sauce Connect makes a HTTPS REST call to saucelabs.com:443 using the username and access key provided when starting Sauce Connect.
-2. Sauce Labs creates a dedicated virtual machine which will server as the endpoint of the second connection created by Sauce Connect.
-3. Sauce Labs responses with a unique ID of the virtual machine created up in step 2.
+1. Sauce Connect makes HTTPS REST API calls to saucelabs.com:443 using the username and access key provided when starting Sauce Connect.
+2. Sauce Labs creates a dedicated virtual machine which will serve as the endpoint of the tunnel connection created by Sauce Connect.
+3. Sauce Labs responds with the unique ID of the virtual machine created up in step 2.
 4. Sauce Connect establishes a TLS connection directly to the dedicated virtual machine created in step 2. (makiXXXXX.miso.saucelabs.com).
-5. At this point a secure connection is created between Sauce Connect and Sauce Labs. This is a persistent  connection with all activity initiated from the Sauce Connect client running in a customers environment.
+5. All test traffic is multiplexed over the tunnel connection established in step 4.
 
 ##  Teardown process
 
@@ -205,8 +205,8 @@ Please note that because an additional proxy is required for localhost URLs, tes
 When troubleshooting your Sauce Connect agent please make sure it has been configured to generate sc.log files by starting Sauce Connect with -vv
 
 ###	Connectivity check list
-- Is there a firewall in place between the machine running Sauce Connect and Sauce Labs (www.saucelabs.com:443)?
-- Is a proxy server required to connect to the internet, or route traffic from saucelabs.com to an internal site?
+- Is there a firewall in place between the machine running Sauce Connect and Sauce Labs (saucelabs.com:443)?
+- Is a proxy server required to connect to the internet, or route traffic from saucelabs.com to an internal site? If so you may need to configure Sauce Connect with the `--proxy` or `--pac` command line options.
 - Sauce Connect needs to establish two outbound connections. The first is to saucelabs.com (67.23.20.87) and the second is to one of many host maikiXXXXX.miso.saucelabs.com (162.222.76.0/21).
 
 ###	Checking network connectivity to Sauce Labs
