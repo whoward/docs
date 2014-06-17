@@ -75,4 +75,4 @@ addons:
 
 ## Provide Additional Details to Sauce
 
-Travis provides a set of environment variables which you can send to Sauce in order to annotate your tests. You can add [tags](/reference/test-configuration/#tag-your-jobs) using the `TRAVIS_PULL_REQUEST` string and `TRAVIS_BRANCH` string and a [build number](/reference/test-configuration/#record-the-build-number) using `TRAVIS_BUILD_NUMBER`.
+Travis provides a set of environment variables which you can send to Sauce in order to annotate your tests. You can add [tags](/reference/test-configuration/#tagging) using the `TRAVIS_PULL_REQUEST` string and `TRAVIS_BRANCH` string and a [build number](/reference/test-configuration/#recording-build-numbers) using `TRAVIS_BUILD_NUMBER`.

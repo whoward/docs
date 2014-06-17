@@ -21,7 +21,7 @@ If you have multiple projects, you will want to [create a sub-account](/referenc
 
 2. Run your tests for a given project on Sauce using that account's username and access key. If you are logged in as the account you want to use, you can find your credentials on the [account page](https://saucelabs.com/account). If you are logged in as a parent account, you can see your sub-account usernames and access keys on the [sub-accounts](https://saucelabs.com/sub-accounts) page.
 
-3. Make sure to set a [build number](/reference/test-configuration/#record-the-build-number) and a [pass/fail](/reference/test-configuration/#record-pass-fail-status) status for every test that runs. You will be able to see that these are set correctly by seeing that your tests say "Pass" or "Failed" instead of "Finished" and that a build number is visible in the UI.
+3. Make sure to set a [build number](/reference/test-configuration/#recording-build-numbers) and a [pass/fail](/reference/test-configuration/#recording-pass-fail-status) status for every test that runs. You will be able to see that these are set correctly by seeing that your tests say "Pass" or "Failed" instead of "Finished" and that a build number is visible in the UI.
 
 *Note: If your tests don't have a build or pass/fail status, you'll get the "Unknown" image for security reasons.*
 
