@@ -2,6 +2,8 @@
 
 > This repo contains the markdown documentation for Sauce Labs.
 
+[![Build Status](https://travis-ci.org/saucelabs/docs.svg?branch=master)](https://travis-ci.org/saucelabs/docs)
+
 ## Editing Markdown
 
 Every [markdown](http://daringfireball.net/projects/markdown/) document in the `markdown` folder of this repo has a required metadata section which should be valid a JavaScript object containing the `title`(used in the nav, title section, URL, search results, and as part of the [naming conventions](#naming-conventions) below), `description`(used in the meta description), `category`(used in the nav, URL and as part of the [naming conventions](#naming-conventions)), and the `index`(used to determine the document's position in the navigation relative to other documents in the same category). You can also optionally include an `image` for a doc which will be used in the nav, search results, and title section on the doc's page. The supported version of markdown is GitHub flavored markdown as described [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
