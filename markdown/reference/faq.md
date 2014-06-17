@@ -19,8 +19,8 @@ Since we believe video and screenshots are helpful features for debugging, we ha
 
 Here's our documentation on how to do that:
 
-- [Disable video recording](/reference/test-configuration/#disable-video-recording)
-- [Disable automatic screenshot capture](/reference/test-configuration/#disable-step-by-step-screenshots)
+- [Disabling video recording](/reference/test-configuration/#disabling-video-recording)
+- [Disabling automatic screenshot capture](/reference/test-configuration/#disabling-step-by-step-screenshots)
 
 ### What OS and browser combinations do you support?
 
