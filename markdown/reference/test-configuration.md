@@ -474,9 +474,13 @@ Example:
 "disable-popup-handler": true
 ```
 ### Avoiding the Selenium Proxy
-By default, Sauce routes all traffic from browsers through the Selenium HTTP proxy server so that HTTPS connections with self-signed certificates work everywhere. The Selenium proxy server can cause problems for some users. If that's the case for you, you can configure Sauce to avoid using the proxy server and have browsers communicate directly with your servers.
+By default, Sauce routes traffic from all Selenium RC and some WebDriver browsers through the Selenium HTTP proxy server so that HTTPS connections with self-signed certificates work everywhere. The Selenium proxy server can cause problems for some users. If that's the case for you, you can configure Sauce to avoid using the proxy server and have browsers communicate directly with your servers.
 
-Note: This flag is currently incompatible with [Sauce Connect][16]. Under Selenium RC, `avoid-proxy` is incompatibile with the safariproxy, firefoxproxy, iexploreproxy and opera browsers. 
+Note: Firefox and Google Chrome under WebDriver aren't affected by this flag as they handle invalid certificates automatically and there isn't a need to proxy through Selenium.
+
+Note: This flag incompatible with [Sauce Connect][16].
+
+Note: Under Selenium RC, `avoid-proxy` set to `true` will break safariproxy, firefoxproxy, iexploreproxy and opera browsers.
 
 Key: `avoid-proxy`
 
