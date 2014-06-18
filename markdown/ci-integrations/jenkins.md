@@ -6,9 +6,9 @@
   image: "/images/ci-integrations/jenkins.png",
 }
 
-## Sauce Labs and Jenkins Tutorials
+## Sauce Labs and Jenkins Tutorial
 
-These tutorials explain how to use integrate [Jenkins](http://jenkins-ci.org) with tests run with the Sauce Labs cloud of Selenium servers. 
+This tutorial explains how to integrate [Jenkins](http://jenkins-ci.org) with tests run with the Sauce Labs cloud of Selenium servers. 
 
 We assume that you have some familiarity with Jenkins and the fundamentals of automated testing. However, even if this is your first time using Jenkins and automated testing you should be able to successfully follow these step-by-step instructions. 
 
