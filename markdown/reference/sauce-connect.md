@@ -179,27 +179,37 @@ That's it! We'll take care of the rest by making the jobs that request this capa
 
 ##  FAQs
 
-**What firewall rules do I need?** Sauce Connect needs to make a direct, outbound connection to *.saucelabs.com on port 443 for the primary tunnel connection to the Sauce's cloud. **How do I keep Sauce Connect fresh?** Connect handles a lot of traffic for heavy testers. Here is one way to keep it 'fresh' to avoid leakages and freezes.
-First write a loop that will make sure of starting Sauce Connect every time it gets killed or crashes:
+### What firewall rules do I need? 
+
+Sauce Connect needs to make outbound connections to saucelabs.com and \*.miso.saucelabs.com on port 443 for the REST API and primary tunnel connections to the Sauce's cloud. It can also optionally make these connections through a web proxy; see the `--proxy`, `--pac`, and `--proxy-tunnel` command line options.
+
+### How do I keep Sauce Connect fresh?
+
+Sauce Connect handles a lot of traffic for heavy testers. Here is one way to keep it 'fresh' to avoid leakages and freezes.
+First write a loop that will restart Sauce Connect every time it gets killed or crashes:
 
 ```bash
 while :; do killall sc; sleep 30; sc -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY; done
 ```
-Then write a cron task that will kill Sauce Connect on a regular basis:
+Then, write a cron task that will kill Sauce Connect on a regular basis:
 
 ```bash
 crontab -e 00 00 * * * killall sc
 ```
 
-This will kill Sauce Connect every day at 12am, but can be modified to behave differently depending on your requirements.  **Can I access applications on localhost?** Sauce Connect proxies these commonly-used localhost ports:
+This will kill Sauce Connect every day at 12am, but can be modified to behave differently depending on your requirements.  
+
+### Can I access applications on localhost?
+
+When using Sauce Connect, local web apps running on commonly-used ports are available to test at localhost URLs, just as if the Sauce Labs cloud were your local machine. Easy!
+
+However, because an additional proxy is required for localhost URLs, tests may perform better when using a locally-defined domain name (which can be set in your [hosts file][5]) rather than localhost. Using a locally-defined domain name also allows access to applications on any port.
+
+Sauce Connect proxies these commonly-used localhost ports:
 
 80, 443, 888, 2000, 2001, 2020, 2109, 2222, 2310, 3000, 3001, 3030, 3210, 3333, 4000, 4001, 4040, 4321, 4502, 4503, 4567, 5000, 5001, 5050, 5555, 5432, 6000, 6001, 6060, 6666, 6543, 7000, 7070, 7774, 7777, 8000, 8001, 8003, 8031, 8080, 8081, 8765, 8777, 8888, 9000, 9001, 9080, 9090, 9876, 9877, 9999, 49221, 55001
 
-So when you use Connect, your local web apps are available to test at localhost URLs, just as if the Sauce Labs cloud were your local machine. Easy!
-
 Do you need a different port? [Please let us know!][4] We do our best to support ports that will be useful for many customers, such as those used by popular frameworks.
-
-Please note that because an additional proxy is required for localhost URLs, tests may perform better when using a locally-defined domain name (which can be set in your [hosts file][5]) rather than localhost. Using a locally-defined domain name also allows access to applications on any port.
 
 ##	Troubleshooting Sauce Connect
 When troubleshooting your Sauce Connect agent please make sure it has been configured to generate sc.log files by starting Sauce Connect with -vv
@@ -229,7 +239,7 @@ If you need additional help, please contact help@saucelabs.com for a better resp
 
 Re-start Sauce Connect with the following command:
 ```bash
-./sc -vv -l sc.txt -u sauceUsername -k sauceAccessKey or sc.exe -vv -l sc.txt -u sauceUsername -k sauceAccessKey
+./sc -vv -l sc.txt -u sauceUsername -k sauceAccessKey
 ```
 
 Attach log file called "sc.txt" to your support request.
