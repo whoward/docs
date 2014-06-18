@@ -12,7 +12,7 @@ For Selenium and Appium tests using the WebDriver API, settings are provided usi
 Find more about `RemoteDriver` and the `DesiredCapabilities` object on [Selenium's RemoteDriver wiki][5].
 
 ## Selenium RC API
-For Selenium RC tests, settings are given in Selenium's "browser" parameter. In Selenium RC tests this is ordinarily a string like "*iexplore" or "*firefox", but for use with Sauce Labs it will need to contain a full [JSON object][4], like this:
+For Selenium RC tests, settings are given in Selenium's "browser" parameter. In Selenium RC tests this is ordinarily a string like "\*iexplore" or "\*firefox", but for use with Sauce Labs it will need to contain a full [JSON object][4], like this:
 ```
  '{"username": "your username here",
    "access-key": "your access key here",
@@ -623,9 +623,9 @@ In addition to full job results, we offer a simple way to embed videos as well. 
 <script src="https://saucelabs.com/video-embed/7dcb077bfcfd43a0a9d50011dd3bc01c.js?auth=6a7dcf9f2d8e7039699bd0280a7f4504"></script>
 ```
 
-   [1]: #Webdriver-API
-   [2]: #Selenium-RC-API
-   [3]: #Job-Annotation-with-the-REST-API
+   [1]: #webdriver-api
+   [2]: #selenium-rc-api
+   [3]: #job-annotation-with-the-rest-api
    [4]: http://www.json.org
    [5]: http://code.google.com/p/selenium/wiki/RemoteWebDriver
    [6]: https://github.com/saucelabs/saucerest-java
@@ -644,7 +644,7 @@ In addition to full job results, we offer a simple way to embed videos as well. 
    [19]: https://saucelabs.com/docs/integration
    [20]: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
    [21]: #setcontext-
-   [22]: #Job-Annotation-with-the-REST-API
+   [22]: #job-annotation-with-the-rest-api
    [23]: #recording-test-names
    [24]: #job-visibilitiy
    [25]: #tagging
