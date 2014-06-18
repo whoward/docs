@@ -239,10 +239,10 @@ If you need additional help, please contact help@saucelabs.com for a better resp
 
 Re-start Sauce Connect with the following command:
 ```bash
-./sc -vv -l sc.txt -u sauceUsername -k sauceAccessKey
+./sc -vv -l sc.log -u sauceUsername -k sauceAccessKey
 ```
 
-Attach log file called "sc.txt" to your support request.
+Attach the log file (called `sc.log`) to your support request.
 
 For more advance troubleshooting steps please refer to http://support.saucelabs.com/entries/22485469-Sauce-Connect-Troubleshooting-Tips
 
