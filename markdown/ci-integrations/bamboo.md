@@ -58,7 +58,7 @@ Once the authentication details have been entered and saved on the `Sauce OnDema
 
 ## Bamboo Configuration for a Java-based Project
 
-To demonstrate the Bamboo plugin for Jenkins, let's create a new Bamboo project for a Java project.
+To demonstrate the Sauce plugin for Bamboo, let's create a new Bamboo project for a Java project.
 
 Click the `Create Plan` link included on the top-right of the header bar.
 
@@ -120,7 +120,7 @@ Click the `Save` button.  That's it, our configuration is all setup, let's run t
 
 ## Bamboo Configuration for a Python-based Project
 
-To demonstrate the Bamboo plugin for Jenkins, let's create a new Bamboo project for a Python project.
+To demonstrate the Sauce plugin for Bamboo, let's create a new Bamboo project for a Python project.
 
 Click the `Create Plan` link included on the top-right of the header bar.
 
