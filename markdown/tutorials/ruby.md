@@ -1,3 +1,11 @@
+{
+  title: "Ruby",
+  description: "How to run Selenium tests on Sauce Labs using ruby",
+  category: 'Tutorials',
+  index: 1,
+  image: "/images/tutorials/ruby.png"
+}
+
 Getting Started
 ----------------
 
@@ -192,14 +200,6 @@ Pat  yourself on the back! And grab a beer! You have **successfully** executed a
 
 #Testing Frameworks
 ------------------
-
- {
-  title: "Ruby",
-  description: "How to run Selenium tests on Sauce Labs using Ruby",
-  category: 'Tutorials',
-  index: 1,
-  image: "/images/tutorials/ruby.png"
-}
 
 The [sauce gem](https://github.com/saucelabs/sauce_ruby) makes it easy to run Selenium or Capybara tests against a wide range of browsers on Windows (XP, 7, 8), OS X, Linux, iOS and Android.
 
