@@ -55,7 +55,7 @@ That's it! We are ready to run our first selenium test!
 
 Let's start by running a test on our local machine first. In the text editor of your choice type up the piece of code below. (Comments are optional, however they provide good reading to get reference to what the test is doing)
 
-```Ruby
+```ruby
 # Importing the relevant classes to run our simple selenium test
 
 require 'rubygems'
@@ -112,7 +112,7 @@ export SAUCE_ACCESS_KEY=sauceAccesskey" >> ~/.bash_profile && source ~/.bash_pro
 
 * **2nd step** - Previously we had pointed the Selenium Webdriver to our localhost. Since we want to implement the test on Sauce, we will make a slight change to the driver url as shown in the code below:
 
-```Ruby
+```ruby
 require 'rubygems'
 require 'selenium-webdriver'
 
@@ -158,7 +158,7 @@ gem install peach
 
 * **2nd step** - Make the following changes to our test shown in the code below:
 
-```Ruby
+```ruby
 # Import the newly installed gem to our test code
 
 require 'peach'
