@@ -61,7 +61,12 @@ module.exports = function (grunt) {
             /(\shref\s?=\s?|\ssrc\s?=\s?>\)]+)/ig,
             /(\shref\s?=\s?|\ssrc\s?=\s?)['"]([^"']+)/ig,
             /http(s)?\:\/\/[^?\s><\'\"]+/ig
-          ]
+          ],
+          callback: function(crawler) {
+            crawler.addFetchCondition(function(url) {
+                return url.port === '4001';
+            });
+          }
         }
       }
     },
