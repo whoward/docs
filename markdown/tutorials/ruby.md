@@ -6,8 +6,7 @@
   image: "/images/tutorials/ruby.png"
 }
 
-Getting Started
-----------------
+## Getting Started
 
 Within a short time, we can have a simple Selenium Test in Ruby running on Saucelabs. 
 
@@ -17,37 +16,46 @@ If Ruby is not installed, follow these steps:
 
 We will install latest version of Ruby using the [Ruby Version Manager (RVM)](https://rvm.io/) by typing the command below in the terminal window
 
-    $ curl -L https://get.rvm.io | bash -s stable
-    
+```bash
+curl -L https://get.rvm.io | bash -s stable
+ ```   
 Now that RVM is installed, we're ready to install latest version of Ruby. Type,
 
-    $ rvm install 2.1.1
+```bash
+rvm install 2.1.1
+```
         
 Your system may already come with a pre-installed version of Ruby. For the purposes of this guide, we will be using the Ruby 2.1.1 and it can be done by 
-    
-    $ rvm --default use 2.1.1
-    
+
+```bash    
+rvm --default use 2.1.1
+```    
 Also, lets generate the core Ruby documentation by typing
 
-    $ rvm docs generate -ri
+```bash
+rvm docs generate -ri
+```
 
 RVM creates a new completely separate gem directory of each version of Ruby. If you already have a previous installation of Ruby, you can update [Rubygems](https://rubygems.org/) by typing
 
-    $ gem update --system
+```bash
+gem update --system
+```
     
 Now we just need to install the [Selenium Webdriver]ruby bindings (http://docs.seleniumhq.org/projects/webdriver/) by typing 
 
-    $ gem install selenium-webdriver
-
+```bash
+gem install selenium-webdriver
+```
 
 That's it! We are ready to run our first selenium test!
 
 
-#Selenium Test - Local
+###Selenium Test - Local
 
 Let's start by running a test on our local machine first. In the text editor of your choice type up the piece of code below. (Comments are optional, however they provide good reading to get reference to what the test is doing)
 
-```
+```Ruby
 # Importing the relevant classes to run our simple selenium test
 
 require 'rubygems'
@@ -79,33 +87,32 @@ driver.quit
 ```
 You should see a firefox window pop up with all the steps outlined above being executed. Done!
 
-# Selenium Test - Saucelabs
+### Selenium Test - Saucelabs
 
 Time to run our simple test on Saucelabs! Also this time around, we will be able to execute the test on the browser/OS combination of our choice, instead of the browser & OS available locally. 
 
 Lets perform 2 small steps and you will be ready to SAUCE!!:
 
 * **1st Step** - Adding your Sauce Labs credentials, i.e. Username and Access key, as environment variables. The credentials can be found on the Saucelabs [homepage](https://saucelabs.com/account).
-	*  On Unix / Linux, open the system profile file by typing
+
+	* On Unix / Linux, open the system profile file by typing
     
-			    	$ open ~/.bash_profile
-			
-		* Once the file is open, add the following lines
-	
-	         	export SAUCE_USERNAME=yourusername
-              	export SAUCE_ACCESS_KEY=youraccesskey
+```bash
+echo "export SAUCE_USERNAME=sauceUsername
+export SAUCE_ACCESS_KEY=sauceAccesskey" >> ~/.bash_profile && source ~/.bash_profile
+```
               	
-	* On Windows, open your environment variables settings window (Instructions [here](http://www.itechtalk.com/thread3595.html)) and set the following variables
+*	On Windows, open your environment variables settings window (Instructions [here](http://www.itechtalk.com/thread3595.html)) and set the following variables
 	
 				Name: SAUCE_USERNAME
-				Value: yourusername
+				Value: sauceUsername
 
 				Name: SAUCE_ACCESS_KEY
-				Value: youraccesskey 
+				Value: sauceAccesskey
 				             	
 * **2nd step** - Previously we had pointed the Selenium Webdriver to our localhost. Since we want to implement the test on Sauce, we will make a slight change to the driver url as shown in the code below:
 	
-```
+```Ruby
 require 'rubygems'
 require 'selenium-webdriver'
 
@@ -136,20 +143,22 @@ Once you run the test, head over to the Saucelabs [Homepage](https://saucelabs.c
 Voila!! You are up and running on Saucelabs. 
 
 
-# Parallel Selenium Tests on Different Browser / OS Combinations - Saucelabs
+### Parallel Selenium Tests on Different Browser / OS Combinations - Saucelabs
 
 We have run our test on Sauce and are feeling accomplished! That's great! However, since Saucelabs provides the world's largest grid for executing Selenium and Appium tests, we are able to harness it's abilities and run our test on various Browser/OS combinations at the same time. 
 
 Let's again perform 2 small steps and we will be rocking tests in parallel on Sauce:
 
 * **1st Step** - Lets install a rubygem called [Peach](https://github.com/schleyfox/peach) by typing the following command in the terminal window:
-    
-			    	$ gem install peach
+
+```bash    
+gem install peach
+```
 			
 					             	
 * **2nd step** - Make the following changes to our test shown in the code below:
 	
-```
+```Ruby
 # Import the newly installed gem to our test code 
 
 require 'peach'
@@ -198,7 +207,7 @@ end
 
 Pat  yourself on the back! And grab a beer! You have **successfully** executed a Selenium test in Parallel on Sauce. 
 
-#Testing Frameworks
+## Testing Frameworks
 ------------------
 
 The [sauce gem](https://github.com/saucelabs/sauce_ruby) makes it easy to run Selenium or Capybara tests against a wide range of browsers on Windows (XP, 7, 8), OS X, Linux, iOS and Android.
