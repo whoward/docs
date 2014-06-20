@@ -705,8 +705,7 @@ Result:
    "BugEmbedURL": "https://saucelabs.com/bugs/?YOUR_JOB_IDauth=secret-auth-token",
    "OS": "Linux",
    "Browser": "iexplore 10."
-   }, 
-   ...
+   }
 ]
 ```
 
