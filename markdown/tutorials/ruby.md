@@ -8,7 +8,7 @@
 
 ## Getting Started
 
-Within a short time, we can have a simple Selenium Test in Ruby running on Saucelabs. 
+Within a short time, we can have a simple Selenium Test in Ruby running on Sauce Labs. 
 
 You will need to have Ruby installed on the system. It's assumed that you already have a text editor such as [Sublime](http://www.sublimetext.com), [TextMate](http://macromates.com/), [VIM](http://www.vim.org/), etc set up to run Ruby programs. 
 
@@ -76,7 +76,7 @@ driver = Selenium::WebDriver.for(:remote,
 :url => "http://localhost:4444/wd/hub/",
 :desired_capabilities => caps)
 
-# Now to execute the test by navigating to www.google.com and searching for 'saucelabs'
+# Now to execute the test by navigating to www.google.com and searching for 'Sauce Labs'
 
 driver.navigate.to "https://www.google.com/"
 driver.find_element(:id, "gbqfq").click
@@ -87,13 +87,13 @@ driver.quit
 ```
 You should see a firefox window pop up with all the steps outlined above being executed. Done!
 
-### Selenium Test - Saucelabs
+### Selenium Test - Sauce Labs
 
-Time to run our simple test on Saucelabs! Also this time around, we will be able to execute the test on the browser/OS combination of our choice, instead of the browser & OS available locally. 
+Time to run our simple test on Sauce Labs! Also this time around, we will be able to execute the test on the browser/OS combination of our choice, instead of the browser & OS available locally. 
 
 Lets perform 2 small steps and you will be ready to SAUCE!!:
 
-* **1st Step** - Adding your Sauce Labs credentials, i.e. Username and Access key, as environment variables. The credentials can be found on the Saucelabs [homepage](https://saucelabs.com/account).
+* **1st Step** - Adding your Sauce Labs credentials, i.e. Username and Access key, as environment variables. The credentials can be found on the Sauce Labs [homepage](https://saucelabs.com/account).
 
 	* On Unix / Linux, open the system profile file by typing
     
@@ -127,7 +127,7 @@ caps["name"] = "Selenium on Sauce on IE11W8.1"
 #Change to the driver url as mentioned
 
 driver = Selenium::WebDriver.for(:remote,
-:url => "http://yourusername:youraccesskey@ondemand.saucelabs.com:80/wd/hub",
+:url => "http://sauceUsername:sauceAccesskey@ondemand.saucelabs.com:80/wd/hub",
 :desired_capabilities => caps)
 
 driver.navigate.to "http://www.google.com/"
@@ -138,14 +138,14 @@ driver.quit
 
 ```
 
-Once you run the test, head over to the Saucelabs [Homepage](https://saucelabs.com/account) and you will notice a new session, executed on a pristine new Virtual Machine, with the name 'Selenium on Sauce on IE11W8.1' and your chosen environment. 
+Once you run the test, head over to the Sauce Labs [Homepage](https://saucelabs.com/account) and you will notice a new session, executed on a pristine new Virtual Machine, with the name 'Selenium on Sauce on IE11W8.1' and your chosen environment. 
 
-Voila!! You are up and running on Saucelabs. 
+Voila!! You are up and running on Sauce Labs. 
 
 
-### Parallel Selenium Tests on Different Browser / OS Combinations - Saucelabs
+### Parallel Selenium Tests on Different Browser / OS Combinations - Sauce Labs
 
-We have run our test on Sauce and are feeling accomplished! That's great! However, since Saucelabs provides the world's largest grid for executing Selenium and Appium tests, we are able to harness it's abilities and run our test on various Browser/OS combinations at the same time. 
+We have run our test on Sauce and are feeling accomplished! That's great! However, since Sauce Labs provides the world's largest grid for executing Selenium and Appium tests, we are able to harness it's abilities and run our test on various Browser/OS combinations at the same time. 
 
 Let's again perform 2 small steps and we will be rocking tests in parallel on Sauce:
 
@@ -189,11 +189,11 @@ caps3["name"] = "Selenium on Sauce on F17OSX10"
 
 caps = [caps1, caps2, caps3]
 
-# With the slight modifications below, Saucelabs creates a new VM instance for each of our combinations
+# With the slight modifications below, Sauce Labs creates a new VM instance for each of our combinations
  
 caps.peach do |cap|
     driver = Selenium::WebDriver.for(:remote,
-    :url => "http://yourusername:youraccesskey@ondemand.saucelabs.com:80/wd/hub",
+    :url => "http://sauceUsername:sauceAccesskey@ondemand.saucelabs.com:80/wd/hub",
     :desired_capabilities => cap)
     
     driver.navigate.to "http://www.google.com/"
