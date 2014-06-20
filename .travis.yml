@@ -4,6 +4,3 @@ node_js:
 notifications:
   email:
   - chris@saucelabs.com
-cache:
-  directories:
-  - node_modules
