@@ -394,11 +394,11 @@ Result:
 ```
 
 
-### info/browsers/:selenum_version
+### info/browsers/:automation_api
 
-> Returns an array of strings corresponding to all the browsers currently supported on Sauce Labs. (Choose the termination that defines which list you need, bearing in mind that Selenium 1 [RC] and 2 [WebDriver] are compatible with different browser/OS combinations.)
+> Returns an array of strings corresponding to all the browsers currently supported on Sauce Labs. Choose the automation API you need, bearing in mind that WebDriver and Selenium RC are each compatible with a different set of OS and browser platforms.
 
-Accepted Values for `:selenium_version`: `all`, `selenium-rc`, or `webdriver`
+Accepted Values for `automation_api`: `all`, `webdriver`, or `selenium-rc`
 Example:
 
 ```bash
