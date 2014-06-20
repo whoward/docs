@@ -694,7 +694,21 @@ curl -G https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/bugs/query/ -
 ```
 Result:
 
-    List of JSON objects containing detailed info on each queried bug id
+```json
+[
+  {"Description": "Description of really nasty bug",
+   "Title": "What a nasty bug",
+   "ScreenshotEmbedURL": "https://saucelabs.com/jobs//YOUR_JOB_ID0001screenshot.png?auth=secret-auth-token",
+   "CreationTime": 1234567890,
+   "VideoEmbedURL": "https://saucelabs.com/bugs/?YOUR_JOB_IDshow_video=1&auth=secret-auth-token",
+   "Job": "https://saucelabs.com/jobs/?YOUR_JOB_IDauth=secret-auth-token",
+   "BugEmbedURL": "https://saucelabs.com/bugs/?YOUR_JOB_IDauth=secret-auth-token",
+   "OS": "Linux",
+   "Browser": "iexplore 10."
+   }, 
+   ...
+]
+```
 
 ### bugs/update/:bug_id
 
