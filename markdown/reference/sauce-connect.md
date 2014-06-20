@@ -20,12 +20,12 @@ You can also use Sauce Connect:
 
 ##  Getting started
 
-1. Get Sauce Connect v4:
+1. Get the latest Sauce Connect:
 <ul>
-<li><a href="https://saucelabs.com/downloads/sc-latest-osx.zip"><i class="fa fa-apple"></i> Download Sauce Connect for OS X</a><br>
-</li><li><a href="https://saucelabs.com/downloads/sc-latest-win32.zip"><i class="fa fa-windows"></i> Download Sauce Connect for Windows</a><br>
-</li><li><a href="https://saucelabs.com/downloads/sc-latest-linux.tar.gz"><i class="fa fa-linux"></i> Download Sauce Connect for Linux</a><br>
-</li><li>(If you're looking for Sauce Connect v3, you download it <a href="https://saucelabs.com/downloads/Sauce-Connect-latest.zip">here</a>.)<br>
+<li><a href="https://saucelabs.com/downloads/sc-4.2-osx.zip"><i class="fa fa-apple"></i> Download Sauce Connect v4.2 for OS X</a><br>
+</li><li><a href="https://saucelabs.com/downloads/sc-4.2-win32.zip"><i class="fa fa-windows"></i> Download Sauce Connect v4.2 for Windows</a><br>
+</li><li><a href="https://saucelabs.com/downloads/sc-4.2-linux.tar.gz"><i class="fa fa-linux"></i> Download Sauce Connect v4.2 for Linux</a><br>
+</li><li>(If you're looking for Sauce Connect v3, you can download it <a href="https://saucelabs.com/downloads/Sauce-Connect-3.1-r32.zip">here</a>.)<br>
 </li>
 </ul>
 2. Unzip (or untar).  
