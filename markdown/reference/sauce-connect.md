@@ -234,14 +234,7 @@ curl -v https://saucelabs.com/
 
 ###	For more help
 
-If you need additional help, please contact help@saucelabs.com for a better response from our support team regarding Sauce Connect please provide our team with the following information.
-
-Re-start Sauce Connect with the following command:
-```bash
-./sc -vv -l sc.log -u sauceUsername -k sauceAccessKey
-```
-
-Attach the log file (called `sc.log`) to your support request.
+If you need additional help, get in touch at help@saucelabs.com. To provide our support team with additional information, please add the `-vv` and `-l sc.log` options to your Sauce Connect command line, reproduce the problem, and attach the resulting log file (called `sc.log`) to your support request.
 
 For more advance troubleshooting steps please refer to http://support.saucelabs.com/entries/22485469-Sauce-Connect-Troubleshooting-Tips
 
