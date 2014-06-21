@@ -59,7 +59,7 @@ During startup, Sauce Connect issues a series of HTTPS requests to the Sauce Lab
 
 1. Sauce Connect makes HTTPS REST API calls to saucelabs.com:443 using the username and access key provided when starting Sauce Connect.
 2. Sauce Labs creates a dedicated virtual machine which will serve as the endpoint of the tunnel connection created by Sauce Connect.
-3. Sauce Labs responds with the unique ID of the virtual machine created up in step 2.
+3. Sauce Labs responds with the unique ID of the virtual machine created in step 2.
 4. Sauce Connect establishes a TLS connection directly to the dedicated virtual machine created in step 2. (makiXXXXX.miso.saucelabs.com).
 5. All test traffic is multiplexed over the tunnel connection established in step 4.
 
