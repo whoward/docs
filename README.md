@@ -20,6 +20,29 @@ Any code block containing `sauceUsername` or `sauceAccessKey` will either get re
 
 Each heading tag is turned into a [fragment identifier](http://en.wikipedia.org/wiki/Fragment_identifier) so that users can link into sections within docs. Because of this, be wary of changing section headings because you might break linking between docs.
 
+## Running tests locally
+
+To run the tests locally, first clone the repo:
+```bash
+git clone https://github.com/saucelabs/docs.git && cd docs
+```
+
+Then run the following command to install the local node.js dependencies:
+```bash
+npm install
+```
+*Note: this assumes you have [node.js](http://nodejs.org/) installed.*
+
+If you don't have Grunt installed, run the following to command to install it globally:
+```bash
+npm install -g grunt-cli
+```
+
+Now you can test your changes by running the following command:
+```bash
+npm test
+```
+
 ## Non-dev contributors
 
 Work should be done in branches so that it can be reviewed before being deployed. Follow the below instructions to improve the docs without using the command line:
