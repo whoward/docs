@@ -178,9 +178,9 @@ That's it! We'll take care of the rest by making the jobs that request this capa
 
 ### What firewall rules do I need? 
 
-Sauce Connect needs to make outbound connections to saucelabs.com and \*.miso.saucelabs.com on port 443 for the REST API and primary tunnel connections to the Sauce's cloud. It can also optionally make these connections through a web proxy; see the `--proxy`, `--pac`, and `--proxy-tunnel` command line options.
+Sauce Connect needs to make outbound connections to saucelabs.com and \*.miso.saucelabs.com on port 443 for the REST API and the primary tunnel connection to the Sauce cloud. It can also optionally make these connections through a web proxy; see the `--proxy`, `--pac`, and `--proxy-tunnel` command line options.
 
-### How do I keep Sauce Connect fresh?
+### How can I periodically restart Sauce Connect?
 
 Sauce Connect handles a lot of traffic for heavy testers. Here is one way to keep it 'fresh' to avoid leakages and freezes.
 First write a loop that will restart Sauce Connect every time it gets killed or crashes:
