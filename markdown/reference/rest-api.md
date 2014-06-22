@@ -30,10 +30,7 @@ Here is an example retreiving a user's recent jobs:
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs
 ```
 
-*Note: All POST requests **must** have the `Content-Type` header set to `application/json`.*
-
-
-Note that all below endpoints have a base URL of `saucelabs.com/rest/v1/` and default to a `GET` request unless specified.
+Note: All POST requests **must** have the `Content-Type` header set to `application/json`. All below endpoints have a base URL of `saucelabs.com/rest/v1/` and default to a `GET` request unless specified.
 
 ## Account
 
