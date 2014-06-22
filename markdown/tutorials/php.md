@@ -851,8 +851,7 @@ are good to go.
 When Sauce Connect is running, all tests that you run using your Sauce Labs
 account use the network on the machine where Sauce Connect is located.
 
-For more information about Sauce Connect, or to download and configure the
-Java binary on your own, see the [Sauce Connect documentation](https://saucelabs.com/docs/connect).
+For more information about Sauce Connect, or to download and configure the binary on your own, see the [Sauce Connect documentation](https://saucelabs.com/docs/connect).
 
 Running tests in parallel
 =====
