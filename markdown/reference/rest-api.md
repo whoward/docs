@@ -34,7 +34,7 @@ Note: All POST requests **must** have the `Content-Type` header set to `applicat
 
 ## Account
 
-> Access account information and create new sub-accounts.
+These methods provide user account information and management.
 
 ### users/:username
 
