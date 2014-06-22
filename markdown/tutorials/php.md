@@ -1078,7 +1078,7 @@ Integrating Sauce into existing PHPUnit WebDriver Tests
 =======
 
 Do you already have a test suite running WebDriver tests? While we recommend
-usingSausage, it's also possible to integrate with Sauce in whichever test framework you
+using Sausage, it's also possible to integrate with Sauce in whichever test framework you
 happen to be using -- you'll just miss out on a lot of features you get for
 free in Sausage (like automatic pass/fail reporting).  Let's take a look at an
 example `PHPUnit_Extensions_Selenium2TestCase` test suite, so we can see what
