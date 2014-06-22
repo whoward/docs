@@ -397,6 +397,7 @@ Information resources are publicly available data about Sauce Lab's service.
 
 Get the current status of Sauce Labs services.
 
+**Example request:**
 ```bash
 curl -X GET http://saucelabs.com/rest/v1/info/status
 ```
