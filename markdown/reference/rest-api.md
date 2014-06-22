@@ -717,7 +717,7 @@ Example response:
 curl -G https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/bugs/update/YOUR_BUG_ID --data-urlencode 'update={"Property-name-1": "Property-Value-1", "Property-name-2": "Property-Value-2"}
 ```
 
-**Valid keys: **Only following bug properties can be modified with the API: 'Title', 'Description'.
+**Valid keys:** Only the following bug properties can be modified with the API: `"Title"`, and `"Description"`.
 
 Example response:
 
