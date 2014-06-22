@@ -5,7 +5,7 @@
   index: 2
 }
 
-The Sauce Labs REST API is accessed over HTTPS, with standard HTTP methods and authentication, and using JSON encoding for request and response data.
+The Sauce Labs REST API is accessed over HTTPS, with standard HTTP methods and authentication, and using [JSON][1] encoding for request and response data.
 
 The API is versioned by URL. The current version is v1, and resides under the `saucelabs.com/rest/v1/` base URL. Some v1.1 methods have been introduced under `saucelabs.com/rest/v1.1`.
 
@@ -22,7 +22,7 @@ If you use Java, Ruby, PHP or node.js, you can use one of the below API librarie
 
 ## Getting Started
 
-The Sauce Labs REST API uses [HTTP Basic Authentication][5]. The easiest way to authenticate is to include the Sauce username and access key in the request URL.
+The Sauce Labs REST API uses [HTTP Basic Authentication][2]. The easiest way to authenticate is to include the Sauce username and access key in the request URL.
 
 Here is an example retreiving a user's recent jobs:
 
@@ -207,7 +207,7 @@ Default: `false`
 * `end_time`: [integer] The time the job finished executing
 * `video_url`: [string] Full URL to the video replay of the job
 * `log_url`: [string] Full URL to the Selenium log of the job
-* `public`: [string or boolean] [Visibility mode][6] [public, public restricted, share (true), team (false), private]
+* `public`: [string or boolean] [Visibility mode][3] [public, public restricted, share (true), team (false), private]
 * `tags`: [array of strings] Tags assigned to a job
 
 Example getting full information about last 100 jobs:
@@ -257,7 +257,7 @@ curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jo
 **Request fields:**
 * `name`: [string] Change the job name
 * `tags`: [array of strings] Change the job tags
-* `public`: [string or boolean] Set [job visibility][6] to "public", "public restricted", "share" (true), "team" (false) or "private"
+* `public`: [string or boolean] Set [job visibility][3] to "public", "public restricted", "share" (true), "team" (false) or "private"
 * `passed`: [boolean] Set whether the job passed or not on the user end
 * `build`: [int] The AUT build number tested by this test
 * `custom-data`: [JSON] a set of key-value pairs with any extra info that a user would like to add to the job
@@ -334,7 +334,7 @@ curl -X DELETE https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceU
 
 ## Tunnels
 
-Tunnels are used by [Sauce Connect][7] to redirect traffic for a given domain to a server on your internal network. They are unique to users and will not affect any other users. For more information, please read our [Sauce Connect documentation][7]
+Tunnels are used by [Sauce Connect][4] to redirect traffic for a given domain to a server on your internal network. They are unique to users and will not affect any other users. For more information, please read our [Sauce Connect documentation][4]
 
 ### :username/tunnels
 
@@ -417,7 +417,7 @@ curl -X GET http://saucelabs.com/rest/v1/info/counter
 
 ## Partners
 
-This section is for use only by Sauce Labs partner accounts. If you use these commands with a standard account, they may cause unexpected behavior. To add and manage sub-accounts, head to [your sub-accounts page][8].
+This section is for use only by Sauce Labs partner accounts. If you use these commands with a standard account, they may cause unexpected behavior. To add and manage sub-accounts, head to [your sub-accounts page][5].
 
 Create a new subaccount, specifying a Sauce Labs service plan.
 
@@ -538,12 +538,12 @@ Response:
     }
 ```
 
-Hosting your tests on your LAN or your laptop? You'll need to run [Sauce Connect][9] to bridge Sauce Labs to your local network. Optional parameters related to Sauce Connect include:
+Hosting your tests on your LAN or your laptop? You'll need to run [Sauce Connect][4] to bridge Sauce Labs to your local network. Optional parameters related to Sauce Connect include:
 
 `tunnel_identifier` specifies the ID of a specific tunnel when using multiple Sauce Connect tunnels.
 `parent_tunnel` specifies the username of a parent account whose shared Sauce Connect tunnel your tests should use.
 
-Any other parameters get passed on as [Optional Desired Capabilities][10] for the selenium server. This means you can set things like: `max-duration`
+Any other parameters get passed on as [Optional Desired Capabilities][6] for the selenium server. This means you can set things like: `max-duration`
 
 The default `max-duration` for all JS Unit Tests is 180 seconds.
 
@@ -727,13 +727,9 @@ Example response:
 }
 ```
 
-   [1]: http://en.wikipedia.org/wiki/Representational_State_Transfer
-   [2]: http://en.wikipedia.org/wiki/HTTP
-   [3]: http://en.wikipedia.org/wiki/JSON
-   [4]: http://en.wikipedia.org/wiki/Content-Type
-   [5]: http://en.wikipedia.org/wiki/Basic_access_authentication
-   [6]: https://saucelabs.com/docs/additional-config#public-jobs
-   [7]: /reference/sauce-connect/
-   [8]: https://saucelabs.com/sub-accounts
-   [9]: /reference/sauce-connect/
-   [10]: /reference/test-configuration/
+   [1]: http://en.wikipedia.org/wiki/JSON
+   [2]: http://en.wikipedia.org/wiki/Basic_access_authentication
+   [3]: https://saucelabs.com/docs/additional-config#job-visibility
+   [4]: /reference/sauce-connect/
+   [5]: https://saucelabs.com/sub-accounts
+   [6]: /reference/test-configuration/
