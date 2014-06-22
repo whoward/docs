@@ -187,7 +187,7 @@ curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jo
 
 **Optional query params:**
 
-#### ?limit
+`limit`
 
 Specifies the number of jobs to be returned.
 
@@ -198,7 +198,7 @@ Default: `100`
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs?limit=200
 ```
 
-#### ?full
+`full`
 
 Get full job information, rather than just IDs.
 
@@ -227,7 +227,7 @@ Default: `false`
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs?full=true
 ```
 
-#### skip
+`skip`
 
 Skips the specified number of jobs.
 
@@ -238,7 +238,7 @@ Default: `0`
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs?skip=20
 ```
 
-#### to and from
+`to` and `from`
 
 Get jobs since/until the specified time (in epoch time, calculated from UTC).
 
@@ -247,7 +247,7 @@ Get jobs since/until the specified time (in epoch time, calculated from UTC).
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs?from=1357747500&to=1357748700
 ```
 
-#### format
+`format`
 
 Get job info in the specified format. Currently we support `json` and `csv`.
 
