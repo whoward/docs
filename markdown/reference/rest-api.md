@@ -476,17 +476,15 @@ curl -X DELETE https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceU
 
 Sauce Labs provides temporary storage inside our network for mobile apps, Selenium jars, prerun executables, and other assets required by your tests. Storing assets in our network can eliminate network latency problems when sending big files to Sauce. Here's how you use our storage:
 
-### storage/:username/:your_file_name POST
-
-**Optional Query Params:**
-
-By default, the API prevents overwriting files already stored in Sauce temporary storage. The `overwrite=true` URL can be added to allow overwriting.
-
   * Before tests start, upload the file via our REST API as described below.
   * During tests, use a `sauce-storage:` URL for the file, in the following format: `"sauce-storage:your_file_name"`
   * Sauce will find the file, download it through our fast internal network, and get your tests started right away.
 
-To upload a file:
+Please note that our temporary storage retains files for only 24 hours. We recommend users of this service upload files via our REST API every time their tests are about to run, as part of their build process.
+
+### storage/:username/:your_file_name POST
+
+Upload a file to temporary storage.
 
 **Example request:**
 ```bash
@@ -496,9 +494,11 @@ curl -u sauceUsername:sauceAccessKey \
      --data-binary @/path/to/your_file_name
 ```
 
-This can be scripted in any programming language. Just make sure the HTTP method being used is POST and the Content-Type header is correct.
+This can be scripted in any programming language. Just make sure the HTTP method being used is POST and the `Content-Type` header is correct.
 
-Please note that our temporary storage retains files for only 24 hours. We recommend users of this service upload files via our REST API every time their tests are about to run, as part of their build process.
+**Optional Query Params:**
+
+By default, the API prevents overwriting files already stored in Sauce temporary storage. The `overwrite=true` query parameter (shown in the example above) can be added to allow overwriting.
 
 ## JS Unit Testing
 
@@ -570,7 +570,7 @@ Hosting your tests on your LAN or your laptop? You'll need to run [Sauce Connect
 
 Any other parameters get passed on as [Optional Desired Capabilities][6] for the selenium server. This means you can set things like: `max-duration`
 
-The default `max-duration` for all JS Unit Tests is 180 seconds.
+The default `max-duration` for all JS unit tests is 180 seconds.
 
 **Example response:**
 ```json
@@ -585,7 +585,7 @@ The default `max-duration` for all JS Unit Tests is 180 seconds.
 
 ### :username/js-tests/status POST
 
-Get the status of your JS Unit Tests
+Get the status of your JS unit tests
 
 **Example request:**
 ```bash
