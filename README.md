@@ -1,6 +1,6 @@
 # Sauce Labs Docs
 
-> This repo contains the markdown documentation for Sauce Labs.
+This repo contains the markdown documentation for Sauce Labs.
 
 [![Build Status](https://travis-ci.org/saucelabs/docs.svg?branch=master)](https://travis-ci.org/saucelabs/docs)
 
