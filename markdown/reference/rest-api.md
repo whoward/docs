@@ -139,21 +139,21 @@ Example response:
 {
   "usage": [
     [
-      "2011-3-18",
+      "2014-3-18",
       [
         2,
         38
       ]
     ],
     [
-      "2011-3-31",
+      "2014-3-31",
       [
         5,
         5533
       ]
     ],
     [
-      "2011-4-1",
+      "2014-4-1",
       [
         7,
         5076
@@ -245,7 +245,7 @@ Example getting last 100 job ids using the CSV format:
 ### :username/jobs/:job_id
 > Show the full information for a job given its ID.
 
-Example:
+Example request:
 
 ```bash
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID
@@ -262,7 +262,7 @@ curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jo
 * `build`: [int] The AUT build number tested by this test
 * `custom-data`: [JSON] a set of key-value pairs with any extra info that a user would like to add to the job
 
-Example:
+Example request:
 
 ```bash
 curl -X PUT https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID\
@@ -274,7 +274,7 @@ curl -X PUT https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUser
 
 > Removes the job from the system with all the linked assets.
 
-Example:
+Example request:
 
 ```bash
 curl -v -X DELETE http://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID
@@ -284,7 +284,7 @@ curl -v -X DELETE http://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauc
 
 > Terminates a running job.
 
-Example:
+Example request:
 
 ```bash
 curl -X PUT https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/stop \
@@ -302,7 +302,7 @@ Response fields (each of these fields will be set to "null" if the specific asse
 * `video`: [string] Name of the video file name recorded for a job
 * `screenshots`: [array of strings] List of screenshot names captured by a job
 
-Example:
+Example request:
 ```bash
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/assets
 ```
@@ -317,7 +317,8 @@ Available Values for `:file_name`:
 * video.flv
 * XXXXscreenshot.png (where XXXX is a number between 0000 and 9999)
 * final_screenshot.png
-Example:
+
+Example request:
 
 ```bash
 curl -O https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/assets/final_screenshot.png
@@ -327,7 +328,7 @@ curl -O https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername
 
 > Delete all the data gathered during test run from our servers. That includes the video recording, Selenium log, and all the screenshots.
 
-Example:
+Example request:
 ```bash
 curl -X DELETE https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/assets
 ```
@@ -341,12 +342,13 @@ Tunnels are used by [Sauce Connect][4] to redirect traffic for a given domain to
 >Retrieves all running tunnels for a given user.
 
 Attributes:
-'id': [string] Tunnel ID
-'owner': [string] Tunnel owner
-'status': [string] Tunnel status
-'host': [string] Public address of the tunnel
-'creation_time': [integer]
-Example:
+`id`: [string] Tunnel ID
+`owner`: [string] Tunnel owner
+`status`: [string] Tunnel status
+`host`: [string] Public address of the tunnel
+`creation_time`: [integer]
+
+Example request:
 
 ```bash
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/tunnels
@@ -355,7 +357,7 @@ curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/tu
 ### :username/tunnels/:tunnel_id
 > Show the full information for a tunnel given its ID.
 
-Example:
+Example request:
 
 ```bash
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/tunnels/YOUR_TUNNEL_ID
@@ -364,7 +366,7 @@ curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/tu
 ### :username/tunnels/:tunnel_id DELETE
 > Shuts down a tunnel given its ID.
 
-Example:
+Example request:
 
 ```bash
 curl -X DELETE https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/tunnels/YOUR_TUNNEL_ID
@@ -399,7 +401,8 @@ Example response:
 > Returns an array of strings corresponding to all the browsers currently supported on Sauce Labs. Choose the automation API you need, bearing in mind that WebDriver and Selenium RC are each compatible with a different set of OS and browser platforms.
 
 Accepted Values for `automation_api`: `all`, `webdriver`, or `selenium-rc`
-Example:
+
+Example request:
 
 ```bash
 curl -X GET http://saucelabs.com/rest/v1/info/browsers/webdriver
@@ -409,7 +412,7 @@ curl -X GET http://saucelabs.com/rest/v1/info/browsers/webdriver
 
 > Returns the number of test executed so far on Sauce Labs.
 
-Example:
+Example request:
 
 ```bash
 curl -X GET http://saucelabs.com/rest/v1/info/counter
@@ -451,16 +454,16 @@ curl -X DELETE https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceU
 
 Sauce Labs provides temporary storage inside our network for mobile apps, Selenium jars, prerun executables, and other assets required by your tests. Storing assets in our network can eliminate network latency problems when sending big files to Sauce. Here's how you use our storage:
 
-### storage/:username/:your_file_name
+### storage/:username/:your_file_name POST
 
-**Accepted Query
-overwrite=true URL parameter allows files already stored in the Sauce network to be overwritten. It can be removed if you prefer to prevent overwriting.
+**Accepted Query Params:**
+By default, the API prevents overwriting files already stored in Sauce temporary storage. The `overwrite=true` URL can be added to allow overwriting.
 
   * Before tests start, upload the file via our REST API as described below.
-  * During tests, use a special URL for the file, in the following format: `"sauce-storage:your_file_name"`
-  * Sauce will find the file, download it through our fast internal network and get your tests started right away
+  * During tests, use a `sauce-storage:` URL for the file, in the following format: `"sauce-storage:your_file_name"`
+  * Sauce will find the file, download it through our fast internal network, and get your tests started right away.
 
-To upload the file via our REST API:
+To upload a file:
 
 ```bash
 curl -u sauceUsername:sauceAccessKey \
@@ -487,7 +490,7 @@ Required POST data:
 
 The `"custom"` framework allows you to display generic test information on the Sauce Labs website. Set `window.global_test_results` on the javascript on your unit test page to an object that looks like the following and Sauce will report any failing tests: `
 
-Example:
+Example request:
 
 ```bash
     curl -X POST https://saucelabs.com/rest/v1/sauceUsername/js-tests \
@@ -501,7 +504,7 @@ Example:
 ```
 
 
-Response:
+Example response:
 
 ```json
 {
@@ -547,7 +550,7 @@ Any other parameters get passed on as [Optional Desired Capabilities][6] for the
 
 The default `max-duration` for all JS Unit Tests is 180 seconds.
 
-The response will look something like this:
+Example response:
 
 ```json
 {
@@ -559,7 +562,7 @@ The response will look something like this:
 ```
 
 
-### :username/js-tests/status
+### :username/js-tests/status POST
 
 > Get the status of your JS Unit Tests
 
@@ -570,9 +573,9 @@ curl -X POST https://saucelabs.com/rest/v1/sauceUsername/js-tests/status \
         --data '{"js tests": ["064df78366ea4b25b32f88878c9d7aa4", "1e5ed949711545bd952456ac37479ada"]}'
 ```
 
-Do that a few times as the tests run, waiting until the response contains `"completed": true`.
+Do that a few times as the tests run, waiting until the response contains `"completed": true` to get the final results.
 
-Once the tests are completed, the result will look something like this:
+Example response:
 
 ```json
 {
