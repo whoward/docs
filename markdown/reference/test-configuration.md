@@ -46,8 +46,8 @@ passed: boolean
 
 custom-data: JSON object
 
-```
 Here's a more comprehensive example of the JSON accepted by this method:
+```json
  {
       "name": "my job name",
       "passed": true,
@@ -69,8 +69,8 @@ If you were to use this from your tests, you would probably want to build a simp
 setContext is an alternative to the REST API available for Selenium RC tests. In Selenium RC, the `setContext()` command is meant only for sending advisory information to the Selenium server for logging purposes. When the value passed to setContext starts with "sauce:", Sauce intercepts the command and parses it for job annotations. We allow two formats for setContext: basic and advanced. The basic format lets you set tags, name, and pass/fail status for jobs. The advanced format lets you set more fields, and you can set them all in a single command.
 
 Basic format:
-```
- this.selenium.setContext("sauce:job-tags=tag1,tag2,tag3")
+```java
+  this.selenium.setContext("sauce:job-tags=tag1,tag2,tag3")
   this.selenium.setContext("sauce:job-name=My awesome job")
   this.selenium.setContext("sauce:job-result=passed")
   this.selenium.setContext("sauce:job-result=failed")
@@ -80,7 +80,7 @@ Advanced format:
 
 Our advanced format involves submitting a JSON-encoded dictionary as the value of sauce:job-info. You can set as many or as few of the fields as you wish. For example, in Java, include the following code in your test to add information to a job:
 
-```
+```java
  this.selenium.setContext("sauce:job-info={\"name\": \"my job name\"," +
                           "\"tags\": [\"tag1\", \"tag2\", \"tag3\"]," +
                           "\"passed\": true,"+
