@@ -113,7 +113,7 @@ curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jo
 
 **Optional query params:**
 
-#### limit jobs
+#### number of jobs
 Specifies the number of jobs to be returned.
 
 URL: `https://saucelabs.com/rest/v1/:username/jobs?limit=:number_of_jobs`
@@ -126,7 +126,7 @@ Default: `100`
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs?limit=200
 ```
 
-#### get full jobs
+#### full jobs
 Get full job information, rather than just IDs.
 
 URL: `https://saucelabs.com/rest/v1/:username/jobs?full=:get_full_info`
