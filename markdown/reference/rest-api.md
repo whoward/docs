@@ -356,14 +356,14 @@ Tunnels are used by [Sauce Connect][4] to redirect traffic for a given domain to
 
 ### :username/tunnels
 
->Retrieves all running tunnels for a given user.
+Retrieves all running tunnels for a given user.
 
 Attributes:
-`id`: [string] Tunnel ID
-`owner`: [string] Tunnel owner
-`status`: [string] Tunnel status
-`host`: [string] Public address of the tunnel
-`creation_time`: [integer]
+* `id`: [string] Tunnel ID
+* `owner`: [string] Tunnel owner
+* `status`: [string] Tunnel status
+* `host`: [string] Public address of the tunnel
+* `creation_time`: [integer]
 
 **Example request:**
 ```bash
@@ -510,8 +510,8 @@ Start your JavaScript unit tests on as many browsers as you like with a single r
 
 Required POST data:
 
-`url`:  should point to the page that hosts your tests.
-`framework` can be `"qunit"`, `"jasmine"`, `"YUI Test"`, `"mocha"`, or `"custom"`.
+* `url`:  should point to the page that hosts your tests.
+* `framework` can be `"qunit"`, `"jasmine"`, `"YUI Test"`, `"mocha"`, or `"custom"`.
 
 The `"custom"` framework allows you to display generic test information on the Sauce Labs website. Set `window.global_test_results` on the javascript on your unit test page to an object that looks like the following and Sauce will report any failing tests: `
 
@@ -565,8 +565,8 @@ The `"custom"` framework allows you to display generic test information on the S
 
 Hosting your tests on your LAN or your laptop? You'll need to run [Sauce Connect][4] to bridge Sauce Labs to your local network. Optional parameters related to Sauce Connect include:
 
-`tunnel_identifier` specifies the ID of a specific tunnel when using multiple Sauce Connect tunnels.
-`parent_tunnel` specifies the username of a parent account whose shared Sauce Connect tunnel your tests should use.
+* `tunnel_identifier`: specifies the ID of a specific tunnel when using multiple Sauce Connect tunnels.
+* `parent_tunnel`: specifies the username of a parent account whose shared Sauce Connect tunnel your tests should use.
 
 Any other parameters get passed on as [Optional Desired Capabilities][6] for the selenium server. This means you can set things like: `max-duration`
 
