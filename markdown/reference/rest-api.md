@@ -5,7 +5,9 @@
   index: 2
 }
 
-The Sauce Labs REST API allows customers to retrieve information about Sauce Labs resources programmatically over HTTP using JSON. Customers can retrieve job information, video replays of tests, Selenium logs of tests, start and stop SauceTunnels, and so on.
+The Sauce Labs REST API is accessed over HTTPS, with standard HTTP methods and authentication, and using JSON encoding for request and response data.
+
+The API is versioned by URL. The current version is v1, and resides under the `saucelabs.com/rest/v1/` base URL. Some v1.1 methods have been introduced under `saucelabs.com/rest/v1.1`.
 
 ## Sauce API libraries
 
@@ -20,15 +22,16 @@ If you use Java, Ruby, PHP or node.js, you can use one of the below API librarie
 
 ## Getting Started
 
-Users can authenticate using a [HTTP Basic Authentication][5] base64 encoded _Username_ and _API Access Key_. The easiest way to authenticate is to include the Sauce username and access key in the request URL.
-
-*Note: All requests **must** have the `Content-Type` header set to `application/json`.*
+The Sauce Labs REST API uses [HTTP Basic Authentication][5]. The easiest way to authenticate is to include the Sauce username and access key in the request URL.
 
 Here is an example retreiving a user's recent jobs:
 
 ```bash
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs
 ```
+
+*Note: All POST requests **must** have the `Content-Type` header set to `application/json`.*
+
 
 Note that all below endpoints have a base URL of `saucelabs.com/rest/v1/` and default to a `GET` request unless specified.
 
