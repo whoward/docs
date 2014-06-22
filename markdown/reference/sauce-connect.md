@@ -209,12 +209,11 @@ Sauce Connect proxies these commonly-used localhost ports:
 Do you need a different port? [Please let us know!](http://support.saucelabs.com/anonymous_requests/new) We do our best to support ports that will be useful for many customers, such as those used by popular frameworks.
 
 ##	Troubleshooting Sauce Connect
-When troubleshooting your Sauce Connect agent please make sure it has been configured to generate sc.log files by starting Sauce Connect with -vv
+When troubleshooting Sauce Connect, you can generate verbose log files by adding the `-vv` and `-l sc.log` options on the command line.
 
-###	Connectivity check list
-- Is there a firewall in place between the machine running Sauce Connect and Sauce Labs (saucelabs.com:443)?
-- Is a proxy server required to connect to the internet, or route traffic from saucelabs.com to an internal site? If so you may need to configure Sauce Connect with the `--proxy` or `--pac` command line options.
-- Sauce Connect needs to establish two outbound connections. The first is to saucelabs.com (67.23.20.87) and the second is to one of many host maikiXXXXX.miso.saucelabs.com (162.222.76.0/21).
+###	Connectivity considerations
+- Is there a firewall in place between the machine running Sauce Connect and Sauce Labs (\*.saucelabs.com:443)? You may need to allow access in your firewall rules, or configure Sauce Connect to use a proxy. Sauce Connect needs to establish outbound connections to saucelabs.com (67.23.20.87) on port 443, and to one of many host maikiXXXXX.miso.saucelabs.com IPs (162.222.76.0/21), also on port 443. It can make these connections directly, or can be configured to use an HTTP proxy with the `--proxy`, `--pac` and `--proxy-tunnel` command line options.
+- Is a proxy server required to connect to route traffic from saucelabs.com to an internal site? If so you may need to configure Sauce Connect with the `--proxy` or `--pac` command line options.
 
 ###	Checking network connectivity to Sauce Labs
 Make sure that saucelabs.com is accessible from the machine running Sauce Connect. This can be tested issuing a ping, telnet or cURL command to sacuelabs.com from the machine's command line interface. If any of these commands fail please work with your internal network team to resolve them.
