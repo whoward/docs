@@ -90,7 +90,7 @@ Access historical account usage data.
 
 URL: `https://saucelabs.com/rest/v1/users/:username/usage`
 
-**Accepted Query Params:**
+**Optional Query Params:**
 * `start` and `end` in YYYY-MM-DD format.
 
 **Example request:**
@@ -106,8 +106,7 @@ List recent jobs belonging to a given user.
 
 URL: `https://saucelabs.com/rest/v1/:username/jobs`
 
-**Example getting last 100 job ids:**
-
+**Example request:**
 ```bash
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs
 ```
@@ -175,8 +174,9 @@ Get jobs since/until the specified time (in epoch time, calculated from UTC).
 
 URL: `https://saucelabs.com/rest/v1/:username/jobs?to=:time` and `https://saucelabs.com/rest/v1/:username/jobs?from=:time`
 
+**Example request(replace `EPOCH_TIME` with an [epoch time](http://en.wikipedia.org/wiki/Unix_time)):**
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs?from=YESTERDAY
+curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs?from=EPOCH_TIME
 ```
 
 #### format jobs
@@ -324,7 +324,7 @@ curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/tu
 ```
 
 ### Get Tunnel
-Show the full information for a tunnel given its ID.
+Get information for a tunnel given its ID.
 
 URL: `https://saucelabs.com/rest/v1/:username/tunnels/:tunnel_id`
 
@@ -355,6 +355,7 @@ Get the current status of Sauce Labs services.
 
 URL: `https://saucelabs.com/rest/v1/info/status`
 
+**Example request:**
 ```bash
 curl -X GET http://saucelabs.com/rest/v1/info/status
 ```
@@ -427,6 +428,12 @@ curl -X DELETE https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceU
 
 Sauce Labs provides temporary storage inside our network for mobile apps, Selenium jars, prerun executables, and other assets required by your tests. Storing assets in our network can eliminate network latency problems when sending big files to Sauce. Here's how you use our storage:
 
+* Before tests start, upload the file via our REST API as described below.
+* During tests, use a `sauce-storage:` URL for the file, in the following format: `"sauce-storage:your_file_name"`
+* Sauce will find the file, download it through our fast internal network, and get your tests started right away.
+
+Please note that our temporary storage retains files for only 24 hours. We recommend users of this service upload files via our REST API every time their tests are about to run, as part of their build process.
+
 ### Upload File
 
 Upload a file to temporary storage.
@@ -479,7 +486,7 @@ curl  -X POST https://saucelabs.com/rest/v1/sauceUsername/js-tests \
           "framework": "jasmine"}'
 ```
 
-Hosting your tests on your LAN or your laptop? You'll need to run [Sauce Connect][9] to bridge Sauce Labs to your local network. Optional parameters related to Sauce Connect include:
+Hosting your tests on your LAN or your laptop? You'll need to run [Sauce Connect](/reference/sauce-connect/) to bridge Sauce Labs to your local network. Optional parameters related to Sauce Connect include:
 
 * `tunnel_identifier`: specifies the ID of a specific tunnel when using multiple Sauce Connect tunnels.
 * `parent_tunnel`: specifies the username of a parent account whose shared Sauce Connect tunnel your tests should use.
