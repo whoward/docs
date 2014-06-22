@@ -135,7 +135,8 @@ curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/ac
 
 Access historical account usage data.
 
-**Accepted Query Params:**
+**Optional Query Params:**
+
 * `start` and `end` in YYYY-MM-DD format.
 
 **Example request:**
@@ -475,7 +476,8 @@ Sauce Labs provides temporary storage inside our network for mobile apps, Seleni
 
 ### storage/:username/:your_file_name POST
 
-**Accepted Query Params:**
+**Optional Query Params:**
+
 By default, the API prevents overwriting files already stored in Sauce temporary storage. The `overwrite=true` URL can be added to allow overwriting.
 
   * Before tests start, upload the file via our REST API as described below.
