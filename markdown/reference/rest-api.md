@@ -64,11 +64,11 @@ Create a sub-account.
 **Example request:**
 ```bash
 curl -X POST https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sauceUsername \
--H 'Content-Type: application/json' \
--d '{"username": "subaccount-username", 
-     "password": "subaccount-password", 
-     "name": "subaccount-name", 
-     "email": "subaccount-email-address"}'
+     -H 'Content-Type: application/json' \
+     -d '{"username": "subaccount-username", 
+          "password": "subaccount-password", 
+          "name": "subaccount-name", 
+          "email": "subaccount-email-address"}'
 ```
 
 **Example response:**
@@ -281,13 +281,13 @@ Edit an existing job
 
 **Example request:**
 ```bash
-curl -X PUT https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID\
--H "Content-Type: application/json" \
--d '{"tags": ["test", "example", "taggable"],
-     "public": true,
-     "name": "changed-job-name",
-     "passed": false, 
-     "custom-data": {"error": "step 17 failed"}}'
+curl -X PUT https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID \
+     -H "Content-Type: application/json" \
+     -d '{"tags": ["test", "example", "taggable"],
+          "public": true,
+          "name": "changed-job-name",
+          "passed": false, 
+          "custom-data": {"error": "step 17 failed"}}'
 ```
 
 ### :username/jobs/:job_id DELETE
@@ -458,7 +458,9 @@ Update a subaccount Sauce Labs service plan.
 
 **Example request:**
 ```bash
-curl -X POST https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sauceUsername/subscription -H 'Content-Type: application/json' -d '{"plan":"small"}'
+curl -X POST https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sauceUsername/subscription \
+     -H 'Content-Type: application/json' 
+     -d '{"plan": "small"}'
 ```
 
 ### users/:username/subscripton DELETE
@@ -489,8 +491,9 @@ To upload a file:
 **Example request:**
 ```bash
 curl -u sauceUsername:sauceAccessKey \
--X POST "http://saucelabs.com/rest/v1/storage/sauceUsername/your_file_name?overwrite=true" \
-    -H "Content-Type: application/octet-stream" --data-binary @/path/to/your_file_name
+     -X POST "http://saucelabs.com/rest/v1/storage/sauceUsername/your_file_name?overwrite=true" \
+     -H "Content-Type: application/octet-stream" \
+     --data-binary @/path/to/your_file_name
 ```
 
 This can be scripted in any programming language. Just make sure the HTTP method being used is POST and the Content-Type header is correct.
@@ -517,11 +520,10 @@ The `"custom"` framework allows you to display generic test information on the S
     curl -X POST https://saucelabs.com/rest/v1/sauceUsername/js-tests \
         -u sauceUsername:sauceAccessKey \
         -H 'Content-Type: application/json' \
-        --data '{
-            "platforms": [["Windows 7", "firefox", "27"],
+        -d '{"platforms": [["Windows 7", "firefox", "27"],
                           ["Linux", "googlechrome", ""]],
-            "url": "https://saucelabs.com/test_helpers/front_tests/index.html",
-            "framework": "jasmine"}'
+             "url": "https://saucelabs.com/test_helpers/front_tests/index.html",
+             "framework": "jasmine"}'
 ```
 
 
@@ -590,12 +592,12 @@ Get the status of your JS Unit Tests
 curl -X POST https://saucelabs.com/rest/v1/sauceUsername/js-tests/status \
         -u sauceUsername:sauceAccessKey \
         -H 'Content-Type: application/json' \
-        --data '{
-                  "js tests": [
-                    "064df78366ea4b25b32f88878c9d7aa4", 
-                    "1e5ed949711545bd952456ac37479ada"
-                  ]
-                }'
+        -d '{
+              "js tests": [
+                "064df78366ea4b25b32f88878c9d7aa4", 
+                "1e5ed949711545bd952456ac37479ada"
+              ]
+            }'
 ```
 
 Do that a few times as the tests run, waiting until the response contains `"completed": true` to get the final results.
