@@ -459,7 +459,7 @@ Update a subaccount Sauce Labs service plan.
 **Example request:**
 ```bash
 curl -X POST https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sauceUsername/subscription \
-     -H 'Content-Type: application/json' 
+     -H 'Content-Type: application/json' \
      -d '{"plan": "small"}'
 ```
 
