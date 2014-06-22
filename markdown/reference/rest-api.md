@@ -177,22 +177,22 @@ curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sauceUsern
 
 ### :username/jobs
 
-List all job ids belonging to a given user.
+List recent jobs belonging to a given user.
 
-Example getting last 100 job ids:
+**Example request:**
 ```bash
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs
 ```
 
-Optional params:
+**Optional query params:**
 
 #### ?limit
 
-Displays the specified number of jobs, instead of truncating the list at the default 100.
+Specifies the number of jobs to be returned.
 
 Default: `100`
 
-Example getting last 200 job ids:
+**Example getting last 200 job IDs:**
 ```bash
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs?limit=200
 ```
@@ -221,23 +221,23 @@ Default: `false`
 * `public`: [string or boolean] [Visibility mode][3] [public, public restricted, share (true), team (false), private]
 * `tags`: [array of strings] Tags assigned to a job
 
-Example getting full information about last 100 jobs:
+**Example getting full information about the last 100 jobs:**
 ```bash
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs?full=true
 ```
 
-#### ?skip
+#### skip
 
 Skips the specified number of jobs.
 
 Default: `0`
 
-Example getting last 100 job ids skipping 20 most recent jobs:
+**Example getting the last 100 job IDs, skipping 20 most recent jobs:**
 ```bash
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs?skip=20
 ```
 
-#### ?to and ?from
+#### to and from
 
 Get jobs since/until the specified time (in epoch time, calculated from UTC).
 
@@ -246,13 +246,13 @@ Get jobs since/until the specified time (in epoch time, calculated from UTC).
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs?from=1357747500&to=1357748700
 ```
 
-#### ?format
+#### format
 
 Get job info in the specified format. Currently we support `json` and `csv`.
 
 Default: `json`
 
-Example getting last 100 job ids using the CSV format:
+**Example getting last 100 job IDs using the CSV format:**
 ```bash
  curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs?format=csv
 ```
@@ -262,7 +262,6 @@ Example getting last 100 job ids using the CSV format:
 Show the full information for a job given its ID.
 
 **Example request:**
-
 ```bash
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID
 ```
