@@ -44,7 +44,7 @@ Note: All POST requests **must** have the `Content-Type` header set to `applicat
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sauceUsername
 ```
 
-Result:
+Example response:
 ```json
 {
   "access_key": "sdgk234lkjl223j",
@@ -65,7 +65,7 @@ curl -X POST https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sa
 -H 'Content-Type: application/json' \
 -d '{"username":"subaccount-username", "password":"subaccount-password", "name":"subaccount-name", "email":"subaccount-email-address"}'
 ```
-Result:
+Example response:
 
 ```json
 {
@@ -82,7 +82,7 @@ Result:
 ```bash
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sauceUsername/concurrency
 ```
-Result:
+Example response:
 
 ```json
 {
@@ -100,7 +100,7 @@ Result:
 ```bash
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/activity
 ```
-Result:
+Example response:
 
 ```json
 {
@@ -133,7 +133,7 @@ Result:
 ```bash
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sauceUsername/usage
 ```
-Result:
+Example response:
 
 ```json
 {
@@ -383,7 +383,7 @@ Information resources are publicly available data about Sauce Lab's service.
 curl -X GET http://saucelabs.com/rest/v1/info/status
 ```
 
-Result:
+Example response:
 
 ```json
 {
@@ -426,7 +426,7 @@ curl -X POST https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sa
 ```
 **Available plans: ** 'free', 'small', 'team', 'com', 'complus'
 
-Result:
+Example response:
 
 ```json
 {
@@ -626,7 +626,7 @@ Interacting with Jobs bug tracking system
 ```bash
 curl https://saucelabs.com/rest/v1/bugs/types
 ```
-Result:
+Example response:
 
 ```json
 [
@@ -645,7 +645,7 @@ Result:
 ```bash
 curl https://saucelabs.com/rest/v1/bugs/types/bug-type-example-id-1234
 ```
-Result:
+Example response:
 
 ```json
 [
@@ -669,7 +669,7 @@ Result:
 ```bash
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/bugs/detail/YOUR_BUG_ID
 ```
-Result:
+Example response:
 
 ```json
 {
@@ -692,7 +692,7 @@ Result:
 ```bash
 curl -G https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/bugs/query/ --data-urlencode 'ids=[""YOUR_BUG_ID, "0123401234-example-id-12345"]'
 ```
-Result:
+Example response:
 
 ```json
 [
@@ -719,7 +719,7 @@ curl -G https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/bugs/update/Y
 
 **Valid keys: **Only following bug properties can be modified with the API: 'Title', 'Description'.
 
-Result(After successful command execution):
+Example response:
 
 ```json
 {
