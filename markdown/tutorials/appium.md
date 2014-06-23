@@ -217,7 +217,7 @@ You may notice that Appium tests take a bit longer than regular selenium tests. 
 
   - Your app compiled as an .apk.
   - A [Sauce Labs account](https://saucelabs.com/account)
-  - A Selenium WebDriver client library for your langauge of choice (see the [Tutorial Introduction](#appium-on-sauce-labs))
+  - A Selenium WebDriver [client library](#appium-client-libraries) for your language of choice
 
 ### Setting Up Your Android Tests for Sauce
 
