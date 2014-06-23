@@ -152,7 +152,7 @@ Default: `false`
 * `end_time`: [integer] The time the job finished executing
 * `video_url`: [string] Full URL to the video replay of the job
 * `log_url`: [string] Full URL to the Selenium log of the job
-* `public`: [string or boolean] [Visibility mode][3] [public, public restricted, share (true), team (false), private]
+* `public`: [string or boolean] [Visibility mode](/reference/test-configuration/#job-visbility) [public, public restricted, share (true), team (false), private]
 * `tags`: [array of strings] Tags assigned to a job
 
 **Example getting full information about the last 100 jobs:**
@@ -213,7 +213,7 @@ METHOD: `PUT`
 **Request Fields:**
 * `name`: [string] Change the job name
 * `tags`: [array of strings] Change the job tags
-* `public`: [string or boolean] Set [job visibility][3] to "public", "public restricted", "share" (true), "team" (false) or "private"
+* `public`: [string or boolean] Set [job visibility](/reference/test-configuration/#job-visbility) to "public", "public restricted", "share" (true), "team" (false) or "private"
 * `passed`: [boolean] Set whether the job passed or not on the user end
 * `build`: [int] The build number tested by this test
 * `custom-data`: [JSON] a set of key-value pairs with any extra info that a user would like to add to the job
