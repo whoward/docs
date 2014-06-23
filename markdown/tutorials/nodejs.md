@@ -8,32 +8,27 @@
 
 ## Getting Started
 
-In this tutorial of how to run tests on Sauce Labs using node.js we will use [Grunt](http://gruntjs.com/) to automate running tasks, [Mocha](http://visionmedia.github.io/mocha/) to run tests and [WD.js]([WD.js](https://github.com/admc/wd)) to run selenium commands.
+In this tutorial of how to run Selenium tests on Sauce Labs we will use [Grunt](http://gruntjs.com/) with [grunt-mocha-webdriver](https://github.com/jmreidy/grunt-mocha-webdriver) to automate running tasks, [Mocha](http://visionmedia.github.io/mocha/) to run tests and [WD.js]([WD.js](https://github.com/admc/wd)) to run Selenium commands.
 
-However it is also possible to use Sauce with other libraries or
+However it is also possible to use Sauce with raw mocha and other libraries or
 frameworks, for instance [WebDriverJS](https://code.google.com/p/selenium/wiki/WebDriverJs) and [Jasmine](https://github.com/pivotal/jasmine). More tutorials are available [here](https://github.com/saucelabs/node-tutorial).
 
-## Setting up a project
+## Installing the sample project
 
-First open a new terminal and configure your Sauce Labs credentials:
-
+First clone the sample repo and enter the repo's directory with the following command:
 ```bash
-export SAUCE_USERNAME=sauceUsername
-export SAUCE_ACCESS_KEY=sauceAccessKey
+git clone https://github.com/saucelabs/sauce-node-example && cd sauce-node-example
 ```
 
-Install the necessary tools:
+Then, make sure you have Grunt installed globally on your system:
 
 ```bash
-npm install -g mocha grunt grunt-init grunt-cli
-git clone https://github.com/saucelabs/grunt-init-sauce.git ~/.grunt-init/sauce
+npm install -g grunt-cli
 ```
 
-Generate the project and install the package dependencies:
+Now run the following command to get all of the local dependencies:
 
 ```bash
-mkdir tutorial && cd tutorial
-grunt-init sauce # press enter when asked
 npm install
 ```
 
