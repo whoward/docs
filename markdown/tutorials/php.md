@@ -793,8 +793,8 @@ exactly what we want. Simple as they are, these login/signup tests are extremely
 Running them before every deployment will help ensure that you can 
 welcome new users into your community and get them where they need to go.
 
-Testing local apps with Sauce Connect
-=======
+## Testing local apps with Sauce Connect
+
 
 Developing apps on `localhost` is extremely quick and efficient. However, `localhost` is not a publicly-accessible
 address on the Internet, so by default the browsers in the Sauce Labs cloud cannot
@@ -853,8 +853,8 @@ account use the network on the machine where Sauce Connect is located.
 
 For more information about Sauce Connect, or to download and configure the binary on your own, see the [Sauce Connect documentation](https://saucelabs.com/docs/connect).
 
-Running tests in parallel
-=====
+## Running tests in parallel
+
 
 As you may recall from earlier tutorials, Selenium tests can take a long time!
 They may take even longer on Sauce because we start each test on a new virtual
@@ -899,8 +899,8 @@ execute in any order. In the next section we'll talk about
 this and discuss some tips for avoiding potential snags when speeding up
 test suites using parallelism.
 
-Tips for better Selenium test performance
-=====
+## Tips for better Selenium test performance
+
 
 In this section we'll share some tips about how to improve the performance of Selenium tests.
 
@@ -1074,8 +1074,8 @@ the Selenium `text()` command until its value is what we expect or we hit 10 sec
 Using spinAssert functions is a great way to make tests less brittle and more
 accepting of differences in network speeds, surges in traffic, and other challenges in the test environment.
 
-Integrating Sauce into existing PHPUnit WebDriver Tests
-=======
+## Integrating Sauce into existing PHPUnit WebDriver Tests
+
 
 Do you already have a test suite running WebDriver tests? While we recommend
 using Sausage, it's also possible to integrate with Sauce in whichever test framework you

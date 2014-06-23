@@ -5,8 +5,6 @@
   index: 7,
   image: "/images/tutorials/appium.png",
 }
-Appium on Sauce Labs
-====================
 
 Appium is an open source mobile automation tool for iOS and Android. Appium can test native and hybrid applications, and can even be used to automate Mobile Safari on iOS. 
 
@@ -19,8 +17,8 @@ There are several advantages to using Appium on Sauce Labs to test your mobile a
 
 For an in-depth explanation of how Appium works, and the various technologies used to make Appium work, visit the [Appium Documentation](http://appium.io/documentation.html). 
 
-Writing Tests With Appium
----
+## Writing Tests With Appium
+
 
 Getting started with Appium on Sauce Labs is easy:
 
@@ -33,8 +31,8 @@ For information on writing, configuring, and running your tests in Sauce Labs' c
   - [iOS Getting Started guide](#appium-for-ios-on-sauce-labs)
   - [Android Getting Started guide](#appium-for-android-on-sauce-labs)
 
-Appium Client Libraries
----
+## Appium Client Libraries
+
 
 Appium works with an extension of WebDriver's client bindings, so you'll need to install the bindings for your favorite language:
 
@@ -45,8 +43,8 @@ Appium works with an extension of WebDriver's client bindings, so you'll need to
 * Python - [https://github.com/appium/python-client](https://github.com/appium/python-client)
 * C# - [https://github.com/appium/appium-dotnet-driver](https://github.com/appium/appium-dotnet-driver)
 
-Complete Tutorial
----
+## Complete Tutorial
+
 
 Want to know all the ins and outs of testing your iOS app with Appium on Sauce? Then you're in the right place. These tutorials explain how to automate testing of your apps with Appium.
 
@@ -57,8 +55,8 @@ Let's get started! Click the first link below:
   - [Running iOS Tests on Sauce](#appium-for-ios-on-sauce-labs)
   - [Running Android Tests on Sauce](#appium-for-android-on-sauce-labs)
 
-Appium Resources
----
+## Appium Resources
+
 
 For more information, feel free to visit the resources listed below:
 
@@ -264,27 +262,26 @@ The responses from your app (whether a success or an error) are converted from U
 
 Appium hides all this complexity from you and your script. Your test script thinks it's communicating with your test app using the Selenium JSON Wire Protocol, but it's really communicating with an Appium server via the Selenium API.
 
-Tips for Writing Better Appium Tests
-===
+## Tips for Writing Better Appium Tests
+
 
 There are a few things to keep in mind while writing tests for Appium. This section of the tutorial covers some common 'gotchas' that you may run into when writing Appium tests.
 
-Accessibility
----
+## Accessibility
 
 Because Appium uses the UI Automation framework for running tests, it's a good idea to conform to best practices for UI Automation testing. One of these is providing good accessibility information in your UI, since UI Automation uses that information to automate your app. 
 
 Fortunately, this is something that everyone should be doing already, and it's easy to do while writing your apps. UI Automation looks for the UIViews `accesibilityLabel` attribute. For information about setting accessibility information, check out the [UI Automation accessibility documentation](http://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/UsingtheAutomationInstrument/UsingtheAutomationInstrument.html#//apple_ref/doc/uid/TP40004652-CH20-SW86).
 
-Next Steps and More Information
-===
+
+## Next Steps and More Information
 
 Congratulations! You're all set up to test your iOS apps using Appium on the Sauce Labs cloud of Selenium servers. 
 
 There are many resources available to help you write the best tests possible, some of which are listed below.
 
-Documentation
----
+## Documentation
+
 
   - [Appium](http://appium.io)
   - [Introduction to Appium Concepts](http://appium.io/introduction.html)
