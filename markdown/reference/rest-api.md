@@ -280,12 +280,12 @@ Download job assets. After a job completes, all assets created during the job ar
 
 URL: `https://saucelabs.com/rest/v1/:username/jobs/:job_id/assets/:file_name`
 
-**Available Values for `:file_name`**:
+**Accepted Values for `:file_name`**:
 
-* selenium-server.log
-* video.flv
-* XXXXscreenshot.png (where XXXX is a number between 0000 and 9999)
-* final_screenshot.png
+* `selenium-server.log`
+* `video.flv`
+* `XXXXscreenshot.png` (where XXXX is a number between 0000 and 9999)
+* `final_screenshot.png`
 
 **Example request:**
 ```bash
