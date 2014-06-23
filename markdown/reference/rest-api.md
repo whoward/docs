@@ -7,7 +7,7 @@
 
 The Sauce Labs REST API is accessed over HTTPS, with standard HTTP methods and authentication, and using [JSON][1] encoding for request and response data.
 
-The API is versioned by URL. The current version is v1, and resides under the `saucelabs.com/rest/v1/` base URL. Some v1.1 methods have been introduced under `saucelabs.com/rest/v1.1`.
+The API is versioned by URL. The current version is v1, and resides under the `saucelabs.com/rest/v1/` base URL. Some v1.1 methods have been introduced under `saucelabs.com/rest/v1.1/`.
 
 ## Sauce API libraries
 
@@ -24,13 +24,7 @@ If you use Java, Ruby, PHP or node.js, you can use one of the below API librarie
 
 The Sauce Labs REST API uses [HTTP Basic Authentication][2]. The easiest way to authenticate is to include the Sauce username and access key in the request URL.
 
-Here is an example retreiving a user's recent jobs:
-
-```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs
-```
-
-Note: All below endpoints default to a `GET` request unless specified, and all `POST` requests **must** have the `Content-Type` header set to `application/json`.
+Note that all below endpoints default to a `GET` request unless specified, and all `POST` requests **must** have the `Content-Type` header set to `application/json`.
 
 ## Account
 
@@ -50,6 +44,16 @@ curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sauceUsern
 ### Create User
 
 Create a sub-account.
+
+URL: `https://saucelabs.com/rest/v1/users/:username`
+
+METHOD: `POST`
+
+**Request Fields:**
+* `username`(required)
+* `password`(required)
+* `name`(required): full name of sub-account user
+* `email`(required)
 
 **Example request:**
 ```bash
@@ -133,7 +137,7 @@ URL: `https://saucelabs.com/rest/v1/:username/jobs?full=:get_full_info`
 
 Default: `false`
 
-**Available Job Attributes:**
+**Response Fields:**
 
 * `id`: [string] Job Id
 * `owner`: [string] Job owner
@@ -206,12 +210,12 @@ URL: `https://saucelabs.com/rest/v1/:username/jobs/:job_id`
 
 METHOD: `PUT`
 
-**Request fields:**
+**Request Fields:**
 * `name`: [string] Change the job name
 * `tags`: [array of strings] Change the job tags
 * `public`: [string or boolean] Set [job visibility][3] to "public", "public restricted", "share" (true), "team" (false) or "private"
 * `passed`: [boolean] Set whether the job passed or not on the user end
-* `build`: [int] The AUT build number tested by this test
+* `build`: [int] The build number tested by this test
 * `custom-data`: [JSON] a set of key-value pairs with any extra info that a user would like to add to the job
 
 **Example request:**
@@ -272,9 +276,9 @@ curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jo
 
 ### Get Job Asset Files
 
-URL: `https://saucelabs.com/rest/v1/:username/jobs/:job_id/assets/:file_name`
-
 Download job assets. After a job completes, all assets created during the job are available via this API. These include the screencast recording, logs, and screenshots taken on crucial steps.
+
+URL: `https://saucelabs.com/rest/v1/:username/jobs/:job_id/assets/:file_name`
 
 **Available Values for `:file_name`**:
 
@@ -311,7 +315,7 @@ Retrieves all running tunnels for a given user.
 
 URL: `https://saucelabs.com/rest/v1/:username/tunnels`
 
-Attributes:
+**Response Fields:**
 * `id`: [string] Tunnel ID
 * `owner`: [string] Tunnel owner
 * `status`: [string] Tunnel status
@@ -381,9 +385,16 @@ This section is for use only by Sauce Labs partner accounts. If you use these co
 
 Create a new subaccount, specifying a Sauce Labs service plan.
 
-URL: `https://saucelabs.com/rest/v1/users/:username/`
+URL: `https://saucelabs.com/rest/v1/users/:username`
 
 Method: `POST`
+
+**Request Fields:**
+* `username`(required)
+* `password`(required)
+* `name`(required): full name of sub-account user
+* `email`(required)
+* `plan`(required): Either 'free', 'small', 'team', 'com', or 'complus'
 
 **Example request:**
 ```bash
@@ -400,13 +411,16 @@ curl -X POST https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sa
 
 Update a subaccount Sauce Labs service plan.
 
-URL: `https://saucelabs.com/rest/v1/:username/subscription`
+URL: `https://saucelabs.com/rest/v1/:subaccount_username/subscription`
 
 Method: `POST`
 
+**Request Fields:**
+* `plan`(required): Either 'free', 'small', 'team', 'com', or 'complus'
+
 **Example request:**
 ```bash
-curl -X POST https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sauceUsername/subscription \
+curl -X POST https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/SUBACCOUNT_USERNAME/subscription \
      -H 'Content-Type: application/json' \
      -d '{"plan": "small"}'
 ```
@@ -415,13 +429,13 @@ curl -X POST https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sa
 
 Unsubscribe a subaccount from it's Sauce Labs service plan.
 
-URL: `https://saucelabs.com/rest/v1/:username/subscription`
+URL: `https://saucelabs.com/rest/v1/:subaccount_username/subscription`
 
 Method: `DELETE`
 
 **Example request:**
 ```bash
-curl -X DELETE https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/subscription
+curl -X DELETE https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/SUBACCOUNT_USERNAME/subscription
 ```
 
 ## Temporary Storage
@@ -468,9 +482,10 @@ URL: `https://saucelabs.com/rest/v1/:username/js-tests`
 
 Method: `POST`
 
-* `platforms`: an array of platforms
-* `url`: should point to the page that hosts your tests.
-* `framework`: can be `"qunit"`, `"jasmine"`, `"YUI Test"`, `"mocha"`, or `"custom"`.
+**Request Fields:**
+* `platforms`(required): an array of platforms
+* `url`(required): should point to the page that hosts your tests.
+* `framework`(required): can be `"qunit"`, `"jasmine"`, `"YUI Test"`, `"mocha"`, or `"custom"`.
 
 The `"custom"` framework allows you to display generic test information on the Sauce Labs website. Set `window.global_test_results` on the javascript on your unit test page to an object that looks like the following and Sauce will report any failing tests: `
 
