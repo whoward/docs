@@ -370,7 +370,11 @@ URL: `https://saucelabs.com/rest/v1/info/browsers/:automation_api`
 
 Get an array of strings corresponding to all the browsers currently supported on Sauce Labs. Choose the automation API you need, bearing in mind that WebDriver and Selenium RC are each compatible with a different set of OS and browser platforms.
 
-Accepted Values for `automation_api`: `all`, `webdriver`, or `selenium-rc`
+**Accepted Values for `automation_api`:**
+
+* `all`
+* `webdriver`
+* `selenium-rc`
 
 **Example request:**
 ```bash
