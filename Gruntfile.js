@@ -35,7 +35,11 @@ module.exports = function (grunt) {
           },
           markedOptions: function(marked) {
             var renderer = new marked.Renderer();
-            renderer.heading = function (text, level, raw) {
+            renderer.heading = function (text, level, raw, post) {
+              if (level === 1) {
+                grunt.fail.fatal('No H1 level headings allowed in the docs. Found "' + text + '" at ' +
+                                 post.sourcePath);
+              }
               // Note: changing this may break fragment identifier links from other pages
               var escapedText = raw
                                   .toLowerCase()
