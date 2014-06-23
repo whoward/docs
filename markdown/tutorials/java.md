@@ -803,8 +803,8 @@ move on to learn more about how Sauce Labs lets you do more with
 Selenium.
 
 
-Running Tests in Parallel
-=====
+## Running Tests in Parallel
+
 
 As you may recall from earlier tutorials, Selenium tests can take a long time! They may take even longer on Sauce
 because we start each test on a new virtual machine that has never been used before (don't worry, we don't charge
