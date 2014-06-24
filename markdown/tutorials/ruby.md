@@ -1,6 +1,6 @@
  {
   title: "Ruby",
-  description: "How to run Selenium tests on Sauce Labs using ruby",
+  description: "How to run Selenium tests on Sauce Labs using Ruby",
   category: 'Tutorials',
   index: 1,
   image: "/images/tutorials/ruby.png"

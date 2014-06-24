@@ -207,8 +207,8 @@ WebDriver webDriver = SeleniumFactory.createWebDriver();
 
 Implementations of the library exist for [Java](https://github.com/infradna/selenium-client-factory) and [Python](http://sauceio.com/index.php/2012/01/selenium-client-factory-for-python/)
 
-Troubleshooting
-======
+## Troubleshooting
+
 
 The source code for the plugin is available from [GitHub](https://github.com/rossrowe/sauce-teamcity-plugin)
 

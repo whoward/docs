@@ -1,8 +1,9 @@
 # Sauce Labs Docs
 
-> This repo contains the markdown documentation for Sauce Labs.
+This repo contains the markdown documentation for Sauce Labs.
 
 [![Build Status](https://travis-ci.org/saucelabs/docs.svg?branch=master)](https://travis-ci.org/saucelabs/docs)
+[![Build status](https://ci.appveyor.com/api/projects/status/8f3q4ng044d748q6)](https://ci.appveyor.com/project/ChrisWren/docs)
 
 ## Editing Markdown
 
@@ -19,6 +20,29 @@ Any code block containing `sauceUsername` or `sauceAccessKey` will either get re
 ### Linkable heading tags
 
 Each heading tag is turned into a [fragment identifier](http://en.wikipedia.org/wiki/Fragment_identifier) so that users can link into sections within docs. Because of this, be wary of changing section headings because you might break linking between docs.
+
+## Running tests locally
+
+To run the tests locally, first clone the repo:
+```bash
+git clone https://github.com/saucelabs/docs.git && cd docs
+```
+
+Then run the following command to install the local node.js dependencies:
+```bash
+npm install
+```
+*Note: this assumes you have [node.js](http://nodejs.org/) installed.*
+
+If you don't have Grunt installed, run the following to command to install it globally:
+```bash
+npm install -g grunt-cli
+```
+
+Now you can test your changes by running the following command:
+```bash
+npm test
+```
 
 ## Non-dev contributors
 
