@@ -108,7 +108,8 @@ Now we can use this curl one-liner to download and install Sausage using your us
 find your Sauce access key on your [Sauce account page](https://saucelabs.com/account):
 
 ```bash
-curl -s https://raw.githubusercontent.com/jlipps/sausage-bun/master/givememysausage.php | SAUCE_USERNAME=sauceUsername SAUCE_ACCESS_KEY=sauceAccessKey php
+curl -s https://raw.githubusercontent.com/jlipps/sausage-bun/master/givememysausage.php |
+SAUCE_USERNAME=sauceUsername SAUCE_ACCESS_KEY=sauceAccessKey php
 ```
 
 This will start the download script and install Sausage in the `~/sauce-tutorial`

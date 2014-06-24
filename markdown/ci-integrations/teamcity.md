@@ -98,20 +98,20 @@ If a single browser is selected, then the `SELENIUM_PLATFORM`, `SELENIUM_VERSION
 ```json
 
 [
-    {
+  {
     "platform":"LINUX",
     "os":"Linux",
     "browser":"firefox",
     "url":"sauce-ondemand:?os=Linux&browser=firefox&browser-version=16",
     "browser-version":"16"
-    },
-    {
+  },
+  {
     "platform":"VISTA",
     "os":"Windows 2008",
     "browser":"iexploreproxy",
     "url":"sauce-ondemand:?os=Windows 2008&browser=iexploreproxy&browser-version=9",
     "browser-version":"9"
-    }
+  }
 ]
 ```
 
@@ -168,13 +168,13 @@ Your test code will need to be updated to reference these environment variables.
 Below is some sample Java code which demonstrates how to reference the environment variables that are set by the TeamCity plugin
 
 ```java
-    DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-    desiredCapabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
-    desiredCapabilities.setVersion(System.getenv("SELENIUM_VERSION"));
-    desiredCapabilities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
-    WebDriver driver = new RemoteWebDriver(
-                new URL("http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub"),
-                desiredCapabilities);
+DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+desiredCapabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
+desiredCapabilities.setVersion(System.getenv("SELENIUM_VERSION"));
+desiredCapabilities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
+WebDriver driver = new RemoteWebDriver(
+    new URL("http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub"),
+    desiredCapabilities);
 
 ```
 
@@ -192,9 +192,10 @@ Below is a Java sample that demonstrates outputting the session id to the Java s
 ```java
 private void printSessionId() {
 
-        String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", (((RemoveWebDriver) driver).getSessionId()).toString(), "some job name");
-        System.out.println(message);
-    }
+    String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
+    (((RemoveWebDriver) driver).getSessionId()).toString(), "some job name");
+    System.out.println(message);
+}
 ```
 
 Selenium Client Factory

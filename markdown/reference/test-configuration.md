@@ -304,7 +304,10 @@ Value type: list
 Example:
 
 ```python
-"user-extensions-url": [ "http://saucelabs.com/ext/flex.js", "ftp://username:password@server.com/bleh.js" ]
+"user-extensions-url": [
+  "http://saucelabs.com/ext/flex.js",
+  "ftp://username:password@server.com/bleh.js"
+]
 ```
 
 ### Selenium RC Custom Firefox Profiles
@@ -575,19 +578,12 @@ Here's an example in Python for generating the token for a job with id: 5f9fef27
 ```python
 import hmac
 from hashlib import md5
-hmac.new("example_user:123456-asdf-8dcf81f1fc71", "5f9fef27854ca50a3c132ce331cb6034", md5).hexdigest()
-      '3fca4184e106622adf2d33d8023271c1'
+hmac.new("sauceUsername:sauceAccessKey", "5f9fef27854ca50a3c132ce331cb6034", md5).hexdigest()
 ```
 
 Once the auth token has been obtained, it can be used to build a link in the following format:
 
 `https://saucelabs.com/jobs/<job-id>?auth=<token>`
-
-For our example job, the link would end up being:
-
-`https://saucelabs.com/jobs/5f9fef27854ca50a3c132ce331cb6034?auth=8859d634f5a51fea1a66e74708cf822a`
-
-**Note**: the link won't work as this job doesn't really exist.
 
 ### Temporary links to jobs
 

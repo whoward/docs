@@ -48,7 +48,8 @@ If you don't already have `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` available as e
 
 ```bash
 echo "export SAUCE_USERNAME=sauceUsername
-export SAUCE_ACCESS_KEY=sauceAccessKey" >> ~/.bash_profile && source ~/.bash_profile
+export SAUCE_ACCESS_KEY=sauceAccessKey" >> ~/.bash_profile &&
+source ~/.bash_profile
 ```
 
 ### Export Credentials on Windows
