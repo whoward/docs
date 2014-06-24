@@ -22,7 +22,16 @@ If you use Java, Ruby, PHP or node.js, you can use one of the below API librarie
 
 ## Getting Started
 
-The Sauce Labs REST API uses [HTTP Basic Authentication][2]. The easiest way to authenticate is to include the Sauce username and access key in the request URL.
+The Sauce Labs REST API uses [HTTP Basic Authentication][2]. To authenticate, either include the Sauce username and access key in the request URL like so:
+```bash
+curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sauceUsername
+```
+
+Or add an `Authorization` header to the request like this:
+```bash
+curl https://saucelabs.com/rest/v1/users/sauceUsername \
+--user sauceUsername:sauceAccessKey 
+```
 
 Note that all below endpoints default to a `GET` request unless specified, and all `POST` requests **must** have the `Content-Type` header set to `application/json`.
 
@@ -36,9 +45,10 @@ Access basic account information.
 
 URL: `https://saucelabs.com/rest/v1/users/:username`
 
-**Example request:**
+**Example Request:**
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sauceUsername
+curl https://saucelabs.com/rest/v1/users/sauceUsername \
+--user sauceUsername:sauceAccessKey
 ```
 
 ### Create User
@@ -55,11 +65,13 @@ METHOD: `POST`
 * `name`(required): full name of sub-account user
 * `email`(required)
 
-**Example request:**
+**Example Request:**
 ```bash
-curl -X POST https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sauceUsername \
-     -H 'Content-Type: application/json' \
-     -d '{"username": "subaccount-username", 
+curl https://saucelabs.com/rest/v1/users/sauceUsername \
+    --user sauceUsername:sauceAccessKey
+    -X POST
+    -H 'Content-Type: application/json' \
+    -d '{"username": "subaccount-username", 
           "password": "subaccount-password", 
           "name": "subaccount-name", 
           "email": "subaccount-email-address"}'
@@ -71,9 +83,10 @@ Check account concurrency limits.
 
 URL: `https://saucelabs.com/rest/v1/users/:username/concurrency`
 
-**Example request:**
+**Example Request:**
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sauceUsername/concurrency
+curl https://saucelabs.com/rest/v1/users/sauceUsername/concurrency \
+--user sauceUsername:sauceAccessKey
 ```
 
 ## Test Activity and Usage
@@ -84,9 +97,10 @@ URL: `https://saucelabs.com/rest/v1/:username/activity`
 
 Get active job counts broken down by job status and sub-account.
 
-**Example request:**
+**Example Request:**
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/activity
+curl https://saucelabs.com/rest/v1/sauceUsername/activity \
+--user sauceUsername:sauceAccessKey
 ```
 
 ### Get User Account Usage
@@ -97,9 +111,10 @@ URL: `https://saucelabs.com/rest/v1/users/:username/usage`
 **Optional Query Params:**
 * `start` and `end` in YYYY-MM-DD format.
 
-**Example request:**
+**Example Request:**
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sauceUsername/usage
+curl https://saucelabs.com/rest/v1/users/sauceUsername/usage \
+--user sauceUsername:sauceAccessKey
 ```
 
 ## Jobs
@@ -110,9 +125,10 @@ List recent jobs belonging to a given user.
 
 URL: `https://saucelabs.com/rest/v1/:username/jobs`
 
-**Example request:**
+**Example Request:**
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs
+curl https://saucelabs.com/rest/v1/sauceUsername/jobs \
+--user sauceUsername:sauceAccessKey
 ```
 
 **Optional query params:**
@@ -127,7 +143,8 @@ Default: `100`
 **Example getting last 200 job IDs:**
 
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs?limit=200
+curl https://saucelabs.com/rest/v1/sauceUsername/jobs?limit=200 \
+--user sauceUsername:sauceAccessKey
 ```
 
 #### full jobs
@@ -158,7 +175,8 @@ Default: `false`
 **Example getting full information about the last 100 jobs:**
 
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs?full=true
+curl https://saucelabs.com/rest/v1/sauceUsername/jobs?full=true \
+--user sauceUsername:sauceAccessKey
 ```
 
 #### skip jobs
@@ -170,7 +188,8 @@ Default: `0`
 
 **Example getting the last 100 job IDs, skipping 20 most recent jobs:**
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs?skip=20
+curl https://saucelabs.com/rest/v1/sauceUsername/jobs?skip=20 \
+--user sauceUsername:sauceAccessKey
 ```
 
 #### jobs to and from time
@@ -178,9 +197,10 @@ Get jobs since/until the specified time (in epoch time, calculated from UTC).
 
 URL: `https://saucelabs.com/rest/v1/:username/jobs?to=:time` and `https://saucelabs.com/rest/v1/:username/jobs?from=:time`
 
-**Example request(replace `EPOCH_TIME` with an [epoch time](http://en.wikipedia.org/wiki/Unix_time)):**
+**Example Request(replace `EPOCH_TIME` with an [epoch time](http://en.wikipedia.org/wiki/Unix_time)):**
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs?from=EPOCH_TIME
+curl https://saucelabs.com/rest/v1/sauceUsername/jobs?from=EPOCH_TIME \
+--user sauceUsername:sauceAccessKey
 ```
 
 #### format jobs
@@ -192,15 +212,17 @@ Default: `json`
 
 **Example getting last 100 job IDs using the CSV format:**
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs?format=csv
+curl https://saucelabs.com/rest/v1/sauceUsername/jobs?format=csv \
+--user sauceUsername:sauceAccessKey
 ```
 
 ### Get Job
 Show the full information for a job given its ID.
 
-**Example request:**
+**Example Request:**
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID
+curl https://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID \
+--user sauceUsername:sauceAccessKey
 ```
 
 ### Update Job
@@ -218,11 +240,13 @@ METHOD: `PUT`
 * `build`: [int] The build number tested by this test
 * `custom-data`: [JSON] a set of key-value pairs with any extra info that a user would like to add to the job
 
-**Example request:**
+**Example Request:**
 ```bash
-curl -X PUT https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID \
-     -H "Content-Type: application/json" \
-     -d '{"tags": ["test", "example", "taggable"],
+curl https://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID \
+    --user sauceUsername:sauceAccessKey
+    -X PUT
+    -H "Content-Type: application/json" \
+    -d '{"tags": ["test", "example", "taggable"],
           "public": true,
           "name": "changed-job-name",
           "passed": false, 
@@ -237,9 +261,12 @@ URL: `https://saucelabs.com/rest/v1/:username/jobs/:job_id`
 
 METHOD: `DELETE`
 
-**Example request:**
+**Example Request:**
 ```bash
-curl -v -X DELETE http://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID
+curl http://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID \
+    --user sauceUsername:sauceAccessKey \
+    -v \
+    -X DELETE
 ```
 
 ### Stop Job
@@ -250,9 +277,10 @@ URL: `https://saucelabs.com/rest/v1/:username/jobs/:job_id/stop`
 
 METHOD: `PUT`
 
-**Example request:**
+**Example Request:**
 ```bash
-curl -X PUT https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/stop \
+curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/stop \
+-X PUT \
 -d ''
 ```
 
@@ -269,9 +297,10 @@ URL: `https://saucelabs.com/rest/v1/:username/jobs/:job_id/assets`
 * `video`: [string] Name of the video file name recorded for a job
 * `screenshots`: [array of strings] List of screenshot names captured by a job
 
-**Example request:**
+**Example Request:**
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/assets
+curl https://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/assets \
+--user sauceUsername:sauceAccessKey
 ```
 
 ### Get Job Asset Files
@@ -287,7 +316,7 @@ URL: `https://saucelabs.com/rest/v1/:username/jobs/:job_id/assets/:file_name`
 * `XXXXscreenshot.png` (where XXXX is a number between 0000 and 9999)
 * `final_screenshot.png`
 
-**Example request:**
+**Example Request:**
 ```bash
 curl -O https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/assets/final_screenshot.png
 ```
@@ -300,9 +329,11 @@ URL: `https://saucelabs.com/rest/v1/:username/jobs/:job_id/assets`
 
 Method: `DELETE`
 
-**Example request:**
+**Example Request:**
 ```bash
-curl -X DELETE https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/assets
+curl https://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/assets \
+    --user sauceUsername:sauceAccessKey \
+    -X DELETE 
 ```
 
 ## Tunnels
@@ -322,9 +353,10 @@ URL: `https://saucelabs.com/rest/v1/:username/tunnels`
 * `host`: [string] Public address of the tunnel
 * `creation_time`: [integer]
 
-**Example request:**
+**Example Request:**
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/tunnels
+curl https://saucelabs.com/rest/v1/sauceUsername/tunnels \
+--user sauceUsername:sauceAccessKey
 ```
 
 ### Get Tunnel
@@ -332,9 +364,10 @@ Get information for a tunnel given its ID.
 
 URL: `https://saucelabs.com/rest/v1/:username/tunnels/:tunnel_id`
 
-**Example request:**
+**Example Request:**
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/tunnels/YOUR_TUNNEL_ID
+curl https://saucelabs.com/rest/v1/sauceUsername/tunnels/YOUR_TUNNEL_ID \
+--user sauceUsername:sauceAccessKey
 ```
 
 ### Delete Tunnel
@@ -344,7 +377,7 @@ URL: `https://saucelabs.com/rest/v1/:username/tunnels/:tunnel_id`
 
 Method: `DELETE`
 
-**Example request:**
+**Example Request:**
 ```bash
 curl -X DELETE https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/sauceUsername/tunnels/YOUR_TUNNEL_ID
 ```
@@ -359,7 +392,7 @@ Get the current status of Sauce Labs services.
 
 URL: `https://saucelabs.com/rest/v1/info/status`
 
-**Example request:**
+**Example Request:**
 ```bash
 curl -X GET http://saucelabs.com/rest/v1/info/status
 ```
@@ -376,7 +409,7 @@ Get an array of strings corresponding to all the browsers currently supported on
 * `webdriver`
 * `selenium-rc`
 
-**Example request:**
+**Example Request:**
 ```bash
 curl -X GET http://saucelabs.com/rest/v1/info/browsers/webdriver
 ```
@@ -400,7 +433,7 @@ Method: `POST`
 * `email`(required)
 * `plan`(required): Either 'free', 'small', 'team', 'com', or 'complus'
 
-**Example request:**
+**Example Request:**
 ```bash
 curl -X POST https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sauceUsername \
      -H 'Content-Type: application/json' \
@@ -422,7 +455,7 @@ Method: `POST`
 **Request Fields:**
 * `plan`(required): Either 'free', 'small', 'team', 'com', or 'complus'
 
-**Example request:**
+**Example Request:**
 ```bash
 curl -X POST https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/SUBACCOUNT_USERNAME/subscription \
      -H 'Content-Type: application/json' \
@@ -437,7 +470,7 @@ URL: `https://saucelabs.com/rest/v1/:subaccount_username/subscription`
 
 Method: `DELETE`
 
-**Example request:**
+**Example Request:**
 ```bash
 curl -X DELETE https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/SUBACCOUNT_USERNAME/subscription
 ```
@@ -460,7 +493,7 @@ URL: `https://saucelabs.com/rest/v1/storage/:username/:your_file_name`
 
 Method: `POST`
 
-**Example request:**
+**Example Request:**
 ```bash
 curl -u sauceUsername:sauceAccessKey \
      -X POST "http://saucelabs.com/rest/v1/storage/sauceUsername/your_file_name?overwrite=true" \
@@ -493,7 +526,7 @@ Method: `POST`
 
 The `"custom"` framework allows you to display generic test information on the Sauce Labs website. Set `window.global_test_results` on the javascript on your unit test page to an object that looks like the following and Sauce will report any failing tests: `
 
-**Example request:**
+**Example Request:**
 ```bash
 curl  -X POST https://saucelabs.com/rest/v1/sauceUsername/js-tests \
       -u sauceUsername:sauceAccessKey \
@@ -530,7 +563,7 @@ Get the status of your JS unit tests
 
 URL `https://saucelabs.com/rest/v1/:username/js-tests/status`
 
-**Example request:**
+**Example Request:**
 ```bash
 curl -X POST https://saucelabs.com/rest/v1/sauceUsername/js-tests/status \
         -u sauceUsername:sauceAccessKey \
@@ -597,7 +630,7 @@ Get list of available bug types
 
 URL: `https://saucelabs.com/rest/v1/bugs/types`
 
-**Example request:**
+**Example Request:**
 ```bash
 curl https://saucelabs.com/rest/v1/bugs/types
 ```
@@ -619,7 +652,7 @@ Get description of each field for a particular bug type
 
 URL: `https://saucelabs.com/rest/v1/bugs/types/:bug_id`
 
-**Example request:**
+**Example Request:**
 ```bash
 curl https://saucelabs.com/rest/v1/bugs/types/bug-type-example-id-1234
 ```
@@ -646,24 +679,10 @@ Get detailed info for a particular bug
 
 URL: `https://saucelabs.com/rest/v1/bugs/details/:bug_id`
 
-**Example request:**
+**Example Request:**
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/bugs/detail/YOUR_BUG_ID
-```
-
-**Example response:**
-```json
-{
-  "Description": "Description of really nasty bug",
-  "Title": "What a nasty bug",
-  "ScreenshotEmbedURL": "https://saucelabs.com/jobs//YOUR_JOB_ID0001screenshot.png?auth=secret-auth-token",
-  "CreationTime": 1234567890,
-  "VideoEmbedURL": "https://saucelabs.com/bugs/?YOUR_JOB_IDshow_video=1&auth=secret-auth-token",
-  "Job": "https://saucelabs.com/jobs/?YOUR_JOB_IDauth=secret-auth-token",
-  "BugEmbedURL": "https://saucelabs.com/bugs/?YOUR_JOB_IDauth=secret-auth-token",
-  "OS": "Linux",
-  "Browser": "android 4."
-}
+curl https://saucelabs.com/rest/v1/bugs/detail/YOUR_BUG_ID \
+--user sauceUsername:sauceAccessKey
 ```
 
 ### Get Bugs Details
@@ -672,7 +691,7 @@ Get detailed info for a specified list of bugs
 
 URL: `https://saucelabs.com/rest/v1/bugs/query/ids=[:id_1,:id_2]`
 
-**Example request:**
+**Example Request:**
 ```bash
 curl -G https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/bugs/query/ --data-urlencode 'ids=[""YOUR_BUG_ID, "0123401234-example-id-12345"]'
 ```
@@ -701,7 +720,7 @@ URL: `https://saucelabs.com/rest/v1/bugs/update/:bug_id`
 
 Method: `PUT`
 
-**Example request:**
+**Example Request:**
 ```bash
 curl -G https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/bugs/update/YOUR_BUG_ID --data-urlencode 'update={"Property-name-1": "Property-Value-1", "Property-name-2": "Property-Value-2"}
 ```
