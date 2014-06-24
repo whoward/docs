@@ -6,7 +6,7 @@
   image: "/images/tutorials/ruby.png"
 }
 
-In this tutorial we will write some Selenium tests in Ruby and run them on Sauce Labs's browser cloud. If you are using a Ruby test framework like Capybara or Rspec you can skip to the ["Ruby Selenium Testing with a Framework"](#ruby-selenium-testing-with-a-framework) section below. Otherwise follow along to get a simple Ruby Selenium test running on Sauce Labs.
+In this tutorial we will write some Selenium tests in Ruby and run them on Sauce Labs' browser cloud. If you are using a Ruby test framework like Capybara or Rspec you can skip to the ["Ruby Selenium Testing with a Framework"](#ruby-selenium-testing-with-a-framework) section below. Otherwise follow along to get a simple Ruby Selenium test running on Sauce Labs.
 
 ## Getting Started
 
@@ -32,12 +32,6 @@ Your system may already come with a pre-installed version of Ruby. For the purpo
 
 ```bash
 rvm --default use 2.1.1
-```
-
-Also, lets generate the core Ruby documentation by running this command:
-
-```bash
-rvm docs generate -ri
 ```
 
 RVM creates a new completely separate gem directory of each version of Ruby. If you already have a previous installation of Ruby, you can update [Rubygems](https://rubygems.org/) by running the following command:
@@ -66,22 +60,26 @@ Let's start by running a test on our local machine first. In the text editor of 
 require 'rubygems'
 require 'selenium-webdriver'
 
-# Passing the capabilities for the Selenium Remote Webdriver in order to run the test on firefox.
+# Passing the capabilities for the Selenium Remote Webdriver
+# in order to run the test on firefox.
 
-# We could pass chrome, internet explorer, opera, etc as well and the test will run on that browser as long as it is installed on your local machine.
+# We could pass chrome, internet explorer, opera, etc as well and the test 
+# will run on that browser as long as it is installed on your local machine.
 
 caps = Selenium::WebDriver::Remote::Capabilities.new
 caps["browserName"] = "firefox"
 caps["version"] = "35"
 caps["name"] = "Local Selenium Test"
 
-# Since we are running the test locally, we need to point the driver object to the port of the Selenium Webdriver
+# Since we are running the test locally, we need to point 
+# the driver object to the port of the Selenium Webdriver
 
 driver = Selenium::WebDriver.for(:remote,
 :url => "http://localhost:4444/wd/hub/",
 :desired_capabilities => caps)
 
-# Now to execute the test by navigating to www.google.com and searching for 'Sauce Labs'
+# Now to execute the test by navigating to www.google.com
+# and searching for 'Sauce Labs'
 
 driver.navigate.to "https://www.google.com/"
 driver.find_element(:id, "gbqfq").click
@@ -110,20 +108,22 @@ export SAUCE_ACCESS_KEY=sauceAccesskey" >> ~/.bash_profile && source ~/.bash_pro
 
 On Windows, open your environment variables settings window (Instructions [here](http://www.itechtalk.com/thread3595.html)) and set the following variables
 
-				Name: SAUCE_USERNAME
-				Value: sauceUsername
+```
+Name: SAUCE_USERNAME
+Value: sauceUsername
 
-				Name: SAUCE_ACCESS_KEY
-				Value: sauceAccesskey
+Name: SAUCE_ACCESS_KEY
+Value: sauceAccesskey
+```
 
-
-*2nd step** - Previously we had pointed the Selenium Webdriver to our localhost. Since we want to implement the test on Sauce, we will make a slight change to the driver url as shown in the code below:
+**2nd Step** - Previously we had pointed the Selenium Webdriver to our localhost. Since we want to implement the test on Sauce, we will make a slight change to the driver url as shown in the code below:
 
 ```ruby
 require 'rubygems'
 require 'selenium-webdriver'
 
-# Let's run our test on Internet Explorer on the latest version of Windows and name our session too
+# Let's run our test on Internet Explorer 
+# on the latest version of Windows and name our session too
 
 caps = Selenium::WebDriver::Remote::Capabilities.new
 caps["browserName"] = "internet explorer"
@@ -131,7 +131,7 @@ caps["version"] = "11"
 caps["platform"] = "Windows 8.1"
 caps["name"] = "Selenium on Sauce on IE11W8.1"
 
-#Change to the driver url as mentioned
+# Change to the driver url as mentioned
 
 driver = Selenium::WebDriver.for(:remote,
 :url => "http://sauceUsername:sauceAccesskey@ondemand.saucelabs.com:80/wd/hub",
@@ -156,13 +156,13 @@ We have run our test on Sauce and are feeling accomplished! That's great! Howeve
 
 Let's again perform 2 small steps and we will be rocking tests in parallel on Sauce:
 
-* **1st Step** - Lets install a rubygem called [Peach](https://github.com/schleyfox/peach) by running the following command in the terminal window:
+**1st Step** - Lets install a rubygem called [Peach](https://github.com/schleyfox/peach) by running the following command in the terminal window:
 
 ```bash
 gem install peach
 ```
 
-* **2nd step** - Make the following changes to our test shown in the code below:
+**2nd Step** - Make the following changes to our test shown in the code below:
 
 ```ruby
 # Import the newly installed gem to our test code
