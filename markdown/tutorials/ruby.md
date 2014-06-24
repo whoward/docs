@@ -6,54 +6,59 @@
   image: "/images/tutorials/ruby.png"
 }
 
+In this tutorial we will write some Selenium tests in Ruby and run them on Sauce Labs's browser cloud. If you are using a Ruby test framework like Capybara or Rspec you can skip to the ["Ruby Selenium Testing with a Framework"](#ruby-selenium-testing-with-a-framework) section below. Otherwise follow along to get a simple Ruby Selenium test running on Sauce Labs.
+
 ## Getting Started
 
-Within a short time, we can have a simple Selenium Test in Ruby running on Sauce Labs.
+You will need to have Ruby installed on your system. It's assumed that you already have a text editor such as [Sublime](http://www.sublimetext.com), [TextMate](http://macromates.com/), [VIM](http://www.vim.org/), etc set up to run Ruby programs.
 
-You will need to have Ruby installed on the system. It's assumed that you already have a text editor such as [Sublime](http://www.sublimetext.com), [TextMate](http://macromates.com/), [VIM](http://www.vim.org/), etc set up to run Ruby programs.
+If you already have Ruby installed head down to the [Installing The Ruby Webdriver Bindings](#installing-the-ruby-webdriver-bindings) section, otherwise follow these steps:
 
-If Ruby is not installed, follow these steps:
+### Installing Ruby
 
-We will install latest version of Ruby using the [Ruby Version Manager (RVM)](https://rvm.io/) by typing the command below in the terminal window
+Install latest version of Ruby using the [Ruby Version Manager (RVM)](https://rvm.io/) by typing the command below in the terminal window:
 
 ```bash
 curl -L https://get.rvm.io | bash -s stable
- ```
+```
+
 Now that RVM is installed, we're ready to install latest version of Ruby. Type,
 
 ```bash
 rvm install 2.1.1
 ```
 
-Your system may already come with a pre-installed version of Ruby. For the purposes of this guide, we will be using the Ruby 2.1.1 and it can be done by
+Your system may already come with a pre-installed version of Ruby. For the purposes of this guide, we will be using the Ruby 2.1.1 and it can be done by running this command:
 
 ```bash
 rvm --default use 2.1.1
 ```
-Also, lets generate the core Ruby documentation by typing
+
+Also, lets generate the core Ruby documentation by running this command:
 
 ```bash
 rvm docs generate -ri
 ```
 
-RVM creates a new completely separate gem directory of each version of Ruby. If you already have a previous installation of Ruby, you can update [Rubygems](https://rubygems.org/) by typing
+RVM creates a new completely separate gem directory of each version of Ruby. If you already have a previous installation of Ruby, you can update [Rubygems](https://rubygems.org/) by running the following command:
 
 ```bash
 gem update --system
 ```
 
-Now we just need to install the [Selenium Webdriver]ruby bindings (http://docs.seleniumhq.org/projects/webdriver/) by typing
+### Installing The Ruby Webdriver Bindings
+
+The only dependency required to run a Ruby Selenium test is the [`selenium-webdriver`](http://docs.seleniumhq.org/projects/webdriver/) gem which can be installed by running the following command:
 
 ```bash
 gem install selenium-webdriver
 ```
 
-That's it! We are ready to run our first selenium test!
+That's it! We are ready to run our first Selenium test!
 
+### Simple Ruby Selenium Test Locally
 
-###Selenium Test - Local
-
-Let's start by running a test on our local machine first. In the text editor of your choice type up the piece of code below. (Comments are optional, however they provide good reading to get reference to what the test is doing)
+Let's start by running a test on our local machine first. In the text editor of your choice copy the piece of code below. (Comments are optional, however they provide good reading to get reference to what the test is doing)
 
 ```ruby
 # Importing the relevant classes to run our simple selenium test
@@ -81,28 +86,29 @@ driver = Selenium::WebDriver.for(:remote,
 driver.navigate.to "https://www.google.com/"
 driver.find_element(:id, "gbqfq").click
 driver.find_element(:id, "gbqfq").clear
-driver.find_element(:id, "gbqfq").send_keys "saucelabs"
+driver.find_element(:id, "gbqfq").send_keys "Sauce Labs"
 driver.quit
 
 ```
-You should see a firefox window pop up with all the steps outlined above being executed. Done!
+You should see a Firefox window pop up with all the steps outlined above being executed. Done!
 
-### Selenium Test - Sauce Labs
+### Simple Ruby Selenium Test On Sauce Labs
 
-Time to run our simple test on Sauce Labs! Also this time around, we will be able to execute the test on the browser/OS combination of our choice, instead of the browser & OS available locally.
+Time to run our simple test on Sauce Labs! Also this time around, we will be able to execute the test on the browser & OS combinations of our choice, instead of being limited by the combinations we have locally.
 
-Lets perform 2 small steps and you will be ready to SAUCE!!:
+Let's perform 2 small steps and you will be ready to test on Sauce!:
 
-* **1st Step** - Adding your Sauce Labs credentials, i.e. Username and Access key, as environment variables. The credentials can be found on the Sauce Labs [homepage](https://saucelabs.com/account).
+**1st Step** - Adding your Sauce Labs credentials, i.e. Username and Access key, as environment variables. The credentials can be found on the Sauce Labs [homepage](https://saucelabs.com/account).
 
-	* On Unix / Linux, open the system profile file by typing
+On Unix / Linux, open the system profile file by typing
 
 ```bash
 echo "export SAUCE_USERNAME=sauceUsername
 export SAUCE_ACCESS_KEY=sauceAccesskey" >> ~/.bash_profile && source ~/.bash_profile
 ```
 
-*	On Windows, open your environment variables settings window (Instructions [here](http://www.itechtalk.com/thread3595.html)) and set the following variables
+
+On Windows, open your environment variables settings window (Instructions [here](http://www.itechtalk.com/thread3595.html)) and set the following variables
 
 				Name: SAUCE_USERNAME
 				Value: sauceUsername
@@ -110,7 +116,8 @@ export SAUCE_ACCESS_KEY=sauceAccesskey" >> ~/.bash_profile && source ~/.bash_pro
 				Name: SAUCE_ACCESS_KEY
 				Value: sauceAccesskey
 
-* **2nd step** - Previously we had pointed the Selenium Webdriver to our localhost. Since we want to implement the test on Sauce, we will make a slight change to the driver url as shown in the code below:
+
+*2nd step** - Previously we had pointed the Selenium Webdriver to our localhost. Since we want to implement the test on Sauce, we will make a slight change to the driver url as shown in the code below:
 
 ```ruby
 require 'rubygems'
@@ -133,7 +140,7 @@ driver = Selenium::WebDriver.for(:remote,
 driver.navigate.to "http://www.google.com/"
 driver.find_element(:id, "gbqfq").click
 driver.find_element(:id, "gbqfq").clear
-driver.find_element(:id, "gbqfq").send_keys "saucelabs"
+driver.find_element(:id, "gbqfq").send_keys "Sauce Labs"
 driver.quit
 
 ```
@@ -149,12 +156,11 @@ We have run our test on Sauce and are feeling accomplished! That's great! Howeve
 
 Let's again perform 2 small steps and we will be rocking tests in parallel on Sauce:
 
-* **1st Step** - Lets install a rubygem called [Peach](https://github.com/schleyfox/peach) by typing the following command in the terminal window:
+* **1st Step** - Lets install a rubygem called [Peach](https://github.com/schleyfox/peach) by running the following command in the terminal window:
 
 ```bash
 gem install peach
 ```
-
 
 * **2nd step** - Make the following changes to our test shown in the code below:
 
@@ -185,7 +191,7 @@ caps3["version"] = "17"
 caps3["platform"] = "OS X 10.6"
 caps3["name"] = "Selenium on Sauce on F17OSX10"
 
-#Create an array of the our chosen combos
+# Create an array of the our chosen combos
 
 caps = [caps1, caps2, caps3]
 
@@ -205,10 +211,9 @@ end
 
 ```
 
-Pat  yourself on the back! And grab a beer! You have **successfully** executed a Selenium test in Parallel on Sauce.
+Pat yourself on the back and grab a beer! You have **successfully** executed a Selenium test in parallel on Sauce.
 
-## Testing Frameworks
-------------------
+## Ruby Selenium Testing with a Framework
 
 The [sauce gem](https://github.com/saucelabs/sauce_ruby) makes it easy to run Selenium or Capybara tests against a wide range of browsers on Windows (XP, 7, 8), OS X, Linux, iOS and Android.
 
@@ -218,9 +223,7 @@ Your tests are run in real browsers on a real operating system, in a
 dedicated, single-use VM.  Once they're complete, screenshots, video,
 Selenium log and a log of passes and failures can be seen and shared.
 
-
-What You'll Need
-----------------
+## What You'll Need
 
 In your Gemfile:
 
@@ -235,8 +238,7 @@ group :test, :development do
 end
 ```
 
-Setting up RSpec
------------
+## Setting up RSpec
 
 From your `RAILS_ROOT`, generate a ./spec directory, a ./spec/spec_helper.rb file, and a warm, fuzzy feeling of productivity by executing:
 
@@ -280,9 +282,7 @@ end
 
 Check out [our platforms page](http://saucelabs.com/docs/platforms) for available platforms (130+ and counting!).
 
-
-Setting up the Sauce Gem
--------------------------
+## Setting up the Sauce Gem
 
 Keep your Sauce Labs credentials out of your repositories and available to all your Sauce Labs tools using projects by adding them as environment variables.
 
@@ -303,8 +303,7 @@ Open your environment variables settings window (Instructions [here](http://www.
     Name: SAUCE_ACCESS_KEY
     Value: sauceAccessKey
 
-Writing your tests
------------------
+## Writing your tests
 
 Phew!  That's all your setup done.  You're ready to write your tests.
 
@@ -347,8 +346,8 @@ end
 
 And that's everything!
 
-Running your tests
-------------------
+## Running your Ruby Selenium tests
+
 
 ```bash
 rake sauce:spec
