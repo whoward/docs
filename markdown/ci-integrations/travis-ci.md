@@ -28,8 +28,6 @@ Create a `.travis.yml` file in your repo if you don't have one yet.
 <span class="show-when-un-authenticated"><b>Login to your account to allow us to automatically encrypt your username and access key for your `.travis.yml` file.</b></span>
 <span class="show-when-authenticated">For the username:  <span id="username">sauceUsername</span>, add your secure username token and secure access key token to your `.travis.yml` file with this code:</span>
 
-<script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script src="/scripts/jsencrypt.min.js"></script>
 
 <pre><code class="lang-yaml"><div class="button-container"><button data-clipboard-target="travis-auto-encryption" class="btn btn-default clipboard"><span class="fa fa-clipboard"></span></button><div id="code-4" class="hidden">env:
   global:
