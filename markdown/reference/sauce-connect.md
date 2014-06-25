@@ -22,9 +22,9 @@ You can also use Sauce Connect:
 
 1. Get the latest Sauce Connect:
 <ul>
-<li><a href="https://saucelabs.com/downloads/sc-4.2-osx.zip"><i class="fa fa-apple"></i> Download Sauce Connect v4.2 for OS X</a><br>
-</li><li><a href="https://saucelabs.com/downloads/sc-4.2-win32.zip"><i class="fa fa-windows"></i> Download Sauce Connect v4.2 for Windows</a><br>
-</li><li><a href="https://saucelabs.com/downloads/sc-4.2-linux.tar.gz"><i class="fa fa-linux"></i> Download Sauce Connect v4.2 for Linux</a><br>
+<li><a href="https://saucelabs.com/downloads/sc-4.3-osx.zip"><i class="fa fa-apple"></i> Download Sauce Connect v4.3 for OS X</a> SHA1 checksum: ae017d7d2bfe63989b22f8f913ee4de010b221d7<br>
+</li><li><a href="https://saucelabs.com/downloads/sc-4.3-win32.zip"><i class="fa fa-windows"></i> Download Sauce Connect v4.3 for Windows</a> SHA1 checksum: ca0d7a636df22d3191a7d71bf2707e09767a35ed<br>
+</li><li><a href="https://saucelabs.com/downloads/sc-4.3-linux.tar.gz"><i class="fa fa-linux"></i> Download Sauce Connect v4.3 for Linux</a> SHA1 checksum: 3bd70442329a240869eb1e41bc0ab2a9d885face<br>
 </li><li>(If you're looking for Sauce Connect v3, you can download it <a href="https://saucelabs.com/downloads/Sauce-Connect-3.1-r32.zip">here</a>.)<br>
 </li>
 </ul>
