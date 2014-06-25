@@ -18,7 +18,6 @@ your system, here are some guidelines:
 
 ## Java and Maven Setup
 
-
 You will need to use JDK 1.6 (or higher) and Maven 2.2.1 (or higher) in order to complete this tutorial.
 
 Download and install [Java](http://www.java.com/en/download/index.jsp) if it isn't already installed on your system.
