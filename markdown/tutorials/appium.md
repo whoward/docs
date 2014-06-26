@@ -84,7 +84,9 @@ To run your first test, simply run the quick start code below. Our example is in
 To run the Ruby example, you need to have rspec installed, in addition to the Selenium WebDriver client library. To install these, and download a simple example test, run:
 
 ```bash
-curl -L https://raw.github.com/saucelabs/appium-tutorial/master/bin/install_tutorial_ruby.sh | bash -s
+curl -L \
+https://raw.github.com/saucelabs/appium-tutorial/master/bin/install_tutorial_ruby.sh |
+bash -s
 ```
 
 Now you are ready to run your first test! The `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` environment variables authenticate you with Sauce Labs:
@@ -142,7 +144,11 @@ zip -r my_app.zip MyApp.app/
 ```
 
 ```bash
-curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY -X POST "http://saucelabs.com/rest/v1/storage/$SAUCE_USERNAME/my_app.zip?overwrite=true" -H "Content-Type: application/octet-stream" --data-binary @my_app.zip
+curl -u sauceUsername:sauceAccessKey \
+-X POST \
+-H "Content-Type: application/octet-stream" \
+--data-binary @my_app.zip
+https://saucelabs.com/rest/v1/storage/sauceUsername/my_app.zip?overwrite=true \
 ```
 
 Then, in your test code, point your RemoteWebDriver instance to `http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub`.
@@ -225,7 +231,7 @@ You may notice that Appium tests take a bit longer than regular selenium tests. 
 First, upload your app to Sauce Labs temporary storage using our [Temporary Storage REST API](http://saucelabs.com/docs/rest#storage):
 
 ```bash
-curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY -X POST "http://saucelabs.com/rest/v1/storage/$SAUCE_USERNAME/my_app.apk?overwrite=true" -H "Content-Type: application/octet-stream" --data-binary @my_app.apk
+curl -u sauceUsername:sauceAccessKey -X POST "http://saucelabs.com/rest/v1/storage/sauceUsername/my_app.apk?overwrite=true" -H "Content-Type: application/octet-stream" --data-binary @my_app.apk
 ```
 
 Then, in your test code, point your RemoteWebDriver instance to `http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub`.

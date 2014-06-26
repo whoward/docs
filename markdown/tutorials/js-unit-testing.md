@@ -15,7 +15,8 @@ In this tutorial we will use the [Karma](http://karma-runner.github.io/) test ru
 Start by cloning the [karma-sauce-example](https://github.com/saucelabs/karma-sauce-example.git) repo by running the following command in your terminal:
 
 ```bash
-git clone https://github.com/saucelabs/karma-sauce-example.git && cd karma-sauce-example
+git clone https://github.com/saucelabs/karma-sauce-example.git &&
+cd karma-sauce-example
 ```
 
 Then run the following command to install the Karma command line interface globally and the sample repo's local node.js dependencies:

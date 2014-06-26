@@ -27,9 +27,10 @@ Any key-value pair specified in this documentation can be set through this JSON 
 
 The Sauce Labs REST API provides a way to set the same additional information in jobs via a JSON object sent with an HTTP PUT command. Your tests can use this API to set job info even after the test is over. For example, this method is often used to update the job with information that couldn't be foreseen at the time the test was created, like the pass/fail status of a test. Here's an example of setting job info using curl, from the command line:
 ```bash
- $ curl -X PUT \
-        -H "Content-Type:text/json" -s -d '{"passed": true}' \ 
-        http://<username>:<key>@saucelabs.com/rest/v1/<username>/jobs/<job-id>
+curl -X PUT \
+-s -d '{"passed": true}' \ 
+-u sauceUsername:sauceAccessKey \
+https://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID
 ```
 
 ### Accepted Keys
@@ -553,10 +554,10 @@ Example:
 
 In Selenium, when a client requests a new browser session, the server returns a session ID, which is used to identify that session throughout the test. The session ID is stored as a member variable of the instantiated Selenium object and named "sessionId" or "session_id," depending on the client library. We use that session ID as the job id for accessing test results on our website.
 
-To directly access a specific job, you will first need to note the session ID locally, usually by writing it to a log file. You can then use it to create a URL with the following format and replace <b>&lt;jobid&gt;</b> with the session ID.
+To directly access a specific job, you will first need to note the session ID locally, usually by writing it to a log file. You can then use it to create a URL with the following format and replace **YOUR_JOB_ID** with the session ID.
 
 
-    http://saucelabs.com/jobs/<jobid>
+    http://saucelabs.com/jobs/YOUR_JOB_ID
 
 Notice that links to jobs in this format will only work if you are logged in with the account that ran the job or if that account is a sub-account of yours. For generating public links, read the section below, [ no-login links to jobs](#no-login-links-to-jobs).
 
@@ -570,10 +571,10 @@ Auth tokens are generated on a per-job basis and give the receiver access using 
 
 The digest algorithm to use is **MD5**. The message and key used to generate the token should be the following:
 
-Key:&lt;sauceUsername&gt;:&lt;sauceAccessKey&gt;<br/>
-Message:&lt;job-id&gt;
+- Key: `sauceUsername`:`sauceAccessKey`
+- Message: `job-id`
 
-Here's an example in Python for generating the token for a job with id: 5f9fef27854ca50a3c132ce331cb6034
+Here's an example in Python for generating the token for a job with id: `5f9fef27854ca50a3c132ce331cb6034`
 
 ```python
 import hmac
@@ -583,7 +584,7 @@ hmac.new("sauceUsername:sauceAccessKey", "5f9fef27854ca50a3c132ce331cb6034", md5
 
 Once the auth token has been obtained, it can be used to build a link in the following format:
 
-`https://saucelabs.com/jobs/<job-id>?auth=<token>`
+`https://saucelabs.com/jobs/YOUR_JOB_ID?auth=AUTH_TOKEN`
 
 ### Temporary links to jobs
 
@@ -591,9 +592,8 @@ There's a way to extend the links generated in [no-login links to jobs][1] to ma
 
 The authentication token can be generated in a way that provides 1 hour or 1 day of access to the job by using the following information for the hmac generation:
 
-
-Key:&lt;sauceUsername&gt;:&lt;sauceAccessKey&gt;:&lt;date-range&gt;<br/>
-Message:&lt;job-id&gt;
+- Key: `YOUR_USERNAME`:`YOUR_ACCESS_KEY`:`YOUR_DATE_RANGE`
+- Message: `YOUR_JOB_ID`
 
 The date range can take two formats: **YYYY-MM-DD-HH** and **YYYY-MM-DD**. These **should be set in UTC time** and will only work during the date or hour chosen and the following.
 
@@ -601,26 +601,26 @@ The date range can take two formats: **YYYY-MM-DD-HH** and **YYYY-MM-DD**. These
 
 ### Embedding full job pages
 
-We offer a simple way to embed job pages in CI test results or other test reports. Using the format below, add the HTML to any page you need to embed job results on, replacing <b>&lt;job_id&gt;</b> with the ID of the job you want:
+We offer a simple way to embed job pages in CI test results or other test reports. Using the format below, add the HTML to any page you need to embed job results on, replacing **YOUR_JOB_ID** with the ID of the job you want:
 
 ```html
-<script type="text/javascript" src="https://saucelabs.com/job-embed/<job_id>.js"></script>
+<script src="https://saucelabs.com/job-embed/YOUR_JOB_ID.js"></script>
 ```
 
 **Note**: this will only work for browsers logged in using your account, and authentication tokens can be used to make this work for anonymous viewers. Check out [no-login links to jobs][1] for directions on generating these tokens.
 
 ### Embedding the video player
 
-In addition to full job results, we offer a simple way to embed videos as well. Using the format below, add the HTML to any page you need to embed job videos on, replacing <b>&lt;job_id&gt;</b> with the ID of the job you want:
+In addition to full job results, we offer a simple way to embed videos as well. Using the format below, add the HTML to any page you need to embed job videos on, replacing **YOUR_JOB_ID** with the ID of the job you want:
 
 ```html
-<script type="text/javascript" src="https://saucelabs.com/video-embed/<job_id>.js"></script>
+<script src="https://saucelabs.com/video-embed/YOUR_JOB_ID.js"></script>
 ```
 
 **Note**: this will only work for browsers logged in using your account, and authentication tokens can be used to make this work for anonymous viewers. Check out [no-login links to jobs][1] for directions on generating these tokens. Here's how such a script might look:
 
 ```html
-<script src="https://saucelabs.com/video-embed/7dcb077bfcfd43a0a9d50011dd3bc01c.js?auth=6a7dcf9f2d8e7039699bd0280a7f4504"></script>
+<script src="https://saucelabs.com/video-embed/YOUR_JOB_ID.js?auth=AUTH_TOKEN"></script>
 ```
 
    [1]: #webdriver-api
