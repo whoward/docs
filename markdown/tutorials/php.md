@@ -134,11 +134,11 @@ mkdir C:\sauce-tutorial
 3.  Navigate to the `C:\sauce-tutorial` directory in the command prompt, then
     run the script with PHP, setting your user credentials along the way:
 
-```bash
+```bat
 cd C:\sauce-tutorial
 ```
 
-```bash
+```bat
 php givememysausage.php -t sauceUsername sauceAccessKey
 ```
 
