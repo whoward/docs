@@ -340,7 +340,7 @@ Value type: integer
 Example:
 
 ```python
-"max-duration": 300
+"max-duration": 1800
 ```
 
 ### Command Timeout
