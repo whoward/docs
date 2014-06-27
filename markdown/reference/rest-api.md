@@ -199,8 +199,8 @@ URL: `https://saucelabs.com/rest/v1/:username/jobs?to=:time` and `https://saucel
 
 **Example Request(replace `EPOCH_TIME` with an [epoch time](http://en.wikipedia.org/wiki/Unix_time)):**
 ```bash
-curl https://saucelabs.com/rest/v1/sauceUsername/jobs?from=EPOCH_TIME \
-    -u sauceUsername:sauceAccessKey
+curl -u sauceUsername:sauceAccessKey \
+    https://saucelabs.com/rest/v1/sauceUsername/jobs?from=EPOCH_TIME
 ```
 
 #### format jobs
