@@ -579,7 +579,8 @@ Here's an example in Python for generating the token for a job with id: `5f9fef2
 ```python
 import hmac
 from hashlib import md5
-hmac.new("sauceUsername:sauceAccessKey", "5f9fef27854ca50a3c132ce331cb6034", md5).hexdigest()
+hmac.new("sauceUsername:sauceAccessKey",
+         "5f9fef27854ca50a3c132ce331cb6034", md5).hexdigest()
 ```
 
 Once the auth token has been obtained, it can be used to build a link in the following format:
@@ -604,7 +605,8 @@ The date range can take two formats: **YYYY-MM-DD-HH** and **YYYY-MM-DD**. These
 We offer a simple way to embed job pages in CI test results or other test reports. Using the format below, add the HTML to any page you need to embed job results on, replacing **YOUR_JOB_ID** with the ID of the job you want:
 
 ```html
-<script src="https://saucelabs.com/job-embed/YOUR_JOB_ID.js"></script>
+<script src="https://saucelabs.com/job-embed/YOUR_JOB_ID.js">
+</script>
 ```
 
 **Note**: this will only work for browsers logged in using your account, and authentication tokens can be used to make this work for anonymous viewers. Check out [no-login links to jobs][1] for directions on generating these tokens.
@@ -614,13 +616,15 @@ We offer a simple way to embed job pages in CI test results or other test report
 In addition to full job results, we offer a simple way to embed videos as well. Using the format below, add the HTML to any page you need to embed job videos on, replacing **YOUR_JOB_ID** with the ID of the job you want:
 
 ```html
-<script src="https://saucelabs.com/video-embed/YOUR_JOB_ID.js"></script>
+<script src="https://saucelabs.com/video-embed/YOUR_JOB_ID.js">
+</script>
 ```
 
 **Note**: this will only work for browsers logged in using your account, and authentication tokens can be used to make this work for anonymous viewers. Check out [no-login links to jobs][1] for directions on generating these tokens. Here's how such a script might look:
 
 ```html
-<script src="https://saucelabs.com/video-embed/YOUR_JOB_ID.js?auth=AUTH_TOKEN"></script>
+<script src="https://saucelabs.com/video-embed/YOUR_JOB_ID.js?auth=AUTH_TOKEN">
+</script>
 ```
 
    [1]: #webdriver-api

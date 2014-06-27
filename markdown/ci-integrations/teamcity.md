@@ -191,7 +191,6 @@ Below is a Java sample that demonstrates outputting the session id to the Java s
 
 ```java
 private void printSessionId() {
-
     String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
     (((RemoveWebDriver) driver).getSessionId()).toString(), "some job name");
     System.out.println(message);
