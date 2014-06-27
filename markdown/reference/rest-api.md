@@ -505,8 +505,9 @@ Method: `POST`
 **Example Request:**
 ```bash
 curl -u sauceUsername:sauceAccessKey \
--X POST "https://saucelabs.com/rest/v1/storage/sauceUsername/test_file_name?overwrite=true" \
+-X POST \
 -H "Content-Type: application/octet-stream" \
+https://saucelabs.com/rest/v1/storage/sauceUsername/test_file_name?overwrite=true \
 --data-binary @/path/to/your_file_name
 ```
 
@@ -537,14 +538,15 @@ The `"custom"` framework allows you to display generic test information on the S
 
 **Example Request:**
 ```bash
-curl -X POST https://saucelabs.com/rest/v1/sauceUsername/js-tests \
+curl https://saucelabs.com/rest/v1/sauceUsername/js-tests \
+-X POST \
 -u sauceUsername:sauceAccessKey \
 -H 'Content-Type: application/json' \
 --data '{
-        "platforms": [["Windows 7", "firefox", "27"],
-                     ["Linux", "googlechrome", ""]],
-        "url": "https://saucelabs.com/test_helpers/front_tests/index.html",
-        "framework": "jasmine"}'
+    "platforms": [["Windows 7", "firefox", "27"],
+                 ["Linux", "googlechrome", ""]],
+    "url": "https://saucelabs.com/test_helpers/front_tests/index.html",
+    "framework": "jasmine"}'
 ```
 
 Hosting your tests on your LAN or your laptop? You'll need to run [Sauce Connect](/reference/sauce-connect/) to bridge Sauce Labs to your local network. Optional parameters related to Sauce Connect include:
@@ -574,7 +576,8 @@ URL `https://saucelabs.com/rest/v1/:username/js-tests/status`
 
 **Example Request:**
 ```bash
-curl -X POST https://saucelabs.com/rest/v1/sauceUsername/js-tests/status \
+curl https://saucelabs.com/rest/v1/sauceUsername/js-tests/status \
+-X POST \
 -u sauceUsername:sauceAccessKey \
 -H 'Content-Type: application/json' \
 -d '{
