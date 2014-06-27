@@ -264,7 +264,7 @@ METHOD: `DELETE`
 curl -u sauceUsername:sauceAccessKey \
     -v \
     -X DELETE \
-    http://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID
+    https://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID
 ```
 
 ### Stop Job
@@ -505,7 +505,7 @@ Method: `POST`
 **Example Request:**
 ```bash
 curl -u sauceUsername:sauceAccessKey \
-    -X POST "http://saucelabs.com/rest/v1/storage/sauceUsername/test_file_name?overwrite=true" \
+    -X POST "https://saucelabs.com/rest/v1/storage/sauceUsername/test_file_name?overwrite=true" \
     -H "Content-Type: application/octet-stream" \
     --data-binary @/path/to/your_file_name
 ```
@@ -599,7 +599,7 @@ Do that a few times as the tests run, waiting until the response contains `"comp
         "internet explorer",
         "10"
       ],
-      "url": "http://saucelabs.com/jobs/ff737d47e03e47bfb45100a45e4b5ca5",
+      "url": "https://saucelabs.com/jobs/ff737d47e03e47bfb45100a45e4b5ca5",
       "result": {
         "durationSec": 0.005,
         "passed": true,
