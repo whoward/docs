@@ -140,11 +140,11 @@ URL: `https://saucelabs.com/rest/v1/:username/jobs?limit=:number_of_jobs`
 
 Default: `100`
 
-**Example getting last 200 job IDs:**
+**Example getting last 10 job IDs:**
 
 ```bash
-curl https://saucelabs.com/rest/v1/sauceUsername/jobs?limit=200 \
--u sauceUsername:sauceAccessKey
+curl -u sauceUsername:sauceAccessKey \
+https://saucelabs.com/rest/v1/sauceUsername/jobs?limit=10
 ```
 
 #### full jobs
@@ -175,8 +175,8 @@ Default: `false`
 **Example getting full information about the last 100 jobs:**
 
 ```bash
-curl https://saucelabs.com/rest/v1/sauceUsername/jobs?full=true \
--u sauceUsername:sauceAccessKey
+curl -u sauceUsername:sauceAccessKey \
+https://saucelabs.com/rest/v1/sauceUsername/jobs?full=true
 ```
 
 #### skip jobs
@@ -188,8 +188,8 @@ Default: `0`
 
 **Example getting the last 100 job IDs, skipping 20 most recent jobs:**
 ```bash
-curl https://saucelabs.com/rest/v1/sauceUsername/jobs?skip=20 \
--u sauceUsername:sauceAccessKey
+curl -u sauceUsername:sauceAccessKey \
+https://saucelabs.com/rest/v1/sauceUsername/jobs?skip=20
 ```
 
 #### jobs to and from time
@@ -212,8 +212,8 @@ Default: `json`
 
 **Example getting last 100 job IDs using the CSV format:**
 ```bash
-curl https://saucelabs.com/rest/v1/sauceUsername/jobs?format=csv \
--u sauceUsername:sauceAccessKey
+curl -u sauceUsername:sauceAccessKey \
+https://saucelabs.com/rest/v1/sauceUsername/jobs?format=csv
 ```
 
 ### Get Job
