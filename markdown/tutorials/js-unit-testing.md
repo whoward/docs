@@ -28,7 +28,7 @@ npm install -g karma-cli && npm install
 
 *Note: make sure you have [node.js](http://nodejs.org/) installed before running the above command.* 
 
-## Running Karma locally
+## Running Karma Locally
 
 You then can run Karma locally to see how it works with the following command:
 ```bash
@@ -45,7 +45,7 @@ To use Sauce Labs locally, you will need to export your Sauce Labs username and 
 
 *Note: if you don't have an account, you can sign up [here](https://saucelabs.com/signup/plan/free) for free.*
 
-### Export credentials on Mac/Linux
+### Exporting Credentials on Mac/Linux
 If you don't already have `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` available as environment variables in your terminal, run the following command:
 
 ```bash
@@ -55,7 +55,7 @@ export SAUCE_ACCESS_KEY=sauceAccessKey" >> ~/.bash_profile && source ~/.bash_pro
 
 Now proceed to the [next section](#running-javascript-unit-tests-on-sauce-locally).
 
-### Export credentials on Windows
+### Exporting Credentials on Windows
 
 On Windows, open your environment variables settings window (instructions [here](http://www.itechtalk.com/thread3595.html)) and set the following variables:
 
@@ -80,7 +80,7 @@ Equal to:
 sauceAccessKey
 ```
 
-### Running JavaScript unit tests on Sauce locally
+### Running JavaScript Unit Tests on Sauce Locally
 
 Now that your credentials are set, you can now run the unit tests on Sauce with the following command:
 
@@ -96,7 +96,7 @@ It is cool to run your unit tests on Sauce locally while you develop, but even c
 
 The provided `karma.conf-ci.js` file already is set up to read environment variables on CI so you shouldn't need to modify it as long as the `process.env.SAUCE_USERNAME` and `process.env.SAUCE_ACCESS_KEY` are set properly during the build.
 
-### Example CI integration
+### Example CI Integration
 
 The [`karma-sauce-example`](https://github.com/saucelabs/karma-sauce-example.git) repo demonstrates using Sauce with Travis CI. Here is a status badge which shows the build status of the repo's master branch and links to the latest build:
 [![Build Status](https://travis-ci.org/saucelabs/karma-sauce-example.png?branch=master)](https://travis-ci.org/saucelabs/karma-sauce-example)
