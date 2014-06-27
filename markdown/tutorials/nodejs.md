@@ -8,16 +8,19 @@
 
 ## Getting Started
 
-In this tutorial of how to run Selenium tests on Sauce Labs we will use [Grunt](http://gruntjs.com/) with [grunt-mocha-webdriver](https://github.com/jmreidy/grunt-mocha-webdriver) to automate running tasks, [Mocha](http://visionmedia.github.io/mocha/) to run tests and [WD.js]([WD.js](https://github.com/admc/wd)) to run Selenium commands.
+In this tutorial of how to run node.js Selenium tests we will use [grunt-mocha-webdriver](https://github.com/jmreidy/grunt-mocha-webdriver) to achieve a productive workflow for smoke-testing your app locally and thoroughly testing your app in CI.
+
+This tutorial will use use [Grunt](http://gruntjs.com/) to automate running tasks, [Mocha](http://visionmedia.github.io/mocha/) to run tests and [WD.js]([WD.js](https://github.com/admc/wd)) to run Selenium commands.
 
 However it is also possible to use Sauce with raw mocha and other libraries or
-frameworks, for instance [WebDriverJS](https://code.google.com/p/selenium/wiki/WebDriverJs) and [Jasmine](https://github.com/pivotal/jasmine). More tutorials are available [here](https://github.com/saucelabs/node-tutorial).
+frameworks, for instance the [WebDriverJS](https://code.google.com/p/selenium/wiki/WebDriverJs) Selenium bindings and the [Jasmine](https://github.com/pivotal/jasmine) test runner. More tutorials are available [here](https://github.com/saucelabs/node-tutorial).
 
 ## Installing the sample project
 
 First clone the sample repo and enter the repo's directory with the following command:
 ```bash
-git clone https://github.com/saucelabs/sauce-node-example && cd sauce-node-example
+git clone https://github.com/saucelabs/sauce-node-example &&
+cd sauce-node-example
 ```
 
 Then, make sure you have Grunt installed globally on your system:
@@ -31,6 +34,8 @@ Now run the following command to get all of the local dependencies:
 ```bash
 npm install
 ```
+
+## 
 
 ### Inspect the code
 
