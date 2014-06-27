@@ -45,7 +45,7 @@ To use Sauce Labs locally, you will need to export your Sauce Labs username and 
 
 *Note: if you don't have an account, you can sign up [here](https://saucelabs.com/signup/plan/free) for free.*
 
-### Export Credentials on Mac/Linux
+### Export credentials on Mac/Linux
 If you don't already have `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` available as environment variables in your terminal, run the following command:
 
 ```bash
@@ -53,7 +53,9 @@ echo "export SAUCE_USERNAME=sauceUsername
 export SAUCE_ACCESS_KEY=sauceAccessKey" >> ~/.bash_profile && source ~/.bash_profile
 ```
 
-### Export Credentials on Windows
+Now proceed to the [next section](#running-javascript-unit-tests-on-sauce-locally).
+
+### Export credentials on Windows
 
 On Windows, open your environment variables settings window (instructions [here](http://www.itechtalk.com/thread3595.html)) and set the following variables:
 
@@ -77,6 +79,8 @@ Equal to:
 ```bash
 sauceAccessKey
 ```
+
+### Running JavaScript unit tests on Sauce locally
 
 Now that your credentials are set, you can now run the unit tests on Sauce with the following command:
 
