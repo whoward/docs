@@ -471,7 +471,7 @@ curl -u sauceUsername:sauceAccessKey \
 
 ### Unsubscribe a Subaccount
 
-Unsubscribe a subaccount from it's Sauce Labs service plan.
+Unsubscribe a subaccount from its Sauce Labs service plan.
 
 URL: `https://saucelabs.com/rest/v1/:subaccount_username/subscription`
 
