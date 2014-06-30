@@ -179,7 +179,7 @@ Finally, the `tearDown()` method is run after every test in the class (by virtue
 
 ## TestNG
 
-The TestNG version of the `WebDriverTest` class is very similar. THe
+The TestNG version of the `WebDriverTest` class is very similar. The
 main difference is that the desired browser settings are provided as
 parameters using the `org.testng.annotations.Parameters` and
 `org.testng.annotations.Optional` annotations.
