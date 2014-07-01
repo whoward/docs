@@ -68,9 +68,9 @@ METHOD: `POST`
 **Example Request:**
 ```bash
 curl https://saucelabs.com/rest/v1/users/sauceUsername \
--u sauceUsername:sauceAccessKey
-    -X POST
-    -H 'Content-Type: application/json' \
+-u sauceUsername:sauceAccessKey \
+-X POST \
+-H 'Content-Type: application/json' \
 -d '{"username": "subaccount-username", 
           "password": "subaccount-password", 
           "name": "subaccount-name", 
@@ -397,7 +397,7 @@ URL: `https://saucelabs.com/rest/v1/info/status`
 
 **Example Request:**
 ```bash
-curl -X GET http://saucelabs.com/rest/v1/info/status
+curl http://saucelabs.com/rest/v1/info/status
 ```
 
 ### Get Supported Browsers
@@ -414,7 +414,7 @@ Get an array of strings corresponding to all the browsers currently supported on
 
 **Example Request:**
 ```bash
-curl -X GET http://saucelabs.com/rest/v1/info/browsers/webdriver
+curl http://saucelabs.com/rest/v1/info/browsers/webdriver
 ```
 
 ## Partners
