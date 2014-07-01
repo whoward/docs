@@ -218,7 +218,7 @@ When troubleshooting Sauce Connect, you can generate verbose log files by adding
 ###	Checking network connectivity to Sauce Labs
 Make sure that saucelabs.com is accessible from the machine running Sauce Connect. This can be tested issuing a ping, telnet or cURL command to sacuelabs.com from the machine's command line interface. If any of these commands fail please work with your internal network team to resolve them.
 ```bash
- ping saucelabs.com
+ping saucelabs.com
 ```
 This command should return an IP address of 67.23.20.87
 ```bash
