@@ -581,10 +581,10 @@ curl https://saucelabs.com/rest/v1/sauceUsername/js-tests/status \
 -u sauceUsername:sauceAccessKey \
 -H 'Content-Type: application/json' \
 -d '{
-        "js tests": [
-            "064df78366ea4b25b32f88878c9d7aa4", 
-            "1e5ed949711545bd952456ac37479ada"
-        ]}'
+"js tests": [
+    "064df78366ea4b25b32f88878c9d7aa4", 
+    "1e5ed949711545bd952456ac37479ada"
+]}'
 ```
 
 Do that a few times as the tests run, waiting until the response contains `"completed": true` to get the final results.
