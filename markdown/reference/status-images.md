@@ -57,7 +57,7 @@ Or you can add the following HTML to your project site:
 
 ```html
 <a href="https://saucelabs.com/u/sauceUsername">
-  <img src="https://saucelabs.com/browser-matrix/sauceUsername.svg" alt="Sauce Test Status">
+  <img src="https://saucelabs.com/browser-matrix/sauceUsername.svg" alt="Sauce Test Status"/>
 </a>
 ```
 
