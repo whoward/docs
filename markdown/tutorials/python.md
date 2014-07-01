@@ -12,8 +12,7 @@ framework. Download the sample test with this command:
 
 ```bash
 python -c "import urllib2;
-open('example.py', 'wb')
-.write(urllib2.urlopen('http://saucelabs.com/examples/example.py')
+open('example.py', 'wb').write(urllib2.urlopen('http://saucelabs.com/examples/example.py')
 .read()
   .replace('_U_', '\"sauceUsername\"')
   .replace('_K_', '\"sauceAccessKey\"'))"
