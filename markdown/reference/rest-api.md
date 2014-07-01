@@ -464,9 +464,9 @@ Method: `POST`
 ```bash
 curl -u sauceUsername:sauceAccessKey \
 -X POST \
-https://saucelabs.com/rest/v1/users/SUBACCOUNT_USERNAME/subscription \
 -H 'Content-Type: application/json' \
--d '{"plan": "small"}'
+-d '{"plan": "small"}' \
+https://saucelabs.com/rest/v1/users/SUBACCOUNT_USERNAME/subscription
 ```
 
 ### Unsubscribe a Subaccount
