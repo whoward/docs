@@ -120,7 +120,7 @@ The `sc` command line program accepts the following parameters:
     -w, --proxy-userpwd <user:pwd>  Username and password required to
                                     access the proxy configured with -p.
         --pac <url>                 Proxy autoconfiguration. Can be a
-                                    http(s) or local file:// URL.                                    
+                                    http(s) or local file:// URL.
     -T, --proxy-tunnel              Use the proxy configured with -p
                                     for the tunnel connection.
     -s, --shared-tunnel             Let sub-accounts of the tunnel
@@ -138,7 +138,7 @@ The `sc` command line program accepts the following parameters:
     -z, --log-stats                 Log statistics about HTTP traffic
                                     every.
         --max-logsize <bytes>       Rotate logfile after reaching
-                                    <bytes> size. Disabled by default.                                    
+                                    <bytes> size. Disabled by default.
     -h, --help                      Display this help text.
 
 ##  Managing multiple tunnels
@@ -218,7 +218,7 @@ When troubleshooting Sauce Connect, you can generate verbose log files by adding
 ###	Checking network connectivity to Sauce Labs
 Make sure that saucelabs.com is accessible from the machine running Sauce Connect. This can be tested issuing a ping, telnet or cURL command to sacuelabs.com from the machine's command line interface. If any of these commands fail please work with your internal network team to resolve them.
 ```bash
- ping saucelabs.com
+ping saucelabs.com
 ```
 This command should return an IP address of 67.23.20.87
 ```bash

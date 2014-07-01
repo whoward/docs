@@ -17,7 +17,8 @@ To get your tests running, you can either check out the docs for the [karma-sauc
 Start by cloning the [karma-sauce-example](https://github.com/saucelabs/karma-sauce-example.git) repo by running the following command in your terminal:
 
 ```bash
-git clone https://github.com/saucelabs/karma-sauce-example.git && cd karma-sauce-example
+git clone https://github.com/saucelabs/karma-sauce-example.git &&
+cd karma-sauce-example
 ```
 
 Then run the following command to install the Karma command line interface globally and the sample repo's local node.js dependencies:
@@ -50,7 +51,8 @@ If you don't already have `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` available as e
 
 ```bash
 echo "export SAUCE_USERNAME=sauceUsername
-export SAUCE_ACCESS_KEY=sauceAccessKey" >> ~/.bash_profile && source ~/.bash_profile
+export SAUCE_ACCESS_KEY=sauceAccessKey" >> ~/.bash_profile &&
+source ~/.bash_profile
 ```
 
 Now proceed to the [next section](#running-javascript-unit-tests-on-sauce-locally).

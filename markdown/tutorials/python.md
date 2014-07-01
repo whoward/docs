@@ -11,7 +11,11 @@ Let's start with a sample test based on Python's unittest
 framework. Download the sample test with this command:
 
 ```bash
-python -c "import urllib2; open('example.py', 'wb').write(urllib2.urlopen('http://saucelabs.com/examples/example.py').read().replace('_U_', '\"sauceUsername\"').replace('_K_', '\"sauceAccessKey\"'))"
+python -c "import urllib2;
+open('example.py', 'wb').write(urllib2.urlopen('http://saucelabs.com/examples/example.py')
+.read()
+  .replace('_U_', '\"sauceUsername\"')
+  .replace('_K_', '\"sauceAccessKey\"'))"
 ```
 
 And install some dependencies:
@@ -60,13 +64,13 @@ py.test -n2 --boxed example.py
 
 Eventually you will see output like this:
 ```
-============================== test session starts ==============================
+======================= test session starts =======================
 platform darwin -- Python 2.7.5 -- pytest-2.5.1
 plugins: xdist
 gw0 [2] / gw1 [2]
 scheduling tests via LoadScheduling
 ..
-=========================== 2 passed in 17.30 seconds ===========================
+==================== 2 passed in 17.30 seconds =====================
 ```
 (The exact output will depend on your setup, but you should see all
 tests passing.)

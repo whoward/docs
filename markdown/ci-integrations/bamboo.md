@@ -223,13 +223,13 @@ Your test code will need to be updated to reference these environment variables.
 Below is some sample Java code which demonstrates how to reference the environment variables that are set by the Bamboo plugin
 
 ```java
-    DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-    desiredCapabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
-    desiredCapabilities.setVersion(System.getenv("SELENIUM_VERSION"));
-    desiredCapabilities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
-    WebDriver driver = new RemoteWebDriver(
-                new URL("http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub"),
-                desiredCapabilities);
+DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+desiredCapabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
+desiredCapabilities.setVersion(System.getenv("SELENIUM_VERSION"));
+desiredCapabilities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
+WebDriver driver = new RemoteWebDriver(
+            new URL("http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub"),
+            desiredCapabilities);
 
 ```
 
@@ -244,9 +244,10 @@ Below is a Java sample that demonstrates outputting the session id to the Java s
 ```java
 private void printSessionId() {
 
-        String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", (((RemoveWebDriver) driver).getSessionId()).toString(), "some job name");
-        System.out.println(message);
-    }
+    String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
+    (((RemoveWebDriver) driver).getSessionId()).toString(), "some job name");
+    System.out.println(message);
+}
 ```
 
 Selenium Client Factory
