@@ -554,19 +554,9 @@ Hosting your tests on your LAN or your laptop? You'll need to run [Sauce Connect
 * `tunnel_identifier`: specifies the ID of a specific tunnel when using multiple Sauce Connect tunnels.
 * `parent_tunnel`: specifies the username of a parent account whose shared Sauce Connect tunnel your tests should use.
 
-Any other parameters get passed on as [Optional Desired Capabilities]/reference/test-configuration/ for the selenium server. This means you can set things like: `max-duration`
+Any other parameters get passed on as [Optional Desired Capabilities](/reference/test-configuration/#webdriver-api) for the selenium server. This means you can set things like: `max-duration`
 
 The default `max-duration` for all JS unit tests is 180 seconds.
-
-**Example response:**
-```json
-{
-  "js tests": [
-    "064df78366ea4b25b32f88878c9d7aa4",
-    "1e5ed949711545bd952456ac37479ada"
-  ]
-}
-```
 
 ### Get JS Unit Test Status
 
@@ -589,46 +579,6 @@ curl https://saucelabs.com/rest/v1/sauceUsername/js-tests/status \
 
 Do that a few times as the tests run, waiting until the response contains `"completed": true` to get the final results.
 
-**Example response:**
-```json
-{
-  "completed": true,
-  "js tests": [
-    {
-      "id": "064df78366ea4b25b32f88878c9d7aa4",
-      "job_id": "1a7aec8ef0c64165bcde1230e213ad44",
-      "platform": [
-        "Windows 8",
-        "internet explorer",
-        "10"
-      ],
-      "url": "https://saucelabs.com/jobs/ff737d47e03e47bfb45100a45e4b5ca5",
-      "result": {
-        "durationSec": 0.005,
-        "passed": true,
-        "suites": [
-          {
-            "description": "Player",
-            "durationSec": 0.005,
-            "passed": true,
-            "specs": [
-              {
-                "description": "should be able to play a Song",
-                "durationSec": 0.002,
-                "failedCount": 0,
-                "passed": true,
-                "passedCount": 2,
-                "skipped": false,
-                "totalCount": 2
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
-```
 You can control the job attached to the JS unit test via the `job_id`.
 
 ## Bugs
@@ -646,17 +596,6 @@ URL: `https://saucelabs.com/rest/v1/bugs/types`
 curl https://saucelabs.com/rest/v1/bugs/types
 ```
 
-**Example response:**
-```json
-[
-  {
-    "id": "bug-type-example-id",
-    "name": "Bug-example-name",
-    "description": "Bug example description"
-  }
-]
-```
-
 ### Get Bug
 
 Get description of each field for a particular bug type
@@ -666,22 +605,6 @@ URL: `https://saucelabs.com/rest/v1/bugs/types/:bug_id`
 **Example Request:**
 ```bash
 curl https://saucelabs.com/rest/v1/bugs/types/YOUR_BUG_ID
-```
-
-**Example response:**
-```json
-[
-  {
-    "type": "string",
-    "name": "Field-name",
-    "id": "Field-id"
-  },
-  {
-    "type": "int",
-    "name": "Field-name",
-    "id": "Field-id"
-  }
-]
 ```
 
 ### Get Bug Details
