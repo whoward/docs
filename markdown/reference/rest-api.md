@@ -5,7 +5,7 @@
   index: 2
 }
 
-The Sauce Labs REST API is accessed over HTTPS, with standard HTTP methods and authentication, and using [JSON][1] encoding for request and response data.
+The Sauce Labs REST API is accessed over HTTPS, with standard HTTP methods and authentication, and using [JSON](http://en.wikipedia.org/wiki/JSON) encoding for request and response data.
 
 The API is versioned by URL. The current version is v1, and resides under the `saucelabs.com/rest/v1/` base URL. Some v1.1 methods have been introduced under `saucelabs.com/rest/v1.1/`.
 
@@ -22,7 +22,7 @@ If you use Java, Ruby, PHP or node.js, you can use one of the below API librarie
 
 ## Getting Started
 
-The Sauce Labs REST API uses [HTTP Basic Authentication][2]. To authenticate, either include the Sauce username and access key in the request URL like so:
+The Sauce Labs REST API uses [HTTP Basic Authentication](http://en.wikipedia.org/wiki/Basic_access_authentication). To authenticate, either include the Sauce username and access key in the request URL like so:
 ```bash
 curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sauceUsername
 ```
@@ -339,7 +339,7 @@ https://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/assets
 
 ## Tunnels
 
-Tunnels are used by [Sauce Connect][4] to redirect traffic for a given domain to a server on your internal network. They are unique to users and will not affect any other users. For more information, please read our [Sauce Connect documentation][4]
+Tunnels are used by [Sauce Connect](/reference/sauce-connect/) to redirect traffic for a given domain to a server on your internal network. They are unique to users and will not affect any other users. For more information, please read our [Sauce Connect documentation](/reference/sauce-connect/)
 
 ### Get Tunnels
 
@@ -419,7 +419,7 @@ curl http://saucelabs.com/rest/v1/info/browsers/webdriver
 
 ## Partners
 
-This section is for use only by Sauce Labs partner accounts. If you use these commands with a standard account, they may cause unexpected behavior. To add and manage sub-accounts, head to [your sub-accounts page][5].
+This section is for use only by Sauce Labs partner accounts. If you use these commands with a standard account, they may cause unexpected behavior. To add and manage sub-accounts, head to [your sub-accounts page](https://saucelabs.com/sub-accounts).
 
 ### Create Account With Plan
 
@@ -554,7 +554,7 @@ Hosting your tests on your LAN or your laptop? You'll need to run [Sauce Connect
 * `tunnel_identifier`: specifies the ID of a specific tunnel when using multiple Sauce Connect tunnels.
 * `parent_tunnel`: specifies the username of a parent account whose shared Sauce Connect tunnel your tests should use.
 
-Any other parameters get passed on as [Optional Desired Capabilities][6] for the selenium server. This means you can set things like: `max-duration`
+Any other parameters get passed on as [Optional Desired Capabilities]/reference/test-configuration/ for the selenium server. This means you can set things like: `max-duration`
 
 The default `max-duration` for all JS unit tests is 180 seconds.
 
@@ -727,10 +727,3 @@ https://saucelabs.com/rest/v1/bugs/update/YOUR_BUG_ID \
 ```
 
 **Valid keys:** Only the following bug properties can be modified with the API: `"Title"`, and `"Description"`.
-
-   [1]: http://en.wikipedia.org/wiki/JSON
-   [2]: http://en.wikipedia.org/wiki/Basic_access_authentication
-   [3]: https://saucelabs.com/docs/additional-config#job-visibility
-   [4]: /reference/sauce-connect/
-   [5]: https://saucelabs.com/sub-accounts
-   [6]: /reference/test-configuration/

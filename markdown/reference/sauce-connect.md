@@ -30,7 +30,7 @@ You can also use Sauce Connect:
 </ul>
 2. Unzip (or untar).  
 3. Open a command prompt.
-4. Make sure port 443 can be opened for outbound connections (or, configure Sauce Connect with a proxy that can reach saucelabs.com, using the `--proxy` or `--pac` [command line options][1]). 
+4. Make sure port 443 can be opened for outbound connections (or, configure Sauce Connect with a proxy that can reach saucelabs.com, using the `--proxy` or `--pac` [command line options](#advanced-configuration)).
 5. Go to the install directory and start sc:
 
 ```bash
@@ -38,13 +38,13 @@ bin/sc -u sauceUsername -k sauceAccessKey
 ```
 
 6. When you see "connected", you are ready to go! 
-7. Read our take on security: [Security best practices][2]
+7. Read our take on security: [Security best practices](http://sauceio.com/index.php/2011/09/security-through-purity/)
 
 ##  How is Sauce Connect secured?
 
 Though starting up a tunnel using Sauce Connect may take a few seconds, our tunneling method allows for the highest possible security. We spin up a secure tunnel sandbox environment for each tunnel connection in order to provide greater tunnel security and isolation from other customers.
 
-Data transmitted by Sauce Connect is encrypted through industry-standard TLS, using the AES-256 cipher. Sauce Connect also uses a caching web proxy to minimize data transfer. To read more about security on Sauce, read our [security white paper][3].
+Data transmitted by Sauce Connect is encrypted through industry-standard TLS, using the AES-256 cipher. Sauce Connect also uses a caching web proxy to minimize data transfer. To read more about security on Sauce, read our [security white paper](http://info.saucelabs.com/).
 
 Within your infrastructure, Sauce Connect needs access to the application under test, but can be firewalled from the rest of your internal network. We recommend running Sauce Connect in a firewall DMZ, on a dedicated machine, and setting up firewall rules to restrict access from that DMZ to your internal network.
 
@@ -200,7 +200,7 @@ This will kill Sauce Connect every day at 12am, but can be modified to behave di
 
 When using Sauce Connect, local web apps running on commonly-used ports are available to test at localhost URLs, just as if the Sauce Labs cloud were your local machine. Easy!
 
-However, because an additional proxy is required for localhost URLs, tests may perform better when using a locally-defined domain name (which can be set in your [hosts file][6]) rather than localhost. Using a locally-defined domain name also allows access to applications on any port.
+However, because an additional proxy is required for localhost URLs, tests may perform better when using a locally-defined domain name (which can be set in your [hosts file](http://en.wikipedia.org/wiki/Hosts_(file))) rather than localhost. Using a locally-defined domain name also allows access to applications on any port.
 
 Sauce Connect proxies these commonly-used localhost ports:
 
@@ -234,11 +234,4 @@ curl -v https://saucelabs.com/
 If you need additional help, get in touch at help@saucelabs.com. To provide our support team with additional information, please add the `-vv` and `-l sc.log` options to your Sauce Connect command line, reproduce the problem, and attach the resulting log file (called `sc.log`) to your support request.
 
 For more advance troubleshooting steps please refer to http://support.saucelabs.com/entries/22485469-Sauce-Connect-Troubleshooting-Tips
-
-   [1]: #advanced-configuration
-   [2]: http://sauceio.com/index.php/2011/09/security-through-purity/
-   [3]: http://info.saucelabs.com/SecurityWhitepaperDownload_SecurityWhitepaperLP.html
-   [4]: https://saucelabs.com/images/docs/sc4-0.png
-   [5]: http://support.saucelabs.com/categories/20002462-sauce-connect
-   [6]: http://en.wikipedia.org/wiki/Hosts_(file)
   
