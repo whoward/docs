@@ -492,7 +492,7 @@ Sauce Labs provides temporary storage inside our network for mobile apps, Seleni
 * During tests, use a `sauce-storage:` URL for the file, in the following format: `"sauce-storage:your_file_name"`
 * Sauce will find the file, download it through our fast internal network, and get your tests started right away.
 
-Please note that our temporary storage retains files for only 24 hours. We recommend users of this service upload files via our REST API every time their tests are about to run, as part of their build process.
+Please note that our temporary storage retains files for only seven days. We recommend users of this service upload files via our REST API every time their tests are about to run, as part of their build process.
 
 ### Upload File
 
