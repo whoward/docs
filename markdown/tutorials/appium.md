@@ -241,7 +241,7 @@ You'll also need to add the following fields (key/value pairs) to DesiredCapabil
 
 If you want to test against earlier versions like 2.3, 4.0, or 4.1, you'll need to access Appium's built-in [Selendroid](http://selendroid.io) support by using the `automationName` capability:
 
-  - `appium-version`: `"1.0"`
+  - `appium-version`: `"1.1"`
   - `app`: `"sauce-storage:my_app.apk"`
   - `automationName`: `"Selendroid"`
   - `platformName`: `"Android"`
