@@ -238,7 +238,7 @@ If a single browser is selected, then the `SELENIUM_PLATFORM`, `SELENIUM_VERSION
 ]
 ```
 
-As mentioned previously, the Sauce Bamboo plugin will set a series of environment variables that reflect the values entered on the Bamboo Job Configuration screen.  These environment variables can either be explicitly referenced by your unit tests, or through the use of the [selenium-client-factory] library.
+As mentioned previously, the Sauce Bamboo plugin will set a series of environment variables that reflect the values entered on the Bamboo Job Configuration screen.  These environment variables can either be explicitly referenced by your unit tests, or through the use of the [selenium-client-factory](#selenium-client-factory) library.
 
 * `SELENIUM_HOST` - The hostname of the Selenium server
 * `SELENIUM_PORT` - The port of the Selenium server
