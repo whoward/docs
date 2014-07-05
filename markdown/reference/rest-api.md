@@ -400,22 +400,24 @@ URL: `https://saucelabs.com/rest/v1/info/status`
 curl http://saucelabs.com/rest/v1/info/status
 ```
 
-### Get Supported Browsers
+### Get Supported Platforms
 
-URL: `https://saucelabs.com/rest/v1/info/browsers/:automation_api`
+URL: `https://saucelabs.com/rest/v1/info/platforms/:automation_api`
 
-Get an array of strings corresponding to all the browsers currently supported on Sauce Labs. Choose the automation API you need, bearing in mind that WebDriver and Selenium RC are each compatible with a different set of OS and browser platforms.
+Get an list of objects describing all the OS and browser platforms currently supported on Sauce Labs. Choose the automation API you need, bearing in mind that WebDriver and Selenium RC are each compatible with a different set of platforms.
 
 **Accepted Values for `automation_api`:**
 
 * `all`
+* `appium`
 * `webdriver`
 * `selenium-rc`
 
 **Example Request:**
 ```bash
-curl http://saucelabs.com/rest/v1/info/browsers/webdriver
+curl http://saucelabs.com/rest/v1/info/platforms/webdriver
 ```
+
 
 ## Partners
 
