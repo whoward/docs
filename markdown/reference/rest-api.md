@@ -536,7 +536,7 @@ Method: `POST`
 * `url`(required): should point to the page that hosts your tests.
 * `framework`(required): can be `"qunit"`, `"jasmine"`, `"YUI Test"`, `"mocha"`, or `"custom"`.
 
-The `"custom"` framework allows you to display generic test information on the Sauce Labs website. Set `window.global_test_results` in the following format on your unit test page and Sauce will report any failing tests: `
+The `"custom"` framework allows you to display generic test information on the Sauce Labs website. Set `window.global_test_results` in the following format on your unit test page and Sauce will report any failing tests:
 
 ```js
 window.global_test_results = {
@@ -604,7 +604,7 @@ URL `https://saucelabs.com/rest/v1/:username/js-tests/status`
 Method: `POST`
 
 **Request Fields:**
-* `js-tests`(required): an array of job ids which you would like the status of
+* `js tests`(required): an array of job ids which you would like the status of
 
 **Example Request:**
 ```bash
