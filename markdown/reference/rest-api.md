@@ -393,7 +393,7 @@ Information resources are publicly available data about Sauce Lab's service.
 
 Get the current status of Sauce Labs services.
 
-URL: `https://saucelabs.com/rest/v1/info/status`
+URL: `http://saucelabs.com/rest/v1/info/status`
 
 **Example Request:**
 ```bash
@@ -402,7 +402,7 @@ curl http://saucelabs.com/rest/v1/info/status
 
 ### Get Supported Platforms
 
-URL: `https://saucelabs.com/rest/v1/info/platforms/:automation_api`
+URL: `http://saucelabs.com/rest/v1/info/platforms/:automation_api`
 
 Get a list of objects describing all the OS and browser platforms currently supported on Sauce Labs. Choose the automation API you need, bearing in mind that WebDriver and Selenium RC are each compatible with a different set of platforms.
 
@@ -591,34 +591,34 @@ Interacting with Jobs bug tracking system
 
 Get list of available bug types
 
-URL: `https://saucelabs.com/rest/v1/bugs/types`
+URL: `http://saucelabs.com/rest/v1/bugs/types`
 
 **Example Request:**
 ```bash
-curl https://saucelabs.com/rest/v1/bugs/types
+curl http://saucelabs.com/rest/v1/bugs/types
 ```
 
 ### Get Bug
 
 Get description of each field for a particular bug type
 
-URL: `https://saucelabs.com/rest/v1/bugs/types/:bug_id`
+URL: `http://saucelabs.com/rest/v1/bugs/types/:bug_id`
 
 **Example Request:**
 ```bash
-curl https://saucelabs.com/rest/v1/bugs/types/YOUR_BUG_ID
+curl http://saucelabs.com/rest/v1/bugs/types/YOUR_BUG_ID
 ```
 
 ### Get Bug Details
 
 Get detailed info for a particular bug
 
-URL: `https://saucelabs.com/rest/v1/bugs/details/:bug_id`
+URL: `https://saucelabs.com/rest/v1/bugs/detail/:bug_id`
 
 **Example Request:**
 ```bash
-curl https://saucelabs.com/rest/v1/bugs/detail/YOUR_BUG_ID \
--u sauceUsername:sauceAccessKey
+curl -u sauceUsername:sauceAccessKey \
+https://saucelabs.com/rest/v1/bugs/detail/YOUR_BUG_ID
 ```
 
 ### Get Bugs Details
