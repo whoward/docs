@@ -393,7 +393,7 @@ Information resources are publicly available data about Sauce Lab's service.
 
 Get the current status of Sauce Labs services.
 
-URL: `https://saucelabs.com/rest/v1/info/status`
+URL: `http://saucelabs.com/rest/v1/info/status`
 
 **Example Request:**
 ```bash
@@ -402,7 +402,7 @@ curl http://saucelabs.com/rest/v1/info/status
 
 ### Get Supported Platforms
 
-URL: `https://saucelabs.com/rest/v1/info/platforms/:automation_api`
+URL: `http://saucelabs.com/rest/v1/info/platforms/:automation_api`
 
 Get a list of objects describing all the OS and browser platforms currently supported on Sauce Labs. Choose the automation API you need, bearing in mind that WebDriver and Selenium RC are each compatible with a different set of platforms.
 
@@ -521,7 +521,7 @@ By default, the API prevents overwriting files already stored in Sauce temporary
 
 ## JS Unit Testing
 
-If you already have JS unit tests, running them on Sauce using the REST API is simple.
+If you already have JS unit tests, running them on Sauce using the REST API is simple. If you are using Karma or want to setup a new test suite, check out our [JS Unit Testing Tutorial](/tutorials/js-unit-testing/).
 
 ### Start JS Unit Tests
 
@@ -536,7 +536,42 @@ Method: `POST`
 * `url`(required): should point to the page that hosts your tests.
 * `framework`(required): can be `"qunit"`, `"jasmine"`, `"YUI Test"`, `"mocha"`, or `"custom"`.
 
-The `"custom"` framework allows you to display generic test information on the Sauce Labs website. Set `window.global_test_results` on the javascript on your unit test page to an object that looks like the following and Sauce will report any failing tests: `
+The `"custom"` framework allows you to display generic test information on the Sauce Labs website. Set `window.global_test_results` in the following format on your unit test page and Sauce will report any failing tests: `
+
+```js
+window.global_test_results = {
+  "passed": 1,
+  "failed": 3,
+  "total": 4,
+  "duration": 4321,
+  "tests": [
+    {
+      "name": "foo test",
+      "result": false,
+      "message": "sumthin bad",
+      "duration": 4000
+    },
+    {
+      "name": "bar test",
+      "result": false,
+      "message": "failure",
+      "duration": 300
+    },
+    {
+      "name": "baz test",
+      "result": true,
+      "message": "passed",
+      "duration": 20
+    },
+    {
+      "name": "qux test",
+      "result": false,
+      "message": "test bad",
+      "duration": 1
+    }
+  ]
+}
+```
 
 **Example Request:**
 ```bash
@@ -566,22 +601,21 @@ Get the status of your JS unit tests
 
 URL `https://saucelabs.com/rest/v1/:username/js-tests/status`
 
+Method: `POST`
+
+**Request Fields:**
+* `js-tests`(required): an array of job ids which you would like the status of
+
 **Example Request:**
 ```bash
 curl https://saucelabs.com/rest/v1/sauceUsername/js-tests/status \
 -X POST \
 -u sauceUsername:sauceAccessKey \
 -H 'Content-Type: application/json' \
--d '{
-"js tests": [
-    "064df78366ea4b25b32f88878c9d7aa4", 
-    "1e5ed949711545bd952456ac37479ada"
-]}'
+-d '{"js tests": ["JOB_ID_1","JOB_ID_2"]}'
 ```
 
 Do that a few times as the tests run, waiting until the response contains `"completed": true` to get the final results.
-
-You can control the job attached to the JS unit test via the `job_id`.
 
 ## Bugs
 
@@ -591,34 +625,34 @@ Interacting with Jobs bug tracking system
 
 Get list of available bug types
 
-URL: `https://saucelabs.com/rest/v1/bugs/types`
+URL: `http://saucelabs.com/rest/v1/bugs/types`
 
 **Example Request:**
 ```bash
-curl https://saucelabs.com/rest/v1/bugs/types
+curl http://saucelabs.com/rest/v1/bugs/types
 ```
 
 ### Get Bug
 
 Get description of each field for a particular bug type
 
-URL: `https://saucelabs.com/rest/v1/bugs/types/:bug_id`
+URL: `http://saucelabs.com/rest/v1/bugs/types/:bug_id`
 
 **Example Request:**
 ```bash
-curl https://saucelabs.com/rest/v1/bugs/types/YOUR_BUG_ID
+curl http://saucelabs.com/rest/v1/bugs/types/YOUR_BUG_ID
 ```
 
 ### Get Bug Details
 
 Get detailed info for a particular bug
 
-URL: `https://saucelabs.com/rest/v1/bugs/details/:bug_id`
+URL: `https://saucelabs.com/rest/v1/bugs/detail/:bug_id`
 
 **Example Request:**
 ```bash
-curl https://saucelabs.com/rest/v1/bugs/detail/YOUR_BUG_ID \
--u sauceUsername:sauceAccessKey
+curl -u sauceUsername:sauceAccessKey \
+https://saucelabs.com/rest/v1/bugs/detail/YOUR_BUG_ID
 ```
 
 ### Get Bugs Details
