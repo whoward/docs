@@ -132,11 +132,11 @@ The `sc` command line program accepts the following parameters:
     -f, --readyfile                 File that will be touched to signal
                                     when tunnel is ready.
     -a, --auth <host:port:user:pwd> Perform basic authentication when
-                                    an URL on  asks for a
+                                    a URL on <host:port> asks for a
                                     username and password. This option
                                     can be used multiple times.
-    -z, --log-stats                 Log statistics about HTTP traffic
-                                    every.
+    -z, --log-stats <seconds>       Log statistics about HTTP traffic
+                                    every <seconds>.
         --max-logsize <bytes>       Rotate logfile after reaching
                                     <bytes> size. Disabled by default.
     -h, --help                      Display this help text.
