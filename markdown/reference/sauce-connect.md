@@ -120,10 +120,10 @@ The `sc` command line program accepts the following parameters:
     -P, --se-port <port>            Port on which Sauce Connect's
                                     Selenium relay will listen for
                                     requests. Selenium commands
-                                    reaching Connect on this port will
-                                    be relayed to Sauce Labs securely
-                                    and reliably through Connect's
-                                    tunnel. Defaults to 4445.
+                                    reaching Sauce Connect on this port
+                                    will be relayed to Sauce Labs 
+                                    securely and reliably through Sauce 
+                                    Connect's tunnel. Defaults to 4445.
     -p, --proxy <host:port>         Proxy host and port that Sauce
                                     Connect should use to connect
                                     to the Sauce Labs cloud.
@@ -153,11 +153,11 @@ The `sc` command line program accepts the following parameters:
 
 ##  Managing multiple tunnels
 
-In its default mode of execution, one Connect instance will suffice all your needs and will require no efforts to make cloud browsers driven by your tests navigate through the tunnel.
+In its default mode of execution, one Sauce Connect instance will suffice all your needs and will require no efforts to make cloud browsers driven by your tests navigate through the tunnel.
 
-Just start Connect, all traffic from jobs under the same account will use it transparently. Stop that tunnel, all jobs will stop to do so and attempt to find your web servers through the open internet.
+Just start Sauce Connect, all traffic from jobs under the same account will use it transparently. Stop that tunnel, all jobs will stop to do so and attempt to find your web servers through the open internet.
 
-Using identified tunnels, you can start multiple instances of Connect that will not collide with each other and will not make your tests' traffic transparently tunnel through.
+Using identified tunnels, you can start multiple instances of Sauce Connect that will not collide with each other and will not make your tests' traffic transparently tunnel through.
 
 This allows you to test different localhost servers or access different networks from different tests (a common requirement when running tests on TravisCI.)
 
@@ -177,7 +177,7 @@ Tunnels started by an account can be reused by its sub-accounts. To reuse a tunn
 ```bash
 sc --shared-tunnel parentAccount parentAccountsAccessKey
 ```
-Once the tunnel is running, provide the special "parent-tunnel" desired capability on a per-job basis. The value of this capability should be the username of the parent account that owns the shared Connect tunnel as a string. Here's an example (this test should can run using Auth credentials for any sub-account of "parentAccount"):
+Once the tunnel is running, provide the special "parent-tunnel" desired capability on a per-job basis. The value of this capability should be the username of the parent account that owns the shared Sauce Connect tunnel as a string. Here's an example (this test should can run using Auth credentials for any sub-account of "parentAccount"):
 
 ```python
 capabilities['parent-tunnel'] = "parentAccount"
