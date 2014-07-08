@@ -112,10 +112,12 @@ The `sc` command line program accepts the following parameters:
                                     matching one of these will get 
                                     dropped instantly and will not go 
                                     through the tunnel.
-    -i, --tunnel-identifier <id>    Don't automatically assign jobs to
-                                    this tunnel. Jobs will use it only
-                                    by explicitly providing the right
-                                    identifier.
+    -i, --tunnel-identifier <id>    Assign <id> to this Sauce Connect 
+                                    instance. Future jobs will use this 
+                                    tunnel only when explicitly 
+                                    specified by the 'tunnel-
+                                    identifier' desired capability in a 
+                                    Selenium client.
     -l, --logfile <file>
     -P, --se-port <port>            Port on which Sauce Connect's
                                     Selenium relay will listen for
