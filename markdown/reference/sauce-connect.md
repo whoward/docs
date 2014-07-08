@@ -108,9 +108,10 @@ The `sc` command line program accepts the following parameters:
                                     be ignored.
     -v, --verbose                   Enable verbose debugging.
     -F, --fast-fail-regexps         Comma-separated list of regular
-                                    expressions. Requests matching one
-                                    of these will get dropped instantly
-                                    and will not go through the tunnel.
+                                    expressions. Requests with URLs 
+                                    matching one of these will get 
+                                    dropped instantly and will not go 
+                                    through the tunnel.
     -i, --tunnel-identifier <id>    Don't automatically assign jobs to
                                     this tunnel. Jobs will use it only
                                     by explicitly providing the right
