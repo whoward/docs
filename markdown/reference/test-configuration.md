@@ -5,14 +5,14 @@
   index: 1
 }
 
-Sauce Labs refers to an individual test session as a "job". For example, if your test suite contains 100 Selenium tests, and you run the entire suite 3 times, Sauce will keep records of 300 jobs, one for each test session. The following are additional settings you can use to annotate your jobs and configure Sauce on a per-job basis to collect more data, improve performance, set timeouts, and more. This is done differently depending on the API you are using: [WebDriver][1], [Selenium RC][2], or the [Sauce Labs REST API][3].
+Sauce Labs refers to an individual test session as a "job". For example, if your test suite contains 100 Selenium tests, and you run the entire suite 3 times, Sauce will keep records of 300 jobs, one for each test session. The following are additional settings you can use to annotate your jobs and configure Sauce on a per-job basis to collect more data, improve performance, set timeouts, and more. This is done differently depending on the API you are using: [WebDriver](#webdriver-api), [Selenium RC](#selenium-rc-api), or the [Sauce Labs REST API](#job-annotation-with-the-rest-api).
 
 ## WebDriver API
 For Selenium and Appium tests using the WebDriver API, settings are provided using the `DesiredCapabilities` object provided by Remote WebDriver libraries. Any key-value pair specified in this documentation can be set through this hash-like object.
-Find more about `RemoteDriver` and the `DesiredCapabilities` object on [Selenium's RemoteDriver wiki][5].
+Find more about `RemoteDriver` and the `DesiredCapabilities` object on [Selenium's RemoteDriver wiki](http://code.google.com/p/selenium/wiki/RemoteWebDriver).
 
 ## Selenium RC API
-For Selenium RC tests, settings are given in Selenium's "browser" parameter. In Selenium RC tests this is ordinarily a string like "\*iexplore" or "\*firefox", but for use with Sauce Labs it will need to contain a full [JSON object][4], like this:
+For Selenium RC tests, settings are given in Selenium's "browser" parameter. In Selenium RC tests this is ordinarily a string like "\*iexplore" or "\*firefox", but for use with Sauce Labs it will need to contain a full [JSON object](http://www.json.org), like this:
 ```
  '{"username": "your username here",
    "access-key": "your access key here",
@@ -27,9 +27,10 @@ Any key-value pair specified in this documentation can be set through this JSON 
 
 The Sauce Labs REST API provides a way to set the same additional information in jobs via a JSON object sent with an HTTP PUT command. Your tests can use this API to set job info even after the test is over. For example, this method is often used to update the job with information that couldn't be foreseen at the time the test was created, like the pass/fail status of a test. Here's an example of setting job info using curl, from the command line:
 ```bash
- $ curl -X PUT \
-        -H "Content-Type:text/json" -s -d '{"passed": true}' \ 
-        http://<username>:<key>@saucelabs.com/rest/v1/<username>/jobs/<job-id>
+curl -X PUT \
+-s -d '{"passed": true}' \ 
+-u sauceUsername:sauceAccessKey \
+https://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID
 ```
 
 ### Accepted Keys
@@ -61,9 +62,9 @@ Here's a more comprehensive example of the JSON accepted by this method:
   }
 ```
 
-If you were to use this from your tests, you would probably want to build a simple set of functions that do the request for you. We've created a [Java library][6] for this, and here are some examples for [Python][7] and [Ruby][8]. We would love to see users share libraries for other languages!
+If you were to use this from your tests, you would probably want to build a simple set of functions that do the request for you. We've created a [Java library](https://github.com/saucelabs/saucerest-java) for this, and here are some examples for [Python](https://gist.github.com/1644439) and [Ruby](https://gist.github.com/DylanLacey/5218959). We would love to see users share libraries for other languages!
 
-[Read more about our REST API.][9]
+[Read more about our REST API.](/reference/rest-api/)
 
 ### setContext()
 setContext is an alternative to the REST API available for Selenium RC tests. In Selenium RC, the `setContext()` command is meant only for sending advisory information to the Selenium server for logging purposes. When the value passed to setContext starts with "sauce:", Sauce intercepts the command and parses it for job annotations. We allow two formats for setContext: basic and advanced. The basic format lets you set tags, name, and pass/fail status for jobs. The advanced format lets you set more fields, and you can set them all in a single command.
@@ -133,7 +134,7 @@ Example:
 ### Recording Pass/Fail Status
 Selenium and Appium handle sending commands to control a browser or app, but don't report to the server whether a test passed or failed. To record pass/fail status on Sauce, set the `passed` flag on the job.
 
-Since you can't know in advance whether a test passed or failed, this flag can't be set in the initial configuration. Instead, you'll need to use one of our alternative job annotation methods, such as our [REST API][3].
+Since you can't know in advance whether a test passed or failed, this flag can't be set in the initial configuration. Instead, you'll need to use one of our alternative job annotation methods, such as our [REST API](#job-annotation-with-the-rest-api).
 
 Key: `passed`
 
@@ -215,7 +216,7 @@ Example:
 ```
 
 ### Enabling HTML Source Capture
-In the same way Sauce [captures step-by-step screenshots][11], we can capture HTML source at each step. This feature is disable by default, but you can turn it on anytime and find the HTML source captures on your job result page:
+In the same way Sauce [captures step-by-step screenshots](#disabling-step-by-step-screenshots), we can capture HTML source at each step. This feature is disable by default, but you can turn it on anytime and find the HTML source captures on your job result page:
 
 Key: `capture-html`
 
@@ -304,17 +305,20 @@ Value type: list
 Example:
 
 ```python
-"user-extensions-url": [ "http://saucelabs.com/ext/flex.js", "ftp://username:password@server.com/bleh.js" ]
+"user-extensions-url": [
+  "http://saucelabs.com/ext/flex.js",
+  "ftp://username:password@server.com/bleh.js"
+]
 ```
 
 ### Selenium RC Custom Firefox Profiles
 Custom Firefox profiles allow you to configure the browser running in our cloud on a per-job basis. This includes both plugins and any particular setting your tests may need.
 
-This feature is provided for Selenium RC tests. WebDriver users should use the official FirefoxProfile class [ as specified in the WebDriver documentation][13].
+This feature is provided for Selenium RC tests. WebDriver users should use the official FirefoxProfile class [ as specified in the WebDriver documentation](http://code.google.com/p/selenium/wiki/FirefoxDriver).
 
 To use this feature, a zip file with the contents of the Firefox profile directory you wish to use needs to be provided. Given the URL of a file on an accessible HTTP or FTP server (public or connected with Sauce Connect), Sauce will download it and use it in your test.
 
-For more info on Firefox profiles, you can check [Mozilla's knowledge base][14].
+For more info on Firefox profiles, you can check [Mozilla's knowledge base](http://support.mozilla.com/en-US/kb/Managing-profiles).
 
 Key: `firefox-profile-url`
 
@@ -340,7 +344,7 @@ Value type: integer
 Example:
 
 ```python
-"max-duration": 300
+"max-duration": 1800
 ```
 
 ### Command Timeout
@@ -396,7 +400,7 @@ Example:
 **Multiple Pre-run Executables:** If you need to send multiple pre-run executables, the best way is to bundle them into a single executable file, such as a self-extracting zip file.
 
 ### Identified Tunnels
-If an [identified tunnel][15] is started using Sauce Connect, your jobs can choose to proxy through it using this set of keys with the right identifier. See the [Sauce Connect documentation][15] for more information on identified tunnels.
+If an [identified tunnel](/reference/sauce-connect/#managing-multiple-tunnels) is started using Sauce Connect, your jobs can choose to proxy through it using this set of keys with the right identifier. See the [Sauce Connect documentation](/reference/sauce-connect/#managing-multiple-tunnels) for more information on identified tunnels.
 
 Key: `tunnel-identifier`
 
@@ -429,7 +433,7 @@ Valid values for Windows 8 and 8.1 are:<br/> `1024x768` `1280x1024`
 
 ### Custom Time Zones
 
-Test VMs can be configured with custom time zones. This feature should work on all operating systems, however time zones on Windows VMs are approximate. They will default to the time zone that the provided location falls into. A complete list of valid locations [can be found here on Wikipedia][20]. Sauce takes only location names (not their paths), as shown in the example below.
+Test VMs can be configured with custom time zones. This feature should work on all operating systems, however time zones on Windows VMs are approximate. They will default to the time zone that the provided location falls into. A complete list of valid locations [can be found here on Wikipedia](http://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Sauce takes only location names (not their paths), as shown in the example below.
 
 Key: `time-zone`
 
@@ -478,7 +482,7 @@ By default, Sauce routes traffic from all Selenium RC and some WebDriver browser
 
 Note: Firefox and Google Chrome under WebDriver aren't affected by this flag as they handle invalid certificates automatically and there isn't a need to proxy through Selenium.
 
-Note: This flag incompatible with [Sauce Connect][16].
+Note: This flag incompatible with [Sauce Connect](/reference/sauce-connect/).
 
 Note: Under Selenium RC, `avoid-proxy` set to `true` will break safariproxy, firefoxproxy, iexploreproxy and opera browsers.
 
@@ -527,8 +531,7 @@ The available visibility levels are as follows:
     If you don't want to share your test's result page and video with anyone, you should use private job visibility mode. This way, only you (the owner) will be able to view assets and test result page.
     
 
-**Note**: For more details about sharing jobs, check our [Job Results Integration][19] docs.
-
+**Note**: For more details about sharing jobs, check our [Job Results Integration](https://saucelabs.com/docs/integration) docs.
 ## Mobile Testing Options
 
 ### Device Orientation
@@ -550,10 +553,10 @@ Example:
 
 In Selenium, when a client requests a new browser session, the server returns a session ID, which is used to identify that session throughout the test. The session ID is stored as a member variable of the instantiated Selenium object and named "sessionId" or "session_id," depending on the client library. We use that session ID as the job id for accessing test results on our website.
 
-To directly access a specific job, you will first need to note the session ID locally, usually by writing it to a log file. You can then use it to create a URL with the following format and replace <b>&lt;jobid&gt;</b> with the session ID.
+To directly access a specific job, you will first need to note the session ID locally, usually by writing it to a log file. You can then use it to create a URL with the following format and replace **YOUR_JOB_ID** with the session ID.
 
 
-    http://saucelabs.com/jobs/<jobid>
+    http://saucelabs.com/jobs/YOUR_JOB_ID
 
 Notice that links to jobs in this format will only work if you are logged in with the account that ran the job or if that account is a sub-account of yours. For generating public links, read the section below, [ no-login links to jobs](#no-login-links-to-jobs).
 
@@ -567,37 +570,30 @@ Auth tokens are generated on a per-job basis and give the receiver access using 
 
 The digest algorithm to use is **MD5**. The message and key used to generate the token should be the following:
 
-Key:&lt;sauceUsername&gt;:&lt;sauceAccessKey&gt;<br/>
-Message:&lt;job-id&gt;
+- Key: `sauceUsername`:`sauceAccessKey`
+- Message: `job-id`
 
-Here's an example in Python for generating the token for a job with id: 5f9fef27854ca50a3c132ce331cb6034
+Here's an example in Python for generating the token for a job with id: `5f9fef27854ca50a3c132ce331cb6034`
 
 ```python
 import hmac
 from hashlib import md5
-hmac.new("example_user:123456-asdf-8dcf81f1fc71", "5f9fef27854ca50a3c132ce331cb6034", md5).hexdigest()
-      '3fca4184e106622adf2d33d8023271c1'
+hmac.new("sauceUsername:sauceAccessKey",
+         "5f9fef27854ca50a3c132ce331cb6034", md5).hexdigest()
 ```
 
 Once the auth token has been obtained, it can be used to build a link in the following format:
 
-`https://saucelabs.com/jobs/<job-id>?auth=<token>`
-
-For our example job, the link would end up being:
-
-`https://saucelabs.com/jobs/5f9fef27854ca50a3c132ce331cb6034?auth=8859d634f5a51fea1a66e74708cf822a`
-
-**Note**: the link won't work as this job doesn't really exist.
+`https://saucelabs.com/jobs/YOUR_JOB_ID?auth=AUTH_TOKEN`
 
 ### Temporary links to jobs
 
-There's a way to extend the links generated in [no-login links to jobs][1] to make them work only temporarily.
+There's a way to extend the links generated in [no-login links to jobs](#webdriver-api) to make them work only temporarily.
 
 The authentication token can be generated in a way that provides 1 hour or 1 day of access to the job by using the following information for the hmac generation:
 
-
-Key:&lt;sauceUsername&gt;:&lt;sauceAccessKey&gt;:&lt;date-range&gt;<br/>
-Message:&lt;job-id&gt;
+- Key: `YOUR_USERNAME`:`YOUR_ACCESS_KEY`:`YOUR_DATE_RANGE`
+- Message: `YOUR_JOB_ID`
 
 The date range can take two formats: **YYYY-MM-DD-HH** and **YYYY-MM-DD**. These **should be set in UTC time** and will only work during the date or hour chosen and the following.
 
@@ -605,52 +601,27 @@ The date range can take two formats: **YYYY-MM-DD-HH** and **YYYY-MM-DD**. These
 
 ### Embedding full job pages
 
-We offer a simple way to embed job pages in CI test results or other test reports. Using the format below, add the HTML to any page you need to embed job results on, replacing <b>&lt;job_id&gt;</b> with the ID of the job you want:
+We offer a simple way to embed job pages in CI test results or other test reports. Using the format below, add the HTML to any page you need to embed job results on, replacing **YOUR_JOB_ID** with the ID of the job you want:
 
 ```html
-<script type="text/javascript" src="https://saucelabs.com/job-embed/<job_id>.js"></script>
+<script src="https://saucelabs.com/job-embed/YOUR_JOB_ID.js">
+</script>
 ```
 
-**Note**: this will only work for browsers logged in using your account, and authentication tokens can be used to make this work for anonymous viewers. Check out [no-login links to jobs][1] for directions on generating these tokens.
+**Note**: this will only work for browsers logged in using your account, and authentication tokens can be used to make this work for anonymous viewers. Check out [no-login links to jobs](#webdriver-api) for directions on generating these tokens.
 
 ### Embedding the video player
 
-In addition to full job results, we offer a simple way to embed videos as well. Using the format below, add the HTML to any page you need to embed job videos on, replacing <b>&lt;job_id&gt;</b> with the ID of the job you want:
+In addition to full job results, we offer a simple way to embed videos as well. Using the format below, add the HTML to any page you need to embed job videos on, replacing **YOUR_JOB_ID** with the ID of the job you want:
 
 ```html
-<script type="text/javascript" src="https://saucelabs.com/video-embed/<job_id>.js"></script>
+<script src="https://saucelabs.com/video-embed/YOUR_JOB_ID.js">
+</script>
 ```
 
-**Note**: this will only work for browsers logged in using your account, and authentication tokens can be used to make this work for anonymous viewers. Check out [no-login links to jobs][1] for directions on generating these tokens. Here's how such a script might look:
+**Note**: this will only work for browsers logged in using your account, and authentication tokens can be used to make this work for anonymous viewers. Check out [no-login links to jobs](#webdriver-api) for directions on generating these tokens. Here's how such a script might look:
 
 ```html
-<script src="https://saucelabs.com/video-embed/7dcb077bfcfd43a0a9d50011dd3bc01c.js?auth=6a7dcf9f2d8e7039699bd0280a7f4504"></script>
+<script src="https://saucelabs.com/video-embed/YOUR_JOB_ID.js?auth=AUTH_TOKEN">
+</script>
 ```
-
-   [1]: #webdriver-api
-   [2]: #selenium-rc-api
-   [3]: #job-annotation-with-the-rest-api
-   [4]: http://www.json.org
-   [5]: http://code.google.com/p/selenium/wiki/RemoteWebDriver
-   [6]: https://github.com/saucelabs/saucerest-java
-   [7]: https://gist.github.com/1644439
-   [8]: https://gist.github.com/DylanLacey/5218959
-   [9]: /reference/rest-api/
-   [10]: #recording-pass-fail-status
-   [11]: #disabling-step-by-step-screenshots
-   [12]: http://seleniumhq.org/docs/05_selenium_rc.html#multi-window-mode
-   [13]: http://code.google.com/p/selenium/wiki/FirefoxDriver
-   [14]: http://support.mozilla.com/en-US/kb/Managing-profiles
-   [15]: /reference/sauce-connect/#managing-multiple-tunnels
-   [16]: /reference/sauce-connect/
-   [17]: #Webdriver-API
-   [18]: https://saucelabs.com/now
-   [19]: https://saucelabs.com/docs/integration
-   [20]: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-   [21]: #setcontext-
-   [22]: #job-annotation-with-the-rest-api
-   [23]: #recording-test-names
-   [24]: #job-visibilitiy
-   [25]: #tagging
-   [26]: #recording-build-numbers
-   [27]: #recording-custom-data

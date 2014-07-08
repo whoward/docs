@@ -54,13 +54,13 @@ Scroll down to the `Sauce OnDemand` section.
 
 This section contains the fields required to configure how the authentication for the Sauce plugin.  Enter the values of the username and access key you wish the Sauce plugin to use in the `Username` and `API Access Key fields`.  
 
-By default, the Sauce plugin will use the user home directory as the working directory when extracting the Sauce Connect Jar file.  You can override this behaviour by specifying a directory location in the `Sauce Connect Working Directory` field.
+By default, the Sauce plugin will use the user home directory as the working directory when extracting the Sauce Connect binary file.  You can override this behaviour by specifying a directory location in the `Sauce Connect Working Directory` field.
 
 The plugin also supports reading authentication details from a `.sauce-ondemand` file located in the user home directory.  If you wish the plugin to use this file, then select the `Use authentication details in ~/.sauce-ondemand?` checkbox.
 
 Once the authentication details have been entered, clicking on the `Test Connection` button will connect to Sauce OnDemand to verify that the plugin can authenticate with the entered details.
 
-The plugin includes a copy of the Sauce Connect Jar file.  When the administration screen is displayed, the plugin will check to see if a later version of Sauce Connect is available, and if so, will provide a link that will download the updated version without requiring a new version of the Sauce plugin to be installed.
+The plugin includes a copy of the Sauce Connect binary file.  When the administration screen is displayed, the plugin will check to see if a later version of Sauce Connect is available, and if so, will provide a link that will download the updated version without requiring a new version of the Sauce plugin to be installed.
 
 Once the authentication details have been entered and saved on the `Configure System` screen, you can then enable Sauce OnDemand support on the Configuration screen for a Jenkins Job.
 
@@ -205,12 +205,12 @@ Your test code will need to be updated to reference these environment variables.
 Below is some sample Java code which demonstrates how to reference the environment variables that are set by the Jenkins plugin
 
 ```java
-    DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-    desiredCapabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
-    desiredCapabilities.setVersion(System.getenv("SELENIUM_VERSION"));
-    desiredCapabilities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
-    WebDriver driver = new RemoteWebDriver(
-                new URL("http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub"),
+DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+desiredCapabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
+desiredCapabilities.setVersion(System.getenv("SELENIUM_VERSION"));
+desiredCapabilities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
+WebDriver driver = new RemoteWebDriver(
+            new URL("http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub"),
                 desiredCapabilities);
 
 ```
@@ -226,10 +226,11 @@ Below is a Java sample that demonstrates outputting the session id to the Java s
 
 ```java
 private void printSessionId() {
-        
-        String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", (((RemoveWebDriver) driver).getSessionId()).toString(), "some job name");
-        System.out.println(message);
-    }
+
+    String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", 
+    (((RemoveWebDriver) driver).getSessionId()).toString(), "some job name");
+    System.out.println(message);
+}
 ```
 
 ## Selenium Client Factory

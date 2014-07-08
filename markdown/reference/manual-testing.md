@@ -38,15 +38,15 @@ Here are all the servers and ports that manual testing relies on; please check w
 • If you are launching manual testing from within Internet Explorer on your local machine:
 
 
-      tv1.saucelabs.com:843
-      tv1.saucelabs.com:5901
-      saucelabs.com:843
+    tv1.saucelabs.com:843
+    tv1.saucelabs.com:5901
+    saucelabs.com:843
 
 
 • If you are launching manual testing from any other locally-installed browser:
 
 
-      charon.saucelabs.com:80
+    charon.saucelabs.com:80
 
 
 We recommend making all of these accessible if you plan on using several browsers locally.

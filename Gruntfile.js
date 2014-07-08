@@ -99,11 +99,9 @@ module.exports = function (grunt) {
           ]
         }]
       }
-    },
-    mdlint: ['markdown/**/*.md']
+    }
   });
   grunt.registerTask('test', [
-    'mdlint',
     'jshint',
     'pages',
     'copy',
