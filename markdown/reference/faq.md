@@ -56,7 +56,7 @@ Check out our [Sauce vs. Local](https://saucelabs.com/docs/sauce-vs-local) doc t
 
 ## Can I reuse a session within multiple tests?
 
-One of our main criteria for a mature set of tests is "test independence." If your tests are completely independent from each other, the complete test suite will be reading for scaling. And believe us, scaling is never too far off. Once you reach a certain amount of tests, the time needed to run them serially will exceed the practical limit and:
+One of our main criteria for a mature set of tests is "test independence." If your tests are completely independent from each other, the complete test suite will be ready for scaling. And believe us, scaling is never too far off. Once you reach a certain amount of tests, the time needed to run them serially will exceed the practical limit and:
 
   1. Your team will stop running the tests as regularly as needed because it takes too long
   2. The tests will start eating more and more of the development time
