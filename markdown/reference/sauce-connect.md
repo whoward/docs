@@ -92,20 +92,16 @@ The `sc` command line program accepts the following parameters:
     -B, --no-ssl-bump-domains       Comma-separated list of domains.
                                     Requests whose host matches one of
                                     these will not be SSL re-encrypted.
-    -D, --direct-domains            Comma-separated list of domains.
+    -D, --direct-domains <...>      Comma-separated list of domains.
                                     Requests whose host matches one of
                                     these will be relayed directly
                                     through the internet, instead of
                                     through the tunnel.
-    -t, --tunnel-domains <...>      Comma-separated list of domains.
-                                    Only requests whose host matches
-                                    one of these will be relayed
-                                    through the Sauce Connect tunnel.
-                                    Everything else will go through
-                                    the internet, not the tunnel.
-                                    This parameter will make domains
-                                    specified via '--direct-domains'
-                                    be ignored.
+    -t, --tunnel-domains <...>      Inverse of '--direct-domains'.
+                                    Only requests for domains in this 
+                                    list will be sent through the 
+                                    tunnel.
+                                    Overrides '--direct-domains'.
     -v, --verbose                   Enable verbose debugging.
     -F, --fast-fail-regexps         Comma-separated list of regular
                                     expressions. Requests with URLs 
@@ -215,6 +211,10 @@ That's it! We'll take care of the rest by making the jobs that request this capa
 
 Sauce Connect needs to make outbound connections to saucelabs.com and \*.miso.saucelabs.com on port 443 for the REST API and the primary tunnel connection to the Sauce cloud. It can also optionally make these connections through a web proxy; see the `--proxy`, `--pac`, and `--proxy-tunnel` command line options.
 
+### I have verbose logging on, but I'm not seeing anything in stdout.  What gives?
+
+Output from the `-v` flag is sent to the Sauce Connect [log file](#logging) rather than stdout.
+
 ### How can I periodically restart Sauce Connect?
 
 Sauce Connect handles a lot of traffic for heavy testers. Here is one way to keep it 'fresh' to avoid leakages and freezes.
@@ -245,12 +245,17 @@ Do you need a different port? [Please let us know!](http://support.saucelabs.com
 
 ### How can I improve performance?
 
-There are a few Sauce Connect specific [command line options](#advanced-configuration) that can help.  These include `-D, --direct-domains`, `-t, --tunnel-domains`, and `-F, --fast-fail-regexps`.  These allow for careful curating of which traffic will go through the tunnel and which will go directly to the internet.
+There are a few Sauce Connect specific [command line options](#command-line-options) that can help.  These include `-D, --direct-domains`, `-t, --tunnel-domains`, and `-F, --fast-fail-regexps`.  These allow for careful curating of which traffic will go through the tunnel and which will go directly to the internet.
 
 A common use case for this is for users who only need their requests to their local development environment to go through Sauce Connect, with external resources being pulled as usual.
 
 ##	Troubleshooting Sauce Connect
-When troubleshooting Sauce Connect, you can generate verbose log files by adding the `-vv` and `-l sc.log` options on the command line.
+
+### Logging
+
+By default, Sauce Connect generates log messages to your local operating system's temporary folder.  On **Linux** / **Mac OS X** this is usually `/tmp`; on **Windows**, it varies by individual release.  You can also specify a specific location for the output using the `-l` [command line option](#command-line-options). 
+
+You can enable verbose logging with the `-v` flag. Verbose output will be sent to the Sauce Connect log file rather than standard out.
 
 ###	Connectivity Considerations
 - Is there a firewall in place between the machine running Sauce Connect and Sauce Labs (\*.saucelabs.com:443)? You may need to allow access in your firewall rules, or configure Sauce Connect to use a proxy. Sauce Connect needs to establish outbound connections to saucelabs.com (67.23.20.87) on port 443, and to one of many hosts maikiXXXXX.miso.saucelabs.com IPs (162.222.76.0/21), also on port 443. It can make these connections directly, or can be configured to use an HTTP proxy with the `--proxy`, `--pac` and `--proxy-tunnel` command line options.
@@ -272,7 +277,7 @@ curl -v https://saucelabs.com/
 
 ###	For More Help
 
-If you need additional help, get in touch at help@saucelabs.com. To provide our support team with additional information, please add the `-vv` and `-l sc.log` options to your Sauce Connect command line, reproduce the problem, and attach the resulting log file (called `sc.log`) to your support request.
+If you need additional help, get in touch at help@saucelabs.com. To provide our support team with additional information, please add the `-v` and `-l sc.log` options to your Sauce Connect command line, reproduce the problem, and attach the resulting log file (called `sc.log`) to your support request.
 
 For more advance troubleshooting steps please refer to http://support.saucelabs.com/entries/22485469-Sauce-Connect-Troubleshooting-Tips
   
