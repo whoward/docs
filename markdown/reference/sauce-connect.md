@@ -175,7 +175,9 @@ Please note that in order to run multiple Sauce Connect instances on the same ma
 sc --pidfile /tmp/sc2.pid --logfile /tmp/sc2.log --scproxy-port 29999 --se-port 4446 -i my-tun2
 ```
 
-##  Can I reuse a tunnel between multiple accounts?
+##  FAQs
+
+###  Can I reuse a tunnel between multiple accounts?
 
 Tunnels started by an account can be reused by its sub-accounts. To reuse a tunnel, start Sauce Connect with the special --shared-tunnel parameter from the main account in your account tree. For example:
 
@@ -188,8 +190,6 @@ Once the tunnel is running, provide the special "parent-tunnel" desired capabili
 capabilities['parent-tunnel'] = "parentAccount"
 ```
 That's it! We'll take care of the rest by making the jobs that request this capability route all their traffic through the tunnel created using your parent account (parentAccount, following our example).
-
-##  FAQs
 
 ### What firewall rules do I need? 
 
