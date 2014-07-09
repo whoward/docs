@@ -38,6 +38,17 @@ When you see "connected", you are ready to go!  We also recommend reading our ta
 
 ## About Sauce Connect
 
+###  System Requirements
+
+System requirements vary depending on the number of parallel tests you plan to run. Here are some samples based on simultaneous test volume:
+
+| Machine Type | RAM  | Processor | Parallel Tests |
+| ------------ | :-------------:       | :-------------: | :-------------: |
+| Local | 4GB | 4GHz | 10 |
+| Dedicated | 8GB  | 4GHz | 100 |
+
+For increased reliability and security, use a dedicated server. You may need to up your open file limit if your parallel test count is high (`ulimit -n 8192`).
+
 ###  How is Sauce Connect Secured?
 
 Though starting up a tunnel using Sauce Connect may take a few seconds, our tunneling method allows for the highest possible security. We spin up a secure tunnel sandbox environment for each tunnel connection in order to provide greater tunnel security and isolation from other customers.
