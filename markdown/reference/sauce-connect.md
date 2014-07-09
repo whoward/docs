@@ -158,9 +158,19 @@ The `sc` command line program accepts the following parameters:
 
 ### Proxy Configuration
 
-As of Sauce Connect 4.4, proxies will be autoconfigured based on the running system's settings. 
+#### Automatic
 
-There are a few command-line options that can be used to configure proxies manually: `-p, --proxy <host:port>`, `-w, --proxy-userpwd <user:pwd>`, `-T, --proxy-tunnel`, and `--pac <url>`.
+As of Sauce Connect 4.4, proxies will be autoconfigured based on the running system's settings.
+
+On **Windows**, Internet Explorer proxy settings will be checked as well as system-wide proxy settings set via Control Panel.
+
+On **Mac OS X**, Sauce Connect will use the proxy set in Preferences / Network.  We support both the proxy and the PAC settings.
+
+On **Linux**, Sauce Connect looks for the following variables, in order: `http_proxy`, `HTTP_PROXY`, `all_proxy`, and `ALL_PROXY`. They can be in the form `http://host.name:port` or just `host.name:port`.
+
+#### Manual
+
+If auto-configuration fails, or the settings need to be overridden, there are a few command-line options that can be used to [configure proxies manually](#command-line-options): `-p, --proxy <host:port>`, `-w, --proxy-userpwd <user:pwd>`, `-T, --proxy-tunnel`, and `--pac <url>`.
 
 ###  Managing Multiple Tunnels
 
@@ -170,7 +180,9 @@ After starting Sauce Connect, all traffic from jobs under the same account will 
 
 #### Using Tunnel Identifiers
 
-If you still believe you need multiple tunnels, you will need tunnel identifiers. Using identified tunnels, you can start multiple instances of Sauce Connect that will not collide with each other and will not make your tests' traffic automatically tunnel through.  This allows you to test different localhost servers or access different networks from different tests (a common requirement when running tests on TravisCI.)
+If you still believe you need multiple tunnels, you will need tunnel identifiers.
+
+Using identified tunnels, you can start multiple instances of Sauce Connect that will not collide with each other and will not make your tests' traffic automatically tunnel through.  This allows you to test different localhost servers or access different networks from different tests (a common requirement when running tests on TravisCI.)
 
 To use this feature, simply start Sauce Connect using the `--tunnel-identifier` flag (or `-i`) and provide your own unique identifier string. Once the tunnel is up and running, any tests that you want going through this tunnel will need to provide the correct identifier using the `tunnel-identifier` desired capability.
 
