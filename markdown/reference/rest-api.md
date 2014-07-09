@@ -51,6 +51,17 @@ curl https://saucelabs.com/rest/v1/users/sauceUsername \
 -u sauceUsername:sauceAccessKey
 ```
 
+**Example Response:**
+```json
+{
+    "access_key": "access-key",
+    "id": "demo-user",
+    "mac_manual_minutes": "infinite",
+    "mac_minutes": "100",
+    "manual_minutes": "infinite",
+    "minutes": "200"
+}```
+
 ### Create User
 
 Create a sub-account.
@@ -77,6 +88,15 @@ curl https://saucelabs.com/rest/v1/users/sauceUsername \
           "email": "subaccount-email-address"}'
 ```
 
+**Example Response:**
+```json
+{
+    "access_key": "subaccount-api-key",
+    "id": "new-subaccount-username",
+    "minutes": 200
+}
+```
+
 ### Get User Concurrency
 
 Check account concurrency limits.
@@ -87,6 +107,14 @@ URL: `https://saucelabs.com/rest/v1/users/:username/concurrency`
 ```bash
 curl https://saucelabs.com/rest/v1/users/sauceUsername/concurrency \
 -u sauceUsername:sauceAccessKey
+```
+
+**Example Response:**
+```json
+{
+  "timestamp": 1397657955659,
+  "concurrency": 10
+}
 ```
 
 ## Test Activity and Usage
@@ -103,6 +131,29 @@ curl https://saucelabs.com/rest/v1/sauceUsername/activity \
 -u sauceUsername:sauceAccessKey
 ```
 
+**Example Response:**
+```json
+{
+    "subaccounts": {
+        "demo-subaccount": {
+            "all": 5,
+            "in progress": 5,
+            "queued": 0
+        },
+        "demo-user": {
+            "all": 30,
+            "in progress": 25,
+            "queued": 5
+        }
+    },
+    "totals": {
+        "all": 35,
+        "in progress": 30,
+        "queued": 5
+    }
+}
+```
+
 ### Get User Account Usage
 Access historical account usage data.
 
@@ -115,6 +166,36 @@ URL: `https://saucelabs.com/rest/v1/users/:username/usage`
 ```bash
 curl https://saucelabs.com/rest/v1/users/sauceUsername/usage \
 -u sauceUsername:sauceAccessKey
+```
+
+**Example Response:**
+```json
+{
+    "usage": [
+        [
+            "2011-3-18",
+            [
+                2,
+                38
+            ]
+        ],
+        [
+            "2011-3-31",
+            [
+                5,
+                5533
+            ]
+        ],
+        [
+            "2011-4-1",
+            [
+                7,
+                5076
+            ]
+        ]
+    ],
+    "username": "demo-user"
+}
 ```
 
 ## Jobs
@@ -400,6 +481,15 @@ URL: `http://saucelabs.com/rest/v1/info/status`
 curl http://saucelabs.com/rest/v1/info/status
 ```
 
+**Example Response:**
+```json
+{
+    "service_operational": true,
+    "status_message": "Basic service status checks passed.",
+    "wait_time": 0.5
+}
+```
+
 ### Get Supported Platforms
 
 URL: `http://saucelabs.com/rest/v1/info/platforms/:automation_api`
@@ -417,7 +507,6 @@ Get a list of objects describing all the OS and browser platforms currently supp
 ```bash
 curl http://saucelabs.com/rest/v1/info/platforms/webdriver
 ```
-
 
 ## Partners
 
@@ -449,6 +538,16 @@ https://saucelabs.com/rest/v1/users/sauceUsername \
         "name": "sauceUsername_subaccount_name", 
         "email": "subaccount-email-address", 
         "plan": "free"}'
+```
+
+**Example Response:**
+```json
+{
+    "access_key": "subaccount-api-key",
+    "id": "new-subaccount-username",
+    "minutes": 200,
+    "plan": "free"
+}
 ```
 
 ### Update Subaccount Plan
@@ -598,6 +697,16 @@ curl https://saucelabs.com/rest/v1/sauceUsername/js-tests \
     "framework": "jasmine"}'
 ```
 
+**Example Response:**
+```json
+{
+    "js tests": [
+        "064df78366ea4b25b32f88878c9d7aa4",
+        "1e5ed949711545bd952456ac37479ada"
+    ]
+}
+```
+
 Hosting your tests on your LAN or your laptop? You'll need to run [Sauce Connect](/reference/sauce-connect/) to bridge Sauce Labs to your local network. Optional parameters related to Sauce Connect include:
 
 * `tunnel_identifier`: specifies the ID of a specific tunnel when using multiple Sauce Connect tunnels.
@@ -625,6 +734,31 @@ curl https://saucelabs.com/rest/v1/sauceUsername/js-tests/status \
 -u sauceUsername:sauceAccessKey \
 -H 'Content-Type: application/json' \
 -d '{"js tests": ["JOB_ID_1","JOB_ID_2"]}'
+```
+
+**Example Response:**
+```json
+{"completed": true,
+ "js tests": [
+  {"id": "064df78366ea4b25b32f88878c9d7aa4",
+   "job_id": "1a7aec8ef0c64165bcde1230e213ad44",
+   "platform": ["Windows 8", "internet explorer", "10"],
+   "url": "http://saucelabs.com/jobs/ff737d47e03e47bfb45100a45e4b5ca5",
+   "result": {"durationSec": 0.005,
+              "passed": true,
+              "suites": [
+                {"description": "Player",
+                 "durationSec": 0.005,
+                 "passed": true,
+                 "specs": [
+                   {"description": "should be able to play a Song",
+                    "durationSec": 0.002,
+                    "failedCount": 0,
+                    "passed": true,
+                    "passedCount": 2,
+                    "skipped": false,
+                    "totalCount": 2},
+...
 ```
 
 Do that a few times as the tests run, waiting until the response contains `"completed": true` to get the final results.
