@@ -250,7 +250,29 @@ Do you need a different port? [Please let us know!](http://support.saucelabs.com
 
 There are a few Sauce Connect specific [command line options](#command-line-options) that can help.  These include `-D, --direct-domains`, `-t, --tunnel-domains`, and `-F, --fast-fail-regexps`.  These allow for careful curating of which traffic will go through the tunnel and which will go directly to the internet.
 
-A common use case for this is for users who only need their requests to their local development environment to go through Sauce Connect, with external resources being pulled as usual.
+#### Only route needed requests through Sauce Connect
+
+##### Whitelist Domains
+
+A common use case for this is for users who only need their requests to their internal environment to go through Sauce Connect, with external resources being pulled as usual.
+
+To do this, we could add the following flag:
+
+    -t internal-site.com
+
+##### Blacklist Domains
+
+Let's say instead that we need *most* things to go through the tunnel, but certain external assets to be retrieved directly (for instance, with a CDN).
+
+For this, we could add the following flag:
+
+	-D cdn.external-site.com
+
+#### Drop Analytics and Ad-based Requests
+
+Some external assets we might not need to access at all, for the sake of speed or just not interfering with user metrics, such as analytics:
+
+	-F analytics-provider.com
 
 ##	Troubleshooting Sauce Connect
 
