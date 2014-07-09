@@ -76,17 +76,6 @@ During startup, Sauce Connect issues a series of HTTPS requests to the Sauce Lab
 
 Once Sauce Connect is terminated (typically via ctrl-c), a call will be made from Sauce Connect to the REST API with instructions to terminate the tunnel VM. Sauce Connect will continue to poll the REST API until the tunnel VM has been halted and deleted.
 
-###  System Requirements
-
-These vary depending on the number of parallel tests you plan to run. Here are some samples based on simultaneous test volume:
-
-| Machine Type | RAM  | Processor | Parallel Tests |
-| ------------ | :-------------:       | :-------------: | :-------------: |
-| Local | 4GB | 4GHz | 10 |
-| Dedicated | 8GB  | 4GHz | 100 |
-
-For increased reliability and security, use a dedicated server. You may need to up your open file limit if your parallel test count is high (`ulimit -n 8192`).
-
 ##  Advanced Configuration
 
 ### Command-line Options
