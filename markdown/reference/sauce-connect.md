@@ -156,17 +156,25 @@ The `sc` command line program accepts the following parameters:
                                     <bytes> size. Disabled by default.
     -h, --help                      Display this help text.
 
+### Proxy Configuration
+
+As of Sauce Connect 4.4, proxies will be autoconfigured based on the running system's settings. 
+
+There are a few command-line options that can be used to configure proxies manually: `-p, --proxy <host:port>`, `-w, --proxy-userpwd <user:pwd>`, `-T, --proxy-tunnel`, and `--pac <url>`.
+
 ###  Managing Multiple Tunnels
 
 In its default mode of execution, one Sauce Connect instance will suffice all your needs and will require no efforts to make cloud browsers driven by your tests navigate through the tunnel.
 
-Just start Sauce Connect, all traffic from jobs under the same account will use it transparently. Stop that tunnel, all jobs will stop to do so and attempt to find your web servers through the open internet.
+After starting Sauce Connect, all traffic from jobs under the same account will use the tunnel automatically and transparently. After the tunnel is stopped, jobs will simply attempt to find your servers through the open internet.
 
-Using identified tunnels, you can start multiple instances of Sauce Connect that will not collide with each other and will not make your tests' traffic transparently tunnel through.
+#### Using Tunnel Identifiers
 
-This allows you to test different localhost servers or access different networks from different tests (a common requirement when running tests on TravisCI.)
+If you still believe you need multiple tunnels, you will need tunnel identifiers. Using identified tunnels, you can start multiple instances of Sauce Connect that will not collide with each other and will not make your tests' traffic automatically tunnel through.  This allows you to test different localhost servers or access different networks from different tests (a common requirement when running tests on TravisCI.)
 
-To use this feature, simply start Sauce Connect using the --tunnel-identifier flag (or -i) and provide your own unique identifier string. Once the tunnel is up and running, any tests that you want going through this tunnel will need to provide the correct identifier using the tunnel-identifier desired capability.
+To use this feature, simply start Sauce Connect using the `--tunnel-identifier` flag (or `-i`) and provide your own unique identifier string. Once the tunnel is up and running, any tests that you want going through this tunnel will need to provide the correct identifier using the `tunnel-identifier` desired capability.
+
+#### On the Same Machine
 
 Please note that in order to run multiple Sauce Connect instances on the same machine, it's necessary to provide additional flags to configure independent log files, pid files, and ports for each instant. Here's an example of how to configure all of these settings for a second instance:
 
