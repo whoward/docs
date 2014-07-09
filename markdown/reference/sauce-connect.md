@@ -214,7 +214,7 @@ That's it! We'll take care of the rest by making the jobs that request this capa
 
 Sauce Connect needs to make outbound connections to saucelabs.com and \*.miso.saucelabs.com on port 443 for the REST API and the primary tunnel connection to the Sauce cloud. It can also optionally make these connections through a web proxy; see the `--proxy`, `--pac`, and `--proxy-tunnel` command line options.
 
-### I have verbose logging on, but I'm not seeing anything in stdout.  What gives?
+### I have verbose logging on, but I'm not seeing anything in stdout. What gives?
 
 Output from the `-v` flag is sent to the Sauce Connect [log file](#logging) rather than stdout.
 
@@ -233,6 +233,10 @@ crontab -e 00 00 * * * killall sc
 ```
 
 This will kill Sauce Connect every day at 12am, but can be modified to behave differently depending on your requirements.  
+
+### How can I use Sauce Connect to test graceful degredation?
+
+The `--F, --fast-fail-regexps` [command line option](#command-line-options) can be used to drop requests that fit a description altogether.  You could use it to simulate non-loading of scripts, styles, or other resources.
 
 ### Can I access applications on localhost?
 
