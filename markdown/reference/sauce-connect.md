@@ -159,7 +159,7 @@ The `sc` command line program accepts the following parameters:
 
 #### Automatic
 
-As of Sauce Connect 4.4, proxies will be autoconfigured based on the running system's settings.
+As of Sauce Connect 4.3.1, proxies will be autoconfigured based on the running system's settings.
 
 On **Windows**, Internet Explorer proxy settings will be checked as well as system-wide proxy settings set via Control Panel.
 
