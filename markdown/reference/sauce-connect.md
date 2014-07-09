@@ -7,7 +7,7 @@
 
 Sauce Connect is a secure tunneling app which allows you to execute tests securely when testing behind firewalls via a secure connection between Sauce Labs’ client cloud and your environment.
 
-##  When should I use Sauce Connect?
+##  When Should I Use Sauce Connect?
 
 You should use Sauce Connect whenever you’re testing an app behind a firewall. Sauce Connect is **not** required to execute scripts on Sauce.
 
@@ -36,7 +36,7 @@ bin/sc -u sauceUsername -k sauceAccessKey
 ```
 When you see "connected", you are ready to go!  We also recommend reading our take on [security best practices](http://sauceio.com/index.php/2011/09/security-through-purity/).
 
-##  How is Sauce Connect secured?
+##  How is Sauce Connect Secured?
 
 Though starting up a tunnel using Sauce Connect may take a few seconds, our tunneling method allows for the highest possible security. We spin up a secure tunnel sandbox environment for each tunnel connection in order to provide greater tunnel security and isolation from other customers.
 
@@ -47,7 +47,7 @@ Within your infrastructure, Sauce Connect needs access to the application under 
 
 ![How is Sauce Secured](/images/reference/sauce-connect/sc.png)
 
-##  Setup process
+##  Setup Process
 
 During startup, Sauce Connect issues a series of HTTPS requests to the Sauce Labs REST API. These are outbound connections to saucelabs.com on port 443. Using the REST API, Sauce Connect checks for updates and other running Sauce Connect sessions, and ultimately launches a remote tunnel endpoint VM. Once the VM is started, a tunnel connection is established to a makiXXXXX.miso.saucelabs.com address on port 443, and all traffic between Sauce Labs and Sauce Connect is then multiplexed over this single encrypted TLS connection.
 
@@ -59,11 +59,11 @@ During startup, Sauce Connect issues a series of HTTPS requests to the Sauce Lab
 4. Sauce Connect establishes a TLS connection directly to the dedicated virtual machine created in step 2. (makiXXXXX.miso.saucelabs.com).
 5. All test traffic is multiplexed over the tunnel connection established in step 4.
 
-##  Teardown process
+##  Teardown Process
 
 Once Sauce Connect is asked terminated (typically via ctrl-c), a call will be made from Sauce Connect to the REST API with instructions to terminate the tunnel VM. Sauce Connect will continue to poll the REST API until the tunnel VM has been halted and deleted.
 
-##  System requirements
+##  System Requirements
 
 These vary depending on the number of parallel tests you plan to run. Here are some samples based on simultaneous test volume:
 
@@ -74,7 +74,9 @@ These vary depending on the number of parallel tests you plan to run. Here are s
 
 For increased reliability and security, use a dedicated server.
 
-##  Advanced configuration
+##  Advanced Configuration
+
+### Command-line Options
 
 The `sc` command line program accepts the following parameters:
 
@@ -152,7 +154,7 @@ The `sc` command line program accepts the following parameters:
                                     <bytes> size. Disabled by default.
     -h, --help                      Display this help text.
 
-##  Managing multiple tunnels
+###  Managing Multiple Tunnels
 
 In its default mode of execution, one Sauce Connect instance will suffice all your needs and will require no efforts to make cloud browsers driven by your tests navigate through the tunnel.
 
@@ -228,11 +230,11 @@ A common use case for this is for users who only need their requests to their lo
 ##	Troubleshooting Sauce Connect
 When troubleshooting Sauce Connect, you can generate verbose log files by adding the `-vv` and `-l sc.log` options on the command line.
 
-###	Connectivity considerations
+###	Connectivity Considerations
 - Is there a firewall in place between the machine running Sauce Connect and Sauce Labs (\*.saucelabs.com:443)? You may need to allow access in your firewall rules, or configure Sauce Connect to use a proxy. Sauce Connect needs to establish outbound connections to saucelabs.com (67.23.20.87) on port 443, and to one of many hosts maikiXXXXX.miso.saucelabs.com IPs (162.222.76.0/21), also on port 443. It can make these connections directly, or can be configured to use an HTTP proxy with the `--proxy`, `--pac` and `--proxy-tunnel` command line options.
 - Is a proxy server required to connect to route traffic from saucelabs.com to an internal site? If so you may need to configure Sauce Connect with the `--proxy` or `--pac` command line options.
 
-###	Checking network connectivity to Sauce Labs
+###	Checking Network Connectivity to Sauce Labs
 Make sure that saucelabs.com is accessible from the machine running Sauce Connect. This can be tested issuing a ping, telnet or cURL command to sacuelabs.com from the machine's command line interface. If any of these commands fail please work with your internal network team to resolve them.
 ```bash
 ping saucelabs.com
@@ -246,7 +248,7 @@ This command should return a status message of "connected to saucelabs.com"
 curl -v https://saucelabs.com/
 ```
 
-###	For more help
+###	For More Help
 
 If you need additional help, get in touch at help@saucelabs.com. To provide our support team with additional information, please add the `-vv` and `-l sc.log` options to your Sauce Connect command line, reproduce the problem, and attach the resulting log file (called `sc.log`) to your support request.
 
