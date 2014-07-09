@@ -18,7 +18,7 @@ You can also use Sauce Connect:
 - as a means of monitoring network traffic
 - as a way to stabilize network connections (detecting/re-sending dropped packets)
 
-##  Getting started
+##  Basic Setup
 
 1. Get the latest Sauce Connect:
 <ul>
@@ -28,17 +28,13 @@ You can also use Sauce Connect:
 </li><li>(If you're looking for Sauce Connect v3, you can download it <a href="https://saucelabs.com/downloads/Sauce-Connect-3.1-r32.zip">here</a>.)<br>
 </li>
 </ul>
-2. Unzip (or untar).  
-3. Open a command prompt.
-4. Make sure port 443 can be opened for outbound connections (or, configure Sauce Connect with a proxy that can reach saucelabs.com, using the `--proxy` or `--pac` [command line options](#advanced-configuration)).
-5. Go to the install directory and start sc:
+2. Open outbound port 443 (or configure Sauce Connect with a proxy that can reach saucelabs.com, using the `--proxy` or `--pac` [command line options](#advanced-configuration)).
+3. After extracting, go to the install directory and run:
 
 ```bash
 bin/sc -u sauceUsername -k sauceAccessKey
 ```
-
-6. When you see "connected", you are ready to go! 
-7. Read our take on security: [Security best practices](http://sauceio.com/index.php/2011/09/security-through-purity/)
+When you see "connected", you are ready to go!  We also recommend reading our take on [security best practices](http://sauceio.com/index.php/2011/09/security-through-purity/).
 
 ##  How is Sauce Connect secured?
 
