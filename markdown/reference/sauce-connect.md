@@ -306,7 +306,7 @@ curl -v https://saucelabs.com/
 
 ###	For More Help
 
-If you need additional help, get in touch at help@saucelabs.com. To provide our support team with additional information, please add the `-v` and `-l sc.log` options to your Sauce Connect command line, reproduce the problem, and attach the resulting log file (called `sc.log`) to your support request.
+If you need additional help, get in touch at help@saucelabs.com. To provide our support team with additional information, please add the `-vv` and `-l sc.log` options to your Sauce Connect command line, reproduce the problem, and attach the resulting log file (called `sc.log`) to your support request.
 
 For more advance troubleshooting steps please refer to http://support.saucelabs.com/entries/22485469-Sauce-Connect-Troubleshooting-Tips
   
