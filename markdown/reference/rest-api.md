@@ -60,7 +60,8 @@ curl https://saucelabs.com/rest/v1/users/sauceUsername \
     "mac_minutes": "100",
     "manual_minutes": "infinite",
     "minutes": "200"
-}```
+}
+```
 
 ### Create User
 
@@ -757,7 +758,8 @@ curl https://saucelabs.com/rest/v1/sauceUsername/js-tests/status \
                     "passed": true,
                     "passedCount": 2,
                     "skipped": false,
-                    "totalCount": 2},
+                    "totalCount": 2}
+                    ]
 ...
 ```
 
@@ -778,6 +780,17 @@ URL: `http://saucelabs.com/rest/v1/bugs/types`
 curl http://saucelabs.com/rest/v1/bugs/types
 ```
 
+**Example Response:**
+```json
+[
+  {
+    "id": "bug-type-example-id",
+    "name": "Bug-example-name",
+    "description": "Bug example description"
+  }
+]
+```
+
 ### Get Bug
 
 Get description of each field for a particular bug type
@@ -787,6 +800,22 @@ URL: `http://saucelabs.com/rest/v1/bugs/types/:bug_id`
 **Example Request:**
 ```bash
 curl http://saucelabs.com/rest/v1/bugs/types/YOUR_BUG_ID
+```
+
+**Example Response:**
+```json
+[
+  {
+    "type": "string",
+    "name": "Field-name",
+    "id": "Field-id"
+  },
+  {
+    "type": "int",
+    "name": "Field-name",
+    "id": "Field-id"
+  }
+]
 ```
 
 ### Get Bug Details
@@ -813,6 +842,11 @@ curl -u sauceUsername:sauceAccessKey \
 -G \
 https://saucelabs.com/rest/v1/bugs/query/ \
 --data-urlencode 'ids=["YOUR_BUG_ID"]'
+```
+
+**Example Response:**
+```
+List of JSON objects containing detailed info on each queried bug id
 ```
 
 ### Update Bug
