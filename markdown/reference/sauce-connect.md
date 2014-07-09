@@ -150,6 +150,8 @@ The `sc` command line program accepts the following parameters:
                                     received.
         --max-logsize <bytes>       Rotate logfile after reaching
                                     <bytes> size. Disabled by default.
+        --doctor                    Perform checks to detect possible
+                                    misconfiguration or problems.
     -h, --help                      Display this help text.
 
 ### Proxy Configuration
