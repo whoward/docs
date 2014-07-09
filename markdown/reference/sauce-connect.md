@@ -148,7 +148,10 @@ The `sc` command line program accepts the following parameters:
                                     username and password. This option
                                     can be used multiple times.
     -z, --log-stats <seconds>       Log statistics about HTTP traffic
-                                    every <seconds>.
+                                    every <seconds>. Information 
+                                    includes bytes transmitted, 
+                                    requests made, and responses 
+                                    received.
         --max-logsize <bytes>       Rotate logfile after reaching
                                     <bytes> size. Disabled by default.
     -h, --help                      Display this help text.
