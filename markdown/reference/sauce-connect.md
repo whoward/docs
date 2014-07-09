@@ -36,7 +36,9 @@ bin/sc -u sauceUsername -k sauceAccessKey
 ```
 When you see "connected", you are ready to go!  We also recommend reading our take on [security best practices](http://sauceio.com/index.php/2011/09/security-through-purity/).
 
-##  How is Sauce Connect Secured?
+## About Sauce Connect
+
+###  How is Sauce Connect Secured?
 
 Though starting up a tunnel using Sauce Connect may take a few seconds, our tunneling method allows for the highest possible security. We spin up a secure tunnel sandbox environment for each tunnel connection in order to provide greater tunnel security and isolation from other customers.
 
@@ -47,7 +49,7 @@ Within your infrastructure, Sauce Connect needs access to the application under 
 
 ![How is Sauce Secured](/images/reference/sauce-connect/sc.png)
 
-##  Setup Process
+###  Setup Process
 
 During startup, Sauce Connect issues a series of HTTPS requests to the Sauce Labs REST API. These are outbound connections to saucelabs.com on port 443. Using the REST API, Sauce Connect checks for updates and other running Sauce Connect sessions, and ultimately launches a remote tunnel endpoint VM. Once the VM is started, a tunnel connection is established to a makiXXXXX.miso.saucelabs.com address on port 443, and all traffic between Sauce Labs and Sauce Connect is then multiplexed over this single encrypted TLS connection.
 
@@ -59,11 +61,11 @@ During startup, Sauce Connect issues a series of HTTPS requests to the Sauce Lab
 4. Sauce Connect establishes a TLS connection directly to the dedicated virtual machine created in step 2. (makiXXXXX.miso.saucelabs.com).
 5. All test traffic is multiplexed over the tunnel connection established in step 4.
 
-##  Teardown Process
+###  Teardown Process
 
 Once Sauce Connect is asked terminated (typically via ctrl-c), a call will be made from Sauce Connect to the REST API with instructions to terminate the tunnel VM. Sauce Connect will continue to poll the REST API until the tunnel VM has been halted and deleted.
 
-##  System Requirements
+###  System Requirements
 
 These vary depending on the number of parallel tests you plan to run. Here are some samples based on simultaneous test volume:
 
