@@ -16,7 +16,7 @@ In this tutorial we will get you setup to run automated tests on
 
 To test with Sauce on Travis, you need to make sure your Sauce credentials are available to your tests.
 
-<span class="show-when-un-authenticated">To do so, <i>login to your account</i> to allow us to encrypt your credentials as environment variables so that they aren't visible in your source code, but instead available as global variables.</span>
+<span class="show-when-un-authenticated">To do so, <b>login to your account</b> to allow us to encrypt your credentials as environment variables so that they aren't visible in your source code, but instead available as global variables.</span>
 <span class="show-when-authenticated">To do so, we will encrypt your credentials as environment variables so that they aren't visible in your source code, but instead available as global variables.</span>
 
 Create a `.travis.yml` file in your repo if you don't have one yet.
@@ -26,7 +26,27 @@ Create a `.travis.yml` file in your repo if you don't have one yet.
 ### Adding secure credentials
 
 <span class="show-when-un-authenticated"><b>Login to your account to allow us to automatically encrypt your username and access key for your `.travis.yml` file.</b></span>
-<span class="show-when-authenticated">For the username:  <span id="username">sauceUsername</span>, add your secure username token and secure access key token to your `.travis.yml` file with this code:</span>
+<span class="show-when-authenticated">Enter your GitHub Repository to allow us to automatically encrypt your username and access key:</span>
+<div class="show-when-authenticated">
+  <div class="control-group">
+    <div class="controls">
+      <input class="span4" id="repo" pattern="[^\/\s]+\/[^\/\s]+" placeholder="owner/name" required="required" type="text">
+      <button class="btn" id="encrypt">Submit</button>
+    </div>
+  </div>
+ <!--  <div class="control-group">
+    <div class="controls">
+      <button class="btn" id="encrypt">Encrypt</button>
+    </div>
+  </div> -->
+  <div class="span6" id="output"></div>
+  <span><em>Note: This encryption only works for public GitHub Repositories.</em></span>
+</div>
+
+<span class="show-after-encryption" style="display:none" >For the project:  <span id="project"></span>, add your secure username token and secure access key token to your `.travis.yml` file with the following:</span>
+
+<script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="/scripts/jsencrypt.min.js"></script>
 
 
 <pre><code class="lang-yaml"><div class="button-container"><button data-clipboard-target="travis-auto-encryption" class="btn btn-default clipboard"><span class="fa fa-clipboard"></span></button><div id="code-4" class="hidden">env:
@@ -39,7 +59,7 @@ Create a `.travis.yml` file in your repo if you don't have one yet.
 </pre></div>
 </code></pre>
 
-<span class="show-when-authenticated">Now you can access the `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` environment variables in your tests to authenticate with Sauce.</span>
+<span class="show-after-encryption" style="display:none" >Now you can access the `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` environment variables in your tests to authenticate with Sauce.</span>
 
 
 *If you want to learn more about secure environment variables, check out the
