@@ -278,13 +278,13 @@ Some external assets we might not need to access at all, for the sake of speed o
 
 	-F analytics-provider.com
 
-### For proxies, why is there a -p and a -T option? Which do I need?
+### Why is there a `-p, --proxy` and a `-T, --proxy-tunnel` option?
 
-Fundamentally, Sauce Connect makes [two separate outbound connections](#about-sauce-connect) for two separate purposes.  The first, that `-p` uses, is a lightweight connection to our REST API that simply tells our servers basic information about when Sauce Connect's status (e.g. starting up, ready, stopping).
+Fundamentally, Sauce Connect makes [two separate outbound connections](#about-sauce-connect) for two separate purposes.  The first, that `-p, --proxy <host:port>` uses, is a lightweight connection to our REST API that simply tells our servers basic information about when Sauce Connect's status (e.g. starting up, ready, stopping).
 
-The second connection, and the one `-T` uses, is a connection to the actual tunnel VM created for your Sauce Connect instance.  We recommend *avoiding* using a proxy for this connection, since it is already [TLS secured](#how-is-sauce-connect-secured-) and a good deal of data tends to go over this connection.  Adding another step in the middle can hinder test performance.
+The second connection is to the actual tunnel VM created for your Sauce Connect instance.  Enabling the `-T, --proxy-tunnel` flag will cause same proxy specified with `-p, --proxy` to be used for this connection as well.  We recommend *avoiding* using a proxy for this connection, since it is already [TLS secured](#how-is-sauce-connect-secured-) and a good deal of data tends to go over this connection.  Adding another step in the middle can hinder test performance.
 
-So ideally you only need `-p` (and perhaps `-w` for credentials), but `-T` is available if your network doesn't allow outgoing connections on port `443`. If your tests are slow, you may want to ask your network administrator about making an exception for this connection.
+So ideally you only need `-p, --proxy <host:port>` (and perhaps `-w, --proxy-userpwd <user:pwd>` for credentials), but `-T, --proxy-tunnel` is available if your network doesn't allow outgoing connections on port `443`. If your tests are slow, you may want to ask your network administrator about making an exception for this connection.
 
 ### If we have 5 users, can we use 5 instances of Sauce Connect, or do we have to set up one shared instance?
 
