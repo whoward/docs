@@ -256,7 +256,7 @@ There are a few Sauce Connect specific [command line options](#command-line-opti
 
 #### Only route needed requests through Sauce Connect
 
-##### Whitelist Domains
+**Whitelist Domains**
 
 A common use case for this is for users who only need their requests to their internal environment to go through Sauce Connect, with external resources being pulled as usual.
 
@@ -264,7 +264,7 @@ To do this, we could add the following flag:
 
     -t internal-site.com
 
-##### Blacklist Domains
+**Blacklist Domains**
 
 Let's say instead that we need *most* things to go through the tunnel, but certain external assets to be retrieved directly (for instance, with a CDN).
 
