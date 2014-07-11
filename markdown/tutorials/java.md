@@ -18,9 +18,15 @@ your system, here are some guidelines:
 
 ## Java and Maven Setup
 
-You will need to use JDK 1.6 (or higher) and Maven 2.2.1 (or higher) in order to complete this tutorial.
+You will need to use **JDK** 1.6 (or higher) (*not the JRE*) and Maven 2.2.1 (or higher) in order to complete this tutorial.
 
-Download and install [Java](http://www.java.com/en/download/index.jsp) if it isn't already installed on your system.
+Download and install [Java](http://www.java.com/en/download/manual.jsp) if it isn't already installed on your system.
+
+**Note:** Ensure the **JAVA_HOME** environment variable is defined appropriately.
+For MacOS, add the following to ~/.bash_profile:
+```bash 
+export JAVA_HOME="$( /usr/libexec/java_home )”
+```
 
 Go to the [Maven download](http://maven.apache.org/download.html) page to download the Maven binary distribution and extract it to your file system.  Add the `bin` directory to your path, for example,
 
@@ -35,6 +41,21 @@ On Windows:
 ```bash
 set PATH=YOUR_MAVEN_PATH/bin:%PATH%
 ```
+## Setting Up a Project
+Setting up a project is a process of either building one from scratch or pulling a pre-existing project. For this tutorial you will pull a sample project we'll call *quickstart-webdriver-junit* (The artifact) from the project *com.saucelabs* (The GroupId). Refer to the [maven documentation](http://maven.apache.org/guides/index.html) for more information about these maven terms.
+
+First, create a project directory:
+```bash
+mkdir -p ~/sauce-tutorial/sauce-project && cd ~/sauce-tutorial/sauce-project
+```
+Next, download and install a sample project using your chosen testing framework using one of these Maven commands. You will be prompted to enter a group id (for example, `com.yourcompany`), artifact id (for example, `sauce-project`), version (defaults to `1.0-SNAPSHOT`), and package (default to the group id).
+**Note:** This step uses your Sauce username and access key. You can find your Sauce access key on your [Sauce account page]/(https://saucelabs.com/account).
+**JUnit example:**
+```bash
+mvn archetype:generate -DarchetypeRepository=http://repository-saucelabs.forge.cloudbees.com/release -DgroupId=com.saucelabs -DartifactId=quickstart-webdriver-junit -Dversion=1.0-SNAPSHOT -Dpackage=com.saucelabs -DsauceUserName=<!—- SAUCE:USERNAME -—> -DsauceAccessKey=<!-- SAUCE:ACCESS_KEY -->
+```
+**Note:** There may be a few prompts, use the Defaults except for ```Y: :``` enter ```Y```.
+There should be quite a bit of output. If there are any errors check the ```-D``` values above and ensure there are no errors. If values are left off the command line, they will be prompted for instead.
 
 ## Running Your First Test
 
