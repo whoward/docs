@@ -4,6 +4,7 @@
   category: "CI Integrations",
   index: 1,
   image: "/images/ci-integrations/travis-ci.png",
+  libraries: ["vendor/jsencrypt/bin/jsencrypt.min.js"],
 }
 
 ## Getting Started
