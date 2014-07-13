@@ -216,7 +216,7 @@ To summarise, in order to make the most use out of the Sauce Bamboo plugin, the 
 Referencing Job Configuration
 ---
 
-If a single browser is selected, then the `SELENIUM_PLATFORM`, `SELENIUM_VERSION`, `SELENIUM_BROWSER` and `SELENIUM_DRIVER` environment variables will be populated to contain the details of the selected browser.  If multiple browsers are selected, then the `SAUCE_ONDEMAND_BROWSERS` environment variable will be populated with a JSON-formatted string containing the attributes of the selected browsers.  An example of the JSON string is:
+If a single browser is selected, then the `SELENIUM_PLATFORM`, `SELENIUM_VERSION`, `SELENIUM_BROWSER` and `SELENIUM_DRIVER` environment variables will be populated to contain the details of the selected browser.  If multiple browsers are selected, then the `bamboo_SAUCE_ONDEMAND_BROWSERS` environment variable will be populated with a JSON-formatted string containing the attributes of the selected browsers.  An example of the JSON string is:
 
 ```json
 
@@ -246,7 +246,7 @@ As mentioned previously, the Sauce Bamboo plugin will set a series of environmen
 * `SELENIUM_VERSION` - The version number of the selected browser
 * `SELENIUM_BROWSER` - The browser name of the selected browser.
 * `SELENIUM_DRIVER` - Contains the operating system, version and browser name of the selected browser, in a format designed for use by the [Selenium Client Factory]()
-* `SAUCE_ONDEMAND_BROWSERS` - A JSON-formatted string representing the selected browsers
+* `bamboo_SAUCE_ONDEMAND_BROWSERS` - A JSON-formatted string representing the selected browsers
 * `SELENIUM_URL` - The initial URL to load when the test begins
 * `SAUCE_USER_NAME` - The user name used to invoke Sauce OnDemand
 * `SAUCE_API_KEY` - The access key for the user used to invoke Sauce OnDemand
