@@ -245,7 +245,7 @@ The `--F, --fast-fail-regexps` [command line option](#command-line-options) can 
 
 When using Sauce Connect, local web apps running on commonly-used ports are available to test at localhost URLs, just as if the Sauce Labs cloud were your local machine. Easy!
 
-However, because an additional proxy is required for localhost URLs, tests may perform better when using a locally-defined domain name (which can be set in your [hosts file](http://en.wikipedia.org/wiki/Hosts_(file))) rather than localhost. Using a locally-defined domain name also allows access to applications on any port.
+However, because an additional proxy is required for localhost URLs, tests may perform better when using a locally-defined domain name (which can be set in your [hosts file](http://en.wikipedia.org/wiki/Hosts_\(file\))) rather than localhost. Using a locally-defined domain name also allows access to applications on any port.
 
 Sauce Connect proxies these commonly-used localhost ports:
 
