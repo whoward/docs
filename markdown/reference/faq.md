@@ -5,6 +5,8 @@
   index: 7
 }
 
+See also http://support.saucelabs.com/forums/21014760-FAQ
+
 With Automated Sauce, we leverage Selenium's client/server architecture and add the internet between your local scripts (made using Selenium's client libraries) and the Selenium Server (which is on our side, as are the browsers). From your machine, you will kick off several test scripts, which will then communicate with our servers and send step-by-step instructions of what the browser needs to do. Once the script is finished, we will close the machine and send you a video and screenshot of every action your test took in the cloud.
 
 To get the full picture, see [How Sauce works](https://saucelabs.com/docs/sauce-vs-local)
