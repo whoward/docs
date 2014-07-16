@@ -50,7 +50,7 @@ Check out our various blog posts on how to do that with different programming la
 
 ## Can I use Sauce for load testing my app?
 
-Sauce is meant to be used for browser-based functional testing (also sometimes called "acceptance testing" or "UI testing"). And even though parallelization inherently causes load, the features other load testing services provide are probably better for your needs. We're friends with and fans of [Neustar (formally BrowserMob)](http://www.neustar.biz/enterprise/web-performance).
+Sauce is meant to be used for browser-based functional testing (also sometimes called "acceptance testing" or "UI testing"). And even though parallelization inherently causes load, the features other load testing services provide are probably better for your needs. We're friends with and fans of [Neustar (formally BrowserMob)](http://www.neustar.biz/enterprise/web-performance) and [BlazeMeter](http://www.blazemeter.com).
 
 ## How is Sauce different from Selenium Grid?
 
