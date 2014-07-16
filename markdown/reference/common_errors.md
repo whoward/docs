@@ -1,7 +1,8 @@
 { 
   title: "Troubleshooting Common Error Messages", 
   description: "Common Issues When Running Tests on Sauce", 
-  category: "Reference", 
+  category: "Reference",
+  index: 7
 }
 
 see also: http://support.saucelabs.com/entries/23001310-Common-Error-Messages-Automated-Testing-

@@ -2,7 +2,7 @@
   title: "FAQ",
   description: "Frequently asked questions about Sauce Labs",
   category: "Reference",
-  index: 7
+  index: 6
 }
 
 See also http://support.saucelabs.com/forums/21014760-FAQ
