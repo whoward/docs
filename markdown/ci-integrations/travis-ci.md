@@ -17,27 +17,28 @@ In this tutorial we will get you setup to run automated tests on
 
 To test with Sauce on Travis, you need to make sure your Sauce credentials are available to your tests.
 
-<span class="show-when-un-authenticated">To do so, <b>login to your account</b> to allow us to encrypt your credentials as environment variables so that they aren't visible in your source code, but instead available as global variables.</span>
+<span class="show-when-un-authenticated">To do so, <a href="#" class="login-redirect">login to your account</a> to allow us to [encrypt your credentials](#adding-secure-credentials) as environment variables so that they aren't visible in your source code, but instead available as global variables.</span>
 <span class="show-when-authenticated">To do so, we will encrypt your credentials as environment variables so that they aren't visible in your source code, but instead available as global variables.</span>
 
-Create a `.travis.yml` file in your repo if you don't have one yet.
+<span class="show-when-authenticated">First, create a `.travis.yml` file in your repo if you don't have one yet.</span>
 
 *You can learn more about setting up Travis for your project's programming language [here](http://about.travis-ci.org/docs/user/getting-started/#Getting-started).*
 
 ### Adding secure credentials
 
-<span class="show-when-un-authenticated"><b>Login to your account to allow us to automatically encrypt your username and access key for your `.travis.yml` file.</b></span>
+<span class="show-when-un-authenticated"><b><a href="#" class="login-redirect">Login to your account</a> to allow us to automatically encrypt your username and access key for your `.travis.yml` file.</b></span>
 <span class="show-when-authenticated">Enter your GitHub Repository to allow us to automatically encrypt your username and access key:</span>
 <div class="show-when-authenticated">
   <div class="control-group">
     <div class="controls">
       <input class="span4" id="repo" pattern="[^\/\s]+\/[^\/\s]+" placeholder="owner/name" required="required" type="text">
-      <button class="btn" id="encrypt">Submit</button>
+      <button class="btn btn-default" id="encrypt">Submit</button>
     </div>
   </div>
   <div class="span6" id="output"></div>
-  <span><em>Note: This encryption only works for public GitHub Repositories.</em></span>
+  
 </div>
+<span><em>Note: Our automatic encryption only works for public GitHub Repositories. For private GitHub Repositories follow the steps for [manually setting up Travis](#manually-setting-up-travis).</em></span>
 
 <span class="show-after-encryption" style="display:none" >For the project:  <span id="project"></span>, add your secure username token and secure access key token to your `.travis.yml` file with the following:</span>
 
@@ -57,6 +58,44 @@ Create a `.travis.yml` file in your repo if you don't have one yet.
 *If you want to learn more about secure environment variables, check out the
 [Travis
 CI documentation](http://about.travis-ci.org/docs/user/build-configuration/#Secure-environment-variables).*
+
+### Manually Setting up Travis
+
+First install the Travis gem with the following command:
+
+```bash
+gem install travis
+```
+*This assumes you have Ruby installed on your system, and you may have to add `sudo` to the beginning of the command dependending on your system permissions.*
+
+If you don't have a `.travis.yml` file in your repo yet, you can run the following command to scaffold one:
+
+```bash
+travis init
+```
+
+Then run the following command to encrypt your username:
+
+```bash
+travis encrypt SAUCE_USERNAME=sauceUsername --add
+```
+
+Then encrypt your access key with this command:
+
+```bash
+travis encrypt SAUCE_ACCESS_KEY=sauceAccessKey --add
+```
+
+These commands will add the following content to your  `.travis.yml` file:
+
+```yaml
+env:
+  global:
+    - secure: "Secure username token goes here!"
+    - secure: "Secure access key token goes here!"
+```
+
+Now you can access the `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` environment variables in your tests to authenticate with Sauce.
 
 ## Configure Travis CI to Start Sauce Connect
 
