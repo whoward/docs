@@ -15,12 +15,12 @@ module.exports = function (grunt) {
           metadataValidator: function(posts) {
             posts.forEach(function(post) {
               var errorString;
-              if (categories.indexOf(post.category) === -1) {
-                errorString = 'The following doc belongs to a non-existent category: ';
+              if (!post.category || categories.indexOf(post.category) === -1) {
+                errorString = 'The following doc belongs to a non-existent `category`: ';
               } else if (!post.description) {
-                errorString = 'The following doc is missing a description: ';
+                errorString = 'The following doc is missing a `description` property: ';
               } else if (_.isUndefined(post.index) || _.isNaN(parseInt(post.index))) {
-                errorString = 'The following doc needs a number `index` property to indicate its position in the nav';
+                errorString = 'The following doc needs a number `index` property to indicate its position in the nav: ';
               } else {
                 var categoryPosts = _.filter(posts, { category: post.category });
                 var duplicateIndexDocs = _.filter(categoryPosts, { index: post.index });

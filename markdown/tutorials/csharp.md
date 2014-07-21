@@ -47,6 +47,7 @@ that makes the test run using a browser on Sauce Labs' servers.
 2. Go to the `Debug` tab
 3. Under `Start Action` select `Start an External Program`
 4. Set the path to the Gallio Icarus GUI Runner. It will likely be in `C:\Program Files (x86)\Gallio\bin\Gallio.Icarus.exe`
+    - If you don't have Gallio installed, you can download it [here](https://mb-unit.googlecode.com/files/GallioBundle-3.4.14.0.zip)
 5. Set the command line arguments to the name of your DLL, In the case of the test project it is `SauceLabs.SeleniumExamples.dll`
 6. Build the project and Debug the Solution (press the F5 key)
 

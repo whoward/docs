@@ -2,8 +2,10 @@
   title: "FAQ",
   description: "Frequently asked questions about Sauce Labs",
   category: "Reference",
-  index: 7
+  index: 6
 }
+
+See also http://support.saucelabs.com/forums/21014760-FAQ
 
 With Automated Sauce, we leverage Selenium's client/server architecture and add the internet between your local scripts (made using Selenium's client libraries) and the Selenium Server (which is on our side, as are the browsers). From your machine, you will kick off several test scripts, which will then communicate with our servers and send step-by-step instructions of what the browser needs to do. Once the script is finished, we will close the machine and send you a video and screenshot of every action your test took in the cloud.
 
@@ -34,7 +36,7 @@ Sauce Connect creates a reliable, encrypted connection between your firewalled s
 
 ## Can I use Sauce if my tool is behind basic HTTP Auth?
 
-For HTTP Authentication, we behave as Selenium does, leveraging the use of the [RFC 1738](http://freesoft.org/CIE/RFC/1738/7.htm) specification, which you enter within the url. So you just have to change the url in your tests to include the Auth info. Here's an example: [http://username:password@www.mydomain.com/secretarea/](http://username:password@www.mydomain.com/secretarea/). You can also read more about [this here](http://wiki.openqa.org/display/SEL/Selenium%2BCore%2BFAQ#SeleniumCoreFAQ-HowdoIuseSeleniumtologintositesthatrequireHTTPbasicauthentication%28wherethebrowsermakesamodaldialogaskingforcredentials%29%3F). This should work with all our browsers, but if you find any obstacles with your site, please [let us know](mailto:help@saucelabs.com).
+For HTTP Authentication, we behave as Selenium does, leveraging the use of the [RFC 1738](http://freesoft.org/CIE/RFC/1738/7.htm) specification, which you enter within the url. So you just have to change the url in your tests to include the Auth info. Here's an example: [http://username:password@www.mydomain.com/secretarea/](http://username:password@www.mydomain.com/secretarea/). You can also read more about [this here](http://wiki.openqa.org/display/SEL/Selenium%2BCore%2BFAQ#SeleniumCoreFAQ-HowdoIuseSeleniumtologintositesthatrequireHTTPbasicauthentication%28wherethebrowsermakesamodaldialogaskingforcredentials%29%3F). This should work with all our browsers, but if you find any obstacles with your site, please [let us know](http://support.saucelabs.com/forums).
 
 Note: If you don't yet have any HTTP Auth setup and all you want to do is have Sauce test your internal app, we strongly recommend using [Sauce Connect](/reference/sauce-connect) instead.
 
@@ -48,7 +50,7 @@ Check out our various blog posts on how to do that with different programming la
 
 ## Can I use Sauce for load testing my app?
 
-Sauce is meant to be used for browser-based functional testing (also sometimes called "acceptance testing" or "UI testing"). And even though parallelization inherently causes load, the features other load testing services provide are probably better for your needs. We're friends with and fans of [Neustar (formally BrowserMob)](http://www.neustar.biz/enterprise/web-performance).
+Sauce is meant to be used for browser-based functional testing (also sometimes called "acceptance testing" or "UI testing"). And even though parallelization inherently causes load, the features other load testing services provide are probably better for your needs. We're friends with and fans of [Neustar (formally BrowserMob)](http://www.neustar.biz/enterprise/web-performance) and [BlazeMeter](http://www.blazemeter.com).
 
 ## How is Sauce different from Selenium Grid?
 
@@ -56,7 +58,7 @@ Check out our [Sauce vs. Local](https://saucelabs.com/docs/sauce-vs-local) doc t
 
 ## Can I reuse a session within multiple tests?
 
-One of our main criteria for a mature set of tests is "test independence." If your tests are completely independent from each other, the complete test suite will be reading for scaling. And believe us, scaling is never too far off. Once you reach a certain amount of tests, the time needed to run them serially will exceed the practical limit and:
+One of our main criteria for a mature set of tests is "test independence." If your tests are completely independent from each other, the complete test suite will be ready for scaling. And believe us, scaling is never too far off. Once you reach a certain amount of tests, the time needed to run them serially will exceed the practical limit and:
 
   1. Your team will stop running the tests as regularly as needed because it takes too long
   2. The tests will start eating more and more of the development time
