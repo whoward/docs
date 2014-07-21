@@ -52,7 +52,7 @@ Next, download and install a sample project using your chosen testing framework 
 **Note:** This step uses your Sauce username and access key. You can find your Sauce access key on your [Sauce account page]/(https://saucelabs.com/account).
 **JUnit example:**
 ```bash
-mvn archetype:generate -DarchetypeRepository=http://repository-saucelabs.forge.cloudbees.com/release -DgroupId=com.saucelabs -DartifactId=quickstart-webdriver-junit -Dversion=1.0-SNAPSHOT -Dpackage=com.saucelabs -DsauceUserName=<!—- SAUCE:USERNAME -—> -DsauceAccessKey=<!-- SAUCE:ACCESS_KEY -->
+mvn archetype:generate -DarchetypeRepository=http://repository-saucelabs.forge.cloudbees.com/release -DarchetypeGroupId=com.saucelabs -DarchetypeArtifactId=quickstart-webdriver-junit -DgroupId=com.yourcompany -DartifactId=sauce-project -Dversion=1.0-SNAPSHOT -Dpackage=com.yourcompany -DsauceUserName=<!—- SAUCE:USERNAME -—> -DsauceAccessKey=<!-- SAUCE:ACCESS_KEY -->
 ```
 **Note:** There may be a few prompts, use the Defaults except for ```Y: :``` enter ```Y```.
 There should be quite a bit of output. If there are any errors check the ```-D``` values above and ensure there are no errors. If values are left off the command line, they will be prompted for instead.
