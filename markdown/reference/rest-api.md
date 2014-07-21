@@ -238,7 +238,7 @@ METHOD: `PUT`
 * `public`: [string or boolean] Set [job visibility](/reference/test-configuration/#job-visibility) to "public", "public restricted", "share" (true), "team" (false) or "private"
 * `passed`: [boolean] Set whether the job passed or not on the user end
 * `build`: [int] The build number tested by this test
-* `custom-data`: [JSON] a set of key-value pairs with any extra info that a user would like to add to the job
+* `custom-data`: [JSON] a set of key-value pairs with any extra info that a user would like to add to the job. Note that the max data allowed is `64KB`
 
 **Example Request:**
 ```bash
