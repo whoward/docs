@@ -190,7 +190,7 @@ To use this feature, simply start Sauce Connect using the `--tunnel-identifier` 
 
 #### On the Same Machine
 
-Please note that in order to run multiple Sauce Connect instances on the same machine, it's necessary to provide additional flags to configure independent log files, pid files, and ports for each instant. Here's an example of how to configure all of these settings for a second instance:
+Please note that in order to run multiple Sauce Connect instances on the same machine, it's necessary to provide additional flags to configure independent log files, pid files, and ports for each instance. Here's an example of how to configure all of these settings for a second instance:
 
 
 ```bash
