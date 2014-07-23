@@ -17,7 +17,7 @@ In this tutorial we will get you setup to run automated tests on
 
 To test with Sauce on Travis, you need to make sure your Sauce credentials are available to your tests.
 
-<span class="show-when-un-authenticated">To do so, <a href="#" class="travis-login-redirect">login to your account</a> to allow us to [encrypt your credentials](#adding-secure-credentials) as environment variables so that they aren't visible in your source code, but instead available as global variables.</span>
+<span class="show-when-un-authenticated">To do so, <a href="#" id="travis-login-redirect">login to your account</a> to allow us to [encrypt your credentials](#adding-secure-credentials) as environment variables so that they aren't visible in your source code, but instead available as global variables.</span>
 <span class="show-when-authenticated">To do so, we will encrypt your credentials as environment variables so that they aren't visible in your source code, but instead available as global variables.</span>
 
 <span class="show-when-authenticated">First, create a `.travis.yml` file in your repo if you don't have one yet.</span>
@@ -26,7 +26,7 @@ To test with Sauce on Travis, you need to make sure your Sauce credentials are a
 
 ### Adding secure credentials
 
-<span class="show-when-un-authenticated"><b><a href="#" class="travis-login-redirect">Login to your account</a> to allow us to automatically encrypt your username and access key for your `.travis.yml` file.</b></span>
+<span class="show-when-un-authenticated"><b><a href="#" id="travis-login-redirect-adding-credentials">Login to your account</a> to allow us to automatically encrypt your username and access key for your `.travis.yml` file.</b></span>
 <span class="show-when-authenticated">Enter your GitHub Repository to allow us to automatically encrypt your username and access key:</span>
 <div class="show-when-authenticated">
   <div class="control-group">
@@ -47,8 +47,8 @@ To test with Sauce on Travis, you need to make sure your Sauce credentials are a
     - secure: "Secure username token goes here!"
     - secure: "Secure access key token goes here!"</div></div><div class="highlight" id="travis-auto-encryption"><pre><span class="l-Scalar-Plain">env</span><span class="p-Indicator">:</span>
   <span class="l-Scalar-Plain">global</span><span class="p-Indicator">:</span>
-    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">secure</span><span class="p-Indicator">:</span> <span class="s" id="encryptUsername">"Secure username token goes here!"</span>
-    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">secure</span><span class="p-Indicator">:</span> <span class="s" id="encryptAccessKey">"Secure access key token goes here!"</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">secure</span><span class="p-Indicator">:</span> <span class="s" id="usernameContainer">"Secure username token goes here!"</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">secure</span><span class="p-Indicator">:</span> <span class="s" id="accessKeyContainer">"Secure access key token goes here!"</span>
 </pre></div>
 </code></pre>
 
