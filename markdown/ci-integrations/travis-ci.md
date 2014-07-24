@@ -38,7 +38,7 @@ To test with Sauce on Travis, you need to make sure your Sauce credentials are a
   <div class="span6" id="output"></div>
   
 </div>
-<span><em>Note: Our automatic encryption only works for public GitHub Repositories. For private GitHub Repositories follow the steps for [manually setting up Travis](#manually-setting-up-travis).</em></span>
+<span><em>Note: Our automatic encryption only works for public GitHub repositories. For private GitHub repositories follow the steps for [manually setting up Travis](#manually-setting-up-travis).</em></span>
 
 <span class="show-after-encryption" style="display:none" >For the project:  <span id="project"></span>, add your secure username token and secure access key token to your `.travis.yml` file with the following:</span>
 
