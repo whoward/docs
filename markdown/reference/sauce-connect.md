@@ -204,7 +204,7 @@ sc --pidfile /tmp/sc2.pid --logfile /tmp/sc2.log --scproxy-port 29999 --se-port 
 Tunnels started by an account can be reused by its sub-accounts. To reuse a tunnel, start Sauce Connect with the special --shared-tunnel parameter from the main account in your account tree. For example:
 
 ```bash
-sc --shared-tunnel parentAccount parentAccountsAccessKey
+sc -u USERNAME -k ACCESS_KEY --shared-tunnel
 ```
 Once the tunnel is running, provide the special "parent-tunnel" desired capability on a per-job basis. The value of this capability should be the username of the parent account that owns the shared Sauce Connect tunnel as a string. Here's an example (this test should can run using Auth credentials for any sub-account of "parentAccount"):
 
