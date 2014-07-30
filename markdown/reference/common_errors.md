@@ -11,7 +11,7 @@ If the below troubleshooting steps don't help, please contact our
 
 ##Invalid credentials
 
-A variation of the following error message will be thrown by your test:
+A variation of the following error message will be shown by your test:
 ```
 Sauce Labs Authentication Error.
 You used username 'None' and access key 'None' to authenticate, which are not valid Sauce Labs credentials.
@@ -22,13 +22,13 @@ The following desired capabilities were received:
 
 This indicates that your Sauce Labs username an access key aren't provided by
 your tests as expected. To address this, please [follow the right tutorial for
-your programming language](https://docs.saucelabs.com/)
+your programming language](https://docs.saucelabs.com/).
 
 
 ##User Terminated
 
-This message is used for tests manually interruped using the "Cancel" or
-"Breakpoint" buttons in our website. Since both of these take over control of
+This message is used for tests manually interruped using the **Cancel** or
+**Breakpoint** buttons in our website. Since both of these take over control of
 the virtual machine immediately, test assets like screenshots, video, or logs
 that would require additional execution time will not be collected and made
 available afterwards.
@@ -36,26 +36,91 @@ available afterwards.
 
 ##Timeout errors
 
-Sauce builds in a few default timeouts to keep uncontrolled tests from eating up
-your minutes. You can set these to different values using "desired capabilities"
-settings in the setup of your test, as described here:
-https://saucelabs.com/docs/additional-config#timeouts
+Sauce Labs implements several types of timeouts around automated tests as safety
+nets to prevent unwanted consumption of minutes by runaway or broken tests.
 
-Here's a brief rundown on what each of the available timeout settings does:
-* "Test did not see a new command for 90 seconds. Timing out." The
-  "idle-timeout" (default 90 seconds) ends the job if no commands are received
-  from your Selenium script.  It's usually triggered when your test runner loses
-  its connection to Sauce for an extended period, or if you are not calling the
-  "driver.quit()" method at the end of your script. Make sure that you have
-  stable Internet (ideally via a wired Ethernet connection), you're shutting
-  down your test correctly, and your test runner is not stalling.
-* "Selenium took too long to run your command" The "command-timeout" (default
-  5 minutes) ends the job if a single command takes too long to run.  This
-  usually indicates a Selenium issue.
-* "Test exceeded maximum duration after 1800 seconds" The "max-duration" timeout
+You can set these to different values using "desired capabilities" settings in
+the setup of your test, as described in the
+[timeout configuration docs](https://saucelabs.com/docs/additional-config#timeouts).
+
+To better understand why these timeouts exist, let's look at the lifecycle of
+a Selenium command through the Sauce Labs service:
+
+![Command Lifecycle](images/reference/common_errors/selenium-command-lifecycle.png)
+
+Here you can see the different types of interactions that happen in real time
+between the test script running in your own infrastructure, Sauce Labs' service
+and the Selenium or Appium server running inside our virtual machines.
+
+Here are some common timeout errors you may find, what causes them and how to
+address them:
+
+
+###Test did not see a new command for 90 seconds. Timing out.
+
+This error is shown for automated tests where Sauce Labs didn't receive a new
+command from your Selenium script in over 90 seconds (the default length of this
+timeout.)
+
+Using the previously shown graph as a reference, this would happen if **step
+number 5 never happened**. Without such timeout, any tests that lack a proper
+session ending request (generally rendered as a call to `driver.quit()` or
+`browser.stop()`), would keep running forever, consuming all test minutes
+available in your account.
+
+The most common cause for this happening is customers' **test scripts crashing,
+getting forcefully interrupted or loosing connectivity**.
+
+A less common but still possible cause is tests legitimately needing more than
+90 seconds to come up with a new command to send to Sauce for execution in the
+browser. This would most often happen if **network or disk IO is done
+between selenium API calls** (DB queries, local file reads or changes.)
+
+If that's the case, our `idle-timeout` desired capability can be used to
+have Sauce wait longer for further commands from your end. Check our
+[idle-timeout docs](https://docs.saucelabs.com/reference/test-configuration/#idle-test-timeout)
+for more details on this.
+
+
+###Selenium took too long to run your command
+
+This error is shown for automated tests where Sauce Labs didn't receive
+a response from Selenium to your command in 5 minutes (the default length of
+this timeout.)
+
+Using the previously shown graph as a reference, this would happen if **step
+number 3 never happened**. Without such timeout, any tests in which the
+Selenium, Appium server or browser crashed; would keep running forever,
+consuming all test minutes available in your account.
+
+The most common causes for this are **unresponsive javascript in your
+application** or **a bug in Selenium/Appium**.
+
+A less common but still possible cause is Selenium or Appium legitimately
+needing more than 5 minutes to run your command. If that's the case, our
+`command-timeout` desired capability can be used to have Sauce wait longer for
+your commands to complete in Selenium. Check our
+[command-timeout docs](https://docs.saucelabs.com/reference/test-configuration/#command-timeout)
+for more details on this.
+
+###Test exceeded maximum duration after 1800 seconds
+The "max-duration" timeout
   (default 30 minutes) ends the job if your entire test takes longer than you
   want.  This could be triggered if you have a repeating command that begins to
   cycle forever, or if there's a connectivity issue slowing down the test.
+
+This error is shown for automated tests where Sauce Labs found your tests still
+running after 30 minutes (the default length of this timeout.)
+
+The most common cause for this is **an infinite loop in your tests** that keep
+sending commands with out an end clause.
+
+It's not rare to find cases where tests legitimately need more than 30 minutes
+to complete. If that's the case, our `max-duration` desired capability can be
+used to have Sauce wait longer for your test to finish. Check
+our
+[max-duration docs](https://docs.saucelabs.com/reference/test-configuration/#maximum-test-duration)
+for more details on this.
 
 
 ##ERROR user closed connection while waiting for command to complete
@@ -82,14 +147,15 @@ Ethernet connection.
 
 Check to make sure that the browser, browser-version, and platform settings
 you're using are in our
-[supported list of platforms](https://saucelabs.com/docs/platforms)
+[supported list of platforms](https://saucelabs.com/docs/platforms).
 
 Note that there's a
-[separate list for Appium tests](https://saucelabs.com/docs/platforms/appium)
+[separate list for Appium tests](https://saucelabs.com/docs/platforms/appium).
 
 Relatedly, you may see:
 
-```The requested combination of browser, version and OS is unsupported by the Selenium version requested and would lead to a test failure.
+```
+The requested combination of browser, version and OS is unsupported by the Selenium version requested and would lead to a test failure.
 Please set a different Selenium version, or just don't set it at all to default
 to a working version...
 ```
