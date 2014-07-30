@@ -6,7 +6,7 @@
 }
 
 If the below troubleshooting steps don't help, please contact our
-[support team](help@saucelabs.com).
+[support team](mailto:help@saucelabs.com).
 
 
 ##Invalid credentials
@@ -174,8 +174,8 @@ you've selected. (For example, you should not be setting this for any mobile
 tests.)
 
 Try simply omitting that setting, and if you still see the issue, feel free to
-write to help@saucelabs.com with a description of the issue and a copy of your
-setup code.
+contact our [support team](mailto:help@saucelabs.com) with a description of the
+issue and a copy of your setup code.
 
 
 ##Client disconnected during getNewBrowserSession request
@@ -222,7 +222,7 @@ Escape character is '^]'.
 ```
 
 If you do receive this successful message, and still can't start a session, send
-that output to [our support team](help@saucelabs.com) and we'll troubleshoot
+that output to [our support team](mailto:help@saucelabs.com) and we'll troubleshoot
 further.
 
 Otherwise, there's definitely something blocking the connection on your end. If
