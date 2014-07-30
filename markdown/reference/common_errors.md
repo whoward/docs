@@ -56,7 +56,7 @@ Here are some common timeout errors you may find, what causes them and how to
 address them:
 
 
-###Test did not see a new command for 90 seconds. Timing out.
+###Test did not see a new command for 90 seconds. Timing out
 
 This error is shown for automated tests where Sauce Labs didn't receive a new
 command from your Selenium script in over 90 seconds (the default length of this
@@ -133,7 +133,7 @@ perpetually-loading items from another domain), and if need be, extending the
 related timeout setting in your test runner.
 
 
-##UnreachableBrowserException: Error communicating with the remote browser. It may have died.
+##UnreachableBrowserException: Error communicating with the remote browser. It may have died
 
 This error is thrown in Java when your test has timed out -- for example, due to
 the automatic 90-second idle timeout, which most often is caused by a dropped
@@ -198,7 +198,7 @@ initialized on Sauce's end. There are a few potential causes:
 Tests that end this way are never taken out of your minutes.
 
 
-##Runaway execution. Please contact help@saucelabs.com for assistance.
+##Runaway execution. Please contact help@saucelabs.com for assistance
 
 This message means that an error has been detected in the VM or in Selenium,
 which caused the test to behave abnormally, and Sauce detected this and shut
@@ -206,7 +206,7 @@ down the job. These are very rare and usually do not recur. If you do see more
 than one on the same test, let us know.
 
 
-##UnreachableBrowserException: Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure.
+##UnreachableBrowserException: Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure
 
 This error is thrown on the client side, when Selenium isn't able to reach our
 testing servers to start a session. Try running this on the command line:
