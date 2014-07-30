@@ -7,21 +7,24 @@
 
 see also: http://support.saucelabs.com/entries/23001310-Common-Error-Messages-Automated-Testing-
 
-If the below troubleshooting steps don't help, contact our support team using help@saucelabs.com
+If the below troubleshooting steps don't help, you can contact our support team at help@saucelabs.com
 
 ##Invalid credentials
-Some combination of the following error messages will be thrown:
-OpenQA.Selenium.WebDriverException : Unexpected error. Unknown username.
-You sent username 'None' in your browser string, which is not a valid Sauce Labs account.
-OpenQA.Selenium.WebDriverException : Unexpected error. Invalid Credentials.
-org.openqa.selenium.UnsupportedCommandException: Invalid Credentials.
-You sent the access key 'None' but it does not match the access key associated with your account. Please login to saucelabs.com to retrieve a valid access key.
+A variation of the following error message will be thrown by your test:
+```
+Sauce Labs Authentication Error.
+You used username 'None' and access key 'None' to authenticate, which are not valid Sauce Labs credentials.
+
+The following desired capabilities were received:
+...
+```
  
-This indicates that Selenium could not parse the credentials you sent. If you're using "access-key" in your test setup, try replacing it with "accessKey", or vice versa, as it's language-dependent.
+This indicates that your Sauce Labs username an access key aren't provided by your tests as expected. To address this, please follow the right tutorial for your programming language:
+https://docs.saucelabs.com/
  
 ##User Terminated
-This means that you ended the job, either through the "Cancel Job" button, by jumping into an automated session from the Sauce website, or via a breakpoint (http://sauceio.com/index.php/2012/09/using-sauce-breakpoints-to-fin...). Since this terminates the job immediately and hands over control to you, the test will not upload any screenshots, video, or logs that were collected previously.
- 
+This message is used for tests manually interruped using the "Cancel" or "Breakpoint" buttons in our website. Since both of these take over control of the virtual machine immediately, test assets like screenshots, video, or logs that would require additional execution time will not be collected and made available afterwards.
+
 ##Timeout errors
 Sauce builds in a few default timeouts to keep uncontrolled tests from eating up your minutes. You can set these to different values using "desired capabilities" settings in the setup of your test, as described here: https://saucelabs.com/docs/additional-config#timeouts
 Here's a brief rundown on what each of the available timeout settings does:
