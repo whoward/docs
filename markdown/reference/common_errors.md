@@ -46,7 +46,7 @@ the setup of your test, as described in the
 To better understand why these timeouts exist, let's look at the lifecycle of
 a Selenium command through the Sauce Labs service:
 
-![Command Lifecycle](images/reference/common_errors/selenium-command-lifecycle.png)
+![Command Lifecycle](/images/reference/common_errors/selenium-command-lifecycle.png)
 
 Here you can see the different types of interactions that happen in real time
 between the test script running in your own infrastructure, Sauce Labs' service
