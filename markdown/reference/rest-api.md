@@ -24,13 +24,13 @@ If you use Java, Ruby, PHP or node.js, you can use one of the below API librarie
 
 The Sauce Labs REST API uses [HTTP Basic Authentication](http://en.wikipedia.org/wiki/Basic_access_authentication). To authenticate, either include the Sauce username and access key in the request URL like so:
 ```bash
-curl https://sauceUsername:sauceAccessKey@saucelabs.com/rest/v1/users/sauceUsername
+curl https://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@saucelabs.com/rest/v1/users/$SAUCE_USERNAME
 ```
 
 Or add an `Authorization` header to the request like this:
 ```bash
-curl https://saucelabs.com/rest/v1/users/sauceUsername \
--u sauceUsername:sauceAccessKey 
+curl https://saucelabs.com/rest/v1/users/$SAUCE_USERNAME \
+-u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY
 ```
 
 Note that all below endpoints default to a `GET` request unless specified, and all `POST` requests **must** have the `Content-Type` header set to `application/json`.
@@ -47,19 +47,24 @@ URL: `https://saucelabs.com/rest/v1/users/:username`
 
 **Example Request:**
 ```bash
-curl https://saucelabs.com/rest/v1/users/sauceUsername \
--u sauceUsername:sauceAccessKey
+curl https://saucelabs.com/rest/v1/users/$SAUCE_USERNAME \
+-u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY
 ```
 
 **Example Response:**
 ```json
 {
-    "access_key": "access-key",
-    "id": "demo-user",
-    "mac_manual_minutes": "infinite",
-    "mac_minutes": "100",
-    "manual_minutes": "infinite",
-    "minutes": "200"
+    "access_key": "YOUR_ACCESS_KEY",
+    "can_run_manual": true,
+    "email": "YOUR_EMAIL",
+    "id": "YOUR_SAUCE_USERNAME",
+    "mac_manual_minutes": "YOUR_MAC_MANUAL_MINUTES",
+    "mac_minutes": "YOUR_MAC_MINUTES",
+    "manual_minutes": "YOUR_MANUAL_MINUTES",
+    "minutes": "YOUR_MINUTES",
+    "name": "YOUR_NAME",
+    "subscribed": true,
+    "user_type": "admin"
 }
 ```
 
@@ -79,22 +84,27 @@ Method: `POST`
 
 **Example Request:**
 ```bash
-curl https://saucelabs.com/rest/v1/users/sauceUsername \
--u sauceUsername:sauceAccessKey \
+curl https://saucelabs.com/rest/v1/users/$SAUCE_USERNAME \
+-u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 -X POST \
 -H 'Content-Type: application/json' \
--d '{"username": "subaccount-username", 
-          "password": "subaccount-password", 
-          "name": "subaccount-name", 
-          "email": "subaccount-email-address"}'
+-d '{"username": "subaccount-username", "password": "subaccount-password", "name": "subaccount-name", "email": "subaccount-email-address"}'
 ```
 
 **Example Response:**
 ```json
 {
-    "access_key": "subaccount-api-key",
-    "id": "new-subaccount-username",
-    "minutes": 200
+    "access_key": "SUBACCOUNT_ACCESS_KEY",
+    "can_run_manual": true,
+    "email": "SUBACCOUNT_EMAIL_ADDRESS",
+    "id": "YOUR_USERNAME",
+    "mac_manual_minutes": "YOUR_MAC_MANUAL_MINUTES",
+    "mac_minutes": "YOUR_MAC_MINUTES",
+    "manual_minutes": "YOUR_MANUAL_MINUTES",
+    "minutes": "YOUR_MINUTES",
+    "name": "SUBACCOUNT_USERNAME",
+    "subscribed": false,
+    "user_type": "subaccount"
 }
 ```
 
@@ -106,15 +116,40 @@ URL: `https://saucelabs.com/rest/v1/users/:username/concurrency`
 
 **Example Request:**
 ```bash
-curl https://saucelabs.com/rest/v1/users/sauceUsername/concurrency \
--u sauceUsername:sauceAccessKey
+curl https://saucelabs.com/rest/v1/users/$SAUCE_USERNAME/concurrency \
+-u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY
 ```
 
 **Example Response:**
 ```json
 {
-  "timestamp": 1397657955659,
-  "concurrency": 10
+    "concurrency": {
+        "parent_account_username": {
+            "current": {
+                "mac": 0,
+                "manual": 0,
+                "overall": 0
+            },
+            "remaining": {
+                "mac": 100,
+                "manual": 5,
+                "overall": 100
+            }
+        },
+        "sub_account_username": {
+            "current": {
+                "mac": 0,
+                "manual": 0,
+                "overall": 0
+            },
+            "remaining": {
+                "mac": 100,
+                "manual": 5,
+                "overall": 100
+            }
+        }
+    },
+    "timestamp": 0
 }
 ```
 
@@ -128,29 +163,29 @@ Get active job counts broken down by job status and sub-account.
 
 **Example Request:**
 ```bash
-curl https://saucelabs.com/rest/v1/sauceUsername/activity \
--u sauceUsername:sauceAccessKey
+curl https://saucelabs.com/rest/v1/$SAUCE_USERNAME/activity \
+-u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY
 ```
 
 **Example Response:**
 ```json
 {
     "subaccounts": {
-        "demo-subaccount": {
-            "all": 5,
-            "in progress": 5,
+        "parent_account_username": {
+            "all": 0,
+            "in progress": 0,
             "queued": 0
         },
-        "demo-user": {
-            "all": 30,
-            "in progress": 25,
-            "queued": 5
+        "sub_account_username": {
+            "all": 0,
+            "in progress": 0,
+            "queued": 0
         }
     },
     "totals": {
-        "all": 35,
-        "in progress": 30,
-        "queued": 5
+        "all": 0,
+        "in progress": 0,
+        "queued": 0
     }
 }
 ```
@@ -165,8 +200,8 @@ URL: `https://saucelabs.com/rest/v1/users/:username/usage`
 
 **Example Request:**
 ```bash
-curl https://saucelabs.com/rest/v1/users/sauceUsername/usage \
--u sauceUsername:sauceAccessKey
+curl https://saucelabs.com/rest/v1/users/$SAUCE_USERNAME/usage \
+-u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY
 ```
 
 **Example Response:**
@@ -209,8 +244,20 @@ URL: `https://saucelabs.com/rest/v1/:username/jobs`
 
 **Example Request:**
 ```bash
-curl https://saucelabs.com/rest/v1/sauceUsername/jobs \
--u sauceUsername:sauceAccessKey
+curl https://saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs \
+-u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY
+```
+
+**Example Response:**
+```json
+[
+    {
+        "id": "b3b6ee91d8b74b5cb5224388ce6d9935"
+    },
+    {
+        "id": "e6f8f03292e44ff4a3e362ee75b58487"
+    }
+]
 ```
 
 **Optional query params:**
@@ -225,8 +272,8 @@ Default: `100`
 **Example getting last 10 job IDs:**
 
 ```bash
-curl -u sauceUsername:sauceAccessKey \
-https://saucelabs.com/rest/v1/sauceUsername/jobs?limit=10
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
+https://saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs?limit=10
 ```
 
 #### full jobs
@@ -257,10 +304,39 @@ Default: `false`
 **Example getting full information about the last 100 jobs:**
 
 ```bash
-curl -u sauceUsername:sauceAccessKey \
-https://saucelabs.com/rest/v1/sauceUsername/jobs?full=true
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
+https://saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs?full=true
 ```
 
+**Example Response:**
+```json
+[
+    {
+        "breakpointed": null,
+        "browser": "android",
+        "browser_short_version": "4.3",
+        "browser_version": "4.3.",
+        "build": null,
+        "commands_not_successful": 4,
+        "creation_time": 1406237583,
+        "custom-data": null,
+        "end_time": 1406237603,
+        "error": null,
+        "id": "JOB_ID",
+        "log_url": "https://assets.saucelabs.com/jobs/JOB_ID/selenium-server.log",
+        "name": "Nexus4 AndroidDriver test",
+        "os": "Linux",
+        "owner": "SAUCE_USERNAME",
+        "passed": null,
+        "proxied": false,
+        "public": null,
+        "start_time": 1406237584,
+        "status": "complete",
+        "tags": [],
+        "video_url": "https://assets.saucelabs.com/jobs/JOB_ID/video.flv"
+    }
+]
+```
 #### skip jobs
 Skips the specified number of jobs.
 
@@ -270,8 +346,8 @@ Default: `0`
 
 **Example getting the last 100 job IDs, skipping 20 most recent jobs:**
 ```bash
-curl -u sauceUsername:sauceAccessKey \
-https://saucelabs.com/rest/v1/sauceUsername/jobs?skip=20
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
+https://saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs?skip=20
 ```
 
 #### jobs to and from time
@@ -281,8 +357,8 @@ URL: `https://saucelabs.com/rest/v1/:username/jobs?to=:time` and `https://saucel
 
 **Example Request(replace `EPOCH_TIME` with an [epoch time](http://en.wikipedia.org/wiki/Unix_time)):**
 ```bash
-curl -u sauceUsername:sauceAccessKey \
-https://saucelabs.com/rest/v1/sauceUsername/jobs?from=EPOCH_TIME
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
+https://saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs?from=EPOCH_TIME
 ```
 
 #### format jobs
@@ -294,8 +370,19 @@ Default: `json`
 
 **Example getting last 100 job IDs using the CSV format:**
 ```bash
-curl -u sauceUsername:sauceAccessKey \
-https://saucelabs.com/rest/v1/sauceUsername/jobs?format=csv
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
+https://saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs?format=csv
+```
+
+**Example Response:**
+```
+id
+8a9ed142f4854368a325afb10b7e19db
+f45fe215340b4ccead2e52e04ae7a98a
+0d29daf49a3b448e8a91f9ed31de97f3
+5dc0aa8356f0417c83196c04bb232b25
+a04e5c50eb7d4b3f8e5ef17df0784b65
+...
 ```
 
 ### Get Job
@@ -303,8 +390,40 @@ Show the full information for a job given its ID.
 
 **Example Request:**
 ```bash
-curl -u sauceUsername:sauceAccessKey \
-https://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
+https://saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs/YOUR_JOB_ID
+```
+
+**Example Response:**
+```json
+{
+    "breakpointed": null,
+    "browser": "firefox",
+    "browser_short_version": "28",
+    "browser_version": "28.0.",
+    "build": null,
+    "commands_not_successful": 13,
+    "creation_time": 1402525781,
+    "custom-data": null,
+    "end_time": 1402525814,
+    "error": null,
+    "id": "YOUR_JOB_ID",
+    "log_url": "https://assets.saucelabs.com/jobs/YOUR_JOB_ID/selenium-server.log",
+    "manual": false,
+    "name": "Selenium Tests",
+    "os": "Mac 10.9",
+    "owner": "YOUR_USERNAME",
+    "passed": null,
+    "proxied": true,
+    "public": null,
+    "start_time": 1402525781,
+    "status": "complete",
+    "tags": [
+        "Branch: master",
+        "Commit: 23aef"
+    ],
+    "video_url": "https://assets.saucelabs.com/jobs/YOUR_JOB_ID/video.flv"
+}
 ```
 
 ### Update Job
@@ -324,13 +443,13 @@ Method: `PUT`
 
 **Example Request:**
 ```bash
-curl -u sauceUsername:sauceAccessKey \
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 -X PUT \
 -H "Content-Type: application/json" \
 -d '{"tags": ["testing-rest-api"],
           "name": "REST API Test",
           "custom-data": {"source": "Testing REST API"}}' \
-https://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID
+https://saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs/YOUR_JOB_ID
 ```
 
 ### Delete Job
@@ -343,10 +462,10 @@ Method: `DELETE`
 
 **Example Request:**
 ```bash
-curl -u sauceUsername:sauceAccessKey \
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 -v \
 -X DELETE \
-https://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID
+https://saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs/YOUR_JOB_ID
 ```
 
 ### Stop Job
@@ -359,10 +478,10 @@ Method: `PUT`
 
 **Example Request:**
 ```bash
-curl -u sauceUsername:sauceAccessKey \
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 -X PUT \
 -d '' \
-https://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/stop
+https://saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs/YOUR_JOB_ID/stop
 ```
 
 ### Get Job Asset Names
@@ -380,8 +499,21 @@ URL: `https://saucelabs.com/rest/v1/:username/jobs/:job_id/assets`
 
 **Example Request:**
 ```bash
-curl -u sauceUsername:sauceAccessKey \
-https://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/assets
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
+https://saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs/YOUR_JOB_ID/assets
+```
+
+**Example Response:**
+```json
+{
+    "sauce-log": "log.json",
+    "screenshots": [
+        "0000screenshot.png",
+        "0001screenshot.png"
+    ],
+    "selenium-log": "selenium-server.log",
+    "video": "video.flv"
+}
 ```
 
 ### Get Job Asset Files
@@ -399,9 +531,9 @@ URL: `https://saucelabs.com/rest/v1/:username/jobs/:job_id/assets/:file_name`
 
 **Example Request:**
 ```bash
-curl -u sauceUsername:sauceAccessKey \
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 -O \
-https://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/assets/final_screenshot.png
+https://saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs/YOUR_JOB_ID/assets/final_screenshot.png
 ```
 
 ### Delete Job Assets
@@ -414,9 +546,9 @@ Method: `DELETE`
 
 **Example Request:**
 ```bash
-curl -u sauceUsername:sauceAccessKey \
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 -X DELETE \
-https://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/assets
+https://saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs/YOUR_JOB_ID/assets
 ```
 
 ## Tunnels
@@ -425,9 +557,26 @@ Tunnels are used by [Sauce Connect](/reference/sauce-connect/) to redirect traff
 
 ### Get Tunnels
 
-Retrieves all running tunnels for a given user.
+Retrieves all running tunnel IDs for a given user.
 
 URL: `https://saucelabs.com/rest/v1/:username/tunnels`
+
+**Example Request:**
+```bash
+curl https://saucelabs.com/rest/v1/$SAUCE_USERNAME/tunnels \
+-u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY
+```
+
+**Example Response:**
+
+```json
+["530c591c4666465aaf2e1097baff6324"]
+```
+
+### Get Tunnel
+Get information for a tunnel given its ID.
+
+URL: `https://saucelabs.com/rest/v1/:username/tunnels/:tunnel_id`
 
 **Response Fields:**
 * `id`: [string] Tunnel ID
@@ -438,19 +587,48 @@ URL: `https://saucelabs.com/rest/v1/:username/tunnels`
 
 **Example Request:**
 ```bash
-curl https://saucelabs.com/rest/v1/sauceUsername/tunnels \
--u sauceUsername:sauceAccessKey
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
+https://saucelabs.com/rest/v1/$SAUCE_USERNAME/tunnels/YOUR_TUNNEL_ID
 ```
 
-### Get Tunnel
-Get information for a tunnel given its ID.
+**Example Response:**
 
-URL: `https://saucelabs.com/rest/v1/:username/tunnels/:tunnel_id`
-
-**Example Request:**
-```bash
-curl -u sauceUsername:sauceAccessKey \
-https://saucelabs.com/rest/v1/sauceUsername/tunnels/YOUR_TUNNEL_ID
+```json
+{
+    "creation_time": 1406908737,
+    "direct_domains": null,
+    "domain_names": [
+        "sauce-connect.proxy"
+    ],
+    "host": "maki77040.miso.saucelabs.com",
+    "id": "60a44a71ef8e4fa5bceb376d5e8101f4",
+    "metadata": {
+        "Build": "35",
+        "OwnerHost": "127.0.0.1",
+        "OwnerPorts": [
+            "60063"
+        ],
+        "Platform": "Java-1.6.0_65-Java_HotSpot-TM-_64-Bit_Server_VM,_20.65-b04-462,_Apple_Inc.-on-Mac_OS_X-10.9.3-x86_64",
+        "Ports": [
+            "80"
+        ],
+        "PythonVersion": "2.5.1",
+        "Release": "3.0-r24",
+        "ScriptName": "sauce_connect",
+        "ScriptRelease": 35
+    },
+    "no_ssl_bump_domains": null,
+    "owner": "SAUCE_USERNAME",
+    "shared_tunnel": false,
+    "shutdown_time": null,
+    "ssh_port": 443,
+    "status": "running",
+    "tunnel_identifier": null,
+    "use_caching_proxy": true,
+    "use_kgp": true,
+    "user_shutdown": null,
+    "vm_version": null
+}
 ```
 
 ### Delete Tunnel
@@ -462,9 +640,9 @@ Method: `DELETE`
 
 **Example Request:**
 ```bash
-curl -u sauceUsername:sauceAccessKey \
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 -X DELETE \
-https://saucelabs.com/rest/v1/sauceUsername/tunnels/YOUR_TUNNEL_ID
+https://saucelabs.com/rest/v1/$SAUCE_USERNAME/tunnels/YOUR_TUNNEL_ID
 ```
 
 ## Information
@@ -506,7 +684,124 @@ Get a list of objects describing all the OS and browser platforms currently supp
 
 **Example Request:**
 ```bash
-curl http://saucelabs.com/rest/v1/info/platforms/webdriver
+curl http://saucelabs.com/rest/v1/info/platforms/appium
+```
+
+**Example Response:**
+```json
+[
+    {
+        "api_name": "ipad",
+        "automation_backend": "appium",
+        "device": "ipad",
+        "latest_stable_version": "",
+        "long_name": "iPad",
+        "long_version": "7.0.",
+        "os": "Mac 10.9",
+        "short_version": "7.0"
+    },
+    {
+        "api_name": "ipad",
+        "automation_backend": "appium",
+        "device": "ipad",
+        "latest_stable_version": "",
+        "long_name": "iPad",
+        "long_version": "7.1.",
+        "os": "Mac 10.9",
+        "short_version": "7.1"
+    },
+    {
+        "api_name": "iphone",
+        "automation_backend": "appium",
+        "device": "iphone",
+        "latest_stable_version": "",
+        "long_name": "iPhone",
+        "long_version": "7.0.",
+        "os": "Mac 10.9",
+        "short_version": "7.0"
+    },
+    {
+        "api_name": "iphone",
+        "automation_backend": "appium",
+        "device": "iphone",
+        "latest_stable_version": "",
+        "long_name": "iPhone",
+        "long_version": "7.1.",
+        "os": "Mac 10.9",
+        "short_version": "7.1"
+    },
+    {
+        "api_name": "ipad",
+        "automation_backend": "appium",
+        "device": "ipad",
+        "latest_stable_version": "",
+        "long_name": "iPad",
+        "long_version": "6.1.",
+        "os": "Mac 10.8",
+        "short_version": "6.1"
+    },
+    {
+        "api_name": "iphone",
+        "automation_backend": "appium",
+        "device": "iphone",
+        "latest_stable_version": "",
+        "long_name": "iPhone",
+        "long_version": "6.1.",
+        "os": "Mac 10.8",
+        "short_version": "6.1"
+    },
+    {
+        "api_name": "android",
+        "automation_backend": "appium",
+        "device": "android",
+        "latest_stable_version": "",
+        "long_name": "Android",
+        "long_version": "2.3.7.",
+        "os": "Linux",
+        "short_version": "2.3"
+    },
+    {
+        "api_name": "android",
+        "automation_backend": "appium",
+        "device": "android",
+        "latest_stable_version": "",
+        "long_name": "Android",
+        "long_version": "4.0.4.",
+        "os": "Linux",
+        "short_version": "4.0"
+    },
+    {
+        "api_name": "android",
+        "automation_backend": "appium",
+        "device": "android",
+        "latest_stable_version": "",
+        "long_name": "Android",
+        "long_version": "4.1.",
+        "os": "Linux",
+        "short_version": "4.1"
+    },
+    {
+        "api_name": "android",
+        "automation_backend": "appium",
+        "device": "android",
+        "latest_stable_version": "",
+        "long_name": "Android",
+        "long_version": "4.2.",
+        "os": "Linux",
+        "short_version": "4.2"
+    },
+    {
+        "api_name": "android",
+        "automation_backend": "appium",
+        "device": "android",
+        "latest_stable_version": "",
+        "long_name": "Android",
+        "long_version": "4.3.",
+        "os": "Linux",
+        "short_version": "4.3"
+    },
+    ...
+]
 ```
 
 ## Partners
@@ -530,13 +825,13 @@ Method: `POST`
 
 **Example Request:**
 ```bash
-curl -u sauceUsername:sauceAccessKey \
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 -X POST \
-https://saucelabs.com/rest/v1/users/sauceUsername \
+https://saucelabs.com/rest/v1/users/$SAUCE_USERNAME \
 -H 'Content-Type: application/json' \
--d '{"username": "sauceUsername_subaccount", 
+-d '{"username": "$SAUCE_USERNAME_subaccount",
         "password": "subaccount-password", 
-        "name": "sauceUsername_subaccount_name", 
+        "name": "$SAUCE_USERNAME_subaccount_name",
         "email": "subaccount-email-address", 
         "plan": "free"}'
 ```
@@ -564,7 +859,7 @@ Method: `POST`
 
 **Example Request:**
 ```bash
-curl -u sauceUsername:sauceAccessKey \
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 -X POST \
 -H 'Content-Type: application/json' \
 -d '{"plan": "small"}' \
@@ -581,7 +876,7 @@ Method: `DELETE`
 
 **Example Request:**
 ```bash
-curl -u sauceUsername:sauceAccessKey \
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 -X DELETE \
 https://saucelabs.com/rest/v1/SUBACCOUNT_USERNAME/subscription
 ```
@@ -606,10 +901,10 @@ Method: `POST`
 
 **Example Request:**
 ```bash
-curl -u sauceUsername:sauceAccessKey \
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 -X POST \
 -H "Content-Type: application/octet-stream" \
-https://saucelabs.com/rest/v1/storage/sauceUsername/test_file_name?overwrite=true \
+https://saucelabs.com/rest/v1/storage/$SAUCE_USERNAME/test_file_name?overwrite=true \
 --data-binary @/path/to/your_file_name
 ```
 
@@ -687,9 +982,9 @@ window.global_test_results = {
 
 **Example Request:**
 ```bash
-curl https://saucelabs.com/rest/v1/sauceUsername/js-tests \
+curl https://saucelabs.com/rest/v1/$SAUCE_USERNAME/js-tests \
 -X POST \
--u sauceUsername:sauceAccessKey \
+-u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 -H 'Content-Type: application/json' \
 --data '{
     "platforms": [["Windows 7", "firefox", "27"],
@@ -730,37 +1025,106 @@ Method: `POST`
 
 **Example Request:**
 ```bash
-curl https://saucelabs.com/rest/v1/sauceUsername/js-tests/status \
+curl https://saucelabs.com/rest/v1/$SAUCE_USERNAME/js-tests/status \
 -X POST \
--u sauceUsername:sauceAccessKey \
+-u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 -H 'Content-Type: application/json' \
 -d '{"js tests": ["JOB_ID_1","JOB_ID_2"]}'
 ```
 
 **Example Response:**
 ```json
-{"completed": true,
- "js tests": [
-  {"id": "064df78366ea4b25b32f88878c9d7aa4",
-   "job_id": "1a7aec8ef0c64165bcde1230e213ad44",
-   "platform": ["Windows 8", "internet explorer", "10"],
-   "url": "http://saucelabs.com/jobs/ff737d47e03e47bfb45100a45e4b5ca5",
-   "result": {"durationSec": 0.005,
-              "passed": true,
-              "suites": [
-                {"description": "Player",
-                 "durationSec": 0.005,
-                 "passed": true,
-                 "specs": [
-                   {"description": "should be able to play a Song",
-                    "durationSec": 0.002,
-                    "failedCount": 0,
-                    "passed": true,
-                    "passedCount": 2,
-                    "skipped": false,
-                    "totalCount": 2}
-                    ]
-...
+{
+    "completed": true,
+    "js tests": [
+        {
+            "id": "f5ab14de2d2941dda402fefe79771968",
+            "job_id": "4045ce18648a42718c738b55662ccbe0",
+            "platform": [
+                "Windows 7",
+                "firefox",
+                "27"
+            ],
+            "result": {
+                "durationSec": 0.004,
+                "passed": true,
+                "suites": [
+                    {
+                        "description": "Player",
+                        "durationSec": 0.004,
+                        "passed": true,
+                        "specs": [
+                            {
+                                "description": "should be able to play a Song",
+                                "durationSec": 0.002,
+                                "failedCount": 0,
+                                "passed": true,
+                                "passedCount": 2,
+                                "skipped": false,
+                                "totalCount": 2
+                            },
+                            {
+                                "description": "tells the current song if the user has made it a favorite",
+                                "durationSec": 0.001,
+                                "failedCount": 0,
+                                "passed": true,
+                                "passedCount": 1,
+                                "skipped": false,
+                                "totalCount": 1
+                            }
+                        ],
+                        "suites": [
+                            {
+                                "description": "when song has been paused",
+                                "durationSec": 0.001,
+                                "passed": true,
+                                "specs": [
+                                    {
+                                        "description": "should indicate that the song is currently paused",
+                                        "durationSec": 0.001,
+                                        "failedCount": 0,
+                                        "passed": true,
+                                        "passedCount": 2,
+                                        "skipped": false,
+                                        "totalCount": 2
+                                    },
+                                    {
+                                        "description": "should be possible to resume",
+                                        "durationSec": 0,
+                                        "failedCount": 0,
+                                        "passed": true,
+                                        "passedCount": 2,
+                                        "skipped": false,
+                                        "totalCount": 2
+                                    }
+                                ],
+                                "suites": []
+                            },
+                            {
+                                "description": "#resume",
+                                "durationSec": 0,
+                                "passed": true,
+                                "specs": [
+                                    {
+                                        "description": "should throw an exception if song is already playing",
+                                        "durationSec": 0,
+                                        "failedCount": 0,
+                                        "passed": true,
+                                        "passedCount": 1,
+                                        "skipped": false,
+                                        "totalCount": 1
+                                    }
+                                ],
+                                "suites": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            "url": "https://assets.saucelabs.com/jobs/4045ce18648a42718c738b55662ccbe0"
+        }
+    ]
+}
 ```
 
 Do that a few times as the tests run, waiting until the response contains `"completed": true` to get the final results.
@@ -826,7 +1190,7 @@ URL: `https://saucelabs.com/rest/v1/bugs/detail/:bug_id`
 
 **Example Request:**
 ```bash
-curl -u sauceUsername:sauceAccessKey \
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 https://saucelabs.com/rest/v1/bugs/detail/YOUR_BUG_ID
 ```
 
@@ -838,7 +1202,7 @@ URL: `https://saucelabs.com/rest/v1/bugs/query/ids=[:id_1,:id_2]`
 
 **Example Request:**
 ```bash
-curl -u sauceUsername:sauceAccessKey \
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 -G \
 https://saucelabs.com/rest/v1/bugs/query/ \
 --data-urlencode 'ids=["YOUR_BUG_ID"]'
@@ -859,7 +1223,7 @@ Method: `PUT`
 
 **Example Request:**
 ```bash
-curl -u sauceUsername:sauceAccessKey \
+curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 -G \
 https://saucelabs.com/rest/v1/bugs/update/YOUR_BUG_ID \
 --data-urlencode 'update={"Property-name-1": "Property-Value-1"}'
