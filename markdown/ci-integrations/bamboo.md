@@ -216,7 +216,7 @@ To summarise, in order to make the most use out of the Sauce Bamboo plugin, the 
 Referencing Job Configuration
 ---
 
-If a single browser is selected, then the `SELENIUM_PLATFORM`, `SELENIUM_VERSION`, `SELENIUM_BROWSER` and `SELENIUM_DRIVER` environment variables will be populated to contain the details of the selected browser.  If multiple browsers are selected, then the `bamboo_SAUCE_ONDEMAND_BROWSERS` environment variable will be populated with a JSON-formatted string containing the attributes of the selected browsers.  An example of the JSON string is:
+If a single browser is selected, then the `SELENIUM_PLATFORM`, `SELENIUM_VERSION`, `SELENIUM_BROWSER` and `SELENIUM_DRIVER` environment variables will be populated to contain the details of the selected browser.  In addition, a `bamboo_SAUCE_ONDEMAND_BROWSERS` environment variable will be populated with a JSON-formatted string containing the attributes of the selected browsers.  An example of the JSON string is:
 
 ```json
 
