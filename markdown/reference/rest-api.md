@@ -906,7 +906,7 @@ curl https://saucelabs.com/rest/v1/$SAUCE_USERNAME/js-tests \
 -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 -H 'Content-Type: application/json' \
 --data '{
-    "platforms": [["Windows 7", "firefox", "27"],
+    "platforms": [["Windows 7", "firefox", "30"],
                  ["Linux", "googlechrome", ""]],
     "url": "https://saucelabs.com/test_helpers/front_tests/index.html",
     "framework": "jasmine"}'
