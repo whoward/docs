@@ -64,7 +64,7 @@ curl https://saucelabs.com/rest/v1/users/$SAUCE_USERNAME \
     "minutes": "YOUR_MINUTES",
     "name": "YOUR_NAME",
     "subscribed": true,
-    "user_type": "free"
+    "user_type": "subscribed"
 }
 ```
 
