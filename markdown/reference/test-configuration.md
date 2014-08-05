@@ -348,7 +348,7 @@ Example:
 ```
 
 ### Command Timeout
-As a safety measure to prevent Selenium crashes from making your tests run indefinitely, Sauce limits how long Selenium can take to run a command in our browsers. This is set to 300 seconds by default. The value of this setting is given in seconds.
+As a safety measure to prevent Selenium crashes from making your tests run indefinitely, Sauce limits how long Selenium can take to run a command in our browsers. This is set to 300 seconds by default. The value of this setting is given in seconds. The maximum command timeout value allowed is 600 seconds.
 
 Key: `command-timeout`
 
@@ -370,7 +370,7 @@ Value type: integer
 Example:
 
 ```python
-"idle-timeout": 60
+"idle-timeout": 90
 ```
 
 ## Sauce-specific settings
