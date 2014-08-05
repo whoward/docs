@@ -57,14 +57,14 @@ curl https://saucelabs.com/rest/v1/users/$SAUCE_USERNAME \
     "access_key": "YOUR_ACCESS_KEY",
     "can_run_manual": true,
     "email": "YOUR_EMAIL",
-    "id": "YOUR_SAUCE_USERNAME",
+    "id": "YOUR_USERNAME",
     "mac_manual_minutes": "YOUR_MAC_MANUAL_MINUTES",
     "mac_minutes": "YOUR_MAC_MINUTES",
     "manual_minutes": "YOUR_MANUAL_MINUTES",
     "minutes": "YOUR_MINUTES",
     "name": "YOUR_NAME",
     "subscribed": true,
-    "user_type": "admin"
+    "user_type": "free"
 }
 ```
 
@@ -97,12 +97,12 @@ curl https://saucelabs.com/rest/v1/users/$SAUCE_USERNAME \
     "access_key": "SUBACCOUNT_ACCESS_KEY",
     "can_run_manual": true,
     "email": "SUBACCOUNT_EMAIL_ADDRESS",
-    "id": "YOUR_USERNAME",
-    "mac_manual_minutes": "YOUR_MAC_MANUAL_MINUTES",
-    "mac_minutes": "YOUR_MAC_MINUTES",
-    "manual_minutes": "YOUR_MANUAL_MINUTES",
-    "minutes": "YOUR_MINUTES",
-    "name": "SUBACCOUNT_USERNAME",
+    "id": "SUBACCOUNT_USERNAME",
+    "mac_manual_minutes": "SUBACCOUNT_MAC_MANUAL_MINUTES",
+    "mac_minutes": "SUBACCOUNT_MAC_MINUTES",
+    "manual_minutes": "SUBACCOUNT_MANUAL_MINUTES",
+    "minutes": "SUBACCOUNT_MINUTES",
+    "name": "SUBACCOUNT_USERS_NAME",
     "subscribed": false,
     "user_type": "subaccount"
 }
@@ -124,28 +124,28 @@ curl https://saucelabs.com/rest/v1/users/$SAUCE_USERNAME/concurrency \
 ```json
 {
     "concurrency": {
-        "parent_account_username": {
+        "YOUR_USERNAME": {
             "current": {
                 "mac": 0,
-                "manual": 0,
-                "overall": 0
+                "manual": 1,
+                "overall": 1
             },
             "remaining": {
-                "mac": 100,
-                "manual": 5,
-                "overall": 100
+                "mac": 3,
+                "manual": 2,
+                "overall": 3
             }
         },
-        "sub_account_username": {
+        "YOUR_SUBACCOUNT_USERNAME": {
             "current": {
-                "mac": 0,
+                "mac": 1,
                 "manual": 0,
-                "overall": 0
+                "overall": 1
             },
             "remaining": {
-                "mac": 100,
-                "manual": 5,
-                "overall": 100
+                "mac": 0,
+                "manual": 1,
+                "overall": 1
             }
         }
     },
@@ -171,21 +171,21 @@ curl https://saucelabs.com/rest/v1/$SAUCE_USERNAME/activity \
 ```json
 {
     "subaccounts": {
-        "parent_account_username": {
-            "all": 0,
+        "YOUR_USERNAME": {
+            "all": 1,
             "in progress": 0,
-            "queued": 0
+            "queued": 1
         },
-        "sub_account_username": {
-            "all": 0,
-            "in progress": 0,
+        "YOUR_SUBACCOUNT_USERNAME": {
+            "all": 1,
+            "in progress": 1,
             "queued": 0
         }
     },
     "totals": {
-        "all": 0,
-        "in progress": 0,
-        "queued": 0
+        "all": 2,
+        "in progress": 1,
+        "queued": 1
     }
 }
 ```
@@ -209,28 +209,28 @@ curl https://saucelabs.com/rest/v1/users/$SAUCE_USERNAME/usage \
 {
     "usage": [
         [
-            "2011-3-18",
+            "2014-3-18",
             [
                 2,
                 38
             ]
         ],
         [
-            "2011-3-31",
+            "2014-3-31",
             [
                 5,
                 5533
             ]
         ],
         [
-            "2011-4-1",
+            "2014-4-1",
             [
                 7,
                 5076
             ]
         ]
     ],
-    "username": "demo-user"
+    "username": "YOUR_USERNAME"
 }
 ```
 
@@ -326,7 +326,7 @@ https://saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs?full=true
         "log_url": "https://assets.saucelabs.com/jobs/JOB_ID/selenium-server.log",
         "name": "Nexus4 AndroidDriver test",
         "os": "Linux",
-        "owner": "SAUCE_USERNAME",
+        "owner": "YOUR_USERNAME",
         "passed": null,
         "proxied": false,
         "public": null,
@@ -399,8 +399,8 @@ https://saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs/YOUR_JOB_ID
 {
     "breakpointed": null,
     "browser": "firefox",
-    "browser_short_version": "28",
-    "browser_version": "28.0.",
+    "browser_short_version": "30",
+    "browser_version": "30.0.",
     "build": null,
     "commands_not_successful": 13,
     "creation_time": 1402525781,
@@ -420,7 +420,7 @@ https://saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs/YOUR_JOB_ID
     "status": "complete",
     "tags": [
         "Branch: master",
-        "Commit: 23aef"
+        "Commit: 598baae9b3daf3faa3692f00027d7d25aa80f7df"
     ],
     "video_url": "https://assets.saucelabs.com/jobs/YOUR_JOB_ID/video.flv"
 }
@@ -490,12 +490,12 @@ Get details about the static assets collected for a specific job.
 
 URL: `https://saucelabs.com/rest/v1/:username/jobs/:job_id/assets`
 
-**Response fields:** (each of these fields will be set to "null" if the specific asset isn't captured for a job):
+**Response Fields:** (each of these fields will be set to "null" if the specific asset isn't captured for a job):
 
 * `sauce-log`: [string] Name of the Sauce log recorded for a job
+* `screenshots`: [array of strings] List of screenshot names captured by a job
 * `selenium-log`: [string] Name of the selenium Server log file produced by a job
 * `video`: [string] Name of the video file name recorded for a job
-* `screenshots`: [array of strings] List of screenshot names captured by a job
 
 **Example Request:**
 ```bash
@@ -601,7 +601,7 @@ https://saucelabs.com/rest/v1/$SAUCE_USERNAME/tunnels/YOUR_TUNNEL_ID
         "sauce-connect.proxy"
     ],
     "host": "maki77040.miso.saucelabs.com",
-    "id": "60a44a71ef8e4fa5bceb376d5e8101f4",
+    "id": "YOUR_TUNNEL_ID",
     "metadata": {
         "Build": "35",
         "OwnerHost": "127.0.0.1",
@@ -711,86 +711,6 @@ curl http://saucelabs.com/rest/v1/info/platforms/appium
         "short_version": "7.1"
     },
     {
-        "api_name": "iphone",
-        "automation_backend": "appium",
-        "device": "iphone",
-        "latest_stable_version": "",
-        "long_name": "iPhone",
-        "long_version": "7.0.",
-        "os": "Mac 10.9",
-        "short_version": "7.0"
-    },
-    {
-        "api_name": "iphone",
-        "automation_backend": "appium",
-        "device": "iphone",
-        "latest_stable_version": "",
-        "long_name": "iPhone",
-        "long_version": "7.1.",
-        "os": "Mac 10.9",
-        "short_version": "7.1"
-    },
-    {
-        "api_name": "ipad",
-        "automation_backend": "appium",
-        "device": "ipad",
-        "latest_stable_version": "",
-        "long_name": "iPad",
-        "long_version": "6.1.",
-        "os": "Mac 10.8",
-        "short_version": "6.1"
-    },
-    {
-        "api_name": "iphone",
-        "automation_backend": "appium",
-        "device": "iphone",
-        "latest_stable_version": "",
-        "long_name": "iPhone",
-        "long_version": "6.1.",
-        "os": "Mac 10.8",
-        "short_version": "6.1"
-    },
-    {
-        "api_name": "android",
-        "automation_backend": "appium",
-        "device": "android",
-        "latest_stable_version": "",
-        "long_name": "Android",
-        "long_version": "2.3.7.",
-        "os": "Linux",
-        "short_version": "2.3"
-    },
-    {
-        "api_name": "android",
-        "automation_backend": "appium",
-        "device": "android",
-        "latest_stable_version": "",
-        "long_name": "Android",
-        "long_version": "4.0.4.",
-        "os": "Linux",
-        "short_version": "4.0"
-    },
-    {
-        "api_name": "android",
-        "automation_backend": "appium",
-        "device": "android",
-        "latest_stable_version": "",
-        "long_name": "Android",
-        "long_version": "4.1.",
-        "os": "Linux",
-        "short_version": "4.1"
-    },
-    {
-        "api_name": "android",
-        "automation_backend": "appium",
-        "device": "android",
-        "latest_stable_version": "",
-        "long_name": "Android",
-        "long_version": "4.2.",
-        "os": "Linux",
-        "short_version": "4.2"
-    },
-    {
         "api_name": "android",
         "automation_backend": "appium",
         "device": "android",
@@ -799,8 +719,7 @@ curl http://saucelabs.com/rest/v1/info/platforms/appium
         "long_version": "4.3.",
         "os": "Linux",
         "short_version": "4.3"
-    },
-    ...
+    }
 ]
 ```
 
@@ -830,9 +749,9 @@ curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY \
 https://saucelabs.com/rest/v1/users/$SAUCE_USERNAME \
 -H 'Content-Type: application/json' \
 -d '{"username": "$SAUCE_USERNAME_subaccount",
-        "password": "subaccount-password", 
+        "password": "subaccount-password",
         "name": "$SAUCE_USERNAME_subaccount_name",
-        "email": "subaccount-email-address", 
+        "email": "subaccount-email-address",
         "plan": "free"}'
 ```
 
@@ -1147,11 +1066,11 @@ curl http://saucelabs.com/rest/v1/bugs/types
 **Example Response:**
 ```json
 [
-  {
-    "id": "bug-type-example-id",
-    "name": "Bug-example-name",
-    "description": "Bug example description"
-  }
+    {
+        "description": "A Sauce Manual Testing bug",
+        "id": "1",
+        "name": "Bug"
+    }
 ]
 ```
 
@@ -1169,16 +1088,51 @@ curl http://saucelabs.com/rest/v1/bugs/types/YOUR_BUG_TYPE_ID
 **Example Response:**
 ```json
 [
-  {
-    "type": "string",
-    "name": "Field-name",
-    "id": "Field-id"
-  },
-  {
-    "type": "int",
-    "name": "Field-name",
-    "id": "Field-id"
-  }
+    {
+        "id": "Browser",
+        "name": "Browser",
+        "type": "string"
+    },
+    {
+        "id": "CreationTime",
+        "name": "Creation Time",
+        "type": "int"
+    },
+    {
+        "id": "Description",
+        "name": "Description",
+        "type": "text"
+    },
+    {
+        "id": "Job",
+        "name": "Sauce Labs Test ID",
+        "type": "string"
+    },
+    {
+        "id": "OS",
+        "name": "Operating System",
+        "type": "string"
+    },
+    {
+        "id": "Title",
+        "name": "Bug Title",
+        "type": "string"
+    },
+    {
+        "id": "ScreenShotEmbedURL",
+        "name": "ScreenShot URL",
+        "type": "string"
+    },
+    {
+        "id": "VideoEmbedURL",
+        "name": "Video URL",
+        "type": "string"
+    },
+    {
+        "id": "BugEmbedURL",
+        "name": "Manual Test Bug URL",
+        "type": "string"
+    }
 ]
 ```
 
