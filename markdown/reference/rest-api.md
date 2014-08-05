@@ -1159,11 +1159,11 @@ curl http://saucelabs.com/rest/v1/bugs/types
 
 Get description of each field for a particular bug type
 
-URL: `http://saucelabs.com/rest/v1/bugs/types/:bug_id`
+URL: `http://saucelabs.com/rest/v1/bugs/types/:bug_type_id`
 
 **Example Request:**
 ```bash
-curl http://saucelabs.com/rest/v1/bugs/types/YOUR_BUG_ID
+curl http://saucelabs.com/rest/v1/bugs/types/YOUR_BUG_TYPE_ID
 ```
 
 **Example Response:**
