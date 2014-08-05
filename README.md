@@ -1,6 +1,6 @@
 # Sauce Labs Docs
 
-This repo contains the markdown documentation for Sauce Labs.
+This repo contains the markdown documentation for Sauce Labs. To learn about how the system works, check out [this](https://medium.com/code-stories/87c0317c56f7) blog post.
 
 [![Build Status](https://travis-ci.org/saucelabs/docs.svg?branch=master)](https://travis-ci.org/saucelabs/docs)
 [![Build status](https://ci.appveyor.com/api/projects/status/8f3q4ng044d748q6)](https://ci.appveyor.com/project/ChrisWren/docs)
