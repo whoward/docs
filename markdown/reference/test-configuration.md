@@ -268,11 +268,11 @@ Value type: string
 Example:
 
 ```python
-"selenium-version": "2.41.0"
+"selenium-version": "2.40.0"
 ```
 
 
-The current version being used as default is: **`2.30.0`**.<br/>
+The current version being used as default is: **`2.40.0`**.<br/>
 Supported versions you can choose from include:<br/>
 `2.26.0` `2.27.0` `2.28.0` `2.29.0` `2.30.0` `2.31.0` `2.32.0` `2.33.0` `2.34.0` `2.35.0` `2.36.0` `2.37.0` `2.38.0` `2.39.0` `2.40.0` `2.41.0`
 
