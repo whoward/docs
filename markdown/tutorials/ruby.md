@@ -52,7 +52,7 @@ That's it! We are ready to run our first Selenium test!
 
 ### Simple Ruby Selenium Test Locally
 
-Let's start by running a test on our local machine first. In the text editor of your choice copy the piece of code below. (Comments are optional, however they provide good reading to get reference to what the test is doing)
+Let's start by running a test on our local machine first. In the text editor of your choice copy the piece of code below into a file called `test.rb`. (Comments are optional, however they provide good reading to get reference to what the test is doing)
 
 ```ruby
 # Importing the relevant classes to run our simple selenium test
@@ -88,6 +88,13 @@ driver.find_element(:id, "gbqfq").send_keys "Sauce Labs"
 driver.quit
 
 ```
+
+Then run the test with the following command:
+
+```bash
+ruby test.rb
+```
+
 You should see a Firefox window pop up with all the steps outlined above being executed. Done!
 
 ### Simple Ruby Selenium Test On Sauce Labs
@@ -96,13 +103,13 @@ Time to run our simple test on Sauce Labs! Also this time around, we will be abl
 
 Let's perform 2 small steps and you will be ready to test on Sauce!:
 
-**1st Step** - Adding your Sauce Labs credentials, i.e. Username and Access key, as environment variables. The credentials can be found on the Sauce Labs [homepage](https://saucelabs.com/account).
+**1st Step** - Adding your Sauce Labs credentials, i.e. Username and Access key, as environment variables.
 
 On Unix / Linux, open the system profile file by typing
 
 ```bash
 echo "export SAUCE_USERNAME=sauceUsername
-export SAUCE_ACCESS_KEY=sauceAccesskey" >> ~/.bash_profile && source ~/.bash_profile
+export SAUCE_ACCESS_KEY=sauceAccessKey" >> ~/.bash_profile && source ~/.bash_profile
 ```
 
 
@@ -113,10 +120,10 @@ Name: SAUCE_USERNAME
 Value: sauceUsername
 
 Name: SAUCE_ACCESS_KEY
-Value: sauceAccesskey
+Value: sauceAccessKey
 ```
 
-**2nd Step** - Previously we had pointed the Selenium Webdriver to our localhost. Since we want to implement the test on Sauce, we will make a slight change to the driver url as shown in the code below:
+**2nd Step** - Previously we had pointed the Selenium Webdriver to our localhost. Since we want to implement the test on Sauce, we will make a slight change to the driver url in the `test.rb` file as shown in the code below:
 
 ```ruby
 require 'rubygems'
@@ -145,7 +152,7 @@ driver.quit
 
 ```
 
-Once you run the test, head over to the Sauce Labs [Homepage](https://saucelabs.com/account) and you will notice a new session, executed on a pristine new Virtual Machine, with the name 'Selenium on Sauce on IE11W8.1' and your chosen environment.
+Once you run the test, head over to the Sauce Labs [account page](https://saucelabs.com/account) and you will notice a new session, executed on a pristine new Virtual Machine, with the name 'Selenium on Sauce on IE11W8.1' and your chosen environment.
 
 Voila!! You are up and running on Sauce Labs.
 
