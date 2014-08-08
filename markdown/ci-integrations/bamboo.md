@@ -2,7 +2,7 @@
   title: "Bamboo",
   description: "Run automated tests on Sauce Labs using Atlassian Bamboo",
   category: "CI Integrations",
-  index: 3,
+  index: 4,
   image: "/images/ci-integrations/bamboo.png",
 }
 

@@ -2,7 +2,7 @@
   title: "CircleCI",
   description: "Run browser tests through Sauce Labs using CircleCI",
   category: "CI Integrations",
-  index: 4,
+  index: 2,
   image: "/images/ci-integrations/circleci.png",
 }
 

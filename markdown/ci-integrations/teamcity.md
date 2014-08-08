@@ -2,7 +2,7 @@
   title: "TeamCity",
   description: "Run automated tests on Sauce Labs using TeamCity",
   category: "CI Integrations",
-  index: 2,
+  index: 3,
   image: "/images/ci-integrations/teamcity.png",
 }
 
