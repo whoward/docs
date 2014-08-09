@@ -35,12 +35,12 @@ CI documentation](http://about.travis-ci.org/docs/user/build-configuration/#Secu
       <button class="btn btn-default" type="button" id="encrypt">Submit</button>
       </span>
   </div>
-  <div id="output"></div>
+  <div class="encryption-alert" id="output"></div>
   </div>
 </div>
 </div>
 
-<div class='alert alert-success alert-dismissible show-after-encryption' role='alert' style="display:none"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>Success: For the project <span id="project"></span>, copy the code block below to your `.travis.yml` file.</div>
+<div class='alert alert-success alert-dismissible show-after-encryption encryption-alert' role='alert' style="display:none"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>Success: For the project <span id="project"></span>, copy the code block below to your `.travis.yml` file.</div>
 
 <pre><code class="lang-yaml"><div class="button-container"><button data-clipboard-target="travis-auto-encryption" class="btn btn-default clipboard"><span class="fa fa-clipboard"></span></button><div id="code-4" class="hidden">env:
   global:
