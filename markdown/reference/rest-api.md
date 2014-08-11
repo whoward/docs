@@ -57,7 +57,7 @@ Create a sub-account.
 
 URL: `https://saucelabs.com/rest/v1/users/:username`
 
-METHOD: `POST`
+Method: `POST`
 
 **Request Fields:**
 * `username`(required)
@@ -230,7 +230,7 @@ Edit an existing job
 
 URL: `https://saucelabs.com/rest/v1/:username/jobs/:job_id`
 
-METHOD: `PUT`
+Method: `PUT`
 
 **Request Fields:**
 * `name`: [string] Change the job name
@@ -257,7 +257,7 @@ Removes the job from the system with all the linked assets.
 
 URL: `https://saucelabs.com/rest/v1/:username/jobs/:job_id`
 
-METHOD: `DELETE`
+Method: `DELETE`
 
 **Example Request:**
 ```bash
@@ -273,7 +273,7 @@ Terminates a running job.
 
 URL: `https://saucelabs.com/rest/v1/:username/jobs/:job_id/stop`
 
-METHOD: `PUT`
+Method: `PUT`
 
 **Example Request:**
 ```bash
