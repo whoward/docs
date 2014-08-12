@@ -54,10 +54,10 @@ curl https://saucelabs.com/rest/v1/users/sauceUsername \
 **Example Response:**
 ```json
 {
-    "access_key": "YOUR_ACCESS_KEY",
+    "access_key": "sauceAccessKey",
     "can_run_manual": true,
     "email": "YOUR_EMAIL",
-    "id": "YOUR_USERNAME",
+    "id": "sauceUsername",
     "mac_manual_minutes": "YOUR_MAC_MANUAL_MINUTES",
     "mac_minutes": "YOUR_MAC_MINUTES",
     "manual_minutes": "YOUR_MANUAL_MINUTES",
@@ -86,7 +86,6 @@ Method: `POST`
 ```bash
 curl https://saucelabs.com/rest/v1/users/sauceUsername \
 -u sauceUsername:sauceAccessKey \
--X POST \
 -H 'Content-Type: application/json' \
 -d '{"username": "subaccount-username", "password": "subaccount-password", "name": "subaccount-name", "email": "subaccount-email-address"}'
 ```
@@ -124,7 +123,7 @@ curl https://saucelabs.com/rest/v1/users/sauceUsername/concurrency \
 ```json
 {
     "concurrency": {
-        "YOUR_USERNAME": {
+        "sauceUsername": {
             "current": {
                 "mac": 0,
                 "manual": 1,
@@ -171,7 +170,7 @@ curl https://saucelabs.com/rest/v1/sauceUsername/activity \
 ```json
 {
     "subaccounts": {
-        "YOUR_USERNAME": {
+        "sauceUsername": {
             "all": 1,
             "in progress": 0,
             "queued": 1
@@ -230,7 +229,7 @@ curl https://saucelabs.com/rest/v1/users/sauceUsername/usage \
             ]
         ]
     ],
-    "username": "YOUR_USERNAME"
+    "username": "sauceUsername"
 }
 ```
 
@@ -252,10 +251,10 @@ curl https://saucelabs.com/rest/v1/sauceUsername/jobs \
 ```json
 [
     {
-        "id": "b3b6ee91d8b74b5cb5224388ce6d9935"
+        "id": "JOB_ID_1"
     },
     {
-        "id": "e6f8f03292e44ff4a3e362ee75b58487"
+        "id": "JOB_ID_2"
     }
 ]
 ```
@@ -326,7 +325,7 @@ https://saucelabs.com/rest/v1/sauceUsername/jobs?full=true
         "log_url": "https://assets.saucelabs.com/jobs/JOB_ID/selenium-server.log",
         "name": "Nexus4 AndroidDriver test",
         "os": "Linux",
-        "owner": "YOUR_USERNAME",
+        "owner": "sauceUsername",
         "passed": null,
         "proxied": false,
         "public": null,
@@ -412,15 +411,15 @@ https://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID
     "manual": false,
     "name": "Selenium Tests",
     "os": "Mac 10.9",
-    "owner": "YOUR_USERNAME",
+    "owner": "sauceUsername",
     "passed": null,
     "proxied": true,
     "public": null,
     "start_time": 1402525781,
     "status": "complete",
     "tags": [
-        "Branch: master",
-        "Commit: 598baae9b3daf3faa3692f00027d7d25aa80f7df"
+        "master",
+        "598baae9b3daf3faa3692f00027d7d25aa80f7df"
     ],
     "video_url": "https://assets.saucelabs.com/jobs/YOUR_JOB_ID/video.flv"
 }
@@ -745,7 +744,6 @@ Method: `POST`
 **Example Request:**
 ```bash
 curl -u sauceUsername:sauceAccessKey \
--X POST \
 https://saucelabs.com/rest/v1/users/sauceUsername \
 -H 'Content-Type: application/json' \
 -d '{"username": "sauceUsername_subaccount",
@@ -779,7 +777,6 @@ Method: `POST`
 **Example Request:**
 ```bash
 curl -u sauceUsername:sauceAccessKey \
--X POST \
 -H 'Content-Type: application/json' \
 -d '{"plan": "small"}' \
 https://saucelabs.com/rest/v1/users/SUBACCOUNT_USERNAME/subscription
@@ -821,7 +818,6 @@ Method: `POST`
 **Example Request:**
 ```bash
 curl -u sauceUsername:sauceAccessKey \
--X POST \
 -H "Content-Type: application/octet-stream" \
 https://saucelabs.com/rest/v1/storage/sauceUsername/test_file_name?overwrite=true \
 --data-binary @/path/to/your_file_name
@@ -902,7 +898,6 @@ window.global_test_results = {
 **Example Request:**
 ```bash
 curl https://saucelabs.com/rest/v1/sauceUsername/js-tests \
--X POST \
 -u sauceUsername:sauceAccessKey \
 -H 'Content-Type: application/json' \
 --data '{
@@ -945,7 +940,6 @@ Method: `POST`
 **Example Request:**
 ```bash
 curl https://saucelabs.com/rest/v1/sauceUsername/js-tests/status \
--X POST \
 -u sauceUsername:sauceAccessKey \
 -H 'Content-Type: application/json' \
 -d '{"js tests": ["JOB_ID_1","JOB_ID_2"]}'
