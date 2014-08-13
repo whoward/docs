@@ -58,10 +58,10 @@ curl https://saucelabs.com/rest/v1/users/sauceUsername \
     "can_run_manual": true,
     "email": "YOUR_EMAIL",
     "id": "sauceUsername",
-    "mac_manual_minutes": "YOUR_MAC_MANUAL_MINUTES",
-    "mac_minutes": "YOUR_MAC_MINUTES",
-    "manual_minutes": "YOUR_MANUAL_MINUTES",
-    "minutes": "YOUR_MINUTES",
+    "mac_manual_minutes": 30,
+    "mac_minutes": 120,
+    "manual_minutes": 30,
+    "minutes": 913,
     "name": "YOUR_NAME",
     "subscribed": true,
     "user_type": "subscribed"
@@ -87,7 +87,7 @@ Method: `POST`
 curl https://saucelabs.com/rest/v1/users/sauceUsername \
 -u sauceUsername:sauceAccessKey \
 -H 'Content-Type: application/json' \
--d '{"username": "subaccount-username", "password": "subaccount-password", "name": "subaccount-name", "email": "subaccount-email-address"}'
+-d '{"username": "SUBACCOUNT_USERNAME", "password": "subaccount-password", "name": "subaccount-name", "email": "SUBACCOUNT"}'
 ```
 
 **Example Response:**
@@ -251,7 +251,7 @@ curl https://saucelabs.com/rest/v1/sauceUsername/jobs \
 ```json
 [
     {
-        "id": "JOB_ID_1"
+        "id": "f45fe215340b4ccead2e52e04ae7a98a"
     },
     {
         "id": "JOB_ID_2"
