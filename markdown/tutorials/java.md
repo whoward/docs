@@ -947,7 +947,7 @@ TestNG has built in support for running tests in parallel that is configured by 
 `src\test\resources\xml\testng.xml` file:
 
 ```xml
-<suite name="ParallelTests" verbose="5" parallel="tests" thread-count="10">
+<suite name="ParallelTests" verbose="5" parallel="methods" thread-count="10">
 ```
 
 Don't forget to match the `thread-count` to your concurrency limit, as mentioned above.
