@@ -535,7 +535,7 @@ The available visibility levels are as follows:
 ## Mobile Testing Options
 
 ### Device Orientation
-By default, mobile emulators are run in portrait orientation. You can also set them to landscape orientation.
+By default, mobile emulators and simulators are run in portrait orientation. You can also set them to landscape orientation.
 
 Key: `device-orientation`
 
