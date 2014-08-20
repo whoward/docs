@@ -52,6 +52,8 @@ System requirements vary depending on the number of parallel tests you plan to r
 
 For increased reliability and security, use a dedicated server. You may need to up your open file limit if your parallel test count is high (`ulimit -n 8192`).
 
+Note: Sauce Connect 4 will not work on Mac OS X versions less than 10.8
+
 ###  How is Sauce Connect Secured?
 
 Though starting up a tunnel using Sauce Connect may take a few seconds, our tunneling method allows for the highest possible security. We spin up a secure tunnel sandbox environment for each tunnel connection in order to provide greater tunnel security and isolation from other customers.
