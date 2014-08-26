@@ -135,7 +135,7 @@ After your app compiles you'll have a `build/<*target*>` directory in your app's
 ### Setting Up Your iOS Tests for Sauce
 
 
-First, zip and upload your app to Sauce Labs temporary storage using our [Temporary Storage REST API](http://saucelabs.com/docs/rest#storage):
+First, zip and upload your app to Sauce Labs temporary storage using our [Temporary Storage REST API](https://docs.saucelabs.com/reference/rest-api/#temporary-storage):
 
 ```bash
 zip -r my_app.zip MyApp.app/
