@@ -519,6 +519,12 @@ This can be scripted in any programming language. Just make sure the HTTP method
 
 By default, the API prevents overwriting files already stored in Sauce temporary storage. The `overwrite=true` query parameter (shown in the example above) can be added to allow overwriting.
 
+### Checking Temporary Storage
+
+How do I see what's in my temp storage?
+```bash
+curl -u sauceUsername:sauceAccessKey http://saucelabs.com/rest/v1/storage/sauceUsername
+```
 ## JS Unit Testing
 
 If you already have JS unit tests, running them on Sauce using the REST API is simple. If you are using Karma or want to setup a new test suite, check out our [JS Unit Testing Tutorial](/tutorials/js-unit-testing/).
