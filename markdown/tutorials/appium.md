@@ -10,8 +10,8 @@ Appium is an open source mobile automation tool for iOS and Android. Appium can 
 
 There are several advantages to using Appium on Sauce Labs to test your mobile applications:
 
-  - Since Appium uses the Selenium JSON Wire Protocol, you can write your tests in any language supported by Selenium.
   - Appium does not require any modification to the source code of your application before running tests.
+  - Since Appium uses the Selenium JSON Wire Protocol, you can write your tests in any language supported by Selenium.
   - Appium uses first-party automation frameworks from Apple and Google, so tests replicate user behavior very accurately.
   - With Appium on Sauce, your tests require no setup or virtualization, and can be scaled instantly.
 
