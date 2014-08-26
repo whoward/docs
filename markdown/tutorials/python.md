@@ -8,7 +8,7 @@
 ## Setting Up a Project
 
 Let's start with a sample test based on Python's unittest
-framework. Download the sample test with this command:
+framework. Download the [sample test](http://saucelabs.com/examples/example.py) with this command:
 
 ```bash
 python -c "import urllib2;
