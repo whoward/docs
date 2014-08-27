@@ -527,7 +527,8 @@ URL: `https://saucelabs.com/rest/v1/storage/:username`
 
 **Example Request:**
 ```bash
-curl -u sauceUsername:sauceAccessKey https://saucelabs.com/rest/v1/storage/sauceUsername
+curl -u sauceUsername:sauceAccessKey \
+https://saucelabs.com/rest/v1/storage/sauceUsername
 ```
 
 ## JS Unit Testing
