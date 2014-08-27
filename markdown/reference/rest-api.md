@@ -521,7 +521,7 @@ By default, the API prevents overwriting files already stored in Sauce temporary
 
 ### Get Stored Files
 
-Check what files are in your temp storage.
+Check what files are in your temporary storage.
 
 URL: `https://saucelabs.com/rest/v1/storage/:username`
 
@@ -543,7 +543,7 @@ URL: `https://saucelabs.com/rest/v1/:username/js-tests`
 Method: `POST`
 
 **Request Fields:**
-* `platforms`(required): an array of platforms
+* `platforms`(required): an array of [platforms](https://saucelabs.com/platforms)
 * `url`(required): should point to the page that hosts your tests.
 * `framework`(required): can be `"qunit"`, `"jasmine"`, `"YUI Test"`, `"mocha"`, or `"custom"`.
 
