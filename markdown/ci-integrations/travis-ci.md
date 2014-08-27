@@ -15,9 +15,9 @@ In this tutorial we will get you setup to run automated tests on
 
 *You can learn more about setting up Travis for your project's programming language [here](http://about.travis-ci.org/docs/user/getting-started/#Getting-started).*
 
-## Securely use your Sauce Credentials on Travis CI
+## Securely use your Sauce Labs credentials on Travis CI
 
-To test with Sauce on Travis, you need to make your Sauce credentials available to your tests.<span class="show-inline-when-un-authenticated">To do so, <a href="#" id="travis-login-redirect">login to your account</a> to allow us to [encrypt your credentials](#adding-credentials-for-a-public-github-repo) as environment variables so that they aren't visible in your source code, but instead available as global variables.</span><span class="show-inline-when-authenticated">The best way to achieve this is to encrypt your credentials as environment variables so that they aren't visible in your source code, but instead available as global variables.</span>
+To test with Sauce Labs on Travis, you need to make your credentials available to your tests.<span class="show-inline-when-un-authenticated">To do so, <a href="#" id="travis-login-redirect">login to your account</a> to allow us to [encrypt your credentials](#adding-credentials-for-a-public-github-repo) as environment variables so that they aren't visible in your source code, but instead available as global variables.</span><span class="show-inline-when-authenticated">The best way to achieve this is to encrypt your credentials as environment variables so that they aren't visible in your source code, but instead available as global variables.</span>
 
 *If you want to learn more about secure environment variables, check out the
 [Travis
