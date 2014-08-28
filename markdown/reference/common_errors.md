@@ -24,7 +24,6 @@ This indicates that your Sauce Labs username and access key aren't provided by
 your tests as expected. To address this, please [follow the right tutorial for
 your programming language](https://docs.saucelabs.com/).
 
-
 ##User Terminated
 
 This message is used for tests manually interrupted using the **Cancel** or
@@ -68,7 +67,7 @@ session ending request (generally rendered as a call to `driver.quit()` or
 available in your account.
 
 The most common cause for this is customers' **test scripts crashing, getting
-forcefully interrupted or loosing connectivity**.
+forcefully interrupted or losing connectivity**.
 
 A less common but still possible cause is tests legitimately needing more than
 90 seconds to send a new command to the browser. This happens most often when
