@@ -35,7 +35,7 @@ CI documentation](http://about.travis-ci.org/docs/user/build-configuration/#Secu
       <button class="btn btn-default" type="button" id="encrypt">Submit</button>
       </span>
   </div>
-  <div class="encryption-alert" id="output"></div>
+  <div id="output"></div>
   </div>
 </div>
 </div>
