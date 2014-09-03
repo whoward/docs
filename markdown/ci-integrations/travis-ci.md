@@ -25,7 +25,12 @@ CI documentation](http://about.travis-ci.org/docs/user/build-configuration/#Secu
 
 ### Adding credentials for a public GitHub repo
 
-<span>For public GitHub repos we can automatically encrypt your credentials (for private GitHub repositories follow [the steps below](#adding-credentials-for-a-private-github-repo)).</span><span class="show-inline-when-un-authenticated"><b><a href="#" id="travis-login-redirect-adding-credentials"> Login to your account</a> to allow us to automatically encrypt your username and access key for your `.travis.yml` file.</b></span><span class="show-inline-when-authenticated"> To automatically encrypt the `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` environment variables, enter your public GitHub repo below (case sensitive in the `username/repo` format ie. <a href="https://github.com/saucelabs/docs" target="_blank">saucelabs/docs</a>) :</span>
+For public GitHub repos we can automatically encrypt your credentials (for private GitHub repositories follow [the steps below](#adding-credentials-for-a-private-github-repo)).
+
+<span class="show-inline-when-un-authenticated"><b><a href="#" id="travis-login-redirect-adding-credentials"> Login to your account</a> to allow us to automatically encrypt your username and access key for your `.travis.yml` file. If you don't have an account yet, sign up [here](https://saucelabs.com/signup/plan/OSS) for an Open Sauce account.</b>
+</span>
+<span class="show-inline-when-authenticated"> To automatically encrypt the `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` environment variables, enter your public GitHub repo below (case sensitive in the `username/repo` format ie. <a href="https://github.com/saucelabs/docs" target="_blank">saucelabs/docs</a>) :</span>
+
 <div class="show-when-authenticated">
 <div class="container-fluid">
   <div class="row">
