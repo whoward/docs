@@ -14,12 +14,14 @@ To get your tests running, you can either check out the docs for the [karma-sauc
 
 ## Installation
 
-Start by cloning the [karma-sauce-example](https://github.com/saucelabs/karma-sauce-example.git) repo by running the following command in your terminal:
+If you have `git` installed on your system, start by cloning the [karma-sauce-example](https://github.com/saucelabs/karma-sauce-example.git) repo by running the following command in your terminal:
 
 ```bash
 git clone https://github.com/saucelabs/karma-sauce-example.git &&
 cd karma-sauce-example
 ```
+
+Otherwise, you can download the sample project [here](https://github.com/saucelabs/karma-sauce-example/archive/master.zip). Make sure you go into the `karma-sauce-example-master` directory before continuing.
 
 Then run the following command to install the Karma command line interface globally and the sample repo's local node.js dependencies:
 
