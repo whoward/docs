@@ -61,7 +61,7 @@ Now proceed to the [next section](#running-javascript-unit-tests-on-sauce-locall
 
 ### Exporting Credentials on Windows
 
-On Windows, open your environment variables settings window (instructions [here](http://www.itechtalk.com/thread3595.html)) and set the following variables:
+On Windows, open your environment variables settings window (instructions [here](http://www.7tutorials.com/how-edit-or-delete-environment-variables-windows-7-windows-8/)) and set the following variables:
 
 Set the following variable:
 
