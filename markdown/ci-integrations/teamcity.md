@@ -57,7 +57,7 @@ Click the `Save Button`.
 
 ![Source Repository Details](/images/ci-integrations/teamcity/plan-git.png)
 
-Click the `Create Build Configuration` button.
+In `General Settings`, click the `Create Build Configuration` button.
 
 ![Create Build Configuration](/images/ci-integrations/teamcity/create-build-configuration.png)
 
