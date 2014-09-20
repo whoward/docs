@@ -40,7 +40,7 @@ karma start
 
 Try saving a source file in the `src` folder or a test file in the `test` folder to see Karma automatically re-run the tests on the latest source code.
 
-By default, this example runs [jasmine](http://jasmine.github.io/2.0/introduction.html) tests in Chrome and Firefox on your local machine, and you can add more browsers that you have installed in the `karma.conf.js`'s [`browsers`](http://karma-runner.github.io/config/browsers.html) array or change the test framework in the `frameworks` array.
+By default, this example runs [jasmine](http://jasmine.github.io/2.0/introduction.html) tests in Chrome and Firefox on your local machine, and you can add more browsers that you have installed in the `karma.conf.js`'s [`browsers`](http://karma-runner.github.io/0.12/config/browsers.html) array or change the test framework in the `frameworks` array.
 
 ## Running Karma with the [karma-sauce-launcher](https://github.com/karma-runner/karma-sauce-launcher) plugin
 
