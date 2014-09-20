@@ -92,7 +92,7 @@ Now that your credentials are set, you can now run the unit tests on Sauce with 
 karma start karma.conf-ci.js
 ```
 
-Note that this will by default start [Sauce Connect](/reference/sauce-connect/) to establish a secure tunnel between your local machine and Sauce's cloud. To speed up the time it takes to connect to Sauce's cloud, you can start Sauce Connect in the background by using one of the [binaries](/reference/sauce-connect/#basic-setup) or the [Mac app](https://saucelabs.com/mac) and then setting the `startConnect` option to `false` in the `karma.conf-ci.js` file (make sure to change it back to `true` before running on CI).
+Note that this will by default start [Sauce Connect](/reference/sauce-connect/) to establish a secure tunnel between your local machine and Sauce's cloud. To speed up the time it takes to connect to Sauce's cloud, you can start Sauce Connect in the background by using one of the [binaries](/reference/sauce-connect/#basic-setup) or the [Mac app](https://saucelabs.com/mac) and then setting the `startConnect` option to `false` in the `sauceLabs` dictionary inside your `karma.conf-ci.js` file (make sure to change it back to `true` before running on CI).
 
 ## Using the karma-sauce-launcher in CI
 
