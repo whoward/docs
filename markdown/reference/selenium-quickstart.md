@@ -142,16 +142,16 @@ Below is HTML source code for the web page with a login form at `www.foo.com`:
   <body>
   	...
     <form action="loginAction" id="loginForm">
-	  <label>User name:&nbsp;<\label>
+	  <label>User name:&nbsp;</label>
 	  <input type="text" name="username"><br>
-	  <label>Password:&nbsp;<\label>
+	  <label>Password:&nbsp;</label>
 	  <input type="text" name="password"><br>
-	  <button type="submit" id="loginButton">Log In<\button>
-	  <button type="reset" id="reset">Clear<\button>
+	  <button type="submit" id="loginButton">Log In</button>
+	  <button type="reset" id="reset">Clear</button>
     </form>
     ...
-  <\body>
-<\html>
+  </body>
+</html>
 ```	
 
 ####HTML for the Login Response Message
@@ -164,8 +164,8 @@ Below is HTML source code for the login response message displayed after submitt
   	...
     <p class="message" id="loginResponse">Welcome to foo. You logged in successfully.</p>
   	...
-  <\body>
-<\html>
+  </body>
+</html>
 ```
 
 Note that, in the HTML given above, the login response message indicates success, but a similar login response message may indicate failure.
@@ -692,7 +692,7 @@ The following table describes the locator methods of the `By` class:
  **Class** | `By.className("foo")` | Forms a locator expression comparing `"foo"` to the value of the `class` attribute|
  **CSS Selector** | `By.css("form#foo")`|Forms a locator expression for comparing the evaluated CSS expression - e.g. the `id` attribute value of a form element - to the value "foo" |
  **Identifier**  |`By.id("foo")`, `By.identifier("foo")` |Select the first element with `id` attribute value `"foo"`. If there is no such element, then select the element whose name attribute value is `value`. 
- **Link Text**  | `By.linkText("Foo")`| Selects the link (anchor tag `<a href="...">Text to Match<\a>`) with text _content_ matching `value` 
+ **Link Text**  | `By.linkText("Foo")`| Selects the link (anchor tag `<a href="...">Text to Match</a>`) with text _content_ matching `value` 
  **Partial<br> Link&nbsp;Text**  |`By.partialLinkText("Foo")` |
  **Name** | `By.name("foo")` |Select the first element with `name` attribute value `value`
 **Tag&nbsp;Name** | `By.tagName("form")` |Select the first element with tag name  `form` - i.e. the first `<form ...>` element
@@ -802,16 +802,16 @@ Below is HTML source code for the web page with a login form at `www.foo.com`:
   <body>
   	...
     <form action="loginAction" id="loginForm">
-	  <label>User name:&nbsp;<\label>
+	  <label>User name:&nbsp;</label>
 	  <input type="text" name="username"><br>
-	  <label>Password:&nbsp;<\label>
+	  <label>Password:&nbsp;</label>
 	  <input type="submit" name="password"><br>
-	  <button type="submit" id="loginButton">Log In<\button>
-	  <button type="reset" id="reset">Clear<\button>
+	  <button type="submit" id="loginButton">Log In</button>
+	  <button type="reset" id="reset">Clear</button>
     </form>
     ...
-  <\body>
-<\html>
+  </body>
+</html>
 ```	
 ####HTML for the Login Response Message
 
@@ -823,8 +823,8 @@ Below is HTML source code for the login response message displayed after submitt
   	...
     <p class="message" id="loginResponse">Welcome to foo. You logged in successfully.</p>
   	...
-  <\body>
-<\html>
+  </body>
+</html>
 ```
 
 ### Locating an HTML Element by Id
@@ -854,9 +854,9 @@ This location strategy locates an HTML element on a web page by matching the  va
 Consider following excerpt from the HTML page source:
 
 ```html
-	  <label>User name:&nbsp;<\label>
+	  <label>User name:&nbsp;</label>
 	  <input type="text" name="username"><br>
-	  <label>Password:&nbsp;<\label>
+	  <label>Password:&nbsp;</label>
 	  <input type="password" name="password"><br>
 ```	
 
@@ -930,8 +930,8 @@ Consider following HTML - with a hyperlink added - as the page source for the lo
       Welcome to Foo. You logged in successfully.
     </p><br>
     <a href="www.foo.com">Now return to Foo.</a>
-  <\body>
-<\html>
+  </body>
+</html>
 ```
 
 The "return to foo" hyperlink element has visible text `"Now return to Foo."`, and can be located by matching all or part of this text.
