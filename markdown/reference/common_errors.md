@@ -80,7 +80,7 @@ Sauce's wait time for further commands. Check our
 for more details on this.
 
 
-###Selenium took too long to run your command
+###Selenium didn't complete your last command on time
 
 This error is shown when Sauce Labs doesn't receive a response from Selenium to
 your Script's last command in more than 5 minutes (the timeout's default length.)
@@ -158,7 +158,7 @@ old to handle a more recent browser version. It should be resolved by choosing
 a newer version of Selenium, or omitting this setting altogether.
 
 
-##Browser failed to start
+##The Sauce VMs failed to start the browser or device
 
 The twin sibling of "Unsupported version", this message means that something
 a little more unusual is off in your test setup. Usually, this means that you're
