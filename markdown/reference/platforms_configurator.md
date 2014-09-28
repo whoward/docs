@@ -16,6 +16,7 @@
 <script src="/scripts/configurator/myApp/controllers.js"></script>
 <script src="/scripts/configurator/myApp/directives.js"></script>
 <script src="/scripts/configurator/myApp/filters.js"></script>
+<script src="/scripts/configurator/myApp/animations.js"></script>
 
 <div class="platforms-configurator row" ng-app="myApp">
   <div ng-view></div>
