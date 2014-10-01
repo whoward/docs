@@ -22,12 +22,14 @@ You can also use Sauce Connect:
 
 1. Get the latest Sauce Connect:
 <ul>
-<li><a href="https://saucelabs.com/downloads/sc-4.3-osx.zip"><i class="fa fa-apple"></i> Download Sauce Connect v4.3 for OS X</a><br>
-SHA1 checksum: ae017d7d2bfe63989b22f8f913ee4de010b221d7 <br>
-</li><li><a href="https://saucelabs.com/downloads/sc-4.3-win32.zip"><i class="fa fa-windows"></i> Download Sauce Connect v4.3 for Windows</a><br>
-SHA1 checksum: ca0d7a636df22d3191a7d71bf2707e09767a35ed <br>
-</li><li><a href="https://saucelabs.com/downloads/sc-4.3-linux.tar.gz"><i class="fa fa-linux"></i> Download Sauce Connect v4.3 for Linux</a><br>
-SHA1 checksum: 3bd70442329a240869eb1e41bc0ab2a9d885face <br>
+<li><a href="https://saucelabs.com/downloads/sc-4.3.5-osx.zip"><i class="fa fa-apple"></i> Download Sauce Connect v4.3.5 for OS X</a><br>
+SHA1 checksum: 84a5c889b57ffd2d7fce3418540ab6f47848d06a<br>
+</li><li><a href="https://saucelabs.com/downloads/sc-4.3.5-win32.zip"><i class="fa fa-windows"></i> Download Sauce Connect v4.3.5 for Windows</a><br>
+SHA1 checksum: 0eb6216d1235d95762b09c9b163cc806a27463c4<br>
+</li><li><a href="https://saucelabs.com/downloads/sc-4.3.5-linux.tar.gz"><i class="fa fa-linux"></i> Download Sauce Connect v4.3.5 for Linux</a><br>
+SHA1 checksum: 781db4a9cfabc9f5d8f42ca0645273bb2a06e86f<br>
+</li><li><a href="https://saucelabs.com/downloads/sc-4.3.5-linux32.tar.gz"><i class="fa fa-linux"></i> Download Sauce Connect v4.3.5 for Linux 32-bit</a><br>
+SHA1 checksum: 24d56a7899649916649805c22461e4c7a734c251<br>
 </li><li>(If you're looking for Sauce Connect v3, you can download it <a href="https://saucelabs.com/downloads/Sauce-Connect-3.1-r32.zip">here</a>.)<br>
 </li>
 </ul>
