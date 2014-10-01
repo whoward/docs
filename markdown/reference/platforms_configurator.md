@@ -10,7 +10,9 @@
 </script>
 
 <link href="/styles/pages/configurator.css" rel='stylesheet' type='text/css' />
+<link href="/styles/pages/monokai_sublime.css" rel='stylesheet' type='text/css' />
 
+<script src="/scripts/configurator/highlight.pack.js"></script>
 <script src="/scripts/configurator/app.js"></script>
 <script src="/scripts/configurator/myApp/services.js"></script>
 <script src="/scripts/configurator/myApp/controllers.js"></script>
