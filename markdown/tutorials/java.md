@@ -10,25 +10,85 @@
 
 We suggest that you consider using [Maven](http://maven.apache.org) to build your Java project and either the 
 [JUnit](http://www.junit.org) or the [TestNG](http://www.testng.org) library to write Selenium tests. While neither 
-Maven, JUnit nor TestNG are required to write Java tests for Sauce, this is the framework that we'll use for this 
-tutorial.
+Maven, JUnit nor TestNG are required to write Java tests for Sauce, this is the framework that we'll use for the
+majority of this tutorial.
 
 Although this tutorial is not a comprehensive guide for getting Java and Maven set up on
 your system, here are some guidelines:
 
-## Java and Maven Setup
+## Java Setup
 
-You will need to use **JDK** 1.6 (or higher) (*not the JRE*) and Maven 2.2.1 (or higher) in order to complete this tutorial.
+You will need to use **JDK** 1.6 (or higher) (*not the JRE*) in order to complete this tutorial.
 
 Download and install [Java](http://www.java.com/en/download/manual.jsp) if it isn't already installed on your system.
 
 **Note:** Ensure the **JAVA_HOME** environment variable is defined appropriately.
 For MacOS, add the following to ~/.bash_profile:
 ```bash 
-export JAVA_HOME="$( /usr/libexec/java_home )”
+export JAVA_HOME="$( /usr/libexec/java_home )"
 ```
 
-Go to the [Maven download](http://maven.apache.org/download.html) page to download the Maven binary distribution and extract it to your file system.  Add the `bin` directory to your path, for example,
+## Basic Java Test on Sauce
+
+With Java installed, you're already very close to running your first WebDriver test on Sauce. Java doesn't know what Selenium is right away, so 
+you'll need to download the [Selenium Server standalone jar](http://www.seleniumhq.org/download/). You can put this jar file in your
+[class path](http://docs.oracle.com/javase/tutorial/essential/environment/paths.html), or simply save it to a directory for now.
+
+Here is a very basic WebDriver test in Java: [WebDriverBasic.java](https://github.com/saucyallison/support/blob/master/WebDriverBasic.java)
+```java
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+public class WebDriverBasic {
+    public static void main(String[] args) throws Exception {
+        WebDriver driver;
+        String username = "sauceUserName";
+        String accessKey = "sauceAccessKey";
+    
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("platform", "Windows 8");
+        capabilities.setCapability("browserName", "Chrome");
+        capabilities.setCapability("version", "36");
+        capabilities.setCapability("name", "Basic Java WebDriver Test");
+
+        System.out.println("Running on Sauce Labs...");
+        driver = new RemoteWebDriver(new URL("http://"+username+":"+accessKey+"@ondemand.saucelabs.com:80/wd/hub"), capabilities);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        
+        driver.get("http://www.amazon.com/");
+        
+        driver.quit();
+        System.out.println("Done! View this test on your dashboard at https://saucelabs.com/tests");
+    }
+}
+```
+**Note:** Be sure the `username` and `accessKey` contain your own valid Sauce Labs credentials from your [account page](https://saucelabs.com/account).
+
+To compile and run this file, Java needs the Selenium server jar on the classpath. If you permanently set the class path for your platform, as in the
+link above (see: [class path](http://docs.oracle.com/javase/tutorial/essential/environment/paths.html)), you should be able to compile and run the file with simply:
+```bash
+javac WebDriverBasic.java
+```
+```bash
+java WebDriverBasic
+```
+Alternately, if you have not modified your class path, the simplest way to compile and run the example is storing `WebDriverBasic.java` in the same directory as your Selenium server jar, and specifying your class path to be the current directory with these commands:
+```bash
+javac -classpath *:. WebDriverBasic.java
+```
+```bash
+java -classpath *:. WebDriverBasic
+```
+You should see that the basic test ran on your [tests page](https://saucelabs.com/tests). Congratulations! Now we'll set up Maven, a project management tool for Java.
+
+## Maven Setup
+
+You will need Maven 2.2.1 (or higher) in order to complete this tutorial.
+
+Go to the [Maven download](http://maven.apache.org/download.html) page to download the Maven binary distribution and extract it to your file system.  Add the `bin` directory to your path. For example:
 
 On Mac or Linux:
 
@@ -41,21 +101,31 @@ On Windows:
 ```bash
 set PATH=YOUR_MAVEN_PATH/bin:%PATH%
 ```
-## Setting Up a Project
-Setting up a project is a process of either building one from scratch or pulling a pre-existing project. For this tutorial you will pull a sample project we'll call *quickstart-webdriver-junit* (The artifact) from the project *com.saucelabs* (The GroupId). Refer to the [maven documentation](http://maven.apache.org/guides/index.html) for more information about these maven terms.
+## Setting Up a Maven Project
+Setting up a project is a process of either building one from scratch or pulling a pre-existing project. For this tutorial, you will pull a sample project we'll call *quickstart-webdriver-junit* (the artifact) from the project *com.saucelabs* (the groupId). Refer to the [maven documentation](http://maven.apache.org/guides/index.html) for more information about these Maven terms.
 
 First, create a project directory:
 ```bash
 mkdir -p ~/sauce-tutorial/sauce-project && cd ~/sauce-tutorial/sauce-project
 ```
-Next, download and install a sample project using your chosen testing framework using one of these Maven commands. You will be prompted to enter a group id (for example, `com.yourcompany`), artifact id (for example, `sauce-project`), version (defaults to `1.0-SNAPSHOT`), and package (default to the group id).
-**Note:** This step uses your Sauce username and access key. You can find your Sauce access key on your [Sauce account page]/(https://saucelabs.com/account).
+Next, download and install a sample project using this Maven command.
+
+**Note:** This step uses your Sauce username and access key. If you're logged in, they will be automatically populated in the command below.
+You can find your Sauce access key on your [Sauce account page](https://saucelabs.com/account).
+
 **JUnit example:**
 ```bash
-mvn archetype:generate -DarchetypeRepository=http://repository-saucelabs.forge.cloudbees.com/release -DarchetypeGroupId=com.saucelabs -DarchetypeArtifactId=quickstart-webdriver-junit -DgroupId=com.yourcompany -DartifactId=sauce-project -DarchetypeVersion=1.0.19 -Dversion=1.0-SNAPSHOT -Dpackage=com.yourcompany -DsauceUserName=<!—- SAUCE:USERNAME -—> -DsauceAccessKey=<!-- SAUCE:ACCESS_KEY -->
+mvn archetype:generate -DarchetypeRepository=http://repository-saucelabs.forge.cloudbees.com/release -DarchetypeGroupId=com.saucelabs -DarchetypeArtifactId=quickstart-webdriver-junit -DgroupId=com.yourcompany -DartifactId=sauce-project -DarchetypeVersion=2.1.4 -Dversion=1.0-SNAPSHOT -Dpackage=com.yourcompany -DsauceUserNameLiteral=sauceUserName -DsauceAccessKeyLiteral=sauceAccessKey
 ```
-**Note:** There may be a few prompts, use the Defaults except for ```Y: :``` enter ```Y```.
-There should be quite a bit of output. If there are any errors check the ```-D``` values above and ensure there are no errors. If values are left off the command line, they will be prompted for instead.
+Suggested default values:   
+group id: `com.yourcompany`  
+artifact id: `sauce-project`  
+version: `1.0-SNAPSHOT`  
+package: `com.yourcompany`  
+
+
+**Note:** If there are prompts, use the defaults. For the prompt ```Y: :``` enter ```Y```.
+There should be quite a bit of output. If there are any errors, check the ```-D``` values above. If values are left off the command line, they will be prompted for instead.
 
 ## Running Your First Test
 
@@ -66,8 +136,8 @@ Run this command from your `sauce-project` directory:
 ```bash
 mvn test
 ```
-This launches Maven and will download the dependencies, compiles the source code and run the tests. After a few
-moments you should see that JUnit/TestNG has started. You might not see any output instantaneously, but
+This launches Maven and download the dependencies, compiles the source code, and runs the tests. After a few
+moments, you should see that JUnit/TestNG has started. You might not see any output instantaneously, but
 eventually you will see the following output:
 ```
 ------------------------------------------------------
