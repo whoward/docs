@@ -196,9 +196,129 @@ To use this feature, simply start Sauce Connect using the `--tunnel-identifier` 
 
 Please note that in order to run multiple Sauce Connect instances on the same machine, it's necessary to provide additional flags to configure independent log files, pid files, and ports for each instance. Here's an example of how to configure all of these settings for a second instance:
 
-
 ```bash
 sc --pidfile /tmp/sc2.pid --logfile /tmp/sc2.log --scproxy-port 29999 --se-port 4446 -i my-tun2
+```
+###  Service Managment
+
+Sauce Connect can also be monitored more easily using a Service Managment tool like systemd or upstart. These tools help to make the usage of Sauce Connect more fluid and allow for time to wait for Sauce Connect to clean up upon exiting. It's common to want to signal kill the Sauce Connect process and start one instantly after that. This will cause issues as it takes time to shutdown Sauce Connect remotely. These tools help account for that so you don't have to.
+
+#### Systemd
+1. cd /usr/local/bin
+2. wget https://saucelabs.com/downloads/sc-4.3-linux.tar.gz
+3. tar -zxvf sc-4.3-linux.tar.gz
+4. cp sc-4.3-linux/bin/sc .
+5. ls /usr/local/bin/sc —- verify Sauce Connect is in correct location
+
+6. cd /etc/systemd/system
+7. create a file 'sc.server' and copy/paste the contents below
+8. modify username and access key in sc.server to match your own
+9. sudo systemctl daemon-reload
+8. sudo systemctl start sc.service
+9. sudo systemstl status sc.service
+10. sudo systemstl stop sc.service
+
+```
+[Unit]
+Description=Sauce Connect
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+Group=nogroup
+ExecStart=/usr/local/bin/sc -u <CHANGEME> -k <CHANGEME> -l /tmp/sc_long.log --pidfile /tmp/sc_long.pid --se-port 0 --vm-version next
+
+[Install]
+WantedBy=multi-user.target
+```
+#### Upstart
+1. cd /usr/local/bin
+2. wget https://saucelabs.com/downloads/sc-4.3-linux.tar.gz
+3. tar -zxvf sc-4.3-linux.tar.gz
+4. cp sc-4.3-linux/bin/sc .
+5. ls /usr/local/bin/sc —- verify Sauce Connect is in correct location
+
+6. cd /etc/init
+7. create a file 'sc.conf' and copy/paste the contents below
+8. modify username and access key in sc.conf to match your own
+9. sudo initctl reload-configuration
+9. sudo start sc
+10. sudo status sc
+11. sudo stop sc
+
+```
+#
+#This Upstart config expects that Sauce Connect is installed at
+#/usr/local/bin/sc. Edit that path if it is installed somewhere else.
+#
+#Copy this file to /etc/init/sc.conf, and do:
+#
+# $ sudo initctl reload-configuration
+#
+#Then you can manage SC via the usual upstart tools, e.g.:
+#
+#$ sudo start sc
+#$ sudo restart sc
+#$ sudo stop sc
+#$ sudo status sc
+#
+start on filesystem and started networking
+stop on runlevel 06
+
+respawn
+respawn limit 15 5
+
+#Wait for tunnel shutdown when stopping Sauce Connect.
+kill timeout 120
+
+#Bump maximum number of open files/sockets.
+limit nofile 8192 8192
+
+#Make Sauce Connect output go to /var/log/upstart/sc.log.
+console log
+
+env LOGFILE="/tmp/sc_long.log"
+env PIDFILE="/tmp/sc_long.pid"
+env EXTRA_ARGS="--se-port 0 --vm-version next"
+env SAUCE_USERNAME="CHANGEME" # XXX
+env SAUCE_ACCESS_KEY="CHANGEME" # XXX
+
+post-start script
+  # Save the pidfile, since Sauce Connect might remove it before the
+  # post-stop script gets a chance to run.
+  n=0
+  max_tries=30
+  while [ $n -le $max_tries ]; do
+    if [ -f $PIDFILE ]; then
+      cp $PIDFILE $ {PIDFILE}.saved
+      break
+    fi
+    n=$((n+1))
+    [ $n -ge $max_tries ] && exit 1
+    sleep 1
+  done
+end script
+
+post-stop script
+  # Wait for Sauce Connect to shut down its tunnel.
+  n=0
+  max_tries=30
+  pid="$(cat ${PIDFILE}.saved)"
+  while [ $n -le $max_tries ]; do
+    kill -0 $pid || break
+    n=$((n+1))
+    [ $n -ge $max_tries ] && exit 1
+    sleep 1
+  done
+end script
+
+setuid nobody
+setgid nogroup
+
+chdir /tmp
+
+exec /usr/local/bin/sc -l $LOGFILE --pidfile $PIDFILE $EXTRA_ARGS
 ```
 
 ##  FAQs
