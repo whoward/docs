@@ -201,18 +201,18 @@ sc --pidfile /tmp/sc2.pid --logfile /tmp/sc2.log --scproxy-port 29999 --se-port 
 ```
 ###  Service Managment
 
-Sauce Connect can also be monitored more easily using a Service Managment tool like systemd or upstart. These tools help to make the usage of sauce connect more fluid and allow for time to wait for Sauce Connect to clean up upon exiting. It's common to want to signal kill the Sauce Connect process and start one instantly after that. This will cause issues as it takes time to shutdown Sauce Connect remotely. These tools help account for that so you don't have to.
+Sauce Connect can also be monitored more easily using a Service Managment tool like systemd or upstart. These tools help to make the usage of Sauce Connect more fluid and allow for time to wait for Sauce Connect to clean up upon exiting. It's common to want to signal kill the Sauce Connect process and start one instantly after that. This will cause issues as it takes time to shutdown Sauce Connect remotely. These tools help account for that so you don't have to.
 
 #### Systemd
 1. cd /usr/local/bin
 2. wget https://saucelabs.com/downloads/sc-4.3-linux.tar.gz
 3. tar -zxvf sc-4.3-linux.tar.gz
 4. cp sc-4.3-linux/bin/sc .
-5. ls /usr/local/bin/sc —- verify sauce connect is in correct location
+5. ls /usr/local/bin/sc —- verify Sauce Connect is in correct location
 
 6. cd /etc/systemd/system
 7. create a file 'sc.server' and copy/paste the contents below
-8. modify username and access key in sc.service to match your own
+8. modify username and access key in sc.server to match your own
 9. sudo systemctl daemon-reload
 8. sudo systemctl start sc.service
 9. sudo systemstl status sc.service
@@ -237,7 +237,7 @@ WantedBy=multi-user.target
 2. wget https://saucelabs.com/downloads/sc-4.3-linux.tar.gz
 3. tar -zxvf sc-4.3-linux.tar.gz
 4. cp sc-4.3-linux/bin/sc .
-5. ls /usr/local/bin/sc —- verify sauce connect is in correct location
+5. ls /usr/local/bin/sc —- verify Sauce Connect is in correct location
 
 6. cd /etc/init
 7. create a file 'sc.conf' and copy/paste the contents below
