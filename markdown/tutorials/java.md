@@ -84,7 +84,7 @@ java -classpath *:. WebDriverBasic
 ```
 You should see that the basic test ran on your [tests page](https://saucelabs.com/tests). Congratulations! Now we'll set up Maven, a project management tool for Java.
 
-## Maven Setup
+## Maven Setup 
 
 You will need Maven 2.2.1 (or higher) in order to complete this tutorial.
 
