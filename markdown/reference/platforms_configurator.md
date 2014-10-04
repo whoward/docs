@@ -18,10 +18,11 @@
   "scripts/docs/platforms-configurator/myApp/filters.js"
   ],
   styles: [
-  "styles/docs/platforms-configurator.css",
-  "styles/pages/monokai_sublime.css"
+  "styles/docs/platforms-configurator.css"
   ]
 }
+<link href='http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/monokai_sublime.min.css' rel='stylesheet' type='text/css'>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
 
 <div class="platforms-configurator row" ng-app="myApp">
   <div ng-view></div>
