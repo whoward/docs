@@ -9,7 +9,6 @@
   "vendor/angular-animate/angular-animate.min.js"
   ],
   scripts: [
-  "scripts/docs/platforms-configurator/highlight.pack.js",
   "scripts/docs/platforms-configurator/app.js",
   "scripts/docs/platforms-configurator/myApp/services.js",
   "scripts/docs/platforms-configurator/myApp/constants.js",
@@ -21,6 +20,7 @@
   "styles/docs/platforms-configurator.css"
   ]
 }
+<base href="/reference/platforms-configurator">
 <link href='http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/monokai_sublime.min.css' rel='stylesheet' type='text/css'>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
 
