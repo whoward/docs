@@ -201,7 +201,7 @@ sc --pidfile /tmp/sc2.pid --logfile /tmp/sc2.log --scproxy-port 29999 --se-port 
 ```
 ###  Service Managment
 
-Sauce Connect can also be monitored more easily using a Service Managment tool like systemd or upstart. These tools help to make the usage of Sauce Connect more fluid and allow for time to wait for Sauce Connect to clean up upon exiting. It's common to want to signal kill the Sauce Connect process and start one instantly after that. This will cause issues as it takes time to shutdown Sauce Connect remotely. These tools help account for that so you don't have to.
+Sauce Connect can be monitored more easily using a Service Managment tool like systemd or upstart. These tools help to make the usage of Sauce Connect more fluid and allow for time to wait for Sauce Connect to clean up upon exiting. It's common to want to signal kill the Sauce Connect process and start one instantly after that. This will cause issues as it takes time to shutdown Sauce Connect remotely. These tools help account for that so you don't have to.
 
 #### Systemd
 1. cd /usr/local/bin
