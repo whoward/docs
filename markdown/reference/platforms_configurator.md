@@ -10,11 +10,11 @@
   ],
   scripts: [
   "scripts/docs/platforms-configurator/app.js",
-  "scripts/docs/platforms-configurator/myApp/services.js",
-  "scripts/docs/platforms-configurator/myApp/constants.js",
-  "scripts/docs/platforms-configurator/myApp/controllers.js",
-  "scripts/docs/platforms-configurator/myApp/directives.js",
-  "scripts/docs/platforms-configurator/myApp/filters.js"
+  "scripts/docs/platforms-configurator/docsConfigurator/services.js",
+  "scripts/docs/platforms-configurator/docsConfigurator/constants.js",
+  "scripts/docs/platforms-configurator/docsConfigurator/controllers.js",
+  "scripts/docs/platforms-configurator/docsConfigurator/directives.js",
+  "scripts/docs/platforms-configurator/docsConfigurator/filters.js"
   ],
   styles: [
   "styles/docs/platforms-configurator.css"
@@ -24,6 +24,6 @@
 <link href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/monokai_sublime.min.css' rel='stylesheet' type='text/css'>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
 
-<div class="platforms-configurator row" ng-app="myApp">
+<div class="platforms-configurator row" ng-app="docsConfigurator">
   <div ng-view></div>
 </div>
