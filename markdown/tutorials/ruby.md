@@ -74,7 +74,7 @@ Sauce.config do |c|
 end
 ```
 
-Check out [our platforms page](http://saucelabs.com/docs/platforms) for available platforms (130+ and counting!).
+Check out [our platforms page](http://saucelabs.com/docs/platforms) for available platforms (400+ and counting!).
 
 
 Setting up the Sauce Gem
