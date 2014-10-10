@@ -6,6 +6,13 @@
   image: "/images/tutorials/js-unit-testing.png"
 }
 
+## Quick Links
+
+[QUnit Testing](https://saucelabs.com/javascript/qunit)
+[Mocha Testing](https://saucelabs.com/javascript/mocha-js)
+[Jasmine Testing](https://saucelabs.com/javascript/jasmine-js)
+[YUI Testing](https://saucelabs.com/javascript/yui-tests)
+
 ![karma-plus-sauce](/images/tutorials/js-unit-testing/karma-plus-sauce.png)
 
 In this tutorial we will use the [Karma](http://karma-runner.github.io/) test runner to run JavaScript unit tests on Sauce Labs. If you are using the YUI test framework or would prefer to setup your own custom test runner check out [grunt-saucelabs](https://github.com/axemclion/grunt-saucelabs), otherwise follow along to setup Karma.
