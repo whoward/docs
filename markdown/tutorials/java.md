@@ -6,6 +6,8 @@
   image: "/images/tutorials/java.png"
 }
 
+Questions or Problems with this Tutorial? Go to [our Forum topic for this Java tutorial.] (https://support.saucelabs.com/entries/57636760-Java-Tutorial-Questions-Problems)
+
 ## Getting Started
 
 We suggest that you consider using [Maven](http://maven.apache.org) to build your Java project and either the 
