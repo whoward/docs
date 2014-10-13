@@ -25,5 +25,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
 
 <div class="platforms-configurator row" ng-app="docsConfigurator">
-  <div ng-view></div>
+  <ng-view></ng-view>
 </div>
