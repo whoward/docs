@@ -4,7 +4,7 @@
   description: "Platforms Configurator",
   category: "Reference",
   index: 9,
-  libraries: ["vendor/angular/lib/angular.js",
+  libraries: ["vendor/angular/angular.js",
   "vendor/angular-route/angular-route.min.js",
   "vendor/angular-animate/angular-animate.min.js"
   ],
