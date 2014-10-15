@@ -28,10 +28,10 @@ For MacOS, add the following to ~/.bash_profile:
 export JAVA_HOME="$( /usr/libexec/java_home )"
 ```
 
-## Basic Java Test on Sauce
+## Simple Test
 
 With Java installed, you're already very close to running your first WebDriver test on Sauce. Java doesn't know what Selenium is right away, so 
-you'll need to download the [Selenium Server standalone jar](http://www.seleniumhq.org/download/). You can put this jar file in your
+you'll need to download the [Selenium server standalone jar](http://www.seleniumhq.org/download/). You can put this jar file in your
 [class path](http://docs.oracle.com/javase/tutorial/essential/environment/paths.html), or simply save it to a directory for now.
 
 Here is a very basic WebDriver test in Java: [WebDriverBasic.java](https://github.com/saucyallison/support/blob/master/WebDriverBasic.java)
@@ -55,7 +55,7 @@ public class WebDriverBasic {
         capabilities.setCapability("name", "Basic Java WebDriver Test");
 
         System.out.println("Running on Sauce Labs...");
-        driver = new RemoteWebDriver(new URL("http://"+username+":"+accessKey+"@ondemand.saucelabs.com:80/wd/hub"), capabilities);
+        driver = new RemoteWebDriver(new URL("http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub"), capabilities);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         
         driver.get("http://www.amazon.com/");
@@ -67,8 +67,8 @@ public class WebDriverBasic {
 ```
 **Note:** Be sure the `username` and `accessKey` contain your own valid Sauce Labs credentials from your [account page](https://saucelabs.com/account).
 
-To compile and run this file, Java needs the Selenium server jar on the classpath. If you permanently set the class path for your platform, as in the
-link above (see: [class path](http://docs.oracle.com/javase/tutorial/essential/environment/paths.html)), you should be able to compile and run the file with simply:
+To compile and run this file, Java needs the Selenium server jar in the classpath. If you permanently set the class path for your platform, as in the
+link above (see: [class path](http://docs.oracle.com/javase/tutorial/essential/environment/paths.html)), you should be able to compile and run the file with:
 ```bash
 javac WebDriverBasic.java
 ```
@@ -82,7 +82,106 @@ javac -classpath *:. WebDriverBasic.java
 ```bash
 java -classpath *:. WebDriverBasic
 ```
-You should see that the basic test ran on your [tests page](https://saucelabs.com/tests). Congratulations! Now we'll set up Maven, a project management tool for Java.
+You should see that the basic test ran on your [tests page](https://saucelabs.com/tests).
+
+##Java J-Unit
+###Simple
+```java
+public class WebDriverTest {
+
+    private WebDriver driver;
+
+    @Before
+    public void setUp() throws Exception {
+        // Choose the browser, version, and platform to test
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+        capabilities.setCapability("version", "5");
+        capabilities.setCapability("platform", Platform.XP);
+        // Create the connection to Sauce Labs to run the tests
+        this.driver = new RemoteWebDriver(
+                new URL("http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub"),
+                capabilities);
+    }
+
+    @Test
+    public void webDriver() throws Exception {
+        // Make the browser get the page and check its title
+        driver.get("http://www.amazon.com/");
+        assertEquals("Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more", driver.getTitle());
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        driver.quit();
+    }
+
+}
+```
+
+Let's break this test class down, chunk by chunk. First, we use the
+`setUp()` method to initialize the browser testing environment we will
+need for the tests:
+
+```java
+    @Before
+    public void setUp() throws Exception {
+        // Choose the browser, version, and platform to test
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+        capabilities.setCapability("version", "5");
+        capabilities.setCapability("platform", Platform.XP);
+        // Create the connection to Sauce Labs to run the tests
+        this.driver = new RemoteWebDriver(
+                new URL("http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub"),
+                capabilities);
+    }
+```
+
+This method is run before every test in the class (by virtue of the
+JUnit `org.junit.Before` annotation). We create an
+`org.openqa.selenium.remote.DesiredCapabilities` instance and use it
+to specify the browser version and platform. We then create an
+`org.openqa.selenium.remote.RemoteWebDriver` instance pointing at
+`ondemand.saucelabs.com` and using the `DesiredCapabilities`
+instance. This driver makes the tests use the specified browser and
+platform running on Sauce Labs servers to execute the test.
+
+Next, we write a simple test (annotated with org.junit.Test):
+
+```java
+@Test
+public void webDriver() throws Exception {
+    // Make the browser get the page and check its title
+    driver.get("http://www.amazon.com/");
+    assertEquals("Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more", driver.getTitle());
+}
+```
+
+The test accesses www.amazon.com and uses a [JUnit assertion](https://github.com/junit-team/junit/wiki/Assertions)
+to check that the page title has the expected value. The call to
+`driver.getTitle()` is a
+[Selenium RemoteWebDriver method](http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/remote/RemoteWebDriver.html#getTitle%28%29)
+that tells Selenium to return the title of the
+current page.
+
+```java
+@After
+public void tearDown() throws Exception {
+  driver.quit();
+}
+```
+
+Finally, the `tearDown()` method is run after every test in the class (by virtue of the JUnit `org.junit.After` annotation).  We call `driver.quit()` to close the Selenium session.
+
+
+###Complex
+###Parallel Complex
+
+##Java TestNG
+###Simple
+###Complex
+###Parallel Complex
+
+##BAD TIMES TO DELETE BELOW
 
 ## Maven Setup 
 
@@ -176,97 +275,6 @@ test suite on Sauce, let's look at what actually happened under the
 hood. The simplest test is in the file
 `src/test/java/com/yourcompany/WebDriverTest.java`.
 
-The tests are very similar for both JUnit and TestNG, so we'll
-only describe the JUnit test in detail.
-
-## JUnit
-
-```java
-public class WebDriverTest {
-
-    private WebDriver driver;
-
-    @Before
-    public void setUp() throws Exception {
-        // Choose the browser, version, and platform to test
-        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-        capabilities.setCapability("version", "5");
-        capabilities.setCapability("platform", Platform.XP);
-        // Create the connection to Sauce Labs to run the tests
-        this.driver = new RemoteWebDriver(
-                new URL("http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub"),
-                capabilities);
-    }
-
-    @Test
-    public void webDriver() throws Exception {
-        // Make the browser get the page and check its title
-        driver.get("http://www.amazon.com/");
-        assertEquals("Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more", driver.getTitle());
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        driver.quit();
-    }
-
-}
-```
-
-Let's break this test class down, chunk by chunk. First, we use the
-`setUp()` method to initialize the browser testing environment we will
-need for the tests:
-
-```java
-    @Before
-    public void setUp() throws Exception {
-        // Choose the browser, version, and platform to test
-        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-        capabilities.setCapability("version", "5");
-        capabilities.setCapability("platform", Platform.XP);
-        // Create the connection to Sauce Labs to run the tests
-        this.driver = new RemoteWebDriver(
-                new URL("http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub"),
-                capabilities);
-    }
-```
-
-This method is run before every test in the class (by virtue of the
-JUnit `org.junit.Before` annotation). We create an
-`org.openqa.selenium.remote.DesiredCapabilities` instance and use it
-to specify the browser version and platform. We then create an
-`org.openqa.selenium.remote.RemoteWebDriver` instance pointing at
-`ondemand.saucelabs.com` and using the `DesiredCapabilities`
-instance. This driver makes the tests use the specified browser and
-platform running on Sauce Labs servers to execute the test.
-
-Next, we write a simple test (annotated with org.junit.Test):
-
-```java
-@Test
-public void webDriver() throws Exception {
-    // Make the browser get the page and check its title
-    driver.get("http://www.amazon.com/");
-    assertEquals("Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more", driver.getTitle());
-}
-```
-
-The test accesses www.amazon.com and uses a [JUnit assertion](https://github.com/junit-team/junit/wiki/Assertions)
-to check that the page title has the expected value. The call to
-`driver.getTitle()` is a
-[Selenium RemoteWebDriver method](http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/remote/RemoteWebDriver.html#getTitle%28%29)
-that tells Selenium to return the title of the
-current page.
-
-```java
-@After
-public void tearDown() throws Exception {
-  driver.quit();
-}
-```
-
-Finally, the `tearDown()` method is run after every test in the class (by virtue of the JUnit `org.junit.After` annotation).  We call `driver.quit()` to close the Selenium session.
-
 ## TestNG
 
 The TestNG version of the `WebDriverTest` class is very similar. The
@@ -296,7 +304,7 @@ public class WebDriverTest {
         capabilities.setCapability("name", method.getName());
         // Create the connection to Sauce Labs to run the tests
         this.driver = new RemoteWebDriver(
-                new URL("http://" + username + ":" + key + "@ondemand.saucelabs.com:80/wd/hub"),
+                new URL("http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub"),
                 capabilities);
     }
 
