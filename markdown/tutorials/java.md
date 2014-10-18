@@ -55,7 +55,7 @@ public class WebDriverBasic {
         capabilities.setCapability("name", "Basic Java WebDriver Test");
 
         System.out.println("Running on Sauce Labs...");
-        driver = new RemoteWebDriver(new URL("http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub"), capabilities);
+        driver = new RemoteWebDriver(new URL("http://"+username+":"+accessKey+"@ondemand.saucelabs.com:80/wd/hub"), capabilities);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         
         driver.get("http://www.amazon.com/");
@@ -82,7 +82,9 @@ javac -classpath *:. WebDriverBasic.java
 ```bash
 java -classpath *:. WebDriverBasic
 ```
-You should see that the basic test ran on your [tests page](https://saucelabs.com/tests).
+You should see that the basic test ran on your [tests page](https://saucelabs.com/tests). Congratulations! You can click on the test to watch the recorded video and view the Selenium commands that were run.
+
+You'll notice that this test didn't do much - it only sets up the RemoteWebDriver connection, visits Amazon.com, and quits. Now we'll write something more useful, with [JUnit](http://junit.org) as our test framework. If you are new to JUnit, you can [download JUnit](https://github.com/junit-team/junit/wiki/Download-and-Install) and read the [Getting Started guide](https://github.com/junit-team/junit/wiki/Getting-started).
 
 ##Java JUnit
 ###Simple
@@ -173,16 +175,20 @@ public void tearDown() throws Exception {
 Finally, the `tearDown()` method is run after every test in the class (by virtue of the JUnit `org.junit.After` annotation).  We call `driver.quit()` to close the Selenium session.
 
 This test gives you the basic structure for any Selenium test that
-will run on Sauce Labs. Next, let's look at how you can use more
-Selenium functionality to create more realistic tests of your own web
-app.
+will run on Sauce Labs. 
+
 
 ###Complex
 
-The `WebDriverWithHelperTest` class that demonstrates how 
-to update tests using the Sauce Labs Java helper library. The 
-`WebDriverWithHelperTest.java` test will have a name specified in the
-Session column and be marked as Pass in the Results column,
+Next, let's look at how to use the [Sauce Labs
+Java helper library](https://github.com/saucelabs/sauce-java). There are
+versions available for both JUnit and TestNG. You can download the latest
+version of the JUnit jar from Sauce Labs' CloudBees repository [here](http://repository-saucelabs.forge.cloudbees.com/release/com/saucelabs/sauce_junit/).
+
+The `WebDriverWithHelperTest` class below demonstrates how 
+to update tests using this helper library. The 
+`WebDriverWithHelperTest.java` test will have the name of the test specified in the
+Session column, and be marked as Pass in the Results column,
 whereas any tests that don't use this library will simply be marked as Finished.
 
 ```java
@@ -240,7 +246,7 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider {
 }
 ```
 
-The `WebDriverWithHelperTest` class is fundamentally the same as the WebDriverTest class, with a couple of additions. 
+The `WebDriverWithHelperTest` class is fundamentally the same as the simpler WebDriverTest class, but with a few additions.
 First it implements the Sauce `SauceOnDemandSessionIdProvider` interface, which requires that a `getSessionId()` method 
 be implemented:
 
@@ -263,7 +269,7 @@ SauceOnDemandTestWatcher resultReportingTestWatcher = new SauceOnDemandTestWatch
 ```
 
 The SauceOnDemandTestWatcher instance invokes the [Sauce REST API](http://saucelabs.com/docs/rest). This is how JUnit
-notifies the Sauce environment if the test passed or failed. It also outputs the Sauce session id 
+notifies the Sauce environment whether to mark the test Passed or Failed. It also outputs the Sauce session id 
 to stdout so the Sauce plugins for [Jenkins](https://wiki.jenkins-ci.org/display/JENKINS/Sauce+OnDemand+Plugin) 
 and [Bamboo](https://marketplace.atlassian.com/plugins/com.saucelabs.bamboo.bamboo-sauceondemand-plugin) 
 can parse the session id.
@@ -281,14 +287,14 @@ because we start each test on a new virtual machine that has never been used bef
 you for the spin-up time).
 
 To make tests run faster, run more than one test at a time. As long as
-the tests are independent --- whether you're running the same test
+the tests are independent - whether you're running the same test
 across different browsers or the tests just don't interact with each
-other --- there should be no problem running them
+other - there should be no problem running them
 simultaneously. Since we have thousands of
 clean virtual machines on standby, we encourage you to run as many tests
 as you can concurrently. You can find the number of parallel tests your account can run in the sidebar of your [account page](http://www.saucelabs.com/account). Just be aware that trying to run more tests than your account allows may result in the extra tests timing out and failing.
 
-Tests can be run in parallel using JUnit with a bit of work.
+Tests can be run in parallel using JUnit with a bit of special care.
 
 
 **Parallelizing the WebDriverTest Class**
