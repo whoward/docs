@@ -84,7 +84,7 @@ java -classpath *:. WebDriverBasic
 ```
 You should see that the basic test ran on your [tests page](https://saucelabs.com/tests).
 
-##Java J-Unit
+##Java JUnit
 ###Simple
 ```java
 public class WebDriverTest {
@@ -172,9 +172,220 @@ public void tearDown() throws Exception {
 
 Finally, the `tearDown()` method is run after every test in the class (by virtue of the JUnit `org.junit.After` annotation).  We call `driver.quit()` to close the Selenium session.
 
+This test gives you the basic structure for any Selenium test that
+will run on Sauce Labs. Next, let's look at how you can use more
+Selenium functionality to create more realistic tests of your own web
+app.
 
 ###Complex
+
+The `WebDriverWithHelperTest` class that demonstrates how 
+to update tests using the Sauce Labs Java helper library. The 
+`WebDriverWithHelperTest.java` test will have a name specified in the
+Session column and be marked as Pass in the Results column,
+whereas any tests that don't use this library will simply be marked as Finished.
+
+```java
+public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider {
+
+    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(
+        "sauceUsername", "sauceAccessKey");
+
+    /**
+     * JUnit Rule that marks the Sauce Job as passed/failed when the test succeeds or fails.
+     * You can see the pass/fail status on your [Sauce Labs test page](https://saucelabs.com/tests).
+     */
+    public @Rule
+    SauceOnDemandTestWatcher resultReportingTestWatcher = new SauceOnDemandTestWatcher(this, authentication);
+
+    /**
+     * JUnit Rule that will record the test name of the current test. This is referenced when creating the 
+     * {@link DesiredCapabilities}, so the Sauce Job is created with the test name.
+     */
+    public @Rule TestName testName = new TestName();
+
+    private WebDriver driver;
+
+    private String sessionId;
+
+    @Before
+    public void setUp() throws Exception {
+
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+        capabilities.setCapability("version", "17");
+        // Note: XP is tested as Windows 2003 Server on the Sauce Cloud
+        capabilities.setCapability("platform", Platform.XP); 
+        capabilities.setCapability("name",  testName.getMethodName());
+        this.driver = new RemoteWebDriver(
+                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"), capabilities);
+        this.sessionId = ((RemoteWebDriver)driver).getSessionId().toString();
+    }
+
+    @Override
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    @Test
+    public void webDriverWithHelper() throws Exception {
+        driver.get("http://www.amazon.com/");
+        assertEquals("Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more", driver.getTitle());
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        driver.quit();
+    }
+
+}
+```
+
+The `WebDriverWithHelperTest` class is fundamentally the same as the WebDriverTest class, with a couple of additions. 
+First it implements the Sauce `SauceOnDemandSessionIdProvider` interface, which requires that a `getSessionId()` method 
+be implemented:
+
+
+```java
+public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider {
+```
+
+Pass your Sauce user name and Sauce access key as parameters to the `SauceOnDemandAuthentication` constructor. (You can find your 
+Sauce access key on your [Sauce account page](https://saucelabs.com/account).) The 
+object that is returned is passed as a parameter to the `SauceOnDemandTestWatcher` constructor. `SauceOnDemandTestWatcher` 
+notifies Sauce if the test passed or failed.
+
+```java
+public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("sauceUsername", "sauceAccessKey");
+
+public @Rule
+SauceOnDemandTestWatcher resultReportingTestWatcher = new SauceOnDemandTestWatcher(this, authentication);
+
+```
+
+The SauceOnDemandTestWatcher instance invokes the [Sauce REST API](http://saucelabs.com/docs/rest). This is how JUnit
+notifies the Sauce environment if the test passed or failed. It also outputs the Sauce session id 
+to stdout so the Sauce plugins for [Jenkins](https://wiki.jenkins-ci.org/display/JENKINS/Sauce+OnDemand+Plugin) 
+and [Bamboo](https://marketplace.atlassian.com/plugins/com.saucelabs.bamboo.bamboo-sauceondemand-plugin) 
+can parse the session id.
+
+Finally, notice the `testName` rule, which is used when building the
+`DesiredCapabilities`. This lets you specify a name for the test which
+will be included in reports on the Sauce Labs site so you can quickly
+identify which tests are failing.
+
 ###Parallel Complex
+
+
+As you may recall from earlier tutorials, Selenium tests can take a long time! They may take even longer on Sauce
+because we start each test on a new virtual machine that has never been used before (don't worry, we don't charge
+you for the spin-up time).
+
+To make tests run faster, run more than one test at a time. As long as
+the tests are independent --- whether you're running the same test
+across different browsers or the tests just don't interact with each
+other --- there should be no problem running them
+simultaneously. Since we have thousands of
+clean virtual machines on standby, we encourage you to run as many tests
+as you can concurrently. You can find the number of parallel tests your account can run in the sidebar of your [account page](http://www.saucelabs.com/account). Just be aware that trying to run more tests than your account allows may result in the extra tests timing out and failing.
+
+Tests can be run in parallel using JUnit with a bit of work.
+
+
+**Parallelizing the WebDriverTest Class**
+
+The following `WebDriverParallelTest` class demonstrates how to update
+the `WebDriverTest` class so its tests run in parallel in JUnit. The [Sauce Labs Java helper library](https://github.com/saucelabs/sauce-java) includes a `Parallelized`
+class that creates a dynamic thread pool that holds each thread that is running a test.
+The test is parallelized by specifying the different parameters to test with - in this
+case, the browser and platform combo. Behind the scenes, the test framework
+creates a different instance of the test class for each set of parameters
+and runs them in parallel. The parameters are passed to the
+constructor, so each instance customizes its behavior using those
+parameters.
+
+```java
+@RunWith(Parallelized.class)
+public class WebDriverParallelTest {
+
+    private String browser;
+    private String os;
+    private String version;
+
+    public WebDriverParallelTest(String os, String version, String browser) {
+        super();
+        this.os = os;
+        this.version = version;
+        this.browser = browser;
+    }
+
+    @Parameterized.Parameters
+    public static LinkedList browsersStrings() throws Exception {
+        LinkedList browsers = new LinkedList();
+        browsers.add(new String[]{Platform.XP.toString(), "17", "firefox"});
+    //add any additional browsers here
+        return browsers;
+    }
+
+    private WebDriver driver;
+
+    @Before
+    public void setUp() throws Exception {
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
+        capabilities.setCapability(CapabilityType.VERSION, version);
+        capabilities.setCapability(CapabilityType.PLATFORM, os);
+        this.driver = new RemoteWebDriver(
+                new URL("http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub"), capabilities);
+    }
+
+    @Test
+    public void webDriver() throws Exception {
+        driver.get("http://www.amazon.com/");
+        assertEquals("Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more", driver.getTitle());
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        driver.quit();
+    }
+}
+```
+In this example, we're parallelizing tests across different browsers
+on different platforms. Since testing an app in Firefox on Linux is
+independent of testing it in Chrome on Windows, we can safely run both
+tests in parallel. The static method `browsersStrings()` is
+annotated with `org.junit.runners.Parameterized.Parameters`,
+indicating it should be used to determine the parameters for each
+instance of the test. The method returns a `LinkedList` of parameters (in this case, OS/browser combinations), which are each passed into the test's constructor. The
+`WebDriverParallelTest` constructor captures these
+parameters and `setUp()` uses them to configure the `DesiredCapabilities`.
+
+As you can see above, only one
+platform is returned right now, so only that one test will be run in
+parallel. Let's fix that! Add a few more platforms or browser versions
+(you might need to refer to [the Selenium
+`org.openqa.selenium.Platform`
+documentation](http://selenium.googlecode.com/git/docs/api/java/index.html?org/openqa/selenium/Platform.html)
+to specify other platforms). Now, when you run the
+tests, you should see these tests running in
+parallel on the [Sauce Labs tests page](https://saucelabs.com/tests).
+
+### Setting a parallelism limit
+
+To stop tests from timing out when you're already using all your Sauce Labs parallel slots, we need to limit the number of threads.
+
+The Sauce Labs Parallelized JUnit runner we used above uses the `junit.parallel.threads` System property to control how many threads it runs.  Let's set this to 2, to match the limit for free accounts:
+
+```bash
+mvn test -Djunit.parallel.threads=2
+```
+
+TODO: figure out how this is done without maven
+
+TODO: add links (jar) and instructions for using JUnit (good link out there?)
+
+TODO: add links for Sauce helper jar
 
 ##Java TestNG
 ###Simple
