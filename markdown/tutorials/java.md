@@ -55,7 +55,7 @@ public class WebDriverBasic {
         capabilities.setCapability("name", "Basic Java WebDriver Test");
 
         System.out.println("Running on Sauce Labs...");
-        driver = new RemoteWebDriver(new URL("http://"+username+":"+accessKey+"@ondemand.saucelabs.com:80/wd/hub"), capabilities);
+        driver = new RemoteWebDriver(new URL("http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub"), capabilities);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         
         driver.get("http://www.amazon.com/");
