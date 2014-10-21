@@ -428,7 +428,7 @@ By default, Sauce Connect generates log messages to your local operating system'
 You can enable verbose logging with the `-v` flag. Verbose output will be sent to the Sauce Connect log file rather than standard out.
 
 ###	Connectivity Considerations
-- Is there a firewall in place between the machine running Sauce Connect and Sauce Labs (\*.saucelabs.com:443)? You may need to allow access in your firewall rules, or configure Sauce Connect to use a proxy. Sauce Connect needs to establish outbound connections to saucelabs.com (67.23.20.87) on port 443, and to one of many hosts makiXXXXX.miso.saucelabs.com IPs (162.222.76.0/21), also on port 443. It can make these connections directly, or can be configured to use an HTTP proxy with the `--proxy`, `--pac` and `--proxy-tunnel` command line options.
+- Is there a firewall in place between the machine running Sauce Connect and Sauce Labs (\*.saucelabs.com:443)? You may need to allow access in your firewall rules, or configure Sauce Connect to use a proxy. Sauce Connect needs to establish outbound connections to saucelabs.com (67.23.20.87) on port 443, and to one of many hosts makiXXXXX.miso.saucelabs.com IPs (162.222.72.0/21), also on port 443. It can make these connections directly, or can be configured to use an HTTP proxy with the `--proxy`, `--pac` and `--proxy-tunnel` command line options.
 - Is a proxy server required to connect to route traffic from saucelabs.com to an internal site? If so you may need to configure Sauce Connect with the `--proxy` or `--pac` command line options.
 
 ###	Checking Network Connectivity to Sauce Labs
