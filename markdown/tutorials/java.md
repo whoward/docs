@@ -20,11 +20,11 @@ export JAVA_HOME="$( /usr/libexec/java_home )"
 
 ## Basic Test
 
-With Java installed, you're already very close to running your first WebDriver test on Sauce. Java doesn't know what Selenium is right away, so 
+With Java installed, you are close to running your first WebDriver test on Sauce. Java doesn't know what Selenium is right away, so 
 you'll need to download the [Selenium server standalone jar](http://www.seleniumhq.org/download/). You can put this jar file in your
 [class path](http://docs.oracle.com/javase/tutorial/essential/environment/paths.html), or simply save it to a directory for now.
 
-Here is a basic WebDriver test in Java: [WebDriverBasic.java](https://github.com/saucyallison/support/blob/master/WebDriverBasic.java)
+Here is a basic WebDriver test in Java: [WebDriverBasic.java](https://raw.githubusercontent.com/saucelabs/sauce-support/master/Java/WebDriverBasic.java)
 ```java
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -72,13 +72,13 @@ java -classpath *:. WebDriverBasic
 ```
 You should see that the basic test ran on your [tests page](https://saucelabs.com/tests). Congratulations! You can click on the test to watch the recorded video and view the Selenium commands that were run.
 
-You'll notice that this test didn't do much - it only sets up the RemoteWebDriver connection, visits Amazon.com, and quits. Next we'll write something more useful, with [JUnit](http://junit.org) as our test framework.
+You'll notice that this test didn't do much - it only sets up the RemoteWebDriver connection, visits a website, and quits. Next we'll write a test that plays with the website we loaded in WebDriverBasic.java.
 
 ## Involved Test
 
-After completing the basic Test lets add some more selenium commands to test a sample [website](https://saucelabs.com/test/guinea-pig). Let's now interact with links, checkboxes, textfields, and more in the following test case.
+After completing the basic test lets add some more selenium commands to test a sample [website](https://saucelabs.com/test/guinea-pig). Let's now interact with buttons, checkboxes, textfields, and more in the following test case.
 
-Here is the involved WebDriver test in Java: [XXXWebDriverInvolved.java](https://github.com/saucelabs/support/blob/master/WebDriverBasic.java)
+Here is the involved WebDriver test in Java: [WebDriverInvolved.java](https://raw.githubusercontent.com/saucelabs/sauce-support/master/Java/WebDriverInvolved.java)
 ```java
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -152,7 +152,7 @@ This file can be compiled and run with the same fashion as the Basic Test.
 ## Parallel Tests
 After completing the Involved Test lets start running tests in parallel. To get this working initially we will use shell scripting, but there are Test Runngers and Contiunous Integration systems that can help us here.
 
-Here is the bash scrupt to do parallel testing: [XXXWebDriverInvolved.java](https://github.com/saucelabs/support/blob/master/WebDriverBasic.java)
+Here is the bash scrupt to do parallel testing: [script.sh](https://raw.githubusercontent.com/saucelabs/sauce-support/master/Java/script.sh)
 ```bash
 #!/bin/bash
 echo "---Starting script---"
@@ -167,3 +167,9 @@ wait $pid2
 wait $pid3
 echo "---Ending script---"
 ```
+Next run this shell script with
+```bash
+./script.sh
+```
+
+Congradulations at this point you have run a test in parallel on Sauce Labs!
