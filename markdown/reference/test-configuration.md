@@ -442,7 +442,13 @@ Value type: string
 Example:
 
 ```python
-"time-zone": "Samoa"
+"time-zone": "Pacific"
+```
+```python
+"time-zone": "Honolulu"
+```
+```python
+"time-zone": "Alaska"
 ```
 
 ###Internet Explorer Driver Version
