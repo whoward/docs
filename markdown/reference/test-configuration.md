@@ -335,7 +335,7 @@ Example:
 ## Timeouts
 
 ### Maximum Test Duration
-As a safety measure to prevent broken tests from running indefinitely, Sauce limits the duration of tests to 30 minutes by default. You can adjust this limit on per-job basis. The value of this setting is given in seconds.
+As a safety measure to prevent broken tests from running indefinitely, Sauce limits the duration of tests to 30 minutes by default. You can adjust this limit on per-job basis. The value of this setting is given in seconds. The maximum test duration value allowed is 10800 seconds.
 
 Key: `max-duration`
 
