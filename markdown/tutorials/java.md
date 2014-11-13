@@ -8,7 +8,10 @@
 
 ## Getting Started
 
-You will need to use **JDK** 1.6 (or higher) (*not the JRE*) in order to complete this tutorial.
+You will need to use **JDK** 1.6 (or higher) (*not the JRE*) in order to complete this tutorial. To verify what version of Java you have we can run:
+```bash
+java -version
+```
 
 Download and install [Java](http://www.java.com/en/download/manual.jsp) if it isn't already installed on your system.
 
@@ -21,8 +24,8 @@ export JAVA_HOME="$( /usr/libexec/java_home )"
 ## Basic Test
 
 With Java installed, you are close to running your first WebDriver test on Sauce. Java doesn't know what Selenium is right away, so 
-you'll need to download the [Selenium server standalone jar](http://www.seleniumhq.org/download/). You can put this jar file in your
-[class path](http://docs.oracle.com/javase/tutorial/essential/environment/paths.html), or simply save it to a directory for now.
+you'll need to download the [Selenium server standalone jar](http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar). You can put this jar file in your
+[class path](http://docs.oracle.com/javase/tutorial/essential/environment/paths.html), or simply save it to a directory for now. Please make sure the directory contains no other .jars to get used instead of Selenium in the Java classpath.
 
 Here is a basic WebDriver test in Java: [WebDriverBasic.java](https://raw.githubusercontent.com/saucelabs/sauce-support/master/Java/WebDriverBasic.java)
 ```java
@@ -57,16 +60,22 @@ public class WebDriverBasic {
 
 To compile and run this file, Java needs the Selenium server jar in the classpath. If you permanently set the class path for your platform, as in the
 link above (see: [class path](http://docs.oracle.com/javase/tutorial/essential/environment/paths.html)), you should be able to compile and run the file with:
+
+First;
 ```bash
 javac WebDriverBasic.java
 ```
+Second;
 ```bash
 java WebDriverBasic
 ```
 Alternately, if you have not modified your class path, the simplest way to compile and run the example is storing `WebDriverBasic.java` in the same directory as your Selenium server jar, and specifying your class path to be the current directory with these commands:
+
+First;
 ```bash
 javac -classpath *:. WebDriverBasic.java
 ```
+Second;
 ```bash
 java -classpath *:. WebDriverBasic
 ```
@@ -147,7 +156,16 @@ public class WebDriverInvolved {
 ```
 **Note:** Be sure the `username` and `accessKey` contain your own valid Sauce Labs credentials from your [account page](https://saucelabs.com/account).
 
-This file can be compiled and run with the same fashion as the Basic Test.
+To compile this file please follow these two steps.
+
+First;
+```bash
+javac -classpath *:. WebDriverInvolved.java
+```
+Second;
+```bash
+java WebDriverInvolved
+```
 
 ## Parallel Tests
 After completing the Involved Test lets start running tests in parallel. To get this working initially we will use shell scripting, but there are Test Runngers and Contiunous Integration systems that can help us here.
