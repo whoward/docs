@@ -43,13 +43,13 @@ If you want to see the total account usage for your team, switch into rollup mod
 
 Creating subaccounts
 -------------------
-Setting up a hierarchy is easy with our team management tool. Simply click "Add" on the sub-accounts page, or "Edit" on an existing user. You'll now be able to say which account should own the account you are editing or creating.
+Setting up a hierarchy is easy with our team management tool. Simply click "Add" on the sub-accounts page, or "Edit" on an existing user. You'll now be able to say which account should own the account you are editing or creating.<br />
 ![Creating subaccounts - step 1](/images/reference/team-management/06-create-new-300x257.png "Creating sub-accounts - step 1")
 
-If you're the main account, you can also designate which subaccounts should be admins by checking the "Is admin?" box in the account creation or edit forms:
+If you're the main account, you can also designate which subaccounts should be admins by checking the "Is admin?" box in the account creation or edit forms:<br />
 ![Creating subaccounts - step 2](/images/reference/team-management/07-edit-admin-300x285.png "Creating sub-accounts - step 2")
 
-Then, when your admins log in, they'll be able to see the whole team and manage other subaccounts for you, and they'll be notified about why they're seeing all these accounts:
+Then, when your admins log in, they'll be able to see the whole team and manage other subaccounts for you, and they'll be notified about why they're seeing all these accounts:<br />
 
 ![Creating subaccounts - step 3](/images/reference/team-management/08-as-admin-300x212.png "Creating sub-accounts - step 3")
 
