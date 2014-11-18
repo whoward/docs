@@ -476,6 +476,7 @@ require_once 'vendor/autoload.php';
 class WebDriverDemoShootout extends Sauce\Sausage\WebDriverTestCase
 {
 
+    protected $start_url = 'http://tutorialapp.saucelabs.com';
     protected $base_url = 'http://tutorialapp.saucelabs.com';
 
     public static $browsers = array(
@@ -529,12 +530,6 @@ class WebDriverDemoShootout extends Sauce\Sausage\WebDriverTestCase
 
         if ($logout)
             $this->doLogout();
-    }
-
-    public function setUp()
-    {
-        parent::setUp();
-        $this->setBrowserUrl('http://tutorialapp.saucelabs.com');
     }
 
     public function testLoginFailsWithBadCredentials()
@@ -621,6 +616,14 @@ to a particular domain or URL.
 ```php
 <?php
 protected $base_url = 'http://tutorialapp.saucelabs.com';
+```
+
+Likewise, `$start_url` allows us to tell the testsuite which url should be
+loaded at the beginning of every test:
+
+```php
+<?php
+protected $start_url = 'http://tutorialapp.saucelabs.com';
 ```
 
 The `randomUser()` function generates unique random user details for the registration
@@ -1098,18 +1101,15 @@ require_once 'vendor/autoload.php';
 
 class WebDriverExample extends \PHPUnit_Extensions_Selenium2TestCase
 {
+
+    protected $start_url = 'http://saucelabs.com/test/guinea-pig';
+
     public static $browsers = array(
         array(
             'browserName' => 'firefox',
             )
         )
     );
-
-    public function setUp()
-    {
-        parent::setUp();
-        $this->setBrowserUrl('http:/saucelabs.com/test/guinea-pig');
-    }
 
     public function testTitle()
     {
@@ -1144,6 +1144,8 @@ define('SAUCE_HOST', SAUCE_USERNAME.':'.SAUCE_ACCESS_KEY.'@ondemand.saucelabs.co
 
 class WebDriverExample extends \PHPUnit_Extensions_Selenium2TestCase
 {
+    protected $start_url = 'http://saucelabs.com/test/guinea-pig';
+
     public static $browsers = array(
         array(
             'browserName' => 'firefox',
@@ -1155,12 +1157,6 @@ class WebDriverExample extends \PHPUnit_Extensions_Selenium2TestCase
             )
         )
     );
-
-    public function setUp()
-    {
-        parent::setUp();
-        $this->setBrowserUrl('http:/saucelabs.com/test/guinea-pig');
-    }
 
     public function testTitle()
     {
