@@ -1,13 +1,111 @@
 {
-  title: "Getting Started",
+  title: "Primer on using Sauce Labs",
   description: "An introduction to Sauce Labs and how to get started",
   category: "Reference",
   index: 10
 }
 
-##Sauce Connect
+We at Sauce Labs endeavor to make functional testing easier, reliable and scalable. This guide has been created to introduce you to the various tools offered by Sauce Labs that allow you to leverage the benefits of our cloud. 
 
-**Sauce Connect** is a secure tunneling application which allows you to execute tests securely when testing behind firewalls via an encrypted connection between Sauce Labs’ client cloud and your environment.
+Lets start off with Selenium!
+
+Focusing on mobile testing instead? [Appium][1] is the way to go!
+
+[1]: https://docs.saucelabs.com/tutorials/appium/
+
+##Selenium 
+
+\- Get introduced to the wonders of selenium with an extensive tutorial, just for you: https://docs.saucelabs.com/reference/selenium-quickstart/
+
+\- Play with Selenium Builder to get introduced to Selenium scripting: https://saucelabs.com/builder. Sauce Labs has a **plugin** for Builder that allows you to run tests in parallel on the sauce cloud.
+
+\- Create short autonomous tests https://support.saucelabs.com/entries/23388772-Tips-for-lean-speedy-tests
+
+\- Load a local Selenium server to test your tests — http://www.seleniumhq.org/download/
+
+\- **Page Object Pattern** — When building your tests, you will want to make them as nimble to UI changes as possible. Setting them up using the page object design pattern will allow your tests to reference methods within the page object. When making changes to the application under test you will only make changes to your page object rather than multiple tests referencing that page object. More information here:   http://docs.seleniumhq.org/docs/06_test_design_considerations.jsp#page-object-design-pattern
+
+\- **Identify the correct locator strategy** — Although you won't always be able to 
+locate an element on all browsers with CSS, it is typically the speediest locating strategy. XPATH will get you there, but it can require your test to search the entire page to find the element you want. More info and a helpful video here: http://sauceio.com/index.php/tag/xpath/ 
+
+\- Get good at the tricky stuff. Like all frameworks, there are many ways to skin the proverbial LOLcat, as there are limitations and tricks to overcome those limitations. A good place to start might be here: http://davehaeffner.com/works/
+
+\- Keep up to date with Selenium releases!
+
+##Test Management
+###Set environment variables for Sauce Labs. 
+Keep your Sauce Labs credentials out of your repositories and available to all your Sauce Labs tools using projects by adding them as environment variables.
+
+- For Macs, 
+ - Open ~/.bash_profile and add the following lines (an example):
+ 
+            export SAUCE_USERNAME=JohnSmith
+            export SAUCE_ACCESS_KEY=1234
+
+
+ - You'll then need to re-load that profile with source ~/.bash_profile
+
+- For Windows, 
+ - Open your environment variables settings window (Instructions [here] [2]) and set the variables
+
+[2]: http://www.computerhope.com/issues/ch000549.htm
+
+###Use a framework
+
+A test automation framework is a system that integrates the function libraries, test data sources, object details and various reusable modules. The main advantage of using a framework is in case there is change to any test, then only the test case file needs to be updated, without having to modify the underlying components. 
+
+Ideally, there is no need to update the scripts in case of changes to the application. Also, choosing the right framework/scripting technique helps in maintaining lower costs. 
+Majority of our customers use a test framework to manage  their tests. Examples include JUnit for Java, RSPEC, Cucumber, for Ruby, MBUnit for .Net, Pyunit for Python
+
+
+###Run tests as part of a build
+SauceLabs has plugins for all the major CI tools:
+
+- [Jenkins][3]
+- [Travis] [4]
+- [Circle CI][5] 
+- [Team City] [6] 
+- [Bamboo] [7] 
+
+[3]: https://docs.saucelabs.com/ci-integrations/jenkins/
+[4]: https://docs.saucelabs.com/ci-integrations/travis-ci/
+[5]: https://docs.saucelabs.com/ci-integrations/circleci/
+[6]: https://docs.saucelabs.com/ci-integrations/teamcity/
+[7]: https://docs.saucelabs.com/ci-integrations/bamboo/
+
+
+###Platform Configurator
+
+Use our [Platform Configurator][8], to quickly create your desired capabilities (with the configurations of your choice) that can be plugged into selenium scripts. 
+
+[8]: https://docs.saucelabs.com/reference/platforms-configurator/#/
+
+It's a good practice to store the generated code for your desired caps in a ***configuration file or database***. This enables you to:
+- Initiate a test by calling the desired capabilities from this file instead of hard coding them within your test. 
+- If there are any changes that need to be made to the tests such as adding new configurations or latest mobile versions, only the config file will require modification. 
+
+### Parallel Execution
+Another huge advantage of using Sauce labs is that you are able to test across multiple configurations in parallel significantly reducing execution time. Any language or test framework will allow for achieving parallel testing by utilizing multithreading or multiprocessing. 
+
+Choose your preferred mode of parallelism within your framework. For example, Ruby has 2 popular libraries (or gems) for achieving parallelism known as *Parallel Gem* and *Peach* respectively. And both have their own merits. 
+
+##Account Structure
+
+Many developers/testers are operating with a team of others, sometimes on the same project, sometimes differing projects. Sauce Lab's account structure allows you to create tiered accounts to manage team usage and partition teams into groups so their usage and permissions only pertain to what is applicable to them.  – more here https://docs.saucelabs.com/reference/team-management/#account-types
+
+###Helpful hints:
+
+- Create a parent account – You will want to create a parent account with Admin privileges. This is a special type of account intended to be used only by highly-trusted team members to hand off responsibility from the management staff. Admin accounts can add and delete other subaccounts of their parents. This is a powerful feature so give admin privileges only to a limited number of people.
+
+- Create a CI account – If you're running your tests through a CI server, you will want to create an account strictly for this server to use.
+
+- Create team accounts and nest Users
+
+##Testing behind Firewall?
+
+[**Sauce Connect**][9] is a secure tunneling application which allows you to execute tests securely when testing behind firewalls via an encrypted connection between Sauce Labs’ client cloud and your environment.
+
+[9]: https://docs.saucelabs.com/reference/sauce-connect/
 
 *Download the latest versions from https://docs.saucelabs.com/reference/sauce-connect/, our up-to-date site for all things Sauce Connect related. Sauce Connect will also notify you of updates when they are released on running.*
 
@@ -59,71 +157,6 @@ In case you observe severe latency, few helpful steps to fix it:
 
 - Rerun tests on failure
 
-##Selenium 
-
-\- Get introduced to the wonders of selenium with an extensive tutorial, just for you: https://docs.saucelabs.com/reference/selenium-quickstart/
-
-\- Play with Selenium Builder to get introduced to Selenium scripting: http://sebuilder.github.io/se-builder/. Sauce Labs has a **plugin** for Builder that allows you to run tests in parallel on the sauce cloud.
-
-\- Create short autonomous tests https://support.saucelabs.com/entries/23388772-Tips-for-lean-speedy-tests
-
-\- Load a local Selenium server to test your tests — http://www.seleniumhq.org/download/
-
-\- **Page Object Pattern** — When building your tests, you will want to make them as nimble to UI changes as possible. Setting them up using the page object design pattern will allow your tests to reference methods within the page object. When making changes to the application under test you will only make changes to your page object rather than multiple tests referencing that page object. More information here:   http://docs.seleniumhq.org/docs/06_test_design_considerations.jsp#page-object-design-pattern
-
-\- **Identify the correct locator strategy** — Although you won't always be able to 
-locate an element on all browsers with CSS, it is typically the speediest locating strategy. XPATH will get you there, but it can require your test to search the entire page to find the element you want. More info and a helpful video here: http://sauceio.com/index.php/tag/xpath/ 
-
-\- Get good at the tricky stuff. Like all frameworks, there are many ways to skin the proverbial LOLcat, as there are limitations and tricks to overcome those limitations. A good place to start might be here: http://davehaeffner.com/works/
-
-\- Keep up to date with Selenium releases!
-
-##Test Management
-###Set environment variables for Sauce Labs. 
-Keep your Sauce Labs credentials out of your repositories and available to all your Sauce Labs tools using projects by adding them as environment variables.
-
-- For Macs, 
- - Open ~/.bash_profile and add the following lines (an example):
- 
-            export SAUCE_USERNAME=JohnSmith
-            export SAUCE_ACCESS_KEY=1234
-
-
- - You'll then need to re-load that profile with source ~/.bash_profile
-
-- For Windows, 
- - Open your environment variables settings window (Instructions here) and set the variables
-
-###Use a framework
-
-A test automation framework is a system that integrates the function libraries, test data sources, object details and various reusable modules. The main advantage of using a framework is in case there is change to any test, then only the test case file needs to be updated, without having to modify the underlying components. 
-
-Ideally, there is no need to update the scripts in case of changes to the application. Also, choosing the right framework/scripting technique helps in maintaining lower costs. 
-Majority of our customers use a test framework to manage  their tests. Examples include JUnit for Java, RSPEC, Cucumber, for Ruby, MBUnit for .Net, Pyunit for Python
-
-
-###Run tests as part of a build
-SauceLabs has plugins for all the major CI tools:
-
-- Jenkins: https://docs.saucelabs.com/ci-integrations/jenkins/
-- Travis: https://docs.saucelabs.com/ci-integrations/travis-ci/
-- Circle CI: https://docs.saucelabs.com/ci-integrations/circleci/
-- Team City: https://docs.saucelabs.com/ci-integrations/teamcity/
-- Bamboo: https://docs.saucelabs.com/ci-integrations/bamboo/
-
-###Platform Configurator
-
-Use our Platform Configurator: https://docs.saucelabs.com/reference/platforms-configurator/#/, to quickly create your desired capabilities (with the configurations of your choice) that can be plugged into selenium scripts. 
-
-It's a good practice to store the generated code for your desired caps in a ***configuration file or database***. This enables you to:
-- Initiate a test by calling the desired capabilities from this file instead of hard coding them within your test. 
-- If there are any changes that need to be made to the tests such as adding new configurations or latest mobile versions, only the config file will require modification. 
-
-### Parallel Execution
-Another huge advantage of using Sauce labs is that you are able to test across multiple configurations in parallel significantly reducing execution time. Any language or test framework will allow for achieving parallel testing by utilizing multithreading or multiprocessing. 
-
-Choose your preferred mode of parallelism within your framework. For example, Ruby has 2 popular libraries (or gems) for achieving parallelism known as *Parallel Gem* and *Peach* respectively. And both have their own merits. 
-
 
 ##Job Management
 
@@ -153,15 +186,3 @@ Want to set browser profiles, run a particular file/script in the background bef
 Look at other sauce specific-settings that provide coverage on major test aspects: https://docs.saucelabs.com/reference/test-configuration/#sauce-specific-settings
 
 
-##Account Structure
-
-
-Many developers/testers are operating with a team of others, sometimes on the same project, sometimes differing projects. Sauce Lab's account structure allows you to create tiered accounts to manage team usage and partition teams into groups so their usage and permissions only pertain to what is applicable to them.  – more here https://docs.saucelabs.com/reference/team-management/#account-types
-
-###Helpful hints:
-
-- Create a parent account – You will want to create a parent account with Admin privileges. This is a special type of account intended to be used only by highly-trusted team members to hand off responsibility from the management staff. Admin accounts can add and delete other subaccounts of their parents. This is a powerful feature so give admin privileges only to a limited number of people.
-
-- Create a CI account – If you're running your tests through a CI server, you will want to create an account strictly for this server to use.
-
-- Create team accounts and nest Users
