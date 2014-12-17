@@ -91,7 +91,7 @@ Choose your preferred mode of parallelism within your framework. For example, Ru
 
 ##Account Structure
 
-Many developers/testers are operating with a team of others, sometimes on the same project, sometimes differing projects. Sauce Lab's account structure allows you to create tiered accounts to manage team usage and partition teams into groups so their usage and permissions only pertain to what is applicable to them.  – more here https://docs.saucelabs.com/reference/team-management/#account-types
+Many developers/testers are operating with a team of others, sometimes on the same project or differing projects. Sauce Lab's account structure allows you to create tiered accounts to manage team usage and partition teams into groups so their usage and permissions only pertain to what is applicable to them.  – more here https://docs.saucelabs.com/reference/team-management/#account-types
 
 ###Helpful hints:
 
@@ -141,7 +141,7 @@ For all command-line options when starting Sauce Connect, view this page: https:
 
 ##Latency
 
-You should expect an individual test sent to Sauce to run about 3 times as slow as when run locally (per https://saucelabs.com/selenium/selenium-grid). Once you start running your tests in **parallel** however, you will see your tests run with all the quickness of a greased marble.
+You should expect an individual test sent to Sauce to run about 4 - 5 times as slow as when run locally (per https://saucelabs.com/selenium/selenium-grid). Once you start running your tests in **parallel** however, you will see your tests run with all the quickness of a greased marble.
 
 ####Troubleshooting 
 
