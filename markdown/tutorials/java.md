@@ -274,7 +274,7 @@ your tests. However, you can see the effect of using these features on your
 Session column and be marked as Pass in the Results column,
 whereas all other tests will simply be marked as Finished.
 
-## JUnit Test Helper
+### JUnit Helper Library
 
 To include the Java helper libraries in a JUnit project, add the following dependency to the pom.xml file (this was
 already created by Maven for this tutorial):
@@ -381,7 +381,7 @@ Finally, notice the `testName` rule, which is used when building the
 will be included in reports on the Sauce Labs site so you can quickly
 identify which tests are failing.
 
-### TestNG Java Helpers
+### TestNG Helper Library
 
 To include the Java helper libraries in a TestNG project, add the following dependency to the pom.xml file (this 
 was automatically created by Maven for this tutorial):
