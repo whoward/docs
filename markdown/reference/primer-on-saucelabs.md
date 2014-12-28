@@ -1,5 +1,5 @@
 {
-  title: "Primer on using Sauce Labs",
+  title: "Primer on SauceLabs",
   description: "An introduction to Sauce Labs and how to get started",
   category: "Reference",
   index: 10
