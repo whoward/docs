@@ -59,7 +59,7 @@ Majority of our customers use a test framework to manage  their tests. Examples 
 
 
 ###Run tests as part of a build
-SauceLabs has plugins for all the major CI tools:
+Sauce Labs has plugins for all the major CI tools:
 
 - [Jenkins][3]
 - [Travis] [4]
