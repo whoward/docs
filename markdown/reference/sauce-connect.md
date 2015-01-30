@@ -291,7 +291,7 @@ post-start script
   max_tries=30
   while [ $n -le $max_tries ]; do
     if [ -f $PIDFILE ]; then
-      cp $PIDFILE $ {PIDFILE}.saved
+      cp $PIDFILE ${PIDFILE}.saved
       break
     fi
     n=$((n+1))
