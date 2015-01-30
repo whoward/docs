@@ -35,7 +35,7 @@ desired_capabilities = {
 }
 
 driver = webdriver.Remote(desired_capabilities=desired_capabilities,
-                          command_executor= sauce_url)
+                          command_executor=sauce_url)
 driver.implicitly_wait(10)
 ```
 Now we have our own prestine Virtual Machine in the Sauce cloud,
