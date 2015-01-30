@@ -41,7 +41,7 @@ driver.implicitly_wait(10)
 Now we have our own prestine Virtual Machine in the Sauce cloud,
 ready to accept commands!
 
-The [implicitly wait](# https://selenium-python.readthedocs.org/waits.html#implicit-waits) method tells the browser to wait a set
+The [implicitly wait](https://selenium-python.readthedocs.org/waits.html#implicit-waits) method tells the browser to wait a set
 amount of time (in seconds) for elements to appear on the page 
 before giving up.  Without it, slow loading DOMs could
 cause our tests to fail when they might otherwise pass.
