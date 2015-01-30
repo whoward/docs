@@ -14,8 +14,7 @@ First, let's install the dependencies we'll need for the tutorial:
 pip install selenium pytest pytest-xdist sauceclient
 ```
 
-Note that you must have [pip installed]
-(https://pip.pypa.io/en/latest/installing.html).  Also note that `sauceclient` does not yet support Python 3.
+Note that you must have [pip installed](https://pip.pypa.io/en/latest/installing.html).  Also note that `sauceclient` does not yet support Python 3.
 
 ### Running a Test
 Let's get started with the simplest thing we can imagine.  Let's make
@@ -83,8 +82,7 @@ will see the status for the job as ``Passed``.
 In our previous example, we ran our test on a very specific browser 
 / OS combo.  Sauce Labs actually supports *hundreds* of combinations
 of browsers and operating systems, including mobile!  You can see the
-full list of options on our [platform configurator page]
-(https://docs.saucelabs.com/reference/platforms-configurator/).
+full list of options on our [platform configurator page](https://docs.saucelabs.com/reference/platforms-configurator/).
 
 ## Advanced Usage
 
