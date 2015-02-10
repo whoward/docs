@@ -15,10 +15,10 @@ Find more about `RemoteDriver` and the `DesiredCapabilities` object on [Selenium
 For Selenium RC tests, settings are given in Selenium's "browser" parameter. In Selenium RC tests this is ordinarily a string like "\*iexplore" or "\*firefox", but for use with Sauce Labs it will need to contain a full [JSON object](http://www.json.org), like this:
 ```
  '{"username": "your username here",
-   "access-key": "your access key here",
+   "accessKey": "your access key here",
    "os": "Windows 8",
    "browser": "firefox",
-   "browser-version": "29"}'
+   "browserVersion": "29"}'
 ```
 
 Any key-value pair specified in this documentation can be set through this JSON object.
@@ -55,7 +55,7 @@ Here's a more comprehensive example of the JSON accepted by this method:
       "public": "public",
       "tags": ["tag1", "tag2", "tag3"],
       "build": 234,
-      "custom-data": {
+      "customData": {
           "release": "1.0",
           "server": "test.customer.com"
       }
@@ -178,7 +178,7 @@ Example:
 "recordVideo": false
 ```
 
-As an alternative, the `video-upload-on-pass` setting will let you discard videos for passing tests identified using the<a href="#recording-pass-fail-status"><em>passed</em> setting</a>. This disables video post-processing and uploading that may otherwise consume some extra time after your test is complete.
+As an alternative, the `video-upload-on-pass` setting will let you discard videos for passing tests identified using the <a href="#recording-pass-fail-status"><em>passed</em> setting</a>. This disables video post-processing and uploading that may otherwise consume some extra time after your test is complete.
 
 Key: `videoUploadOnPass`
 
@@ -453,7 +453,7 @@ Example:
 
 ###Internet Explorer Driver Version
 
-The specific version of the IE Driver executable can be customized using the `iedriver-version` key.
+The specific version of the IE Driver executable can be customized using the `iedriverVersion` key.
 
 In particular, Sauce supports launching 64-bit IE on our 64-bit VMs: Windows 7, Windows 8, and Windows 8.1. This provides a workaround for a known Selenium bug causing screencaptures using the 32-bit driver on a 64-bit operating system to fail to capture the whole web page.
 
