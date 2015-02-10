@@ -190,7 +190,7 @@ If you still believe you need multiple tunnels, you will need tunnel identifiers
 
 Using identified tunnels, you can start multiple instances of Sauce Connect that will not collide with each other and will not make your tests' traffic automatically tunnel through.  This allows you to test different localhost servers or access different networks from different tests (a common requirement when running tests on TravisCI.)
 
-To use this feature, simply start Sauce Connect using the `--tunnel-identifier` flag (or `-i`) and provide your own unique identifier string. Once the tunnel is up and running, any tests that you want going through this tunnel will need to provide the correct identifier using the `tunnel-identifier` desired capability.
+To use this feature, simply start Sauce Connect using the `--tunnel-identifier` flag (or `-i`) and provide your own unique identifier string. Once the tunnel is up and running, any tests that you want going through this tunnel will need to provide the correct identifier using the `tunnelIdentifier` desired capability.
 
 #### On the Same Machine
 
@@ -330,10 +330,10 @@ Tunnels started by an account can be reused by its sub-accounts. To reuse a tunn
 ```bash
 sc -u USERNAME -k ACCESS_KEY --shared-tunnel
 ```
-Once the tunnel is running, provide the special "parent-tunnel" desired capability on a per-job basis. The value of this capability should be the username of the parent account that owns the shared Sauce Connect tunnel as a string. Here's an example (this test should can run using Auth credentials for any sub-account of "parentAccount"):
+Once the tunnel is running, provide the special "parentTunnel" desired capability on a per-job basis. The value of this capability should be the username of the parent account that owns the shared Sauce Connect tunnel as a string. Here's an example (this test should can run using Auth credentials for any sub-account of "parentAccount"):
 
 ```python
-capabilities['parent-tunnel'] = "parentAccount"
+capabilities['parentTunnel'] = "parentAccount"
 ```
 That's it! We'll take care of the rest by making the jobs that request this capability route all their traffic through the tunnel created using your parent account (parentAccount, following our example).
 
