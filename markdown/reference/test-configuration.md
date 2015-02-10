@@ -178,7 +178,7 @@ Example:
 "recordVideo": false
 ```
 
-As an alternative, the `video-upload-on-pass` setting will let you discard videos for passing tests identified using the <a href="#recording-pass-fail-status"><em>passed</em> setting</a>. This disables video post-processing and uploading that may otherwise consume some extra time after your test is complete.
+As an alternative, the `videoUploadOnPass` setting will let you discard videos for passing tests identified using the <a href="#recording-pass-fail-status"><em>passed</em> setting</a>. This disables video post-processing and uploading that may otherwise consume some extra time after your test is complete.
 
 Key: `videoUploadOnPass`
 
