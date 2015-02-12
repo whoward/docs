@@ -118,7 +118,7 @@ for more details on this.
 
 ##ERROR user closed connection while waiting for command to complete
 
-Similar to our command-timeout, this means that Selenium took a long time to run
+Similar to our commandTimeout, this means that Selenium took a long time to run
 the command -- usually the act of loading a page -- and your test runner shut
 down the test before it might have timed out on Sauce's end. We recommend
 checking into why the page would take a long time to load (perhaps because of
@@ -138,7 +138,7 @@ Ethernet connection.
 
 ##Unsupported OS/browser/version combo
 
-Check to make sure that the browser, browser-version, and platform settings
+Check to make sure that the browser, version, and platform settings
 you're using are in our
 [supported list of platforms](https://saucelabs.com/docs/platforms).
 
