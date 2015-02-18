@@ -200,7 +200,7 @@ This will create a file `AndroidSauce.rb` in the current directory, and make sur
 Now you are ready to run your first test! The `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` environment variables authenticate you with Sauce Labs:
 
 ```bash
-SAUCE_USERNAME=sauceUsername SAUCE_ACCESS_KEY=sauceAccessKey rspec AndroidSauce.rb
+SAUCE_USERNAME=sauceUsername SAUCE_ACCESS_KEY=sauceAccessKey bundle exec ruby AndroidSauce.rb
 ```
 
 Take a look at AndroidSauce.rb to see what an Appium test looks like in Ruby.
