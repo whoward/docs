@@ -226,14 +226,14 @@ If a single browser is selected, then the `SELENIUM_PLATFORM`, `SELENIUM_VERSION
     "os":"Linux",
     "browser":"firefox",
     "url":"sauce-ondemand:?os=Linux&browser=firefox&browser-version=16",
-    "browserVersion":"16"
+    "browser-version":"16"
     },
     {
     "platform":"VISTA",
     "os":"Windows 2008",
     "browser":"iexploreproxy",
     "url":"sauce-ondemand:?os=Windows 2008&browser=iexploreproxy&browser-version=9",
-    "browserVersion":"9"
+    "browser-version":"9"
     }
 ]
 ```

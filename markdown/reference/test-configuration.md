@@ -15,10 +15,10 @@ Find more about `RemoteDriver` and the `DesiredCapabilities` object on [Selenium
 For Selenium RC tests, settings are given in Selenium's "browser" parameter. In Selenium RC tests this is ordinarily a string like "\*iexplore" or "\*firefox", but for use with Sauce Labs it will need to contain a full [JSON object](http://www.json.org), like this:
 ```
  '{"username": "your username here",
-   "accessKey": "your access key here",
+   "access-key": "your access key here",
    "os": "Windows 8",
    "browser": "firefox",
-   "browserVersion": "29"}'
+   "browser-version": "29"}'
 ```
 
 Any key-value pair specified in this documentation can be set through this JSON object.
@@ -55,7 +55,7 @@ Here's a more comprehensive example of the JSON accepted by this method:
       "public": "public",
       "tags": ["tag1", "tag2", "tag3"],
       "build": 234,
-      "customData": {
+      "custom-data": {
           "release": "1.0",
           "server": "test.customer.com"
       }
@@ -149,14 +149,14 @@ Example:
 ### Recording Custom Data
 To give you an extensible way to annotate and differentiate tests, Sauce provides a custom annotation you can set that will accept any valid JSON object. This field is limited to 64KB in size.
 
-Key: `customData`
+Key: `custom-data`
 
 Value type: object
 
 Example:
 
 ```python
-"customData": {"release": "1.0", 
+"custom-data": {"release": "1.0", 
                 "commit": "0k392a9dkjr", 
                 "staging": true, 
                 "execution_number": 5, 
@@ -168,90 +168,90 @@ Example:
 ### Disabling Video Recording
 By default, Sauce records a video of every test you run. This is generally handy for debugging failing tests, as well as having a visual confirmation that certain feature works (or still works!) However, there is an added wait time for screen recording during a test run. You can avoid this by optionally disabling video recording with this setting:
 
-Key: `recordVideo`
+Key: `record-video`
 
 Value type: bool
 
 Example: 
 
 ```python
-"recordVideo": false
+"record-video": false
 ```
 
-As an alternative, the `videoUploadOnPass` setting will let you discard videos for passing tests identified using the <a href="#recording-pass-fail-status"><em>passed</em> setting</a>. This disables video post-processing and uploading that may otherwise consume some extra time after your test is complete.
+As an alternative, the `video-upload-on-pass` setting will let you discard videos for passing tests identified using the<a href="#recording-pass-fail-status"><em>passed</em> setting</a>. This disables video post-processing and uploading that may otherwise consume some extra time after your test is complete.
 
-Key: `videoUploadOnPass`
+Key: `video-upload-on-pass`
 
 Value type: bool
 
 Example:
 
 ```python
-"videoUploadOnPass": false
+"video-upload-on-pass": false
 ```
 
 ### Disabling Step-by-step Screenshots
 Sauce captures step-by-step screenshots of every test you run. Most users find it very useful to get a quick overview of what happened without having to watch the complete video. However, this feature may add some extra time to your tests. You can avoid this by optionally turning off this feature.
 
-Key: `recordScreenshots`
+Key: `record-screenshots`
 
 Value type: bool
 
 Example:
 
 ```python
-"recordScreenshots": false
+"record-screenshots": false
 ```
 ### Disabling log recording
 By default, Sauce creates a log of all the actions that you execute to create a report for the test run that lets you troubleshoot test failures more easily.
 
-Key: `recordLogs`
+Key: `record-logs`
 
 Value type: bool
 
 Example:
 
 ```python
-"recordLogs": false
+"record-logs": false
 ```
 
 ### Enabling HTML Source Capture
 In the same way Sauce [captures step-by-step screenshots](#disabling-step-by-step-screenshots), we can capture HTML source at each step. This feature is disable by default, but you can turn it on anytime and find the HTML source captures on your job result page:
 
-Key: `captureHtml`
+Key: `capture-html`
 
 Value type: bool
 
 Example:
 
 ```python
-"captureHtml": true
+"capture-html": true
 ```
 
 ### Enabling WebDriver's Automatic Screenshots
 Selenium WebDriver captures automatic screenshots in every server side failure (e.g. element not found). Sauce prevents this by default to reduce network traffic during tests, resulting in a considerable performance improvement in most tests. If you'd prefer, you can re-enable screenshots. Note that enabling this feature may incur a performance penalty.
 
-Key: `webdriverRemoteQuietExceptions`
+Key: `webdriver.remote.quietExceptions`
 
 Value type: bool
 
 Example:
 
 ```python
-"webdriverRemoteQuietExceptions": false
+"webdriver.remote.quietExceptions": false
 ```
 
 ### Disabling Sauce Advisor
 Sauce Advisor analyzes your tests and suggests ways to make them faster and more robust. It may add a small amount of extra time to your tests. To disable this feature, use the following setting:
 
-Key: `sauceAdvisor`
+Key: `sauce-advisor`
 
 Value type: bool
 
 Example:
 
 ```python
-"sauceAdvisor": false
+"sauce-advisor": false
 ```
 
 ## Selenium-specific Modifications
@@ -261,14 +261,14 @@ To keep our service up to date with the current state of the Selenium project, w
 
 If you find any problems with a particular version of Selenium, or for any other reason you'd like to keep your tests running on a specific version rather than the Sauce Labs default, you can do so using this setting.
 
-Key: `seleniumVersion`
+Key: `selenium-version`
 
 Value type: string
 
 Example:
 
 ```python
-"seleniumVersion": "2.40.0"
+"selenium-version": "2.40.0"
 ```
 
 
@@ -283,14 +283,14 @@ By default, to get the most out of videos and screenshots, Sauce Labs runs Selen
 
 Notice: this setting only affects Selenium RC tests.
 
-Key: `singleWindow`
+Key: `single-window`
 
 Value type: bool
 
 Example:
 
 ```python
-"singleWindow": true
+"single-window": true
 ```
 
 ### Selenium RC User Extensions
@@ -298,14 +298,14 @@ User extensions are available for custom Selenium RC functionality on the Sauce 
 
 Notice: this setting only affects Selenium RC tests.
 
-Key: `userExtensionsUrl`
+Key: `user-extensions-url`
 
 Value type: list
 
 Example:
 
 ```python
-"userExtensionsUrl": [
+"user-extensions-url": [
   "http://saucelabs.com/ext/flex.js",
   "ftp://username:password@server.com/bleh.js"
 ]
@@ -320,14 +320,14 @@ To use this feature, a zip file with the contents of the Firefox profile directo
 
 For more info on Firefox profiles, you can check [Mozilla's knowledge base](http://support.mozilla.com/en-US/kb/Managing-profiles).
 
-Key: `firefoxProfileUrl`
+Key: `firefox-profile-url`
 
 Value type: string
 
 Example:
 
 ```python
-"firefoxProfileUrl": "http://saucelabs.com/example_files/notls.zip"
+"firefox-profile-url": "http://saucelabs.com/example_files/notls.zip"
 ```
 
 **Note**: If you actually zip the directory, it will not work. The zip file needs to contain the contents of the profile, not a directory with the contents of it.
@@ -337,40 +337,40 @@ Example:
 ### Maximum Test Duration
 As a safety measure to prevent broken tests from running indefinitely, Sauce limits the duration of tests to 30 minutes by default. You can adjust this limit on per-job basis. The value of this setting is given in seconds. The maximum test duration value allowed is 10800 seconds.
 
-Key: `maxDuration`
+Key: `max-duration`
 
 Value type: integer
 
 Example:
 
 ```python
-"maxDuration": 1800
+"max-duration": 1800
 ```
 
 ### Command Timeout
 As a safety measure to prevent Selenium crashes from making your tests run indefinitely, Sauce limits how long Selenium can take to run a command in our browsers. This is set to 300 seconds by default. The value of this setting is given in seconds. The maximum command timeout value allowed is 600 seconds.
 
-Key: `commandTimeout`
+Key: `command-timeout`
 
 Value type: integer
 
 Example
 
 ```python
-"commandTimeout": 300
+"command-timeout": 300
 ```
 
 ### Idle Test Timeout
 As a safety measure to prevent tests from running too long after something has gone wrong, Sauce limits how long a browser can wait for a test to send a new command. This is set to 90 seconds by default and limited to a maximum value of 1000 seconds. You can adjust this limit on a per-job basis. The value of this setting is given in seconds.
 
-Key: `idleTimeout`
+Key: `idle-timeout`
 
 Value type: integer
 
 Example:
 
 ```python
-"idleTimeout": 90
+"idle-timeout": 90
 ```
 
 ## Sauce-specific settings
@@ -402,27 +402,27 @@ Example:
 ### Identified Tunnels
 If an [identified tunnel](/reference/sauce-connect/#managing-multiple-tunnels) is started using Sauce Connect, your jobs can choose to proxy through it using this set of keys with the right identifier. See the [Sauce Connect documentation](/reference/sauce-connect/#managing-multiple-tunnels) for more information on identified tunnels.
 
-Key: `tunnelIdentifier`
+Key: `tunnel-identifier`
 
 Value type: string
 
 Example:
 
 ```python
-"tunnelIdentifier": "MyTunnel01"
+"tunnel-identifier": "MyTunnel01"
 ```
 
 ### Specifying the Screen Resolution
 This setting specifies which screen resolution should be used during the test session. This feature is in beta and is available for tests running on Windows XP, Windows 7 (except Windows 7 with IE 9), Windows 8, Windows 8.1, OS X 10.6 and OS X 10.8. We do not yet offer specific resolutions for OS X 10.9.
 
-Key: `screenResolution`
+Key: `screen-resolution`
 
 Value type: string
 
 Example:
 
 ```python
-"screenResolution": "1280x1024"
+"screen-resolution": "1280x1024"
 ```
 
 Valid values for Windows XP, Windows 7, and OS X 10.6 are:<br/> `800x600` `1024x768` `1280x1024` `1440x900` `1920x1200`
@@ -435,36 +435,36 @@ Valid values for Windows 8 and 8.1 are:<br/> `1024x768` `1280x1024`
 
 Test VMs can be configured with custom time zones. This feature should work on all operating systems, however time zones on Windows VMs are approximate. They will default to the time zone that the provided location falls into. A complete list of valid locations [can be found here on Wikipedia](http://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Sauce takes only location names (not their paths), as shown in the example below.
 
-Key: `timeZone`
+Key: `time-zone`
 
 Value type: string
 
 Example:
 
 ```python
-"timeZone": "Pacific"
+"time-zone": "Pacific"
 ```
 ```python
-"timeZone": "Honolulu"
+"time-zone": "Honolulu"
 ```
 ```python
-"timeZone": "Alaska"
+"time-zone": "Alaska"
 ```
 
 ###Internet Explorer Driver Version
 
-The specific version of the IE Driver executable can be customized using the `iedriverVersion` key.
+The specific version of the IE Driver executable can be customized using the `iedriver-version` key.
 
 In particular, Sauce supports launching 64-bit IE on our 64-bit VMs: Windows 7, Windows 8, and Windows 8.1. This provides a workaround for a known Selenium bug causing screencaptures using the 32-bit driver on a 64-bit operating system to fail to capture the whole web page.
 
-Key: `iedriverVersion`
+Key: `iedriver-version`
 
 Value Type: string
 
 Example:
 
 ```python
-"iedriverVersion": "x64_2.41.0"
+"iedriver-version": "x64_2.41.0"
 ```
 
 The list of supported IE Drivers you can choose from:<br/>
@@ -474,14 +474,14 @@ The list of supported IE Drivers you can choose from:<br/>
 ### Pop-up Handling
 Sauce provides a pop-up handler that automatically clicks through some types of browser pop-up windows, to allow tests to continue. By default, this feature is turned on for Selenium RC and off for WebDriver tests. You can control the pop-up handler yourself with the following capability:
 
-Key: `disablePopupHandler`
+Key: `disable-popup-handler`
 
 Value type: bool
 
 Example:
 
 ```python
-"disablePopupHandler": true
+"disable-popup-handler": true
 ```
 ### Avoiding the Selenium Proxy
 By default, Sauce routes traffic from all Selenium RC and some WebDriver browsers through the Selenium HTTP proxy server so that HTTPS connections with self-signed certificates work everywhere. The Selenium proxy server can cause problems for some users. If that's the case for you, you can configure Sauce to avoid using the proxy server and have browsers communicate directly with your servers.
@@ -490,16 +490,16 @@ Note: Firefox and Google Chrome under WebDriver aren't affected by this flag as 
 
 Note: This flag incompatible with [Sauce Connect](/reference/sauce-connect/).
 
-Note: Under Selenium RC, `avoidProxy` set to `true` will break safariproxy, firefoxproxy, iexploreproxy and opera browsers.
+Note: Under Selenium RC, `avoid-proxy` set to `true` will break safariproxy, firefoxproxy, iexploreproxy and opera browsers.
 
-Key: `avoidProxy`
+Key: `avoid-proxy`
 
 Value type: bool
 
 Example:
 
 ```python
-"avoidProxy": true
+"avoid-proxy": true
 ```
 ### Job Visibility
 Sauce Labs supports several job visibility levels, which control who can view job details. The visibility level for a job can be set manually from the test result page, but also programatically when starting a test or with our REST API. 
@@ -543,14 +543,14 @@ The available visibility levels are as follows:
 ### Device Orientation
 By default, mobile emulators and simulators are run in portrait orientation. You can also set them to landscape orientation.
 
-Key: `deviceOrientation`
+Key: `device-orientation`
 
 Value type: string
 
 Example:
 
 ```python
-"deviceOrientation": "landscape"
+"device-orientation": "landscape"
 ```
 
 ## Building links to jobs

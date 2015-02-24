@@ -149,7 +149,7 @@ Then, in your test code, point your RemoteWebDriver instance to `http://sauceUse
 
 You'll also need to add the following fields (key/value pairs) to DesiredCapabilities:
 
-  - `appiumVersion`: `"1.0"`
+  - `appium-version`: `"1.0"`
   - `app`: `"sauce-storage:my_app.zip"` The URL of a zip file containing your `.app` directory. (Usually a `sauce-storage:` URL to access files uploaded to Sauce temporary storage.)
   - `platformName`: `"iOS"`
   - `platformVersion`: `"7.1"`
@@ -232,7 +232,7 @@ Then, in your test code, point your RemoteWebDriver instance to `http://sauceUse
 
 You'll also need to add the following fields (key/value pairs) to DesiredCapabilities:
 
-  - `appiumVersion`: `"1.0"`
+  - `appium-version`: `"1.0"`
   - `app`: `"sauce-storage:my_app.apk"` The URL of your `.apk` directory. (Usually a `sauce-storage:` URL to access files uploaded to Sauce temporary storage.)
   - `platformName`: `"Android"`
   - `platformVersion`: `"4.2"` (Currently we support 2.3, 4.0, 4.1, 4.2 and 4.3. See below for using 2.3, 4.0, and 4.1)
@@ -241,7 +241,7 @@ You'll also need to add the following fields (key/value pairs) to DesiredCapabil
 
 If you want to test against earlier versions like 2.3, 4.0, or 4.1, you'll need to access Appium's built-in [Selendroid](http://selendroid.io) support by using the `automationName` capability:
 
-  - `appiumVersion`: `"1.1"`
+  - `appium-version`: `"1.1"`
   - `app`: `"sauce-storage:my_app.apk"`
   - `automationName`: `"Selendroid"`
   - `platformName`: `"Android"`

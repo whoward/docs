@@ -74,9 +74,9 @@ A less common but still possible cause is tests legitimately needing more than
 **network or disk IO occurs in between selenium API calls in your tests** (DB
 queries, local file reads or changes.)
 
-If that's the case, our `idleTimeout` desired capability can be used to modify
+If that's the case, our `idle-timeout` desired capability can be used to modify
 Sauce's wait time for further commands. Check our
-[idleTimeout docs](https://docs.saucelabs.com/reference/test-configuration/#idle-test-timeout)
+[idle-timeout docs](https://docs.saucelabs.com/reference/test-configuration/#idle-test-timeout)
 for more details on this.
 
 
@@ -95,9 +95,9 @@ application** or **a bug in Selenium/Appium**.
 
 A less common but still possible cause is Selenium or Appium legitimately
 needing more than 5 minutes to run your command. If that's the case, our
-`commandTimeout` desired capability can be used to have Sauce wait longer for
+`command-timeout` desired capability can be used to have Sauce wait longer for
 your commands to complete in Selenium. Check our
-[commandTimeout docs](https://docs.saucelabs.com/reference/test-configuration/#command-timeout)
+[command-timeout docs](https://docs.saucelabs.com/reference/test-configuration/#command-timeout)
 for more details on this.
 
 
@@ -110,15 +110,15 @@ The most common cause for this is **an infinite loop in your tests** that keep
 sending commands without an end clause.
 
 It's not rare to find cases where tests legitimately need more than 30 minutes
-to complete. If that's the case, our `maxDuration` desired capability can be
+to complete. If that's the case, our `max-duration` desired capability can be
 used to have Sauce wait longer for your test to finish. Check our
-[maxDuration docs](https://docs.saucelabs.com/reference/test-configuration/#maximum-test-duration)
+[max-duration docs](https://docs.saucelabs.com/reference/test-configuration/#maximum-test-duration)
 for more details on this.
 
 
 ##ERROR user closed connection while waiting for command to complete
 
-Similar to our commandTimeout, this means that Selenium took a long time to run
+Similar to our command-timeout, this means that Selenium took a long time to run
 the command -- usually the act of loading a page -- and your test runner shut
 down the test before it might have timed out on Sauce's end. We recommend
 checking into why the page would take a long time to load (perhaps because of
@@ -138,7 +138,7 @@ Ethernet connection.
 
 ##Unsupported OS/browser/version combo
 
-Check to make sure that the browser, version, and platform settings
+Check to make sure that the browser, browser-version, and platform settings
 you're using are in our
 [supported list of platforms](https://saucelabs.com/docs/platforms).
 
