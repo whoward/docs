@@ -100,7 +100,7 @@ Select the `Enable Sauce Connect?` check box.  When selected, the Sauce plugin w
 
 The `Sauce Connect Launch Condition` allows you to set fine-grained rules which define when Sauce Connect should be launched.  By default this is set to `Always`.
 
-Click on the `WebDriver` radio button and select a browser to run our tests against (let's pick Firefox 15 running in Windows 2008)
+Click on the `WebDriver` radio button and select a browser to run our tests against (let's pick Chrome 35 running in Mac OS X 10.8)
 
 ![Sauce Configure](/images/ci-integrations/jenkins/sauce-configure.png)
 
@@ -139,7 +139,7 @@ The plugin will set a series of environment variables based on the information p
 * `SELENIUM_BROWSER` - The browser name of the selected browser.
 * `SELENIUM_DEVICE` - The device name of the selected browser (only available for mobile browsers)
 * `SELENIUM_DEVICE_TYPE` - The device type of the selected browser (only available for Appium browsers)
-* `SELENIUM_DRIVER` - Contains the operating system, version and browser name of the selected browser, in a format designed for use by the [Selenium Client Factory]()
+* `SELENIUM_DRIVER` - Contains the operating system, version and browser name of the selected browser, in a format designed for use by the [Selenium Client Factory](http://selenium-client-factory.infradna.com/)
 * `SAUCE_ONDEMAND_BROWSERS` - A JSON-formatted string representing the selected browsers
 * `SELENIUM_URL` - The initial URL to load when the test begins
 * `SAUCE_USER_NAME` - The user name used to invoke Sauce OnDemand
