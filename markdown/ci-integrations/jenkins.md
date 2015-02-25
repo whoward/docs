@@ -60,9 +60,13 @@ The plugin also supports reading authentication details from a `.sauce-ondemand`
 
 Once the authentication details have been entered, clicking on the `Test Connection` button will connect to Sauce OnDemand to verify that the plugin can authenticate with the entered details.
 
-The plugin includes a copy of the Sauce Connect binary file.  When the administration screen is displayed, the plugin will check to see if a later version of Sauce Connect is available, and if so, will provide a link that will download the updated version without requiring a new version of the Sauce plugin to be installed.
-
 Once the authentication details have been entered and saved on the `Configure System` screen, you can then enable Sauce OnDemand support on the Configuration screen for a Jenkins Job.
+
+In addition to the authentication fields, the following fields are displayed:
+
+* `Sauce Connect Options` - this field allows you to enter the [Sauce Connect command line options](https://docs.saucelabs.com/reference/sauce-connect/#command-line-options) that you would like applied to all Jenkins projects
+* `Selenium Environment Variable Prefix` - this field allows you to enter a prefix that should be used for the environment variables which are set by the plugin
+* `Disable Sauce Status Column` - when this field is selected, the Sauce Status column won't be included on the Jenkins dashboard screen
 
 ## Jenkins Configuration for a Java-based Project
 
@@ -94,11 +98,13 @@ Now let's enable the Sauce OnDemand support for a Jenkins Job can be enabled by 
 
 Select the `Enable Sauce Connect?` check box.  When selected, the Sauce plugin will launch an instance of [Sauce Connect](http://saucelabs.com/docs/sauce-connect) prior to the running of your Job.  This instance will be closed when the Job completes.
 
+The `Sauce Connect Launch Condition` allows you to set fine-grained rules which define when Sauce Connect should be launched.  By default this is set to `Always`.
+
 Click on the `WebDriver` radio button and select a browser to run our tests against (let's pick Firefox 15 running in Windows 2008)
 
 ![Sauce Configure](/images/ci-integrations/jenkins/sauce-configure.png)
 
-Sauce OnDemand supports a wide range of browsers, but some browser combinations are only supported for SeleniumRC or WebDriver tests.  The multi-select lists beneath the `SeleniumRC` and `WebDriver` radio buttons are populated by retrieving the list of respective supported browsers via the Sauce REST API.
+Sauce OnDemand supports a wide range of browsers, but some browser combinations are only supported for SeleniumRC or WebDriver tests.  The multi-select lists beneath the `Appium`, `SeleniumRC` and `WebDriver` radio buttons are populated by retrieving the list of respective supported browsers via the Sauce REST API.
 
 If a single browser is selected, then the `SELENIUM_PLATFORM`, `SELENIUM_VERSION`, `SELENIUM_BROWSER` and `SELENIUM_DRIVER` environment variables will be populated to contain the details of the selected browser.  In addition, the `SAUCE_ONDEMAND_BROWSERS` environment variable will be populated with a JSON-formatted string containing the attributes of the selected browsers.  An example of the JSON string is:
 
@@ -122,7 +128,7 @@ If a single browser is selected, then the `SELENIUM_PLATFORM`, `SELENIUM_VERSION
 ]
 ```
 
-If the `SeleniumRC` radio button is selected, then a `Starting URL` field will also be displayed.
+When the `Use latest versions of browser` checkbox is selected, the Sauce plugin will populate the environment variables with the version information for the latest available version that corresponds to the selected browser and operating system.
 
 The plugin will set a series of environment variables based on the information provided on the Job Configuration. These environment variables can either be explicitly referenced by your unit tests, or through the use of the [selenium-client-factory] library.
 
@@ -144,7 +150,17 @@ By default, the plugin will use the authentication details specified in the Jenk
 
 Note: These values are set automatically by the Jenkins plugin. If the `Enable Sauce Connect?` checkbox is selected, then the `SELENIUM_HOST` and `SELENIUM_PORT` variables will default to localhost:4445.  If the checkbox is not set, then the `SELENIUM_HOST` and `SELENIUM_PORT` variables will be set to ondemand.saucelabs.com:4444.  
 
-The values for the `SELENIUM_HOST` and `SELENIUM_PORT` environment variables can be overridden by explicitly specifying the host and port in the `Sauce OnDemand Host` and `Sauce OnDemand Port` fields, which can be displayed by clicking on the `Sauce Connect Advanced Options` button.
+The values for the `SELENIUM_HOST` and `SELENIUM_PORT` environment variables can be overridden by explicitly specifying the host and port in the `Sauce Host` and `Sauce Port` fields, which can be displayed by clicking on the `Sauce Connect Advanced Options` button.
+
+In addition to the Sauce Host and Port fields, there are several other options included within the `Sauce Connect Advanced Options` section:
+
+* `Verbose Logging` - when selected, the output from the Sauce Connect process will be included in the Jenkins console output
+* `Starting URL` - a value entered here will be populated within the `SELENIUM_STARTING_URL` environment variable
+* `Launch Sauce Connect on Slave` - when selected, the Sauce Connect process will be launched on the Jenkins slave node which is executing the build.  If not selected, then Sauce Connect will be launched on the Jenkins master node
+* `Run Sauce Connect v3` - when selected, the previous (legacy) version of Sauce Connect will be launched
+* `HTTPS Protocols` -  a value entered here will be supplied as part of the HTTPS protocols used when launching Sauce Connect v3
+* `Sauce Connect Options` - a value entered here will be used as part of the [Sauce Connect command line options](https://docs.saucelabs.com/reference/sauce-connect/#command-line-options)
+
 
 ![Sauce Configure](/images/ci-integrations/jenkins/sauce-configure.png)
 
@@ -353,6 +369,6 @@ For each selected browsers, a separate job will run when the build is invoked.  
 
 ## Troubleshooting Jenkins
 
-The source code for the plugin is available from [github](https://github.com/jenkinsci/sauce-ondemand-plugin)
+The source code for the plugin is available from the [sauce-ondemand-plugin github project](https://github.com/jenkinsci/sauce-ondemand-plugin)
 
 Bugs/enhancements/feature requests can be recorded within the [Jira](https://issues.jenkins-ci.org/browse/JENKINS/component/15751) instance, or you can raise a [support request](https://support.saucelabs.com) 
