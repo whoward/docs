@@ -198,10 +198,10 @@ To use this feature, simply start Sauce Connect using the `--tunnel-identifier` 
 
 #### On the Same Machine
 
-Please note that in order to run multiple Sauce Connect instances on the same machine, it's necessary to provide additional flags to configure independent log files, pid files, and ports for each instance. Here's an example of how to configure all of these settings for a second instance:
+Please note that in order to run multiple Sauce Connect instances on the same machine, it's necessary to provide additional flags to configure a different Selenium port for each instance. Sauce Connect will use a pidfile and logfile that have the tunnel identifier in their names. Here's an example of how to start a second Sauce Connect instance with a tunnel identifier:
 
 ```bash
-sc --pidfile /tmp/sc2.pid --logfile /tmp/sc2.log --scproxy-port 29999 --se-port 4446 -i my-tun2
+sc --se-port 4446 -i my-tun2
 ```
 ###  Service Managment
 
