@@ -106,29 +106,29 @@ The `sc` command line program accepts the following parameters:
                                     through the internet, instead of
                                     through the tunnel.
     -t, --tunnel-domains <...>      Inverse of '--direct-domains'.
-                                    Only requests for domains in this 
-                                    list will be sent through the 
+                                    Only requests for domains in this
+                                    list will be sent through the
                                     tunnel.
                                     Overrides '--direct-domains'.
     -v, --verbose                   Enable verbose debugging.
     -F, --fast-fail-regexps         Comma-separated list of regular
-                                    expressions. Requests with URLs 
-                                    matching one of these will get 
-                                    dropped instantly and will not go 
+                                    expressions. Requests with URLs
+                                    matching one of these will get
+                                    dropped instantly and will not go
                                     through the tunnel.
-    -i, --tunnel-identifier <id>    Assign <id> to this Sauce Connect 
-                                    instance. Future jobs will use this 
-                                    tunnel only when explicitly 
+    -i, --tunnel-identifier <id>    Assign <id> to this Sauce Connect
+                                    instance. Future jobs will use this
+                                    tunnel only when explicitly
                                     specified by the 'tunnel-
-                                    identifier' desired capability in a 
+                                    identifier' desired capability in a
                                     Selenium client.
     -l, --logfile <file>
     -P, --se-port <port>            Port on which Sauce Connect's
                                     Selenium relay will listen for
                                     requests. Selenium commands
                                     reaching Sauce Connect on this port
-                                    will be relayed to Sauce Labs 
-                                    securely and reliably through Sauce 
+                                    will be relayed to Sauce Labs
+                                    securely and reliably through Sauce
                                     Connect's tunnel. Defaults to 4445.
     -p, --proxy <host:port>         Proxy host and port that Sauce
                                     Connect should use to connect
@@ -152,9 +152,9 @@ The `sc` command line program accepts the following parameters:
                                     username and password. This option
                                     can be used multiple times.
     -z, --log-stats <seconds>       Log statistics about HTTP traffic
-                                    every <seconds>. Information 
-                                    includes bytes transmitted, 
-                                    requests made, and responses 
+                                    every <seconds>. Information
+                                    includes bytes transmitted,
+                                    requests made, and responses
                                     received.
         --max-logsize <bytes>       Rotate logfile after reaching
                                     <bytes> size. Disabled by default.
