@@ -160,19 +160,23 @@ The `sc` command line program accepts the following parameters:
                                     <bytes> size. Disabled by default.
         --doctor                    Perform checks to detect possible
                                     misconfiguration or problems.
+        --no-autodetect             Disable the autodetection of proxy
+                                    settings.
     -h, --help                      Display this help text.
 
 ### Proxy Configuration
 
 #### Automatic
 
-As of Sauce Connect 4.3.1, proxies will be autoconfigured based on the running system's settings.
+As of Sauce Connect 4.3.1, proxies and PAC settings will be autoconfigured based on the running system's settings.
 
 On **Windows**, Internet Explorer proxy settings will be checked as well as system-wide proxy settings set via Control Panel.
 
 On **Mac OS X**, Sauce Connect will use the proxy set in Preferences / Network.  We support both the proxy and the PAC settings.
 
 On **Linux**, Sauce Connect looks for the following variables, in order: `http_proxy`, `HTTP_PROXY`, `all_proxy`, and `ALL_PROXY`. They can be in the form `http://host.name:port` or just `host.name:port`.
+
+Proxy detection can be disabled via the command line option `--no-autodetect`.
 
 #### Manual
 
