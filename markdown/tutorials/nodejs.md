@@ -10,7 +10,7 @@
 
 In this tutorial of how to run tests on Sauce Labs using node.js we will use the following tools:
 [Grunt](http://gruntjs.com/),
-[Mocha](http://visionmedia.github.io/mocha/) and
+[Mocha](http://mochajs.org/) and
 [WD.js](https://github.com/admc/wd).
 
 However it is also possible to use Sauce with other libraries or
