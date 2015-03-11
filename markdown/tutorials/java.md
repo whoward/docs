@@ -54,7 +54,11 @@ Next, download and install a sample project using your chosen testing framework 
 **Note:** This step uses your Sauce username and access key. You can find your Sauce access key on your [Sauce account page]/(https://saucelabs.com/account).
 **JUnit example:**
 ```bash
-mvn archetype:generate -DarchetypeRepository=http://repository-saucelabs.forge.cloudbees.com/release -DarchetypeGroupId=com.saucelabs -DarchetypeArtifactId=quickstart-webdriver-junit -DgroupId=com.yourcompany -DartifactId=sauce-project -DarchetypeVersion=2.1.13 -Dversion=1.0-SNAPSHOT -Dpackage=com.yourcompany -DsauceUserName=<!—- SAUCE:USERNAME -—> -DsauceAccessKey=<!-- SAUCE:ACCESS_KEY -->
+mvn archetype:generate -DarchetypeGroupId=com.saucelabs -DarchetypeArtifactId=quickstart-webdriver-junit -DgroupId=com.yourcompany -DartifactId=sauce-project -Dversion=1.0-SNAPSHOT -Dpackage=com.yourcompany -DuserName=sauceUserName -DaccessKey=sauceAccessKey
+```
+**TestNG example:**
+```bash
+mvn archetype:generate -DarchetypeGroupId=com.saucelabs -DarchetypeArtifactId=quickstart-webdriver-testng -DgroupId=com.yourcompany -DartifactId=sauce-project -Dversion=1.0-SNAPSHOT -Dpackage=com.yourcompany -DuserName=sauceUserName -DaccessKey=sauceAccessKey
 ```
 **Note:** There may be a few prompts, use the Defaults except for ```Y: :``` enter ```Y```.
 There should be quite a bit of output. If there are any errors check the ```-D``` values above and ensure there are no errors. If values are left off the command line, they will be prompted for instead.
@@ -72,17 +76,17 @@ This launches Maven and will download the dependencies, compiles the source code
 moments you should see that JUnit/TestNG has started. You might not see any output instantaneously, but
 eventually you will see the following output:
 ```
-------------------------------------------------------
-T E S T S
 -------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.saucelabs.SampleSauceTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 29.854 sec
 Running WebDriverTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.384 sec
-Running WebDriverWithHelperTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.743 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.106 sec
 
 Results :
 
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
 ```
 (The exact output will depend on the test framework you chose, but you
 should see all tests passing.)
@@ -122,7 +126,7 @@ public class WebDriverTest {
     public void setUp() throws Exception {
         // Choose the browser, version, and platform to test
         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-        capabilities.setCapability("version", "5");
+        capabilities.setCapability("version", "17");
         capabilities.setCapability("platform", Platform.XP);
         // Create the connection to Sauce Labs to run the tests
         this.driver = new RemoteWebDriver(
@@ -154,7 +158,7 @@ need for the tests:
     public void setUp() throws Exception {
         // Choose the browser, version, and platform to test
         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-        capabilities.setCapability("version", "5");
+        capabilities.setCapability("version", "17");
         capabilities.setCapability("platform", Platform.XP);
         // Create the connection to Sauce Labs to run the tests
         this.driver = new RemoteWebDriver(
@@ -283,78 +287,145 @@ already created by Maven for this tutorial):
 <dependency>
     <groupId>com.saucelabs</groupId>
     <artifactId>sauce_junit</artifactId>
-    <version>2.1.11</version>
+    <version>2.1.18</version>
     <scope>test</scope>
 </dependency>
 ```
 
-In addition to the WebDriver.java class, Maven creates the `WebDriverWithHelperTest` class that demonstrates how 
+In addition to the WebDriver.java class, Maven creates the `SampleSauceTest` class that demonstrates how
 to update tests to use the Java helper library. You can find this class in the 
-`src/test/java/com/yourcompany/WebDriverWithHelperTest.java` file shown below:
+`src/test/java/com/yourcompany/SampleSauceTest.java` file shown below:
 
 
 ```java
-public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider {
-
-    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(
-        "sauceUsername", "sauceAccessKey");
+@RunWith(ConcurrentParameterized.class)
+public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
 
     /**
-     * JUnit Rule that marks the Sauce Job as passed/failed when the test succeeds or fails.
-     * You can see the pass/fail status on your [Sauce Labs test page](https://saucelabs.com/tests).
+     * Constructs a {@link SauceOnDemandAuthentication} instance using the supplied user name/access key.  To use the authentication
+     * supplied by environment variables or from an external file, use the no-arg {@link SauceOnDemandAuthentication} constructor.
      */
-    public @Rule
-    SauceOnDemandTestWatcher resultReportingTestWatcher = new SauceOnDemandTestWatcher(this, authentication);
+    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("${userName}", "${accessKey}");
 
     /**
-     * JUnit Rule that will record the test name of the current test. This is referenced when creating the 
-     * {@link DesiredCapabilities}, so the Sauce Job is created with the test name.
+     * JUnit Rule which will mark the Sauce Job as passed/failed when the test succeeds or fails.
      */
-    public @Rule TestName testName = new TestName();
+    @Rule
+    public SauceOnDemandTestWatcher resultReportingTestWatcher = new SauceOnDemandTestWatcher(this, authentication);
 
-    private WebDriver driver;
-
+    /**
+     * Represents the browser to be used as part of the test run.
+     */
+    private String browser;
+    /**
+     * Represents the operating system to be used as part of the test run.
+     */
+    private String os;
+    /**
+     * Represents the version of the browser to be used as part of the test run.
+     */
+    private String version;
+    /**
+     * Instance variable which contains the Sauce Job Id.
+     */
     private String sessionId;
 
+    /**
+     * The {@link WebDriver} instance which is used to perform browser interactions with.
+     */
+    private WebDriver driver;
+
+    /**
+     * Constructs a new instance of the test.  The constructor requires three string parameters, which represent the operating
+     * system, version and browser to be used when launching a Sauce VM.  The order of the parameters should be the same
+     * as that of the elements within the {@link #browsersStrings()} method.
+     * @param os
+     * @param version
+     * @param browser
+     */
+    public SampleSauceTest(String os, String version, String browser) {
+        super();
+        this.os = os;
+        this.version = version;
+        this.browser = browser;
+    }
+
+    /**
+     * @return a LinkedList containing String arrays representing the browser combinations the test should be run against. The values
+     * in the String array are used as part of the invocation of the test constructor
+     */
+    @ConcurrentParameterized.Parameters
+    public static LinkedList browsersStrings() {
+        LinkedList browsers = new LinkedList();
+        browsers.add(new String[]{"Windows 8.1", "11", "internet explorer"});
+        browsers.add(new String[]{"OSX 10.8", "6", "safari"});
+        return browsers;
+    }
+
+
+    /**
+     * Constructs a new {@link RemoteWebDriver} instance which is configured to use the capabilities defined by the {@link #browser},
+     * {@link #version} and {@link #os} instance variables, and which is configured to run against ondemand.saucelabs.com, using
+     * the username and access key populated by the {@link #authentication} instance.
+     *
+     * @throws Exception if an error occurs during the creation of the {@link RemoteWebDriver} instance.
+     */
     @Before
     public void setUp() throws Exception {
 
-        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-        capabilities.setCapability("version", "17");
-        // Note: XP is tested as Windows 2003 Server on the Sauce Cloud
-        capabilities.setCapability("platform", Platform.XP); 
-        capabilities.setCapability("name",  testName.getMethodName());
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
+        if (version != null) {
+            capabilities.setCapability(CapabilityType.VERSION, version);
+        }
+        capabilities.setCapability(CapabilityType.PLATFORM, os);
+        capabilities.setCapability("name", "Sauce Sample Test");
         this.driver = new RemoteWebDriver(
-                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"), capabilities);
-        this.sessionId = ((RemoteWebDriver)driver).getSessionId().toString();
+                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
+                capabilities);
+        this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
+
     }
 
-    @Override
-    public String getSessionId() {
-        return sessionId;
-    }
-
+    /**
+     * Runs a simple test verifying the title of the amazon.com homepage.
+     * @throws Exception
+     */
     @Test
-    public void webDriverWithHelper() throws Exception {
+    public void amazon() throws Exception {
         driver.get("http://www.amazon.com/");
         assertEquals("Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more", driver.getTitle());
     }
 
+    /**
+     * Closes the {@link WebDriver} session.
+     *
+     * @throws Exception
+     */
     @After
     public void tearDown() throws Exception {
         driver.quit();
     }
 
+    /**
+     *
+     * @return the value of the Sauce Job id.
+     */
+    @Override
+    public String getSessionId() {
+        return sessionId;
+    }
 }
+
 ```
 
-The `WebDriverWithHelperTest` class is fundamentally the same as the WebDriverTest class, with a couple of additions. 
+The `SampleSauceTest` class is fundamentally the same as the WebDriverTest class, with a couple of additions.
 First it implements the Sauce `SauceOnDemandSessionIdProvider` interface, which requires that a `getSessionId()` method 
 be implemented:
 
 
 ```java
-public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider {
+public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
 ```
 
 Pass your Sauce user name and Sauce access key as parameters to the `SauceOnDemandAuthentication` constructor. (You can find your 
@@ -390,65 +461,113 @@ was automatically created by Maven for this tutorial):
 <dependency>
     <groupId>com.saucelabs</groupId>
     <artifactId>sauce_testng</artifactId>
-    <version>2.1.11</version>
+    <version>2.1.18</version>
     <scope>test</scope>
 </dependency>
 ```
 
-As with the JUnit example, the TestNG Maven archetype creates a `WebDriverWithHelperTest` class that demonstrates 
+As with the JUnit example, the TestNG Maven archetype creates a `SampleSauceTest` class that demonstrates
 how to update tests to use the Java helper library.  This class is located in the 
-`src/test/java/com/yourcompany/WebDriverWithHelperTest.java` file shown below:
+`src/test/java/com/yourcompany/SampleSauceTest.java` file shown below:
 
 ```java
 @Listeners({SauceOnDemandTestListener.class})
-public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
+public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
 
-    public SauceOnDemandAuthentication authentication;
+    /**
+     * Constructs a {@link com.saucelabs.common.SauceOnDemandAuthentication} instance using the supplied user name/access key.  To use the authentication
+     * supplied by environment variables or from an external file, use the no-arg {@link com.saucelabs.common.SauceOnDemandAuthentication} constructor.
+     */
+    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("${userName}", "${accessKey}");
 
-    private WebDriver driver;
+    /**
+     * ThreadLocal variable which contains the  {@link WebDriver} instance which is used to perform browser interactions with.
+     */
+    private ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
 
-    @Parameters({"username", "key", "os", "browser", "browserVersion"})
-    @BeforeMethod
-    // Note: XP is tested as Windows 2003 Server on the Sauce Cloud
-    public void setUp
-        (@Optional("sauceUsername") String username,
-            @Optional("sauceAccessKey") String key,
-            @Optional("XP") String os,
-            @Optional("firefox") String browser,
-            @Optional("17") String browserVersion, Method method) throws Exception {
+    /**
+     * ThreadLocal variable which contains the Sauce Job Id.
+     */
+    private ThreadLocal<String> sessionId = new ThreadLocal<String>();
 
-        if (StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(key)) {
-            authentication = new SauceOnDemandAuthentication(username, key);
-        } else {
-            authentication = new SauceOnDemandAuthentication();
-        }
+    /**
+     * DataProvider that explicitly sets the browser combinations to be used.
+     *
+     * @param testMethod
+     * @return
+     */
+    @DataProvider(name = "hardCodedBrowsers", parallel = true)
+    public static Object[][] sauceBrowserDataProvider(Method testMethod) {
+        return new Object[][]{
+                new Object[]{"internet explorer", "11", "Windows 8.1"},
+                new Object[]{"safari", "6", "OSX 10.8"},
+        };
+    }
+
+    /**
+     *
+     * Constructs a new {@link RemoteWebDriver} instance which is configured to use the capabilities defined by the browser,
+     * version and os parameters, and which is configured to run against ondemand.saucelabs.com, using
+     * the username and access key populated by the {@link #authentication} instance.
+     *
+     * @param browser Represents the browser to be used as part of the test run.
+     * @param version Represents the version of the browser to be used as part of the test run.
+     * @param os Represents the operating system to be used as part of the test run.
+     * @return
+     * @throws MalformedURLException if an error occurs parsing the url
+     */
+    private WebDriver createDriver(String browser, String version, String os) throws MalformedURLException {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setBrowserName(browser);
-        capabilities.setCapability("version", browserVersion);
-        capabilities.setCapability("platform", Platform.valueOf(os));
-        capabilities.setCapability("name", method.getName());
-        this.driver = new RemoteWebDriver(
-            new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"), capabilities);
+        capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
+        if (version != null) {
+            capabilities.setCapability(CapabilityType.VERSION, version);
+        }
+        capabilities.setCapability(CapabilityType.PLATFORM, os);
+        capabilities.setCapability("name", "Sauce Sample Test");
+        webDriver.set(new RemoteWebDriver(
+                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
+                capabilities));
+        sessionId.set(((RemoteWebDriver) getWebDriver()).getSessionId().toString());
+        return webDriver.get();
     }
 
-    @Override
-    public String getSessionId() {
-        SessionId sessionId = ((RemoteWebDriver)driver).getSessionId();
-        return (sessionId == null) ? null : sessionId.toString();
-    }
-
-    @Test
-    public void webDriverWithHelper() throws Exception {
+    /**
+     * Runs a simple test verifying the title of the amazon.com homepage.
+     *
+     * @param browser Represents the browser to be used as part of the test run.
+     * @param version Represents the version of the browser to be used as part of the test run.
+     * @param os Represents the operating system to be used as part of the test run.
+     * @throws Exception if an error occurs during the running of the test
+     */
+    @Test(dataProvider = "hardCodedBrowsers")
+    public void webDriver(String browser, String version, String os) throws Exception {
+        WebDriver driver = createDriver(browser, version, os);
         driver.get("http://www.amazon.com/");
-        assertEquals("Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more", driver.getTitle());
-    }
-
-    @AfterMethod
-    public void tearDown() throws Exception {
+        assertEquals(driver.getTitle(), "Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more");
         driver.quit();
     }
 
+    /**
+     * @return the {@link WebDriver} for the current thread
+     */
+    public WebDriver getWebDriver() {
+        System.out.println("WebDriver" + webDriver.get());
+        return webDriver.get();
+    }
+
+    /**
+     *
+     * @return the Sauce Job id for the current thread
+     */
+    public String getSessionId() {
+        return sessionId.get();
+    }
+
+    /**
+     *
+     * @return the {@link SauceOnDemandAuthentication} instance containing the Sauce username/access key
+     */
     @Override
     public SauceOnDemandAuthentication getAuthentication() {
         return authentication;
@@ -456,7 +575,7 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
 }
 ```
 
-This WebDriverWithHelperTest class is fundamentally the same as the WebDriverTest class, with a couple of additions. It 
+This SampleSauceTest class is fundamentally the same as the WebDriverTest class, with a couple of additions. It
 is annotated with the TestNG annotation `@Listeners`, which includes the 
 `SauceOnDemandTestListener` class. The SauceOnDemandTestListener class invokes 
 the [Sauce REST API](http://saucelabs.com/docs/rest), which notifies Sauce if the test passed or failed. 
@@ -464,6 +583,8 @@ It also outputs the Sauce session id to stdout so the Sauce plugins
 for [Jenkins](https://wiki.jenkins-ci.org/display/JENKINS/Sauce+OnDemand+Plugin) 
 and [Bamboo](https://marketplace.atlassian.com/plugins/com.saucelabs.bamboo.bamboo-sauceondemand-plugin) 
 can parse the session id.
+
+The SampleSauceTest also demonstrates how Selenium tests can be run in parallel, which we'll discuss a bit later.
 
 ## Running Tests Against Web Applications
 
@@ -852,8 +973,7 @@ class that creates a dynamic thread pool that holds each thread that is running 
 
 **Parallelizing the WebDriverTest Class**
 
-The following `WebDriverParallelTest` class demonstrates how to update
-the `WebDriverTest` class so its tests run in parallel. The test is
+As mentioned previously, the `SampleSauceTest` class demonstrates how to run it's tests in parallel. The test is
 parallelized by specifying the different parameters to test with, in this
 case the browser and platform. Behind the scenes, the test framework
 creates a different instance of the test class for each set of parameters
@@ -865,71 +985,136 @@ In this example, we're parallelizing tests across different browsers
 on different platforms. Since testing an app in Firefox on Linux is
 independent of testing it in Chrome on Windows, we can safely run both
 tests in parallel. The static method `browsersStrings()` is
-annotated with `org.junit.runners.Parameterized.Parameters`,
+annotated with `com.saucelabs.junit.ConcurrentParameterized.Parameters`,
 indicating it should be used to determine the parameters for each
 instance of the test. The method returns a `LinkedList` of parameters
 to use for each test instance's constructor. The
-`WebDriverParallelTest` constructor captures these
+`SampleSauceTest` constructor captures these
 parameters and `setUp()` uses them to configure the `DesiredCapabilities`.
 
 
 ```java
-@RunWith(Parallelized.class)
-public class WebDriverParallelTest {
+@RunWith(ConcurrentParameterized.class)
+public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
 
+    /**
+     * Constructs a {@link SauceOnDemandAuthentication} instance using the supplied user name/access key.  To use the authentication
+     * supplied by environment variables or from an external file, use the no-arg {@link SauceOnDemandAuthentication} constructor.
+     */
+    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("${userName}", "${accessKey}");
+
+    /**
+     * JUnit Rule which will mark the Sauce Job as passed/failed when the test succeeds or fails.
+     */
+    @Rule
+    public SauceOnDemandTestWatcher resultReportingTestWatcher = new SauceOnDemandTestWatcher(this, authentication);
+
+    /**
+     * Represents the browser to be used as part of the test run.
+     */
     private String browser;
+    /**
+     * Represents the operating system to be used as part of the test run.
+     */
     private String os;
+    /**
+     * Represents the version of the browser to be used as part of the test run.
+     */
     private String version;
+    /**
+     * Instance variable which contains the Sauce Job Id.
+     */
+    private String sessionId;
 
-    public WebDriverParallelTest(String os, String version, String browser) {
+    /**
+     * The {@link WebDriver} instance which is used to perform browser interactions with.
+     */
+    private WebDriver driver;
+
+    /**
+     * Constructs a new instance of the test.  The constructor requires three string parameters, which represent the operating
+     * system, version and browser to be used when launching a Sauce VM.  The order of the parameters should be the same
+     * as that of the elements within the {@link #browsersStrings()} method.
+     * @param os
+     * @param version
+     * @param browser
+     */
+    public SampleSauceTest(String os, String version, String browser) {
         super();
         this.os = os;
         this.version = version;
         this.browser = browser;
     }
 
-    @Parameterized.Parameters
-    public static LinkedList browsersStrings() throws Exception {
+    /**
+     * @return a LinkedList containing String arrays representing the browser combinations the test should be run against. The values
+     * in the String array are used as part of the invocation of the test constructor
+     */
+    @ConcurrentParameterized.Parameters
+    public static LinkedList browsersStrings() {
         LinkedList browsers = new LinkedList();
-        browsers.add(new String[]{Platform.XP.toString(), "17", "firefox"});
-    //add any additional browsers here
+        browsers.add(new String[]{"Windows 8.1", "11", "internet explorer"});
+        browsers.add(new String[]{"OSX 10.8", "6", "safari"});
         return browsers;
     }
 
-    private WebDriver driver;
 
+    /**
+     * Constructs a new {@link RemoteWebDriver} instance which is configured to use the capabilities defined by the {@link #browser},
+     * {@link #version} and {@link #os} instance variables, and which is configured to run against ondemand.saucelabs.com, using
+     * the username and access key populated by the {@link #authentication} instance.
+     *
+     * @throws Exception if an error occurs during the creation of the {@link RemoteWebDriver} instance.
+     */
     @Before
     public void setUp() throws Exception {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
-        capabilities.setCapability(CapabilityType.VERSION, version);
+        if (version != null) {
+            capabilities.setCapability(CapabilityType.VERSION, version);
+        }
         capabilities.setCapability(CapabilityType.PLATFORM, os);
+        capabilities.setCapability("name", "Sauce Sample Test");
         this.driver = new RemoteWebDriver(
-                new URL("http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub"), capabilities);
+                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
+                capabilities);
+        this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
+
     }
 
+    /**
+     * Runs a simple test verifying the title of the amazon.com homepage.
+     * @throws Exception
+     */
     @Test
-    public void webDriver() throws Exception {
+    public void amazon() throws Exception {
         driver.get("http://www.amazon.com/");
         assertEquals("Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more", driver.getTitle());
     }
 
+    /**
+     * Closes the {@link WebDriver} session.
+     *
+     * @throws Exception
+     */
     @After
     public void tearDown() throws Exception {
         driver.quit();
     }
+
+    /**
+     *
+     * @return the value of the Sauce Job id.
+     */
+    @Override
+    public String getSessionId() {
+        return sessionId;
+    }
 }
 ```
 
-As shown above (and as included in the sample project) only one
-platform is returned, so only that one test will be run in
-parallel. Let's fix that! Add a few more platforms or browser versions
-(you might need to refer to [the Selenium
-`org.openqa.selenium.Platform`
-documentation](http://selenium.googlecode.com/git/docs/api/java/index.html?org/openqa/selenium/Platform.html)
-to specify other platforms). Now, when you run the
-tests, you should see these tests running in
+When you run the tests, you should see these tests running in
 parallel on the [Sauce Labs tests page](https://saucelabs.com/tests).
 
 ### Setting a parallelism limit
