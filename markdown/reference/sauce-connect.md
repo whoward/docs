@@ -106,29 +106,29 @@ The `sc` command line program accepts the following parameters:
                                     through the internet, instead of
                                     through the tunnel.
     -t, --tunnel-domains <...>      Inverse of '--direct-domains'.
-                                    Only requests for domains in this 
-                                    list will be sent through the 
+                                    Only requests for domains in this
+                                    list will be sent through the
                                     tunnel.
                                     Overrides '--direct-domains'.
     -v, --verbose                   Enable verbose debugging.
     -F, --fast-fail-regexps         Comma-separated list of regular
-                                    expressions. Requests with URLs 
-                                    matching one of these will get 
-                                    dropped instantly and will not go 
+                                    expressions. Requests with URLs
+                                    matching one of these will get
+                                    dropped instantly and will not go
                                     through the tunnel.
-    -i, --tunnel-identifier <id>    Assign <id> to this Sauce Connect 
-                                    instance. Future jobs will use this 
-                                    tunnel only when explicitly 
+    -i, --tunnel-identifier <id>    Assign <id> to this Sauce Connect
+                                    instance. Future jobs will use this
+                                    tunnel only when explicitly
                                     specified by the 'tunnel-
-                                    identifier' desired capability in a 
+                                    identifier' desired capability in a
                                     Selenium client.
     -l, --logfile <file>
     -P, --se-port <port>            Port on which Sauce Connect's
                                     Selenium relay will listen for
                                     requests. Selenium commands
                                     reaching Sauce Connect on this port
-                                    will be relayed to Sauce Labs 
-                                    securely and reliably through Sauce 
+                                    will be relayed to Sauce Labs
+                                    securely and reliably through Sauce
                                     Connect's tunnel. Defaults to 4445.
     -p, --proxy <host:port>         Proxy host and port that Sauce
                                     Connect should use to connect
@@ -152,27 +152,31 @@ The `sc` command line program accepts the following parameters:
                                     username and password. This option
                                     can be used multiple times.
     -z, --log-stats <seconds>       Log statistics about HTTP traffic
-                                    every <seconds>. Information 
-                                    includes bytes transmitted, 
-                                    requests made, and responses 
+                                    every <seconds>. Information
+                                    includes bytes transmitted,
+                                    requests made, and responses
                                     received.
         --max-logsize <bytes>       Rotate logfile after reaching
                                     <bytes> size. Disabled by default.
         --doctor                    Perform checks to detect possible
                                     misconfiguration or problems.
+        --no-autodetect             Disable the autodetection of proxy
+                                    settings.
     -h, --help                      Display this help text.
 
 ### Proxy Configuration
 
 #### Automatic
 
-As of Sauce Connect 4.3.1, proxies will be autoconfigured based on the running system's settings.
+As of Sauce Connect 4.3.1, proxies and PAC settings will be autoconfigured based on the running system's settings.
 
 On **Windows**, Internet Explorer proxy settings will be checked as well as system-wide proxy settings set via Control Panel.
 
 On **Mac OS X**, Sauce Connect will use the proxy set in Preferences / Network.  We support both the proxy and the PAC settings.
 
 On **Linux**, Sauce Connect looks for the following variables, in order: `http_proxy`, `HTTP_PROXY`, `all_proxy`, and `ALL_PROXY`. They can be in the form `http://host.name:port` or just `host.name:port`.
+
+Proxy detection can be disabled via the command line option `--no-autodetect`.
 
 #### Manual
 
@@ -194,12 +198,12 @@ To use this feature, simply start Sauce Connect using the `--tunnel-identifier` 
 
 #### On the Same Machine
 
-Please note that in order to run multiple Sauce Connect instances on the same machine, it's necessary to provide additional flags to configure independent log files, pid files, and ports for each instance. Here's an example of how to configure all of these settings for a second instance:
+Please note that in order to run multiple Sauce Connect instances on the same machine, it's necessary to provide additional flags to configure a different Selenium port for each instance. Sauce Connect will use a pidfile and logfile that have the tunnel identifier in their names. Here's an example of how to start a second Sauce Connect instance with a tunnel identifier:
 
 ```bash
-sc --pidfile /tmp/sc2.pid --logfile /tmp/sc2.log --scproxy-port 29999 --se-port 4446 -i my-tun2
+sc --se-port 4446 -i my-tun2
 ```
-###  Service Managment
+###  Service Management
 
 Sauce Connect can be monitored more easily using a Service Managment tool like systemd or upstart. These tools help to make the usage of Sauce Connect more fluid and allow for time to wait for Sauce Connect to clean up upon exiting. It's common to want to signal kill the Sauce Connect process and start one instantly after that. This will cause issues as it takes time to shutdown Sauce Connect remotely. These tools help account for that so you don't have to.
 
