@@ -2,7 +2,7 @@ var _ = require('lodash');
 
 module.exports = function (grunt) {
   'use strict';
-  var categories = ['Tutorials', 'CI Integrations', 'Reference'];
+  var categories = ['Configurator', 'Tutorials', 'CI Integrations', 'Reference'];
   grunt.initConfig({
     // See https://github.com/CabinJS/grunt-pages to learn about this plugin
     pages: {

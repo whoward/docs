@@ -2,8 +2,8 @@
   title: "Platforms Configurator",
   alternate_title: "Automated Test Configurator",
   description: "Platforms Configurator",
-  category: "Reference",
-  index: 9,
+  category: "Configurator",
+  index: 1,
   libraries: ["vendor/angular/angular.js",
   "vendor/angular-route/angular-route.min.js",
   "vendor/angular-animate/angular-animate.min.js"
@@ -20,7 +20,7 @@
   "styles/docs/platforms-configurator.css"
   ]
 }
-<base href="/reference/platforms-configurator">
+<base href="/configurator/platforms-configurator">
 
 <link href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/monokai_sublime.min.css' rel='stylesheet' type='text/css'>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
