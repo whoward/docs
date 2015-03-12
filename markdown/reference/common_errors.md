@@ -135,6 +135,12 @@ Sauce, but the job has already finished, so the VM is no longer available. Check
 your Internet connection, and try running your tests from a machine with a wired
 Ethernet connection.
 
+##The connection with your vm was lost and your job can't complete. You won't be charged for these minutes
+
+This message occurs when our infrastructure loses communication with our vm and can't regain that connection after a reasonable time. If you only get this message rarely and randomly, it is probably a fluke on our end caused by an infrastructure blip. 
+
+However, if you are experiencing this error repeatedly for a specific test or set of tests there may be an issue on your end that is causing the failure. For example, if the error regularly appears after a specific selenium command there could be something wrong with the test that is causing selenium to crash. We have also seen issues with prerun executables: your script could be crashing the vm in any number of exciting ways, but the most common we've seen is consuming too much memory. We even had a situation once where a customer's script killed processes in a windows session, including the process we use to run jobs!
+
 
 ##Unsupported OS/browser/version combo
 
