@@ -455,7 +455,11 @@ Example:
 
 The specific version of the IE Driver executable can be customized using the `iedriverVersion` key.
 
-In particular, Sauce supports launching 64-bit IE on our 64-bit VMs: Windows 7, Windows 8, and Windows 8.1. This provides a workaround for a known Selenium bug causing screencaptures using the 32-bit driver on a 64-bit operating system to fail to capture the whole web page.
+In particular, Sauce Labs supports launching 64-bit IE on our 64-bit VMs: Windows 7, Windows 8, and Windows 8.1.  This provides a workaround for two known Selenium issues:
+
+Using a 32 bit driver on a 64 bit operating system causes Selenium's screenshot feature to only capture the part of the page currently visible in the browser viewport [Selenium Issue 5876](https://code.google.com/p/selenium/issues/detail?id=5876).
+
+Using a 64 bit driver on a 64 bit operating system causes text entry to be extremely slow [Selenium Issue 5516](https://code.google.com/p/selenium/issues/detail?id=5116).
 
 Key: `iedriverVersion`
 
@@ -464,12 +468,12 @@ Value Type: string
 Example:
 
 ```python
-"iedriverVersion": "x64_2.41.0"
+"iedriverVersion": "2.45.0"
 ```
 
 The list of supported IE Drivers you can choose from:<br/>
 
-`2.21.1`, `2.21.2`, `2.24.0`, `2.25.3`, `2.26.0`, `2.28.0`, `2.29.0`, `2.30.1`, `2.31.0`, `2.32.2`, `2.33.0`, `2.34.0`, `2.35.0`, `2.35.1`, `2.35.2`, `2.35.3`, `2.36.0`, `2.37.0`, `2.38.0`, `2.39.0`, `2.40.0`, `2.41.0`, `2.42.0`, `x64_2.29.0`, `x64_2.39.0`, `x64_2.40.0`, `x64_2.41.0`, `x64_2.42.0`
+`2.21.1`, `2.21.2`, `2.24.0`, `2.25.3`, `2.26.0`, `2.28.0`, `2.29.0`, `2.30.1`, `2.31.0`, `2.32.2`, `2.33.0`, `2.34.0`, `2.35.0`, `2.35.1`, `2.35.2`, `2.35.3`, `2.36.0`, `2.37.0`, `2.38.0`, `2.39.0`, `2.40.0`, `2.41.0`, `2.42.0`, `2.43.0`, `2.44.0`, `2.45.0`, `x64_2.29.0`, `x64_2.39.0`, `x64_2.40.0`, `x64_2.41.0`, `x64_2.42.0`, `x64_2.43.0`, `x64_2.44.0`, `x64_2.45.0`
 
 ### Pop-up Handling
 Sauce provides a pop-up handler that automatically clicks through some types of browser pop-up windows, to allow tests to continue. By default, this feature is turned on for Selenium RC and off for WebDriver tests. You can control the pop-up handler yourself with the following capability:

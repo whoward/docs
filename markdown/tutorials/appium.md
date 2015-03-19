@@ -81,10 +81,10 @@ Your first test will run against our Test Application, which is hosted on Sauce.
 
 To run your first test, simply run the quick start code below. Our example is in Ruby using RSpec, though Appium can be used with almost any language and test framework:
 
-To run the Ruby example, you need to have rspec installed, in addition to the Selenium WebDriver client library. To install these, and download a simple example test, run:
+To run the Ruby example, you need to have Ruby and Bundler installed.  Then, you can get Bundler to install the required gems, and download the sample test, by running:
 
 ```bash
-curl -L https://raw.github.com/saucelabs/appium-tutorial/master/bin/install_tutorial_ruby.sh | bash -s
+curl -L https://raw.githubusercontent.com/saucelabs/appium-tutorial/master/bin/install_tutorial_ruby.sh | bash -s
 ```
 
 Now you are ready to run your first test! The `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` environment variables authenticate you with Sauce Labs:
