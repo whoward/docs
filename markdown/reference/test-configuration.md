@@ -468,7 +468,7 @@ Value Type: string
 Example:
 
 ```python
-"iedriverVersion": "2.42.0"
+"iedriverVersion": "2.45.0"
 ```
 
 The list of supported IE Drivers you can choose from:<br/>
