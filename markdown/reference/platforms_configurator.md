@@ -2,8 +2,8 @@
   title: "Platforms Configurator",
   alternate_title: "Automated Test Configurator",
   description: "Platforms Configurator",
-  category: "Configurator",
-  index: 1,
+  category: "Reference",
+  index: 9,
   libraries: ["vendor/angular/angular.js",
   "vendor/angular-route/angular-route.min.js",
   "vendor/angular-animate/angular-animate.min.js"
