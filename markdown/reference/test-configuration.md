@@ -455,7 +455,7 @@ Example:
 
 The specific version of the IE Driver executable can be customized using the `iedriverVersion` key.
 
-In particular, Sauce supports launching 64-bit IE on our 64-bit VMs: Windows 7, Windows 8, and Windows 8.1.  This provides a workaround for two known Selenium issues:
+In particular, Sauce Labs supports launching 64-bit IE on our 64-bit VMs: Windows 7, Windows 8, and Windows 8.1.  This provides a workaround for two known Selenium issues:
 
 Using a 32 bit driver on a 64 bit operating system causes Selenium's screenshot feature to only capture the part of the page currently visible in the browser viewport [Selenium Issue 5876](https://code.google.com/p/selenium/issues/detail?id=5876).
 
