@@ -30,7 +30,6 @@ SHA1 checksum: d3ad39466b221e7b779e0e69355a22b876a9b5c5<br>
 SHA1 checksum: 0ae5960a9b4b33e5a8e8cad9ec4b610b68eb3520<br>
 </li><li><a href="https://saucelabs.com/downloads/sc-4.3.8-linux32.tar.gz"><i class="fa fa-linux"></i> Download Sauce Connect v4.3.8 for Linux 32-bit</a><br>
 SHA1 checksum: b9724f63b727f3c49e7367970b6ea5e4a7bb697d<br>
-</li><li>(If you're looking for Sauce Connect v3, you can download it <a href="https://saucelabs.com/downloads/Sauce-Connect-3.1-r32.zip">here</a>.)<br>
 </li>
 </ul>
 2. Open outbound port 443 (or configure Sauce Connect with a proxy that can reach saucelabs.com, using the `--proxy` or `--pac` [command line options](#advanced-configuration)).
