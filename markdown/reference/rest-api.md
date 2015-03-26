@@ -91,17 +91,23 @@ curl https://saucelabs.com/rest/v1/users/sauceUsername/concurrency \
 
 ## Test Activity and Usage
 
-### Get User Activity
+### Get Real-Time User Activity
 
 URL: `https://saucelabs.com/rest/v1/:username/activity`
 
-Get active job counts broken down by job status and sub-account.
+Get currently running job counts broken down by account and job status.
 
 **Example Request:**
 ```bash
 curl https://saucelabs.com/rest/v1/sauceUsername/activity \
 -u sauceUsername:sauceAccessKey
 ```
+
+**Example response:**
+```bash
+{"subaccounts": {"sauceUsername": {"in progress": 0, "all": 0, "queued": 0}, "subAccount1": {"in progress": 1, "all": 1, "queued": 0}, "subAccount2": {"in progress": 2, "all": 3, "queued": 1}}, "totals": {"in progress": 3, "all": 4, "queued": 1}}
+```
+The result shows real-time numbers for the parent account and all of its sub-accounts.  There is also a "totals" section at the end which tallies the numbers across all accounts.
 
 ### Get User Account Usage
 Access historical account usage data.
@@ -116,6 +122,12 @@ URL: `https://saucelabs.com/rest/v1/users/:username/usage`
 curl https://saucelabs.com/rest/v1/users/sauceUsername/usage \
 -u sauceUsername:sauceAccessKey
 ```
+
+**Example Response:**
+```bash
+{"usage": [["2015-3-20", [5, 467]], ["2015-3-1", [7, 114]]], "username": "sauceUsername"}
+```
+The result is a breakdown summarizing the total number of jobs and VM time used, in seconds, by day.
 
 ## Jobs
 
