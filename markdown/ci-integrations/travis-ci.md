@@ -102,6 +102,8 @@ addons:
 ```
 *This assumes that the `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` environment variables are set on Travis using the [instructions above](#adding-credentials-for-a-public-github-repo).*
 
+**NOTE**: This tunnel will be a [named (identified) tunnel](/reference/sauce-connect/#using-tunnel-identifiers). The tunnel's identifier is set to the `TRAVIS_JOB_NUMBER` environment variable when launched. **You must set your test's desired capability `tunnelIdentifier` to the Travis job number to use the tunnel.** Otherwise, the test will run without using Sauce Connect.
+
 ## Provide Additional Details to Sauce
 
 Travis provides a set of environment variables which you can send to Sauce in order to annotate your tests. You can add [tags](/reference/test-configuration/#tagging) using the `TRAVIS_PULL_REQUEST` string and `TRAVIS_BRANCH` string and a [build number](/reference/test-configuration/#recording-build-numbers) using `TRAVIS_BUILD_NUMBER`.
