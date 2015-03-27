@@ -56,7 +56,14 @@ This section contains the fields required to configure how the authentication fo
 
 By default, the Sauce plugin will use the user home directory as the working directory when extracting the Sauce Connect binary file.  You can override this behaviour by specifying a directory location in the `Sauce Connect Working Directory` field.
 
-The plugin also supports reading authentication details from a `.sauce-ondemand` file located in the user home directory.  If you wish the plugin to use this file, then select the `Use authentication details in ~/.sauce-ondemand?` checkbox.
+The plugin also supports reading authentication details from a `.sauce-ondemand` file located in the user home directory (e.g. /Users/Shared/Jenkins).  The contents of the file should be in the following format:
+
+```
+username:sauceUsername
+key:sauceAccessKey
+```
+
+If you wish for the plugin to use this file, then select the `Use authentication details in ~/.sauce-ondemand?` checkbox. 
 
 Once the authentication details have been entered, clicking on the `Test Connection` button will connect to Sauce OnDemand to verify that the plugin can authenticate with the entered details.
 
