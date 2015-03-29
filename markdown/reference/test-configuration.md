@@ -388,7 +388,6 @@ Example:
 "version": "35"
 ```
 
-
 ### Pre-run Executables
 Sauce allows users to provide a URL to an executable file, which we will download and run before tests start. For example, you can use pre-run executables to configure the VM before your test starts.
 
