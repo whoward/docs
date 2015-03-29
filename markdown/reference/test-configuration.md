@@ -409,6 +409,8 @@ Example:
             "args": [ "--silent", "-a", "-q" ], "background": true }
 ```
 
+If a single string is sent as the `prerun` capability rather than a JSON object, this string is considered to be the url to the executable, and the executable launches with `background` set to `false`.
+
 **A Note about AutoIt:** If you want to run an AutoIt script during your test, compile it as an exe, send it using this capability and set `background` to `true` to allow AutoIt to continue running throughout the full duration of your test.
 
 **Multiple Pre-run Executables:** If you need to send multiple pre-run executables, the best way is to bundle them into a single executable file, such as a self-extracting zip file.
