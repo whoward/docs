@@ -467,7 +467,7 @@ https://saucelabs.com/rest/v1/users/sauceUsername \
 
 Update a subaccount Sauce Labs service plan.
 
-URL: `https://saucelabs.com/rest/v1/:subaccount_username/subscription`
+URL: `https://saucelabs.com/rest/v1/users/:subaccount_username/subscription`
 
 Method: `POST`
 
@@ -487,7 +487,7 @@ https://saucelabs.com/rest/v1/users/SUBACCOUNT_USERNAME/subscription
 
 Unsubscribe a subaccount from its Sauce Labs service plan.
 
-URL: `https://saucelabs.com/rest/v1/:subaccount_username/subscription`
+URL: `https://saucelabs.com/rest/v1/users/:subaccount_username/subscription`
 
 Method: `DELETE`
 
@@ -495,7 +495,7 @@ Method: `DELETE`
 ```bash
 curl -u sauceUsername:sauceAccessKey \
 -X DELETE \
-https://saucelabs.com/rest/v1/SUBACCOUNT_USERNAME/subscription
+https://saucelabs.com/rest/v1/users/SUBACCOUNT_USERNAME/subscription
 ```
 
 ## Temporary Storage
