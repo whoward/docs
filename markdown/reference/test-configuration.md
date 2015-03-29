@@ -375,6 +375,20 @@ Example:
 
 ## Sauce-specific settings
 
+### Version (browser)
+Sauce allows users to set the version of the browser used in your test. If this capability is null, an empty string, or omitted altogether, the latest version of the browser will be used automatically.
+
+Key: `version`
+
+Value type: string or integer
+
+Example:
+
+```python
+"version": "35"
+```
+
+
 ### Pre-run Executables
 Sauce allows users to provide a URL to an executable file, which we will download and run before tests start. For example, you can use pre-run executables to configure the VM before your test starts.
 
