@@ -143,6 +143,8 @@ The result is a breakdown summarizing the total number of jobs and VM time used,
 
 ### Change Access Key
 
+URL: `https://saucelabs.com/rest/v1/users/:username/accesskey/change`
+
 Change access key of your account.
 
 __Warning__: Regenerating your access key will require updating your access key value throughout your configuration.
