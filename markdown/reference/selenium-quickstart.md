@@ -385,7 +385,7 @@ import junit.framework.TestCase;
 
 WebElement messageElement 	= driver.findElement(By.id("loginResponse"));
 String message 				= messageElement.getText();
-String successMsg	 		= "Welcome to foo. You logged in successfully."
+String successMsg	 		= "Welcome to foo. You logged in successfully.";
 assertEquals (message, successMsg);
 ```
 
@@ -423,9 +423,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import junit.framework.Assert;
-import junit.framework.TestCase;
-
+import org.junit.Assert;
 
 public class Example  {
   public static void main(String[] args) {
@@ -455,10 +453,9 @@ public class Example  {
  	       );
 
 	// Run a test
-	WebElement messageElement 	= driver.findElement(By.id("loginResponse"));
 	String message 				= messageElement.getText();
-	String successMsg	 		= "Welcome to foo. You logged in successfully."
-	assertEquals (message, successMsg);
+	String successMsg	 		= "Welcome to foo. You logged in successfully.";
+	Assert.assertEquals (message, successMsg);
 
 	// Conclude a test
 	driver.quit();
@@ -1475,7 +1472,7 @@ So, given a web page `threeFrames.html` with three unnamed child frames each wit
 
 ```java
 // Navigate to the web page with three frames
-driver.get(www.foo.com/threeFrames.html);
+driver.get("www.foo.com/threeFrames.html");
 
 // Navigate to frame 0
 driver.switchTo().frame(0);
