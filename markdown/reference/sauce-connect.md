@@ -433,7 +433,7 @@ Make sure that saucelabs.com is accessible from the machine running Sauce Connec
 ```bash
 ping saucelabs.com
 ```
-This command should return an IP address of 67.23.20.87
+This command should return an IP address of 162.222.73.28
 ```bash
 telnet saucelabs.com 443
 ```
