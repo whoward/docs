@@ -238,8 +238,8 @@ WantedBy=multi-user.target
 #### Upstart
 1. cd /usr/local/bin
 2. wget https://saucelabs.com/downloads/sc-4.3.8-linux.tar.gz
-3. tar -zxvf sc-4.3-linux.tar.gz
-4. cp sc-4.3-linux/bin/sc .
+3. tar -zxvf sc-4.3.8-linux.tar.gz
+4. cp sc-4.3.8-linux/bin/sc .
 5. ls /usr/local/bin/sc —- verify Sauce Connect is in correct location
 
 6. cd /etc/init
