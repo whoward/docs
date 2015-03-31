@@ -153,7 +153,8 @@ Commands containing your old access key will fail.
 **Example Request:**
 ```bash
 curl https://saucelabs.com/rest/v1/users/sauceUsername/accesskey/change \
--u sauceUsername:sauceAccessKey
+-u sauceUsername:sauceAccessKey \
+-X POST
 ```
 
 ## Jobs
