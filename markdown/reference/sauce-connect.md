@@ -230,16 +230,16 @@ After=network.target
 Type=simple
 User=nobody
 Group=nogroup
-ExecStart=/usr/local/bin/sc -u <CHANGEME> -k <CHANGEME> -l /tmp/sc_long.log --pidfile /tmp/sc_long.pid --se-port 0 --vm-version next
+ExecStart=/usr/local/bin/sc -u <CHANGEME> -k <CHANGEME> -l /tmp/sc_long.log --pidfile /tmp/sc_long.pid --se-port 0
 
 [Install]
 WantedBy=multi-user.target
 ```
 #### Upstart
 1. cd /usr/local/bin
-2. wget https://saucelabs.com/downloads/sc-4.3-linux.tar.gz
-3. tar -zxvf sc-4.3-linux.tar.gz
-4. cp sc-4.3-linux/bin/sc .
+2. wget https://saucelabs.com/downloads/sc-4.3.8-linux.tar.gz
+3. tar -zxvf sc-4.3.8-linux.tar.gz
+4. cp sc-4.3.8-linux/bin/sc .
 5. ls /usr/local/bin/sc —- verify Sauce Connect is in correct location
 
 6. cd /etc/init
@@ -283,7 +283,7 @@ console log
 
 env LOGFILE="/tmp/sc_long.log"
 env PIDFILE="/tmp/sc_long.pid"
-env EXTRA_ARGS="--se-port 0 --vm-version next"
+env EXTRA_ARGS="--se-port 0"
 env SAUCE_USERNAME="CHANGEME" # XXX
 env SAUCE_ACCESS_KEY="CHANGEME" # XXX
 
