@@ -1,7 +1,11 @@
-Selenium Builder
-===================
 
-## About Selenium Builder
+{
+  title: "Selenium Builder",
+  description: "Selenium Builder Basic Guide",
+  category: "Reference",
+  index: 12
+}
+
 
 Selenium Builder (Se Builder) is an [open source](https://github.com/sebuilder/se-builder/wiki/OSS-Policy) tool for easily writing automated Selenium scripts
 and running those cross-browser in the cloud. 
