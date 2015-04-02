@@ -19,9 +19,9 @@ Selenium Builder supports creating scripts in both Selenium 1 and Selenium 2, an
 Selenium Builder is an extension for the Firefox browser which make installation a snap. Follow these steps to get it installed: 
 
 1. Launch Firefox and navigate to the [Selenium Builder download page](http://sebuilder.github.io/se-builder/) or [view on Github](http://github.com/sebuilder/se-builder)
-2. Click the [Install](http://www.saucelabs.com/addons/selenium-builder-latest.xpi) button. If prompted, confirm that you would like to allow installation from this location.
+2. Click the <i>Install</i> button. If prompted, confirm that you would like to allow installation from this location.
 3. Click through the wizard & restart Firefox.
-4. Start Selenium builder by choosing <i>Tools</i> -->  <i>Web Developer</i> --> <i>Launch Selenium Builder</i> from the menu.
+4. Start Selenium Builder by choosing <i>Tools</i> -->  <i>Web Developer</i> --> <i>Launch Selenium Builder</i> from the menu.
 
 Congrats, you have sucessfully installed Selenium Builder and now its time to run your first script.  
  
@@ -70,6 +70,9 @@ With your script running locally it is time to try it on Selenium Serever. To do
 
 #### Running scripts on Sauce Cloud
 
+Selenium Builder allows you to run your tests on Sauce Labs' Selenium Cloud without leaving the plugin. In order to run your script simply select <i>Run on Sauce OnDemand</i> from the <i>Run</i> menu. Once you provide your `Access Key` and `Username`, choose the desired os and browser combination and hit <i>Ok</i>. Once the test sucessfully initiates you should be able to see the a new Job under your account. Select <i>Automatically show Sauce jobs page</i> if you want the plugin to open a jobs page automatically. 
+
+Note: You need an active Sauce Labs Account to run your tests on Sauce Clound and you can quickly register on our [homepage](https://saucelabs.com/signup/trial). 
 
 
 ### Editing a script
@@ -104,11 +107,14 @@ Both recording new steps and appending new step will put them at the end of the 
 ### Saving Non-Selenese scripts
 Part of the power of Selenium Builder is its ability to save recorded scripts into other languages than just Selenese (HTML). While Selenese is convenient, it lacks certain advantages that a full programming language has like conditionals and loops.
 
+To export your Selenium Builder in a non Selenese format, choose the <i>Export</i> button and choosed the format you want to export as. For instance, <i>Java (TestNG) - Selenium RC</i> saves the script in such a way that it can be run from the popular Java test framework JUnit against your local Selenium server.
 
 Once a script has been saved as a non-Selenese format, that script is no longer considered a Selenium Builder script and cannot be opened by Selenium Builder -- even if no changes have been made to the underlying script. This is because the various formats can include things that Selenium Builder cannot represent in its GUI. It is because of this that saving in another format should be done only once you have a level of comfort with the script's contents in terms of flow and execution.
 
 That said, exporting to something other than Selenese is considered a Best Practice in the Selenium community. It does increase the level of technical knowledge required to modify scripts though.
 
+
+### Organizing a Test Suite
 If having one test script is good, then having many is fantastic. Opening one, running it then loading the next would be tedious and inefficient though. For this reason you can group similar scripts as a Suite.
 
 To create a new suite, record a new script or open an existing one and click the <i>Record another script</i> button. This creates a suite for you having the starting script as well as a new one. You now also have some new buttons at the top of Selenium Builder for controlling your suite; all of which do pretty much what they claim to do.
@@ -121,6 +127,7 @@ At the same time though, be cautious of creating a suite that is too large. Suit
 
 Don't let that scare you away from suites though; they are an important part of how to manage your investment in automation.
 
+### Optimizing Locators
 There are a number of different ways that Selenium Builder can find the parts of the web page you are trying to automate. Selenium Builder makes use of most of them automatically depending on the situation.
 
 The first group of locators all hook off of a unique attribute value of the desired element.
@@ -129,17 +136,29 @@ The first group of locators all hook off of a unique attribute value of the desi
 
 * <i>name</i> - Similar to the id locator, Selenium Builder will interact with the first HTML element that has a matching name attribute to the specified name= value.
 
+* <i>identifier</i> - While Selenium Builder does not record scripts using this locator, it can play them back so it bears mentioning. A locators without a prefix is consider to be an Identifier one and will check elements on the page first using the id strategy and then the name one if it still hasn't found a match. This is actually the Selenium default strategy, but it requires giving up some control and could return the wrong element if you have markup which has both id and name attributes that share values. 
 
 > Attention: Whenever possible, it is highly desirable to use the attribute locators mentioned above, but when they are not available, not unique or are randomly generated by the application framework then you need to move to more complex locators.
 
 * <i>xpath</i> - Locators that start with either xpath= or just //. XPath treats your page as a structured document and can traverse it both up and down (and a combination of up and down) making it arguably the most powerful locator Selenium Builder can use. There are some known performance problems with Internet Explorer though which decrease its desirability in situations where you don't need that power. The [XPath Tutorial](http://www.w3schools.com/xpath/default.asp) on W3C Schools is a good place to start to understand how to use it.
 
-* <i>css</i> - The CSS locator strategy should be the structural strategy you choose by default and those locators begin with css=. Selenium Builder actually uses the Sizzle library for its CSS Selector support and so [it's documentation](https://github.com/jeresig/sizzle/wiki) is something you will want to have bookmarked. Unlike xpath though, css can only peer down the page, in the situations where you need to look over your shoulder you are forced to use xpath.
+* <i>css</i> - The CSS locator strategy should be the structural strategy you choose by default and those locators begin with `css=`. Unlike xpath though, css can only peer down the page, in the situations where you need to look over your shoulder you are forced to use xpath.
 
-<p>One thing to remember is that both these strategies tie you to the current structure of the HTML. If that structure changes, then you might have a situation where your script is broken even though the button you wanted just moved slightly to the right in the rendered page. This is almost always caused by a 'brittle' structural locator. To de-brittle a locator, try to use move the base element that the locator uses closer to the desired and/or make use of the more sophisticated functions and pseudo-functions that both xpath and css provide like contains() or :contains() on attributes. Selenium Builder has no way of knowing and understanding the pattern of non-random attributes so cannot do this at recording time.</p>
+<p>One thing to remember is that both these strategies tie you to the current structure of the HTML. If that structure changes, then you might have a situation where your script is broken even though the button you wanted just moved slightly to the right in the rendered page. This is almost always caused by a 'brittle' structural locator. To de-brittle a locator, try to use move the base element that the locator uses closer to the desired and/or make use of the more sophisticated functions and pseudo-functions that both xpath and css provide like `contains()` or `:contains()` on attributes. Selenium Builder has no way of knowing and understanding the pattern of non-random attributes so cannot do this at recording time.</p>
 
-The final Locator is similar to the id and name ones in that it keys off of a link's displayed name.The Link locator, not surprisingly is prefixed with link=. This is another powerful strategy that needs to come with a warning. If your site can be displayed in multiple languages (say, English, French and Spanish) then you will need to to create a copy of the script for each language. This is because when the displayed link content changes, so too does the locator. It is much better to use the id strategy in this situation. But if you don't have a multilingual site, then link= can certainly make your script more readable.
+The final Locator is similar to the id and name ones in that it keys off of a link's displayed name.The Link locator, not surprisingly is prefixed with `link=`. This is another powerful strategy that needs to come with a warning. If your site can be displayed in multiple languages (say, English, French and Spanish) then you will need to to create a copy of the script for each language. This is because when the displayed link content changes, so too does the locator. It is much better to use the id strategy in this situation. But if you don't have a multilingual site, then `link=` can certainly make your script more readable.
 
+
+### Working with Unique Values
+Sometimes having hardcoded data in scripts in necessary to exercise specific conditions, but in many more cases it is smell indicating the risk of the both the Pesticide Paradox and the Landmine Problem. The Pesticide Paradox is when your application learns to evade your test conditions to hide bugs and the Landmine Problem is when it learns to evade the paths the tests take through the application.
+
+Selenium Builder includes functionality to start addressing the Pesticide Paradox in an area that often requires it the most -- registration. Specifically, Selenium Builder can generate random usernames and email addresses. To enable non-static data with one of these values, choose the <i>unique values</i> task for that step to open the details pane.
+
+
+* <i>Usernames</i> - An individual Selenium Builder script can have up to 9 unique usernames in them. To insert a unique username, click the ${unique_username_1} link in the details pane. The existing value for the step will be replaced by that value. At runtime, that step will have a string value of 'sbxxxxx' where the x's are random, lower-case values.</li>
+* <i>Email Addresses</i> - A Selenium Builder script can also have up to 9 unique email addresses in them. Much like with unique usernames, selecting the ${unique_email_1} link will insert a unique email address at runtime into a step. The email address format is 'sbxxxxx@<your domain>.???.com', again with the x's replaced with random, lower-case values.</li>Wa
+
+With both unique usernames and email addresses, once you have included one, the next one is now available to you in the details pane. This is especially useful for registration forms that have multiple email fields (like social media sites) where you could have _1, _2, _3, etc.
 
 ### Synchronization
 Aside from using improper or brittle locators for accessing objects on the page, the biggest cause for step failures relates to synchronization. Selenium Builder will execute the steps of your script as fast as your machine will allow, pausing only when it is told to pause.
