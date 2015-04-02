@@ -274,7 +274,7 @@ Example:
 
 The current version being used as default is: **`2.40.0`**.<br/>
 Supported versions you can choose from include:<br/>
-`2.26.0` `2.27.0` `2.28.0` `2.29.0` `2.30.0` `2.31.0` `2.32.0` `2.33.0` `2.34.0` `2.35.0` `2.36.0` `2.37.0` `2.38.0` `2.39.0` `2.40.0` `2.41.0` `2.42.0` `2.42.2` `2.43.0`
+`2.26.0` `2.27.0` `2.28.0` `2.29.0` `2.30.0` `2.31.0` `2.32.0` `2.33.0` `2.34.0` `2.35.0` `2.36.0` `2.37.0` `2.38.0` `2.39.0` `2.40.0` `2.41.0` `2.42.0` `2.42.2` `2.43.0` `2.44.0` `2.45.0`
 
 You can also specify the URL of a Selenium jar file (including Sauce Storage URLs) to use any custom version of Selenium.
 
@@ -375,6 +375,19 @@ Example:
 
 ## Sauce-specific settings
 
+### Version (browser)
+Sauce allows users to set the version of the browser used in your test. If this capability is null, an empty string, or omitted altogether, the latest version of the browser will be used automatically.
+
+Key: `version`
+
+Value type: string or integer
+
+Example:
+
+```python
+"version": "35"
+```
+
 ### Pre-run Executables
 Sauce allows users to provide a URL to an executable file, which we will download and run before tests start. For example, you can use pre-run executables to configure the VM before your test starts.
 
@@ -394,6 +407,8 @@ Example:
 "prerun": { "executable": "http://url.to/your/executable.exe",
             "args": [ "--silent", "-a", "-q" ], "background": true }
 ```
+
+If a single string is sent as the `prerun` capability rather than a JSON object, this string is considered to be the url to the executable, and the executable launches with `background` set to `false`.
 
 **A Note about AutoIt:** If you want to run an AutoIt script during your test, compile it as an exe, send it using this capability and set `background` to `true` to allow AutoIt to continue running throughout the full duration of your test.
 
@@ -433,7 +448,7 @@ Valid values for Windows 8 and 8.1 are:<br/> `1024x768` `1280x1024`
 
 ### Custom Time Zones
 
-Test VMs can be configured with custom time zones. This feature should work on all operating systems, however time zones on Windows VMs are approximate. They will default to the time zone that the provided location falls into. A complete list of valid locations [can be found here on Wikipedia](http://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Sauce takes only location names (not their paths), as shown in the example below.
+Test VMs can be configured with custom time zones. This feature should work on all operating systems, however time zones on Windows VMs are approximate. They will default to the time zone that the provided location falls into. A complete list of valid locations [can be found here on Wikipedia](http://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Underscores should be replaced with spaces. Sauce takes only location names (not their paths), as shown in the example below. 
 
 Key: `timeZone`
 
