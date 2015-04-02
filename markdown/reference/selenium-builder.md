@@ -16,14 +16,14 @@ Selenium Builder supports creating scripts in both Selenium 1 and Selenium 2, an
 
 ### Installing the Plugin
 
-Selenium Builder is an extension for the Firefox browser which make installation a snap. Follow these steps to get it installed: 
+Selenium Builder is an extension for the Firefox browser which makes installation a snap. Follow these steps to get it installed: 
 
 1. Launch Firefox and navigate to the [Selenium Builder download page](http://sebuilder.github.io/se-builder/) or [view on Github](http://github.com/sebuilder/se-builder)
-2. Click the <i>Install</i> button. If prompted, confirm that you would like to allow installation from this location.
+2. Click the [Install](http://www.saucelabs.com/addons/selenium-builder-latest.xpi) button. If prompted, confirm that you would like to allow installation from this location.
 3. Click through the wizard & restart Firefox.
 4. Start Selenium Builder by choosing <i>Tools</i> -->  <i>Web Developer</i> --> <i>Launch Selenium Builder</i> from the menu.
 
-Congrats, you have sucessfully installed Selenium Builder and now its time to run your first script.  
+Congrats, you have sucessfully installed Selenium Builder and now it's time to run your first script.  
  
 > Note: Once installed, you will be notified of updated versions of Selenium Builder automatically thanks to the seamless integration with Firefox.
 
@@ -35,13 +35,13 @@ Recording a new script is ridiculously easy. In order to record your first scrip
 2. Switch windows from Selenium Builder to the main Firefox one. Notice that there is a tab that is green; this is the Selenium Builder tab where your interactions will be captured.
 
 3. Interact with your application in whatever means is needed to fulfill your script's requirements. 
-> Note: A script that goes end-to-end without error tells provides value, but really there needs to be some checks put in it. To add a check while recording, click the <i>Record a verification</i> button. This pauses recording and enables the element highlighter. Using the element highlighter, select the portion of the page you want to check. Once the check is recorded Selenium Builder returns to recording actions. By default, the check recorded by Selenium Builder is `verifyTextPresent`. This is a sensible default, but there are a number of situations where you would want to change it to another one. You can do it during the recording process or afterwards.
+> Note: A script that goes end-to-end without error provides value, but really there need to be some checks put in it. To add a check while recording, click the <i>Record a verification</i> button. This pauses recording and enables the element highlighter. Using the element highlighter, select the portion of the page you want to check. Once the check is recorded Selenium Builder returns to recording actions. By default, the check recorded by Selenium Builder is `verifyTextPresent`. This is a sensible default, but there are a number of situations where you would want to change it to another one. You can do it during the recording process or afterwards.
 
 4. Once you have recorded everything you want in the script, click <i>Stop recording</i>.
 
 5. After completing your test make sure the script works as expected by running it locally, click <i>Run</i> --> <i>Run Test Locally</i>.
  
-6. Perhaps the most important part of recording a script is saving it. After stopping recording, the buttons at the bottom of the Selenium Builder window will change and include one for saving.Clicking it presents you with a list of formats that the script can be saved in. Selenium Builder supports a number of formats that it can save as, but it's native format is HTML (Selenese). Choose that one for now and save your file. It is now safe to close turn off Selenium Builder.
+6. Perhaps the most important part of recording a script is saving it. After stopping recording, the buttons at the bottom of the Selenium Builder window will change and include one for saving. Clicking it presents you with a list of formats that the script can be saved in. Selenium Builder supports a number of formats that it can save as, but its native format is HTML (Selenese). Choose that one for now and save your file. It is now safe to close and turn off Selenium Builder.
 
 
 ## Basic Overview
@@ -66,22 +66,22 @@ The status of each completed step is reflected in its background colour.
 
 A solid green script indicates success and is what we are aiming for. Red steps indicate some further investigation is required either to determine if this is a legitimate failure or as a result of a locator or synchronization problem. In the case of the latter, go back and edit the script to solve the issue
 
-With your script running locally it is time to try it on Selenium Serever. To do this, click <i>Run on Selenium Server</i>.
+With your script running locally it is time to try it on Selenium Server. To do this, click <i>Run on Selenium Server</i>.
 
-#### Running scripts on Sauce Cloud
+#### Running scripts on Sauce Labs
 
-Selenium Builder allows you to run your tests on Sauce Labs' Selenium Cloud without leaving the plugin. In order to run your script simply select <i>Run on Sauce OnDemand</i> from the <i>Run</i> menu. Once you provide your `Access Key` and `Username`, choose the desired os and browser combination and hit <i>Ok</i>. Once the test sucessfully initiates you should be able to see the a new Job under your account. Select <i>Automatically show Sauce jobs page</i> if you want the plugin to open a jobs page automatically. 
+Selenium Builder allows you to run your tests on Sauce Labs' Selenium Cloud without leaving the plugin. In order to run your script simply select <i>Run on Sauce OnDemand</i> from the <i>Run</i> menu. Once you provide your `Access Key` and `Username`, choose the desired OS and browser combination and hit <i>Ok</i>. Once the test sucessfully initiates you should be able to see the a new job under your account. Select <i>Automatically show Sauce jobs page</i> if you want the plugin to open a jobs page automatically. 
 
 Note: You need an active Sauce Labs Account to run your tests on Sauce Clound and you can quickly register on our [homepage](https://saucelabs.com/signup/trial). 
 
 
 ### Editing a script
 
-Sometimes we know better about what a step should be than what Selenium Builder captured during the recording phase or perhaps our an existing step just needs a bit of fine tuning. In order to do this we click the  beside the step command which reveals up the step details.
+Sometimes we know better about what a step should be than what Selenium Builder captured during the recording phase or perhaps an existing step just needs a bit of fine tuning. In order to do this we click the beside the step command which reveals the step details.
 
 The first thing to notice is that rather than having all the possible commands displayed to you in a single list like Selenium IDE they are categorized for easier location.
 
-* <i>Navigation</i> - Navigation actions include a basic set of commands to navigate between browser window, such as `get`, `refresh`, and several others. 
+* <i>Navigation</i> - Navigation actions include a basic set of commands to navigate between browser windows, such as `get`, `refresh`, and several others. 
 
 * <i>Input</i> - Input actions are the most common category of command used when creating Selenese scripts. Commands for clicking, typing and mouse overs in browser windows and frames are all found here. Inputs can be further modified to include basic synchronization by waiting for a page to load as a result of whatever it just did.
 
@@ -97,7 +97,7 @@ Once the step reflects your intention, click the <i>OK</i> button to save the ch
 
 Changing existing steps is the most common task when editing a script but sometimes it is easier to just remove chunks and replace them with new ones.
 
-To remove a step from the script, open the tasks menu at the right of the step and choose to <i>delete step</i>. After accepting the warning that this is a one-way process the step will be gone.
+To remove a step from the script, open the tasks menu at the right of the step and choose <i>delete step</i>. After accepting the warning that this is a one-way process the step will be gone.
 
 Once the step is gone you can either manually <i>Append one step</i> or <i>Record further steps</i>. Which one you choose is largely dependant on how many steps will be needed to added to the script.
 
@@ -105,9 +105,9 @@ Both recording new steps and appending new step will put them at the end of the 
 
 
 ### Saving Non-Selenese scripts
-Part of the power of Selenium Builder is its ability to save recorded scripts into other languages than just Selenese (HTML). While Selenese is convenient, it lacks certain advantages that a full programming language has like conditionals and loops.
+Part of the power of Selenium Builder is its ability to save recorded scripts into other languages than just Selenese (HTML). While Selenese is convenient, it lacks certain advantages that a full programming language has, like conditionals and loops.
 
-To export your Selenium Builder in a non Selenese format, choose the <i>Export</i> button and choosed the format you want to export as. For instance, <i>Java (TestNG) - Selenium RC</i> saves the script in such a way that it can be run from the popular Java test framework JUnit against your local Selenium server.
+To export your Selenium Builder in a non Selenese format, choose the <i>Export</i> button and choose the format you want to export as. For instance, <i>Java (TestNG) - Selenium RC</i> saves the script in such a way that it can be run from the popular Java test framework JUnit against your local Selenium server.
 
 Once a script has been saved as a non-Selenese format, that script is no longer considered a Selenium Builder script and cannot be opened by Selenium Builder -- even if no changes have been made to the underlying script. This is because the various formats can include things that Selenium Builder cannot represent in its GUI. It is because of this that saving in another format should be done only once you have a level of comfort with the script's contents in terms of flow and execution.
 
@@ -132,13 +132,13 @@ There are a number of different ways that Selenium Builder can find the parts of
 
 The first group of locators all hook off of a unique attribute value of the desired element.
 
-* <i>id</i> - Locators that begin with id= will interact with the first element that has an id attribute of that value, otherwise the step will error and subsequently fail the script. According to the HTML specification, id's must be unique throughout the page for it to be considered 'valid'. If however your HTML is not valid and there are multiple items on the page with the same id, this will only interact with the first one.
+* <i>id</i> - Locators that begin with id= will interact with the first element that has an id attribute of that value, otherwise the step will error and subsequently fail the script. According to the HTML specification, ids must be unique throughout the page for it to be considered 'valid'. If however your HTML is not valid and there are multiple items on the page with the same id, this will only interact with the first one.
 
 * <i>name</i> - Similar to the id locator, Selenium Builder will interact with the first HTML element that has a matching name attribute to the specified name= value.
 
-* <i>identifier</i> - While Selenium Builder does not record scripts using this locator, it can play them back so it bears mentioning. A locators without a prefix is consider to be an Identifier one and will check elements on the page first using the id strategy and then the name one if it still hasn't found a match. This is actually the Selenium default strategy, but it requires giving up some control and could return the wrong element if you have markup which has both id and name attributes that share values. 
+* <i>identifier</i> - While Selenium Builder does not record scripts using this locator, it can play them back so it bears mentioning. A locator without a prefix is considered to be an identifier and will check elements on the page first using the id strategy and then the name one if it still hasn't found a match. This is actually the Selenium default strategy, but it requires giving up some control and could return the wrong element if you have markup which has both id and name attributes that share values. 
 
-> Attention: Whenever possible, it is highly desirable to use the attribute locators mentioned above, but when they are not available, not unique or are randomly generated by the application framework then you need to move to more complex locators.
+> Attention: Whenever possible, it is highly desirable to use the attribute locators mentioned above, but when they are not available, not unique, or are randomly generated by the application framework then you need to move to more complex locators.
 
 * <i>xpath</i> - Locators that start with either xpath= or just //. XPath treats your page as a structured document and can traverse it both up and down (and a combination of up and down) making it arguably the most powerful locator Selenium Builder can use. There are some known performance problems with Internet Explorer though which decrease its desirability in situations where you don't need that power. The [XPath Tutorial](http://www.w3schools.com/xpath/default.asp) on W3C Schools is a good place to start to understand how to use it.
 
@@ -146,7 +146,7 @@ The first group of locators all hook off of a unique attribute value of the desi
 
 <p>One thing to remember is that both these strategies tie you to the current structure of the HTML. If that structure changes, then you might have a situation where your script is broken even though the button you wanted just moved slightly to the right in the rendered page. This is almost always caused by a 'brittle' structural locator. To de-brittle a locator, try to use move the base element that the locator uses closer to the desired and/or make use of the more sophisticated functions and pseudo-functions that both xpath and css provide like `contains()` or `:contains()` on attributes. Selenium Builder has no way of knowing and understanding the pattern of non-random attributes so cannot do this at recording time.</p>
 
-The final Locator is similar to the id and name ones in that it keys off of a link's displayed name.The Link locator, not surprisingly is prefixed with `link=`. This is another powerful strategy that needs to come with a warning. If your site can be displayed in multiple languages (say, English, French and Spanish) then you will need to to create a copy of the script for each language. This is because when the displayed link content changes, so too does the locator. It is much better to use the id strategy in this situation. But if you don't have a multilingual site, then `link=` can certainly make your script more readable.
+The final Locator is similar to the id and name ones in that it keys off of a link's displayed name. The Link locator, not surprisingly is prefixed with link=. This is another powerful strategy that needs to come with a warning. If your site can be displayed in multiple languages (say, English, French and Spanish) then you will need to to create a copy of the script for each language. This is because when the displayed link content changes, so too does the locator. It is much better to use the id strategy in this situation. But if you don't have a multilingual site, then link= can certainly make your script more readable.
 
 
 ### Working with Unique Values
@@ -155,7 +155,7 @@ Sometimes having hardcoded data in scripts in necessary to exercise specific con
 Selenium Builder includes functionality to start addressing the Pesticide Paradox in an area that often requires it the most -- registration. Specifically, Selenium Builder can generate random usernames and email addresses. To enable non-static data with one of these values, choose the <i>unique values</i> task for that step to open the details pane.
 
 
-* <i>Usernames</i> - An individual Selenium Builder script can have up to 9 unique usernames in them. To insert a unique username, click the ${unique_username_1} link in the details pane. The existing value for the step will be replaced by that value. At runtime, that step will have a string value of 'sbxxxxx' where the x's are random, lower-case values.</li>
+* <i>Usernames</i> - An individual Selenium Builder script can have up to 9 unique usernames in it. To insert a unique username, click the ${unique_username_1} link in the details pane. The existing value for the step will be replaced by that value. At runtime, that step will have a string value of 'sbxxxxx' where the x's are random, lower-case values.</li>
 * <i>Email Addresses</i> - A Selenium Builder script can also have up to 9 unique email addresses in them. Much like with unique usernames, selecting the ${unique_email_1} link will insert a unique email address at runtime into a step. The email address format is 'sbxxxxx@<your domain>.???.com', again with the x's replaced with random, lower-case values.</li>Wa
 
 With both unique usernames and email addresses, once you have included one, the next one is now available to you in the details pane. This is especially useful for registration forms that have multiple email fields (like social media sites) where you could have _1, _2, _3, etc.
@@ -163,7 +163,7 @@ With both unique usernames and email addresses, once you have included one, the 
 ### Synchronization
 Aside from using improper or brittle locators for accessing objects on the page, the biggest cause for step failures relates to synchronization. Selenium Builder will execute the steps of your script as fast as your machine will allow, pausing only when it is told to pause.
 
-When recording a script, Selenium Builder knows when a page load occurs and so is able to put in the appropriated waitForPageToLoad step after an action. If you are editing an existing step, you can turn it into a synchronized action by checking the <i>Wait for a new page to load after executing the action</i> box in its step details. These andWait variants are great for simple, Web 1.0 applications but are insufficient for modern, dynamic applications. For that we need some other synchronization approaches.
+When recording a script, Selenium Builder knows when a page load occurs and so is able to put in the appropriate waitForPageToLoad step after an action. If you are editing an existing step, you can turn it into a synchronized action by checking the <i>Wait for a new page to load after executing the action</i> box in its step details. These andWait variants are great for simple, Web 1.0 applications but are insufficient for modern, dynamic applications. For that we need some other synchronization approaches.
 
 Dynamic applications that use the AJAX basket of tricks to display content without reloading the page will cause you great amounts of synchronization woes if you try to use andWait with them. The brute-force solution is to insert a <i>setSpeed</i> step which adds a delay to the execution of the next command, but that is not always guaranteed to work (and will over time guarantee that your script takes longer to run than it needs to). Brute-force should not be the goal though; fineness should.
 
@@ -177,6 +177,3 @@ None of these synchronization techniques is a one-size-fits-all solution and mos
 
 * [Full Documentation on Selenium Builder](https://github.com/sebuilder/se-builder/wiki)
 * [Selenium Commands and Operations](http://www.seleniumhq.org/docs/03_webdriver.jsp#selenium-webdriver-api-commands-and-operations)
-
-
-
