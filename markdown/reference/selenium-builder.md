@@ -7,10 +7,10 @@
 }
 
 
-Selenium Builder (Se Builder) is an [open source](https://github.com/sebuilder/se-builder/wiki/OSS-Policy) tool for easily writing automated Selenium scripts
+Selenium Builder is an [open source](https://github.com/sebuilder/se-builder/wiki/OSS-Policy) tool for easily writing automated Selenium scripts
 and running those cross-browser in the cloud. 
 
-Se Builder supports creating scripts in both Selenium 1 and Selenium 2, and converting between the [two](https://github.com/sebuilder/se-builder/wiki/Selenium).
+Selenium Builder supports creating scripts in both Selenium 1 and Selenium 2, and converting between the [two](https://github.com/sebuilder/se-builder/wiki/Selenium).
 
 ## Getting Started
 
@@ -30,16 +30,16 @@ Congrats, you have sucessfully installed Selenium Builder and now its time to ru
 ### Recording your first script
 Recording a new script is ridiculously easy. In order to record your first script follow these simple steps. 
 
-1. Put the starting URL for your script in the URL box of Selenium Builder and press click <i>Go!</i>.
+1. Put the starting URL for your script in the URL box of Selenium Builder and press <i>Selenium 1</i> or <i>Selenium 2</i>.
 
 2. Switch windows from Selenium Builder to the main Firefox one. Notice that there is a tab that is green; this is the Selenium Builder tab where your interactions will be captured.
 
 3. Interact with your application in whatever means is needed to fulfill your script's requirements. 
 > Note: A script that goes end-to-end without error tells provides value, but really there needs to be some checks put in it. To add a check while recording, click the <i>Record a verification</i> button. This pauses recording and enables the element highlighter. Using the element highlighter, select the portion of the page you want to check. Once the check is recorded Selenium Builder returns to recording actions. By default, the check recorded by Selenium Builder is `verifyTextPresent`. This is a sensible default, but there are a number of situations where you would want to change it to another one. You can do it during the recording process or afterwards.
 
-4. Once you have recorded everything you want in the script, click <i>Stop recording</i>
+4. Once you have recorded everything you want in the script, click <i>Stop recording</i>.
 
-5. After completing your test make sure the script works as expected by running it locally, click <i>Run</i> --> <i>Run Test Locally</i>
+5. After completing your test make sure the script works as expected by running it locally, click <i>Run</i> --> <i>Run Test Locally</i>.
  
 6. Perhaps the most important part of recording a script is saving it. After stopping recording, the buttons at the bottom of the Selenium Builder window will change and include one for saving.Clicking it presents you with a list of formats that the script can be saved in. Selenium Builder supports a number of formats that it can save as, but it's native format is HTML (Selenese). Choose that one for now and save your file. It is now safe to close turn off Selenium Builder.
 
@@ -50,6 +50,27 @@ Recording a new script is ridiculously easy. In order to record your first scrip
 Since Selenium Builder's native format is Selenese, it can import scripts that were created with either Selenium Builder or [Selenium IDE](http://seleniumhq.org/projects/ide). To load a script created by any of these, click the <i>Open a script or a suite</i> link on the main Selenium Builder screen.
 
 This will open the Firefox file browser for you to find and select your existing Selenese formatted script. Once it has been parsed successfully it will open and be ready for editing.
+
+
+### Script Playback
+While useful testing and observation happens during the recording process, it is important to actually run the scripts we create for maximum value. Selenium Builder can playback scripts either locally or on a Selenium Server. 
+
+Very rarely do all the locators and synchronization work exactly as intended the first time. Because of this you should run your script locally first to work out all the hitches before attempting to run it in the cloud. To run the script locally, click the <i>Run test locally</i> button. The steps will be executed in the Selenium Builder tab from the start of the script until there is either an error (incorrect locator, synchronization) or a failed assertion.
+
+The status of each completed step is reflected in its background colour.
+
+* <i>Blue</i> - Not yet run
+* <i>Yellow</i> - In process
+* <i>Green</i> - Success
+* <i>Red</i> - Failure
+
+A solid green script indicates success and is what we are aiming for. Red steps indicate some further investigation is required either to determine if this is a legitimate failure or as a result of a locator or synchronization problem. In the case of the latter, go back and edit the script to solve the issue
+
+With your script running locally it is time to try it on Selenium Serever. To do this, click <i>Run on Selenium Server</i>.
+
+#### Running scripts on Sauce Cloud
+
+
 
 ### Editing a script
 
@@ -79,33 +100,15 @@ Once the step is gone you can either manually <i>Append one step</i> or <i>Recor
 
 Both recording new steps and appending new step will put them at the end of the script. To move them, simply drag each step to the desired location.
 
-### Script Playback
-While useful testing and observation happens during the recording process, it is important to actually run the scripts we create for maximum value. Selenium Builder can playback scripts either locally or on a Selenium Server. 
-
-Very rarely do all the locators and synchronization work exactly as intended the first time. Because of this you should run your script locally first to work out all the hitches before attempting to run it in the cloud. To run the script locally, click the <i>Run test locally</i> button. The steps will be executed in the Selenium Builder tab from the start of the script until there is either an error (incorrect locator, synchronization) or a failed assertion.
-
-The status of each completed step is reflected in its background colour.
-
-* <i>Blue</i> - Not yet run
-* <i>Yellow</i> - In process
-* <i>Green</i> - Success
-* <i>Red</i> - Failure
-
-A solid green script indicates success and is what we are aiming for. Red steps indicate some further investigation is required either to determine if this is a legitimate failure or as a result of a locator or synchronization problem. In the case of the latter, go back and edit the script to solve the issue
-
-With your script running locally it is time to try it on Selenium Serever. To do this, click <i>Run on Selenium Server</i>.
-
 
 ### Saving Non-Selenese scripts
 Part of the power of Selenium Builder is its ability to save recorded scripts into other languages than just Selenese (HTML). While Selenese is convenient, it lacks certain advantages that a full programming language has like conditionals and loops.
 
-To export your Selenium Builder in a non Selenese format, choose the <i>Save to disk</i> button as you would normally but instead of selecting HTML select the format you want to export as. For instance, <i>Java (TestNG) - Selenium RC</i> saves the script in such a way that it can be run from the popular Java test framework JUnit against your local Selenium server.
 
 Once a script has been saved as a non-Selenese format, that script is no longer considered a Selenium Builder script and cannot be opened by Selenium Builder -- even if no changes have been made to the underlying script. This is because the various formats can include things that Selenium Builder cannot represent in its GUI. It is because of this that saving in another format should be done only once you have a level of comfort with the script's contents in terms of flow and execution.
 
 That said, exporting to something other than Selenese is considered a Best Practice in the Selenium community. It does increase the level of technical knowledge required to modify scripts though.
 
-### Test Suites
 If having one test script is good, then having many is fantastic. Opening one, running it then loading the next would be tedious and inefficient though. For this reason you can group similar scripts as a Suite.
 
 To create a new suite, record a new script or open an existing one and click the <i>Record another script</i> button. This creates a suite for you having the starting script as well as a new one. You now also have some new buttons at the top of Selenium Builder for controlling your suite; all of which do pretty much what they claim to do.
@@ -118,21 +121,6 @@ At the same time though, be cautious of creating a suite that is too large. Suit
 
 Don't let that scare you away from suites though; they are an important part of how to manage your investment in automation.
 
-
-### Unique Values
-Sometimes having hardcoded data in scripts in necessary to exercise specific conditions, but in many more cases it is smell indicating the risk of the both the Pesticide Paradox and the Landmine Problem. The Pesticide Paradox is when your application learns to evade your test conditions to hide bugs and the Landmine Problem is when it learns to evade the paths the tests take through the application.
-
-Selenium Builder includes functionality to start addressing the Pesticide Paradox in an area that often requires it the most -- registration. Specifically, Selenium Builder can generate random usernames and email addresses. To enable non-static data with one of these values, choose the <i>unique values</i> task for that step to open the details pane.
-
-
-* <i>Usernames</i> - An individual Selenium Builder script can have up to 9 unique usernames in them. To insert a unique username, click the ${unique_username_1} link in the details pane. The existing value for the step will be replaced by that value. At runtime, that step will have a string value of 'sbxxxxx' where the x's are random, lower-case values.</li>
-* <i>Email Addresses</i> - A Selenium Builder script can also have up to 9 unique email addresses in them. Much like with unique usernames, selecting the ${unique_email_1} link will insert a unique email address at runtime into a step. The email address format is 'sbxxxxx@<your domain>.???.com', again with the x's replaced with random, lower-case values.</li>
-
-
-With both unique usernames and email addresses, once you have included one, the next one is now available to you in the details pane. This is especially useful for registration forms that have multiple email fields (like social media sites) where you could have _1, _2, _3, etc.
-
-
-### Locators
 There are a number of different ways that Selenium Builder can find the parts of the web page you are trying to automate. Selenium Builder makes use of most of them automatically depending on the situation.
 
 The first group of locators all hook off of a unique attribute value of the desired element.
@@ -141,7 +129,6 @@ The first group of locators all hook off of a unique attribute value of the desi
 
 * <i>name</i> - Similar to the id locator, Selenium Builder will interact with the first HTML element that has a matching name attribute to the specified name= value.
 
-* <i>Identifier</i> - While Selenium Builder does not record scripts using this locator, it can play them back so it bears mentioning. A locators without a prefix is consider to be an Identifier one and will check elements on the page first using the id strategy and then the name one if it still hasn't found a match. This is actually the Selenium default strategy, but it requires giving up some control and could return the wrong element if you have markup which has both id and name attributes that share values. 
 
 > Attention: Whenever possible, it is highly desirable to use the attribute locators mentioned above, but when they are not available, not unique or are randomly generated by the application framework then you need to move to more complex locators.
 
@@ -152,6 +139,7 @@ The first group of locators all hook off of a unique attribute value of the desi
 <p>One thing to remember is that both these strategies tie you to the current structure of the HTML. If that structure changes, then you might have a situation where your script is broken even though the button you wanted just moved slightly to the right in the rendered page. This is almost always caused by a 'brittle' structural locator. To de-brittle a locator, try to use move the base element that the locator uses closer to the desired and/or make use of the more sophisticated functions and pseudo-functions that both xpath and css provide like contains() or :contains() on attributes. Selenium Builder has no way of knowing and understanding the pattern of non-random attributes so cannot do this at recording time.</p>
 
 The final Locator is similar to the id and name ones in that it keys off of a link's displayed name.The Link locator, not surprisingly is prefixed with link=. This is another powerful strategy that needs to come with a warning. If your site can be displayed in multiple languages (say, English, French and Spanish) then you will need to to create a copy of the script for each language. This is because when the displayed link content changes, so too does the locator. It is much better to use the id strategy in this situation. But if you don't have a multilingual site, then link= can certainly make your script more readable.
+
 
 ### Synchronization
 Aside from using improper or brittle locators for accessing objects on the page, the biggest cause for step failures relates to synchronization. Selenium Builder will execute the steps of your script as fast as your machine will allow, pausing only when it is told to pause.
