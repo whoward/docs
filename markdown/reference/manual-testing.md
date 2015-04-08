@@ -71,4 +71,4 @@ To prevent this from happening, every time you focus back on the manual testing 
 
 ## Want more?
 
-If you'd like to dig deeper, feel free to check out our [help forums](http://support.saucelabs.com/categories/20002728-sauce-scout) or email us directly at [help@saucelabs.com](mailto:help@saucelabs.com).
+If you'd like to dig deeper, feel free to check out our [help forums](https://support.saucelabs.com/forums/21670234-Manual-Testing) or email us directly at [help@saucelabs.com](mailto:help@saucelabs.com).
