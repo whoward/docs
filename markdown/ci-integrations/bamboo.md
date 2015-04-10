@@ -251,6 +251,7 @@ As mentioned previously, the Sauce Bamboo plugin will set a series of environmen
 * `SAUCE_USER_NAME` - The user name used to invoke Sauce OnDemand
 * `SAUCE_API_KEY` - The access key for the user used to invoke Sauce OnDemand
 * `SELENIUM_STARTING_URL` - The value of the `Starting URL` field
+* `SAUCE_BAMBOO_BUILDNUMBER` - The Bamboo build number
 
 Your test code will need to be updated to reference these environment variables.
 
