@@ -42,7 +42,8 @@ The Assertion Consumer Service (ACS) URL is an endpoint that receives and proces
 ### Configuring Attributes
 The following attributes *must* be included in your assertion with the expected values listed for the integration to work correctly.
 
-**Required Attributes**  
+**Required Attributes**
+
 | Attributes 	| Expected Value 	| Example    |
 |----------	|-------------	|-------------    |
 | saml:Issuer 	| URL identifying your organization 	| https://www.yourcompany.com/sso-prod  |
@@ -50,7 +51,8 @@ The following attributes *must* be included in your assertion with the expected 
 
 **Note:** The required attributes listed above are those from the SAML 2.0 specification and must match the specified format, as in `saml:[attribute name]`. These values will not be honored if passed in as custom attributes, as in `saml:Attribute Name="[attribute name]"`.
 
-**Optional Attributes**  
+**Optional Attributes**
+
 | Attributes 	| Expected Value 	| Example    |
 |----------	|-------------	|-------------    |
 | FirstName 	| User's first name 	| John  |
