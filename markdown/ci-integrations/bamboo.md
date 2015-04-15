@@ -120,7 +120,7 @@ Click the `Save` button.  That's it, our configuration is all setup, let's run t
 
 ## Bamboo Configuration for a Python-based Project
 
-To demonstrate the Sauce plugin for Bamboo, let's create a new Bamboo project for a Python project.
+To demonstrate the Sauce plugin for Bamboo, let's create a new Bamboo project for a Python project.  These steps assume that you are using the [Nose](http://node.readthedocs.org) unit testing library, and that this library has already been installed within your environment.
 
 Click the `Create Plan` link included on the top-right of the header bar.
 
@@ -162,7 +162,11 @@ Enter `Run Tests` in the `Task Description` field.
 
 Click on the `Add Executable` link.
 
-![Add new executable](/images/ci-integrations/bamboo/add-new-executable.png)
+![Add new executable](/images/ci-integrations/bamboo/add-new-executable.png) 
+
+Enter `nosetests` in the `Executable label` field, and enter the location of the nosetests binary in the `Path` field.  Click the `Add button`.      
+
+![Nosetests executable](/images/ci-integrations/bamboo/nose-executable.png) 
 
 Enter `--with-nosexunit simple_test.py` in the `Argument` field.
 
@@ -251,6 +255,7 @@ As mentioned previously, the Sauce Bamboo plugin will set a series of environmen
 * `SAUCE_USER_NAME` - The user name used to invoke Sauce OnDemand
 * `SAUCE_API_KEY` - The access key for the user used to invoke Sauce OnDemand
 * `SELENIUM_STARTING_URL` - The value of the `Starting URL` field
+* `SAUCE_BAMBOO_BUILDNUMBER` - The Bamboo build number
 
 Your test code will need to be updated to reference these environment variables.
 
