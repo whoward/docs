@@ -2,7 +2,7 @@
   title: "Single Sign-On",
   description: "Configuring Single Sign-On for your Sauce Labs account",
   category: "Reference",
-  index: 5
+  index: 12
 }
 
 **Note:** SSO is only available to Enterprise users and is currently in beta. Please email [beta@saucelabs.com](mailto:beta@saucelabs.com) to request access.
