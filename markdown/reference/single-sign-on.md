@@ -5,6 +5,8 @@
   index: 5
 }
 
+**Note:** SSO is only available to Enterprise users and is currently in beta. Please email [beta@saucelabs.com](mailto:beta@saucelabs.com) to request access.
+
 Enterprise account owners are able to integrate their identity management solution with their Sauce Labs account. Single Sign-On (SSO) enables an organization to maintain a single access point which grants permission to all authorized applications with a single set of credentials. This enhances fine-grained control of application access and simplifies end user authentication. 
 
 ## Supported Integrations
