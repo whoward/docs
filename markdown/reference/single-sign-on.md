@@ -10,7 +10,7 @@
 Enterprise account owners are able to integrate their identity management solution with their Sauce Labs account. Single Sign-On (SSO) enables an organization to maintain a single access point which grants permission to all authorized applications with a single set of credentials. This enhances fine-grained control of application access and simplifies end user authentication. 
 
 ## Supported Integrations
-The Sauce Labs SSO integration supports any configuration that complies with the [SAML 2.0 standard](http://en.wikipedia.org/wiki/SAML_2.0) such Microsoft Active Directory Federation Service (ADFS) PingIdentity's PingFederate. We have also partnered with the following identity-as-a-service providers for out-of-the-box integration with web-based portals. 
+The Sauce Labs SSO integration supports any configuration that complies with the [SAML 2.0 standard](http://en.wikipedia.org/wiki/SAML_2.0) such as Microsoft Active Directory Federation Service (ADFS) and PingIdentity's PingFederate. We have also partnered with the following identity-as-a-service providers for out-of-the-box integration with web-based portals. 
 
 * [Okta](https://www.okta.com/product/identity-management/single-sign-on.html)
 * [OneLogin](https://www.onelogin.com/product/sso)
@@ -31,7 +31,7 @@ For your organization to be identified during an incoming assertion, you must up
 [Okta Application Network](https://dev-989235-admin.oktapreview.com/admin/apps/add-app)  
 [OneLogin Application Catalog](https://app.onelogin.com/apps/find)  
 
-**Note:** When configuring an integration using a service provider's application catalog or index, you will typically be guided through step-by-step instructions for configuring metadata and other necessary information
+**Note:** When configuring an integration using a service provider's application catalog or index, you will typically be guided through step-by-step instructions for configuring metadata and other necessary information.
 
 ## Basic Configuration
 The SSO integration relies heavily on convention to keep setup quick and simple. Configuring your assertion using the following specifications will ensure a smooth transition for your users.
@@ -53,8 +53,8 @@ The following attributes *must* be included in your assertion with the expected 
 **Optional Attributes**  
 | Attributes 	| Expected Value 	| Example    |
 |----------	|-------------	|-------------    |
-| Issuer 	| URL identifying your organization 	| https://www.yourcompany.com/sso-prod  |
-| NameID 	| User's email address 	| john.smith@yourcompany.com |
+| FirstName 	| User's first name 	| John  |
+| LastName 	| User's last name 	| Smith |
 
 **Note:** The optional attributes listed above are not yet implemented but may be passed with your assertion so they will automatically be utilized once these attributes have been enabled.
 
