@@ -91,7 +91,7 @@ curl https://saucelabs.com/rest/v1/users/sauceUsername/concurrency \
 
 ## Test Activity and Usage
 
-### Get Real-Time User Activity
+### Get Real-Time Job Activity
 
 URL: `https://saucelabs.com/rest/v1/:username/activity`
 
@@ -108,6 +108,18 @@ curl https://saucelabs.com/rest/v1/sauceUsername/activity \
 {"subaccounts": {"sauceUsername": {"in progress": 0, "all": 0, "queued": 0}, "subAccount1": {"in progress": 1, "all": 1, "queued": 0}, "subAccount2": {"in progress": 2, "all": 3, "queued": 1}}, "totals": {"in progress": 3, "all": 4, "queued": 1}}
 ```
 The result shows real-time numbers for the parent account and all of its sub-accounts.  There is also a "totals" section at the end which tallies the numbers across all accounts.
+
+### Get User Activity
+
+URL: `https://saucelabs.com/rest/v1/users/:username/activity`
+
+Get information about concurrency, minutes and jobs used by the user over a specific duration (default 90 days). Concurrency is separated in mean and peak concurrency.
+
+**Example Request:**
+```bash
+curl https://saucelabs.com/rest/v1/users/sauceUsername/activity \
+-u sauceUsername:sauceAccessKey
+```
 
 ### Get User Account Usage
 Access historical account usage data.
@@ -128,6 +140,22 @@ curl https://saucelabs.com/rest/v1/users/sauceUsername/usage \
 {"usage": [["2015-3-20", [5, 467]], ["2015-3-1", [7, 114]]], "username": "sauceUsername"}
 ```
 The result is a breakdown summarizing the total number of jobs and VM time used, in seconds, by day.
+
+### Change Access Key
+
+URL: `https://saucelabs.com/rest/v1/users/:username/accesskey/change`
+
+Change access key of your account.
+
+__Warning__: Regenerating your access key will require updating your access key value throughout your configuration.
+Commands containing your old access key will fail.
+
+**Example Request:**
+```bash
+curl https://saucelabs.com/rest/v1/users/sauceUsername/accesskey/change \
+-u sauceUsername:sauceAccessKey \
+-X POST
+```
 
 ## Jobs
 
@@ -467,7 +495,7 @@ https://saucelabs.com/rest/v1/users/sauceUsername \
 
 Update a subaccount Sauce Labs service plan.
 
-URL: `https://saucelabs.com/rest/v1/:subaccount_username/subscription`
+URL: `https://saucelabs.com/rest/v1/users/:subaccount_username/subscription`
 
 Method: `POST`
 
@@ -487,7 +515,7 @@ https://saucelabs.com/rest/v1/users/SUBACCOUNT_USERNAME/subscription
 
 Unsubscribe a subaccount from its Sauce Labs service plan.
 
-URL: `https://saucelabs.com/rest/v1/:subaccount_username/subscription`
+URL: `https://saucelabs.com/rest/v1/users/:subaccount_username/subscription`
 
 Method: `DELETE`
 
@@ -495,7 +523,7 @@ Method: `DELETE`
 ```bash
 curl -u sauceUsername:sauceAccessKey \
 -X DELETE \
-https://saucelabs.com/rest/v1/SUBACCOUNT_USERNAME/subscription
+https://saucelabs.com/rest/v1/users/SUBACCOUNT_USERNAME/subscription
 ```
 
 ## Temporary Storage
