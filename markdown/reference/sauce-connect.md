@@ -376,6 +376,13 @@ However, because an additional proxy is required for localhost URLs, tests may p
 
 **Please Note**: On Android devices ports 5555 and 8080 cannot be used with Sauce Connect.
 
+**The Safari browser** on OS X 10.10 Yosemite and mobile iOS 8+ proxies the following common ports:
+
+> 80, 443, 888, 2000, 2001, 2020, 2109, 2222, 2310, 3000, 3001, 3030, 3210, 3333, 4000, 4001, 4040, 4321, 4502, 4503, 4567, 5000, 5001, 5050, 5555, 5432, 6000, 6001, 6060, 6666, 6543, 7000, 7070, 7774, 7777, 8000, 8001, 8003, 8031, 8080, 8081, 8765, 8777, 8888, 9000, 9001, 9080, 9090, 9876, 9877, 9999, 49221, 55001
+
+If you're testing on Safari and need a different port, [please let us know!](http://support.saucelabs.com/anonymous_requests/new) We do our best to support ports that will be useful for many customers, such as those used by popular frameworks.
+
+
 ### How can I improve performance?
 
 There are a few Sauce Connect specific [command line options](#command-line-options) that can help.  These include `-D, --direct-domains`, `-t, --tunnel-domains`, and `-F, --fast-fail-regexps`.  These allow for careful curating of which traffic will go through the tunnel and which will go directly to the internet.
