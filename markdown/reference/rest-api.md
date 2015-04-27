@@ -530,17 +530,15 @@ https://saucelabs.com/rest/v1/users/SUBACCOUNT_USERNAME/subscription
 
 ## Temporary Storage
 
-Sauce Labs provides temporary storage inside our network for mobile apps, Selenium jars, prerun executables, and other assets required by your tests. Storing assets in our network can eliminate network latency problems when sending big files to Sauce. Here's how you use our storage:
+Sauce Labs provides temporary storage inside our network for mobile applications, Selenium jars, prerun executables, and other assets required by your tests. Storing assets in our network can eliminate network latency problems when sending big files to Sauce. Here's how you use our storage:
 
 * Before tests start, upload the file via our REST API as described below.
 * During tests, use a `sauce-storage:` URL for the file, in the following format: `"sauce-storage:your_file_name"`
 * Sauce will find the file, download it through our fast internal network, and get your tests started right away.
 
-Please note that our temporary storage retains files for only seven days. We recommend users of this service upload files via our REST API every time their tests are about to run, as part of their build process.
-
 ### Upload File
 
-Upload a file to temporary storage.
+Uploads a file to the temporary sauce storage. The storage will only retain the files for seven days.
 
 URL: `https://saucelabs.com/rest/v1/storage/:username/:your_file_name`
 
@@ -554,12 +552,11 @@ curl -u sauceUsername:sauceAccessKey \
 https://saucelabs.com/rest/v1/storage/sauceUsername/test_file_name?overwrite=true \
 --data-binary @/path/to/your_file_name
 ```
-
-This can be scripted in any programming language. Just make sure the HTTP method being used is POST and the `Content-Type` header is correct.
+Don't forget to include the "@" sign right before you specify the path to your file. In addition, you should be able to script this request using any programming language. Just make sure that the HTTP method being used is POST and the `Content-Type` header is correct.
 
 **Optional Query Params:**
 
-By default, the API prevents overwriting files already stored in Sauce temporary storage. The `overwrite=true` query parameter (shown in the example above) can be added to allow overwriting.
+By default, the REST API prevents overwriting files already stored in the temporary sauce storage. The `overwrite=true` query parameter (shown in the example above) can be added to allow overwriting.
 
 ### Get Stored Files
 
