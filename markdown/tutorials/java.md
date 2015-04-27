@@ -27,7 +27,7 @@ Download and install [Java](http://www.java.com/en/download/manual.jsp) if it is
 **Note:** Ensure the **JAVA_HOME** environment variable is defined appropriately.
 For MacOS, add the following to ~/.bash_profile:
 ```bash 
-export JAVA_HOME="$( /usr/libexec/java_home )”
+export JAVA_HOME="$( /usr/libexec/java_home )"
 ```
 
 Go to the [Maven download](http://maven.apache.org/download.html) page to download the Maven binary distribution and extract it to your file system.  Add the `bin` directory to your path, for example,
