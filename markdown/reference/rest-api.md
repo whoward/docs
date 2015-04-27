@@ -346,6 +346,8 @@ https://saucelabs.com/rest/v1/sauceUsername/jobs/YOUR_JOB_ID/assets
 
 Download job assets. After a job completes, all assets created during the job are available via this API. These include the screencast recording, logs, and screenshots taken on crucial steps.
 
+The job assests will be deleted from the test page after 30 days. Thus, after 30 days all your test commands, logs, screenshots and the screencast recording will be gone. This is the reason why we strongly recommend to download your job assets if this is an information that you must keep in your records.
+
 URL: `https://saucelabs.com/rest/v1/:username/jobs/:job_id/assets/:file_name`
 
 **Accepted Values for `:file_name`**:
