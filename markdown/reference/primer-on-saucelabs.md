@@ -147,7 +147,7 @@ You should expect an individual test sent to Sauce to run about 4 - 5 times as s
 
 In case you observe severe latency, few helpful steps to fix it:
 
-- Make sure the network connection is good (check here: http://sjc.saucelabs.com/) or ping -c 10 ondemand.saucelabs.com
+- Make sure the network connection is good, 'ping -c 10 ondemand.saucelabs.com'
 
 - Use WebDriver Expected Conditions – in order to manage latency, expected conditions will keep your tests from failing when page loads are taking longer than they would on a local selenium grid.
 
