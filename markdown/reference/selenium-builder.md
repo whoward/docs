@@ -18,7 +18,7 @@ Selenium Builder supports creating scripts in both Selenium 1 and Selenium 2, an
 
 Selenium Builder is an extension for the Firefox browser which makes installation a snap. Follow these steps to get it installed: 
 
-1. Launch Firefox and navigate to the [Selenium Builder download page](http://sebuilder.github.io/se-builder/) or [view on Github](http://github.com/sebuilder/se-builder)
+1. Launch Firefox and navigate to the [Selenium Builder download page](http://seleniumbuilder.github.io/se-builder/) or [view on Github](https://github.com/SeleniumBuilder/se-builder)
 2. Click the [Install](http://www.saucelabs.com/addons/selenium-builder-latest.xpi) button. If prompted, confirm that you would like to allow installation from this location.
 3. Click through the wizard & restart Firefox.
 4. Start Selenium Builder by choosing <i>Tools</i> -->  <i>Web Developer</i> --> <i>Launch Selenium Builder</i> from the menu.
@@ -175,5 +175,5 @@ None of these synchronization techniques is a one-size-fits-all solution and mos
 
 ###Additional Information 
 
-* [Full Documentation on Selenium Builder](https://github.com/sebuilder/se-builder/wiki)
+* [Full Documentation on Selenium Builder](https://github.com/SeleniumBuilder/se-builder/wiki)
 * [Selenium Commands and Operations](http://www.seleniumhq.org/docs/03_webdriver.jsp#selenium-webdriver-api-commands-and-operations)
