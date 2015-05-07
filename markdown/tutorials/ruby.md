@@ -67,13 +67,13 @@ require "capybara/rspec"
 
 # Set up configuration
 Sauce.config do |c|
-  config[:browsers] = [
+  c[:browsers] = [
     ["Windows 8", "Internet Explorer", "10"],
     ["Windows 7", "Firefox", "20"],
     ["OS X 10.10", "Safari", "8"],
     ["Linux", "Chrome", 40]
   ]
-  config[:sauce_connect_4_executable] = '/some/file/path/sc-4.3.8-osx/bin/sc'
+  c[:sauce_connect_4_executable] = '/some/file/path/sc-4.3.8-osx/bin/sc'
 end
 
 Capybara.default_driver = :sauce
@@ -144,7 +144,7 @@ describe "Wikipedia's Miso Page", :sauce => true do
     visit "http://en.wikipedia.org/"
     fill_in 'search', :with => "Miso"
     click_button "searchButton"
-    
+
     heading = find '#firstHeading'
     expect( heading ).to have_content "Miso"
   end
@@ -166,7 +166,7 @@ account.
 
 The sauce:spec rake command takes two optional parameters to let you control the directory you keep your specs
 in and the level of concurrency at which you run them. For example, to run specs from the "spec" directory one at a time,
-you'd run the command like so: 
+you'd run the command like so:
 
 ```bash
 rake sauce:spec[spec,1]
