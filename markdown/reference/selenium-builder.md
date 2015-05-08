@@ -19,7 +19,7 @@ Selenium Builder supports creating scripts in both Selenium 1 and Selenium 2, an
 Selenium Builder is an extension for the Firefox browser which makes installation a snap. Follow these steps to get it installed: 
 
 1. Launch Firefox and navigate to the [Selenium Builder download page](http://seleniumbuilder.github.io/se-builder/) or [view on Github](https://github.com/SeleniumBuilder/se-builder)
-2. Click the [Install](http://www.saucelabs.com/addons/selenium-builder-latest.xpi) button. If prompted, confirm that you would like to allow installation from this location.
+2. Click the Install button. If prompted, confirm that you would like to allow installation from this location.
 3. Click through the wizard & restart Firefox.
 4. Start Selenium Builder by choosing <i>Tools</i> -->  <i>Web Developer</i> --> <i>Launch Selenium Builder</i> from the menu.
 
@@ -47,7 +47,7 @@ Recording a new script is ridiculously easy. In order to record your first scrip
 ## Basic Overview
 
 ### Opening an existing script
-Since Selenium Builder's native format is Selenese, it can import scripts that were created with either Selenium Builder or [Selenium IDE](http://seleniumhq.org/projects/ide). To load a script created by any of these, click the <i>Open a script or a suite</i> link on the main Selenium Builder screen.
+Since Selenium Builder's native format is Selenese, it can import scripts that were created with either Selenium Builder or other Selenium Tools. To load a script created by any of these, click the <i>Open a script or a suite</i> link on the main Selenium Builder screen.
 
 This will open the Firefox file browser for you to find and select your existing Selenese formatted script. Once it has been parsed successfully it will open and be ready for editing.
 
