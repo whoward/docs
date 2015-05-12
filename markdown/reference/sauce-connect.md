@@ -218,8 +218,8 @@ Sauce Connect can be monitored more easily using a Service Managment tool like s
 8. modify username and access key in sc.server to match your own
 9. sudo systemctl daemon-reload
 8. sudo systemctl start sc.service
-9. sudo systemstl status sc.service
-10. sudo systemstl stop sc.service
+9. sudo systemctl status sc.service
+10. sudo systemctl stop sc.service
 
 ```
 [Unit]
