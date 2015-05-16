@@ -376,7 +376,7 @@ Example:
 ## Sauce-specific settings
 
 ### Version (browser)
-Sauce allows users to set the version of the browser used in your test. If this capability is null, an empty string, or omitted altogether, the latest version of the browser will be used automatically.
+If this capability is null, an empty string, or omitted altogether, the latest version of the browser will be used automatically. 
 
 Key: `version`
 
@@ -389,7 +389,7 @@ Example:
 ```
 
 ### Pre-run Executables
-Sauce allows users to provide a URL to an executable file, which we will download and run before tests start. For example, you can use pre-run executables to configure the VM before your test starts.
+Sauce allows users to provide a URL to an executable file, which will be downloaded and executed to configure the VM before the test starts.
 
 This capability takes a JSON object with 3 main keys:
 
@@ -397,7 +397,7 @@ Key: `prerun`
 
 Value type: JSON object, with 3 keys:
 
-  * **executable**: The url to the executable that you want to be run before your browser session starts
+  * **executable**: The URL to the executable you want to run before your browser session starts
   * **args**: A list of the command line parameters that you want the executable to receive
   * **background**: A boolean that defines whether Sauce should wait for this executable to finish before your browser session starts. If background isn't set or is set to `false`, Sauce will wait for up to 90 seconds for the executable to finish. At that point, the browser will start and your test will proceed.
 
@@ -408,7 +408,7 @@ Example:
             "args": [ "--silent", "-a", "-q" ], "background": true }
 ```
 
-If a single string is sent as the `prerun` capability rather than a JSON object, this string is considered to be the url to the executable, and the executable launches with `background` set to `false`.
+If a single string is sent as the `prerun` capability rather than a JSON object, this string is considered to be the URL to the executable, and the executable launches with `background` set to `false`.
 
 **A Note about AutoIt:** If you want to run an AutoIt script during your test, compile it as an exe, send it using this capability and set `background` to `true` to allow AutoIt to continue running throughout the full duration of your test.
 
@@ -428,7 +428,7 @@ Example:
 ```
 
 ### Specifying the Screen Resolution
-This setting specifies which screen resolution should be used during the test session. This feature is in beta and is available for tests running on Windows XP, Windows 7 (except Windows 7 with IE 9), Windows 8, Windows 8.1, OS X 10.6 and OS X 10.8. We do not yet offer specific resolutions for OS X 10.9.
+This setting specifies which screen resolution should be used during the test session. This feature is available in Windows XP, Windows 7 (except Windows 7 with IE 9), Windows 8, Windows 8.1, OS X 10.6 and OS X 10.8. We do not yet offer specific resolutions for OS X 10.9, OS X 10.10, Linux, or mobile platforms.
 
 Key: `screenResolution`
 
@@ -440,11 +440,11 @@ Example:
 "screenResolution": "1280x1024"
 ```
 
-Valid values for Windows XP, Windows 7, and OS X 10.6 are:<br/> `800x600` `1024x768` `1280x1024` `1440x900` `1920x1200`
+Valid values for Windows XP, Windows 7, and OS X 10.6 are:<br/> `800x600` `1024x768` `1052x864` `1152x864` `1280x800` `1280x960` `1280x1024` `1400x1050` `1440x900` `1600x1200` `1680x1050` `1920x1200` `2560x1600`
 
-Valid values for OS X 10.8 are:<br/> `1024x768` `1280x1024` `1400x900` `1920x1200`
+Valid values for OS X 10.8 are:<br/> `1024x768` `1152x864` `1152x900` `1280x800` `1280x1025` `1376x1032` `1400x1050` `1600x1200` `1680x1050` `1920x1200`
 
-Valid values for Windows 8 and 8.1 are:<br/> `1024x768` `1280x1024`
+Valid values for Windows 8 and 8.1 are:<br/> `800x600` `1024x768` `1280x1024`
 
 ### Custom Time Zones
 
@@ -466,11 +466,34 @@ Example:
 "timeZone": "Alaska"
 ```
 
+###Chrome Driver Version
+
+Sauce Labs supports the ChromeDriver version 1 series (i.e. `26.0.1383.0`) and the version 2 series (i.e. `2.15`). The default version of ChromeDriver when no value is specified depends on the version of Chrome.
+
+Chrome 28 and below: Chromedriver 26.0.1383.0<br/>
+Chrome 29 - 30: Chromedriver 2.4<br/>
+Chrome 31 - 32: Chromedriver 2.8<br/>
+Chrome 33 - 36: Chromedriver 2.10<br/>
+Chrome 37 - 39: Chromedriver 2.11<br/>
+Chrome 40 - 42: Chromedriver 2.15<br/>
+
+Key: `chromedriverVersion`
+
+Value Type: string
+
+Example:
+
+```python
+"chromedriverVersion": "2.15"
+```
+
+The list of supported ChromeDrivers you can choose from:<br/>
+
+`21.0.1180.0`, `23.0.1240.0`, `26.0.1383.0`, `0.6`, `0.7`, `0.8`, `0.9`, `2.0`, `2.1`, `2.2`, `2.3`, `2.4`, `2.5`, `2.6`, `2.7`, `2.8`, `2.9`, `2.10`, `2.11`, `2.12`, `2.13`, `2.14`, `2.15`
+
 ###Internet Explorer Driver Version
 
-The specific version of the IE Driver executable can be customized using the `iedriverVersion` key.
-
-In particular, Sauce Labs supports launching 64-bit IE on our 64-bit VMs: Windows 7, Windows 8, and Windows 8.1.  This provides a workaround for two known Selenium issues:
+Sauce Labs supports launching 64-bit IE on our 64-bit VMs: Windows 7, Windows 8, and Windows 8.1.  This provides a workaround for two known Selenium issues:
 
 Using a 32 bit driver on a 64 bit operating system causes Selenium's screenshot feature to only capture the part of the page currently visible in the browser viewport [Selenium Issue 5876](https://code.google.com/p/selenium/issues/detail?id=5876).
 
@@ -563,6 +586,8 @@ The available visibility levels are as follows:
 By default, mobile emulators and simulators are run in portrait orientation. You can also set them to landscape orientation.
 
 Key: `deviceOrientation`
+
+Defaults to "portrait". "landscape" is also acceptable.
 
 Value type: string
 
