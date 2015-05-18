@@ -29,9 +29,9 @@ Getting started with Appium on Sauce Labs is really easy. As long as you are fam
 
 1. Get a [Sauce Labs account](https://saucelabs.com/signup).
 2. Decide on the type of mobile application that you will be testing:
-   - [Mobile Native Application](#mobile-native-application)
+   - [Mobile Native Application](#mobile-native-application) 
    - [Mobile Web Application](#mobile-web-application) 
-   - [Mobile Hybrid Application](#mobile-hybrid-application)
+   - [Mobile Hybrid Application](#mobile-hybrid-application) 
 2. Write your mobile application tests using:
    - The [Appium](http://appium.io/slate/en/master/?python#appium-client-libraries) client library for the language of your choice.
 3. Use the [Platforms Configurator](https://docs.saucelabs.com/reference/platforms-configurator/#/) to obtain the  correct desired capabilities for your test.
@@ -90,13 +90,13 @@ To learn how Appium and Sauce Labs work read the [Understanding how Appium works
 
 ### Types of mobile applications
 
-### Mobile Native Application: 
+### Mobile Native Application 
 This type of application is developed for an specific platform (i.e., iOS or Android), using the native SDKs provided by the platform vendor, and distributed to users via the appropriate app store.
 
-### Mobile Web Application: 
+### Mobile Web Application 
 This type of application is formally what we call a mobile website. It can be accessed through a browser (e.g. Mobile Safari, Browser, Chrome, etc.) in a mobile simulator/emulator or real device. 
 
-### Mobile Hybrid Application: 
+### Mobile Hybrid Application 
 This type of application is part mobile native app and part mobile web app. Just like mobile native apps you can find and download mobile hybrid apps using the Apple’s App Store or the Google Play Store. In the same manner, just like a mobile web app, a mobile hybrid app would look like a mobile website that would be accessed through a "browser", but in this case the "browser" is an embedded webview within the application that would just allow to display some HTML. 
 
 ### Setting Desired Capabilities for Mobile Tests
