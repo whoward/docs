@@ -47,7 +47,7 @@ For more information on writing, configuring, and running your tests with Appium
 
 During your mobile applications' automated tests, Appium will be the tool in the background that is starting and driving the simulator, emulator or device for each Sauce Labs test. For iOS **Appium is supported in iOS versions 6.1 and later**, for Android **Appium is supported in Android versions 4.4 or later for [Mobile Web Application](#mobile-web-application) tests and Android versions 2.3, 4.0 and later for [Mobile Native Applications](#mobile-native-application) and [Mobile Hybrid Applications](#mobile-hybrid-application) tests**.
 
-First, decide on the type of mobile application that you will be testing. You can either test a [Mobile Native Application](#mobile-native-application), a [Mobile Web Application](#mobile-web-application)or a [Mobile Hybrid Application](#mobile-hybrid-application).
+First, decide on the type of mobile application that you will be testing. You can either test a [Mobile Native Application](#mobile-native-application) , a [Mobile Web Application](#mobile-web-application) or a [Mobile Hybrid Application](#mobile-hybrid-application) .
 
 If you are testing a mobile native application or a mobile hybrid application, make sure that:
 
@@ -92,13 +92,13 @@ To develop better mobile applications and be able to write better maintenance te
 
 ### Types of mobile applications
 
-## Mobile Native Application: 
+### Mobile Native Application: 
 This type of application is developed for an specific platform (i.e., iOS or Android), using the native SDKs provided by the platform vendor, and distributed to users via the appropriate app store.
 
-## Mobile Web Application: 
+### Mobile Web Application: 
 This type of application is formally what we call a mobile website. It can be accessed through a browser (e.g. Mobile Safari, Browser, Chrome, etc.) in a mobile simulator/emulator or real device. 
 
-## Mobile Hybrid Application: 
+### Mobile Hybrid Application: 
 This type of application is part mobile native app and part mobile web app. Just like mobile native apps you can find and download mobile hybrid apps using the Apple’s App Store or the Google Play Store. In the same manner, just like a mobile web app, a mobile hybrid app would look like a mobile website that would be accessed through a "browser", but in this case the "browser" is an embedded webview within the application that would just allow to display some HTML. 
 
 ### Setting Desired Capabilities for Mobile Tests
@@ -108,10 +108,10 @@ The desired capabilities are a set of keys and values that will be sent to the A
 Here is a list of the main desired capabilities that you will be using for your mobile tests:
 
 - **browserName** (required): 
-The mobile web browser that will be automated in the simulator, emulator or device (e.g Mobile Safari, Browser, Chrome, etc). If testing a Mobile Native Application or a Mobile Hybrid Application the value for this capability should be an empty string.
+The mobile web browser that will be automated in the simulator, emulator or device (e.g Mobile Safari, Browser, Chrome, etc). If testing a mobile native application or a mobile hybrid application the value for this capability should be an empty string.
 
 - **deviceName** (required):
-The name of the simulator, emulator or device that will be used (e.g iPhone Simulator, iPad Simulator, Android Emulator, Samsung Galaxy S4 Emulator, Samsung Galaxy S5 Device, etc.). To specify Android phones and tablets read the [Android Emulator Skins](#android- emulator-skins) section.
+The name of the simulator, emulator or device that will be used (e.g iPhone Simulator, iPad Simulator, Android Emulator, Samsung Galaxy S4 Emulator, Samsung Galaxy S5 Device, etc.). To specify Android phones and tablets read the [Android Emulator Skins](#android-emulator-skins) section.
 
 - **platformName** (required):
 The mobile operating system platform that will be used (e.g iOS or Android).
@@ -129,7 +129,7 @@ The path to a .ipa, .apk or .zip file containing the app to test. This could be 
 The orientation in which the simulator/device will be rendered (e.g portrait or landscape). 
 
 - **appActivity** (optional): 
-The activity name for the Android activity you want to launch from your package. This often needs to be preceded by a **.** (dot) (e.g., .MainActivity instead of MainActivity). Appium will automatically determine the activity to launch, you only need to use this desired capability if you want to specify an activity different than the default one.
+The activity name for the Android activity you want to launch from your package. This often needs to be preceded by a `.` (dot) (e.g., .MainActivity instead of MainActivity). Appium will automatically determine the activity to launch, you only need to use this desired capability if you want to specify an activity different than the default one.
 
 - **appPackage** (optional): 
 The Java package of the Android app you want to run (e.g com.example.android.myApp, com.android.settings, etc.). Appium will automatically determine the package to launch, you only need to use this desired capability if you want to specify a package different than the default one.
@@ -155,7 +155,7 @@ Once your test is ready to be executed use the test framework of your choice to 
 
 The **Appium Log** tab in your test indicates that this test ran using the Appium driver. If you take a look at the Appium Log, you will notice that the first line of the log provides information about the Appium version used during your test (e.g `info: Welcome to Appium v1.3.7`). 
 
-For **iOS tests**, you will notice that the iOS simulator log is embedded within the Appium log. The information from the iOS simulator is greyed out throughtout the Appium log and has the following tag name: **info: [IOS_SYSLOG_ROW ]**. For **Android tests** you can find the Android emulator logs by clicking on the "Metadata" tab in your test page and searching for the "Logcat.log" file. This file contains all the information from the Android emulator log.
+For **iOS tests**, you will notice that the iOS simulator log is embedded within the Appium log. The information from the iOS simulator is grayed out throughout the Appium log and has the following tag name: **info: [IOS_SYSLOG_ROW ]**. For **Android tests** you can find the Android emulator logs by clicking on the "Metadata" tab in your test page and searching for the "Logcat.log" file. This file contains all the information from the Android emulator log.
 
 ### Understanding how Appium works for Android on Sauce Labs
 
