@@ -8,13 +8,13 @@
 
 Appium is an open-source tool that can be used to automate your mobile applications. Just like the Selenium WebDriver - which is an open-source tool used to automate web browsers - Appium is an automation library used to drive your mobile applications, and even the web browser within the mobile simulator, emulator or real device.
 
-Advantages of using Appium:
+**Advantages of using Appium:**
 
 - It allows you to write tests against multiple mobile platforms using the same API.
 - You can write and run your tests using any language or test framework.
 - It is an open-source tool that you can easily contribute to.
 
-Advantages of using Appium on Sauce Labs:
+**Advantages of using Appium on Sauce Labs:**
 
 - You save the time it takes to set up the Appium server locally.
 - You don't have to install/configure the mobile emulators/simulators in your local environment.
@@ -45,9 +45,9 @@ For more information on writing, configuring, and running your tests with Appium
 
 ### Running Your Mobile Test
 
-During your mobile application automated tests, Appium will be the tool in the background that is starting and driving the simulator, emulator or device for each Sauce Labs test. For iOS **Appium is supported in iOS versions 6.1 and later**, for Android **Appium is supported in Android versions 4.4 or later for [Mobile Web Application](#mobile-web-application) tests and Android versions 2.3, 4.0 and later for [Mobile Native Applications](#mobile-native-application) and [Mobile Hybrid Applications](#mobile-hybrid-application) tests**.
+During your mobile application automated tests, Appium will be the tool in the background that is starting and driving the simulator, emulator or device for each Sauce Labs test. For iOS **Appium is supported in iOS versions 6.1 and later**, for Android **Appium is supported in Android versions 4.4 or later for [Mobile Web Application](#mobile-web-application) tests and Android versions 2.3, 4.0 and later for [Mobile Native Application](#mobile-native-application) and [Mobile Hybrid Application](#mobile-hybrid-application) tests**.
 
-First, decide on the type of mobile application that you will be testing. You can either test a [Mobile Native Application](#mobile-native-application) , a [Mobile Web Application](#mobile-web-application) or a [Mobile Hybrid Application](#mobile-hybrid-application) . If you are testing a [Mobile Native Applications](#mobile-native-application) or a [Mobile Hybrid Applications](#mobile-hybrid-application) , make sure that:
+First, decide on the type of mobile application that you will be testing. You can either test a [Mobile Native Application](#mobile-native-application) , a [Mobile Web Application](#mobile-web-application) or a [Mobile Hybrid Application](#mobile-hybrid-application) . If you are testing a [Mobile Native Application](#mobile-native-application) or a [Mobile Hybrid Application](#mobile-hybrid-application) , make sure that:
 
 **For iOS**
 - The mobile application is compiled in debug mode. 
@@ -201,19 +201,19 @@ Android Emulators have software buttons and a hardware keyboard. In a regular An
 
 - **How can I run Android tests without Appium?**
 
-For older versions of Android Appium might not be supported. For instance, Appium is only supported in Android versions 4.4 or later for [Mobile Web Application](#mobile-web-application) tests, and Android versions 2.3, 4.0 and later for [Mobile Native Applications](#mobile-native-application) and [Mobile Hybrid Application](#mobile-hybrid-application) tests.
+For older versions of Android Appium might not be supported. For instance, Appium is only supported in Android versions 4.4 or later for [Mobile Web Application](#mobile-web-application) tests, and Android versions 2.3, 4.0 and later for [Mobile Native Application](#mobile-native-application) and [Mobile Hybrid Application](#mobile-hybrid-application) tests.
 
 For those versions in which Appium is not supported you can request an emulator driven by Webdriver + Selendroid. All you need to do is use our [Platforms Configurator](https://docs.saucelabs.com/reference/platforms-configurator/#/) and select **Selenium** for the API instead of Appium.
 
 In the Sauce Labs test you will notice that the top of the emulator says "AndroidDriver Webview App". In addition, you will notice that you will get a "Selenium Log" tab which has the output of the Selendroid driver. 
 
-With an emulator driven by Webdriver + Selendroid you will be able to test [Mobile Web Applications](#mobile-web-application) only. You should be able to select any Android emulator version from 4.0 to the latest version and any Android emulator skin (e.g "deviceName":"Samsung Galaxy Tab 3 Emulator").
+With an emulator driven by Webdriver + Selendroid you will be able to test [Mobile Web Application](#mobile-web-application) only. You should be able to select any Android emulator version from 4.0 to the latest version and any Android emulator skin (e.g "deviceName":"Samsung Galaxy Tab 3 Emulator").
 
 - **How can I run iOS tests without Appium?**
 
 For older versions of iOS Appium might not be supported. For instance, Appium is supported in iOS versions 6.1 and later. For earlier versions of iOS the tool or driver used to drive your mobile applications automated test is called iWebdriver. 
 
-To obtain a simulator driven by iWebdriver use our [Platforms Configurator](https://docs.saucelabs.com/reference/platforms-configurator/#/) and select **Selenium** for the API instead of Appium. With an emulator driven by iWebdriver you will be able to test [Mobile Web Applications](#mobile-web-application) only. In addition, in the Sauce Labs test you will notice a "Selenium Log" tab which has the output of iWebdriver. 
+To obtain a simulator driven by iWebdriver use our [Platforms Configurator](https://docs.saucelabs.com/reference/platforms-configurator/#/) and select **Selenium** for the API instead of Appium. With an emulator driven by iWebdriver you will be able to test [Mobile Web Application](#mobile-web-application) only. In addition, in the Sauce Labs test you will notice a "Selenium Log" tab which has the output of iWebdriver. 
 
 - **What mobile web browsers can I automate in the Android emulator?**
 
