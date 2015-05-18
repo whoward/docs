@@ -88,7 +88,7 @@ Finally, once your test is ready to be executed use the test framework of your c
 
 To learn how Appium and Sauce Labs work read the [Understanding how Appium works on Sauce Labs](#understanding-how-appium-works-on-sauce-labs) section for an overview.
 
-### Types of mobile applications
+## Types of mobile applications
 
 ### Mobile Native Application 
 This type of application is developed for an specific platform (i.e., iOS or Android), using the native SDKs provided by the platform vendor, and distributed to users via the appropriate app store.
