@@ -88,7 +88,7 @@ Finally, once your test is ready to be executed use the test framework of your c
 
 To learn how Appium and Sauce Labs work read the [Understanding how Appium works on Sauce Labs](#understanding-how-appium-works-on-sauce-labs) section for an overview.
 
-## Types of mobile applications
+## Types of Mobile Applications
 
 ### Mobile Native Application 
 This type of application is developed for an specific platform (i.e., iOS or Android), using the native SDKs provided by the platform vendor, and distributed to users via the appropriate app store.
@@ -99,7 +99,7 @@ This type of application is formally what we call a mobile website. It can be ac
 ### Mobile Hybrid Application 
 This type of application is part mobile native app and part mobile web app. Just like mobile native apps you can find and download mobile hybrid apps using the Apple’s App Store or the Google Play Store. In the same manner, just like a mobile web app, a mobile hybrid app would look like a mobile website that would be accessed through a "browser", but in this case the "browser" is an embedded webview within the application that would just allow to display some HTML. 
 
-### Setting Desired Capabilities for Mobile Tests
+## Setting Desired Capabilities for Mobile Tests
 
 The desired capabilities are a set of keys and values that will be sent to the Appium server running in the Sauce Labs cloud. These keys and values tell the Appium server the specifications of the automated test that you will be running. Using our [Platforms Configurator](https://docs.saucelabs.com/reference/platforms-configurator/#/) you can easily determine the correct desired capabilities for the programming language of your choice.
 
@@ -147,7 +147,7 @@ For your Android emulator test you can request a regular Android emulator by usi
 
 Each Android emulator skins will have a different configuration depending on the phone or table that it is trying to emulate. For instance all the skins have different resolutions, screen dimensions, pixel densities, memory, etc. To get a list of the available Android emulator skins for the different Android emulator versions use our [Platforms Configurator](https://docs.saucelabs.com/reference/platforms-configurator/#/).
 
-### Viewing my Appium tests on Sauce Labs
+## Viewing my Appium tests on Sauce Labs
 
 Once your test is ready to be executed use the test framework of your choice to run the test. As your test runs you should be able to spy on the test by going into your [Sauce Labs test page](https://saucelabs.com/tests). In addition, after the test execution completes you will be able to see the commands executed during your test, the screenshots taken by Sauce Labs during your test, a video of of the test, the Appium server log and metadata information related to the test.
 
@@ -155,7 +155,7 @@ The **Appium Log** tab in your test indicates that this test ran using the Appiu
 
 For **iOS tests**, you will notice that the iOS simulator log is embedded within the Appium log. The information from the iOS simulator is grayed out throughout the Appium log and has the following tag name: `info: [IOS_SYSLOG_ROW ]`. For **Android tests** you can find the Android emulator logs by clicking on the "Metadata" tab in your test page and searching for the "Logcat.log" file. This file contains all the information from the Android emulator log.
 
-### Understanding how Appium works on Sauce Labs
+## Understanding how Appium works on Sauce Labs
 
 The driver address in you test script is what points the test to the Sauce Labs cloud (i.e `http://SAUCE_USERNAME:SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub`). Once you execute the test using the test framework of your choice, Sauce Labs initializes its own Appium server using the specifications taken from your desired capabilities.
 
