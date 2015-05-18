@@ -47,7 +47,7 @@ For more information on writing, configuring, and running your tests with Appium
 
 During your mobile application automated tests, Appium will be the tool in the background that is starting and driving the simulator, emulator or device for each Sauce Labs test. For iOS **Appium is supported in iOS versions 6.1 and later**, for Android **Appium is supported in Android versions 4.4 or later for [Mobile Web Application](#mobile-web-application) tests and Android versions 2.3, 4.0 and later for [Mobile Native Applications](#mobile-native-application) and [Mobile Hybrid Applications](#mobile-hybrid-application) tests**.
 
-First, decide on the type of mobile application that you will be testing. You can either test a [Mobile Native Application](#mobile-native-application) , a [Mobile Web Application](#mobile-web-application) or a [Mobile Hybrid Application](#mobile-hybrid-application) . If you are testing a [Mobile Native Applications](#mobile-native-application) or a [Mobile Hybrid Applications](#mobile-hybrid-application), make sure that:
+First, decide on the type of mobile application that you will be testing. You can either test a [Mobile Native Application](#mobile-native-application) , a [Mobile Web Application](#mobile-web-application) or a [Mobile Hybrid Application](#mobile-hybrid-application) . If you are testing a [Mobile Native Applications](#mobile-native-application) or a [Mobile Hybrid Applications](#mobile-hybrid-application) , make sure that:
 
 **For iOS**
 - The mobile application is compiled in debug mode. 
@@ -84,7 +84,7 @@ Notice how these tests are pointing their driver address to the Sauce Labs cloud
 
 For more information about the desired capabilities that you should be using during your mobile tests, please read the [Setting Desired Capabilities for Mobile Tests](#setting-desired-capabilities-for-mobile-tests) section.
 
-Finally, once your test is ready to be executed use the test framework of your choice to run the test. As your test runs you should be able to spy on the test by going into your [Sauce Labs test page](https://saucelabs.com/tests). For more information about what you should look for when viewing the results of your test, please read the [Viewing My Appium Test on Sauce Labs](#viewing-my-appium-test-on-sauce-labs) section. 
+Finally, once your test is ready to be executed use the test framework of your choice to run the test. As your test runs you should be able to spy on the test by going into your [Sauce Labs test page](https://saucelabs.com/tests). For more information about what you should look for when viewing the results of your test, please read the [Viewing My Appium Tests on Sauce Labs](#viewing-my-appium-tests-on-sauce-labs) section. 
 
 To learn how Appium and Sauce Labs work read the [Understanding how Appium works on Sauce Labs](#understanding-how-appium-works-on-sauce-labs) section for an overview.
 
@@ -135,7 +135,7 @@ The Java package of the Android app you want to run (e.g com.example.android.myA
 - **automationName**(optional): 
 The automation engine that will be used (e.g Appium or Selendroid). By default the automationName used is Appium.
 
-**Note 1**: For **Mobile Native Applications** tests using Android versions 2.3, 4.0 and 4.1 you need to specify the following desired capability: `"automationName":"selendroid"`. The reason for this is that these Android versions are only supported via the Appium’s bundled version of Selendroid, which utilizes [Instrumentation](http://developer.android.com/reference/android/app/Instrumentation.html). For the remaining versions of Android (i.e Android 4.2 and later) you do not need to use the **'automationName':'selendroid'** desired capability since these later versions are supported via Appium’s own UiAutomator library which is the default automation backend.
+**Note 1**: For **Mobile Native Applications** tests using Android versions 2.3, 4.0 and 4.1 you need to specify the following desired capability: `"automationName":"selendroid"`. The reason for this is that these Android versions are only supported via the Appium’s bundled version of Selendroid, which utilizes [Instrumentation](http://developer.android.com/reference/android/app/Instrumentation.html). For the remaining versions of Android (i.e Android 4.2 and later) you do not need to use the `'automationName':'selendroid'` desired capability since these later versions are supported via Appium’s own UiAutomator library which is the default automation backend.
 
 **Note 2**: For **Mobile Hybrid Applications** tests using Android versions 2.3 to 4.3 you need to specify the following desired capability: `"automationName'":"selendroid"`. For the remaining versions of Android (i.e Android 4.4 and later) you do not need to use the `'automationName':'selendroid'` desired capability since these later versions are supported via Appium’s own UiAutomator library which is the default automation backend.
 
@@ -201,7 +201,7 @@ Android Emulators have software buttons and a hardware keyboard. In a regular An
 
 - **How can I run Android tests without Appium?**
 
-For older versions of Android Appium might not be supported. For instance, Appium is only supported in Android versions 4.4 or later for [Mobile Web Application](#mobile-web-application) tests, and Android versions 2.3, 4.0 and later for [Mobile Native Applications](#mobile-native-application) and [Mobile Hybrid Applications](#mobile-hybrid-application) tests.
+For older versions of Android Appium might not be supported. For instance, Appium is only supported in Android versions 4.4 or later for [Mobile Web Application](#mobile-web-application) tests, and Android versions 2.3, 4.0 and later for [Mobile Native Applications](#mobile-native-application) and [Mobile Hybrid Application](#mobile-hybrid-application) tests.
 
 For those versions in which Appium is not supported you can request an emulator driven by Webdriver + Selendroid. All you need to do is use our [Platforms Configurator](https://docs.saucelabs.com/reference/platforms-configurator/#/) and select **Selenium** for the API instead of Appium.
 
