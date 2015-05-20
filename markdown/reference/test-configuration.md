@@ -5,21 +5,11 @@
   index: 1
 }
 
-Sauce Labs refers to an individual test session as a "job". For example, if your test suite contains 100 Selenium tests, and you run the entire suite in 3 different environments, Sauce will keep records of 300 jobs, one for each test session. The following are additional settings you can use to annotate your jobs and configure Sauce on a per-job basis to collect more data, improve performance, set timeouts, and more. This is done differently depending on the API you are using: [WebDriver](#webdriver-api), [Selenium RC](#selenium-rc-api), or the [Sauce Labs REST API](#job-annotation-with-the-rest-api).
+Sauce Labs refers to an individual test session as a "job". For example, if your test suite contains 100 Selenium tests, and you run the entire suite in 3 different environments, Sauce will keep records of 300 jobs, one for each test session. The following are additional settings you can use to annotate your jobs and configure Sauce on a per-job basis to collect more data, improve performance, set timeouts, and more. This is done differently depending on the API you are using: [WebDriver](#webdriver-api) or the [Sauce Labs REST API](#job-annotation-with-the-rest-api).
 
 ## WebDriver API
 For Selenium and Appium tests using the WebDriver API, settings are provided using the `DesiredCapabilities` object provided by Remote WebDriver libraries. Any key-value pair specified in this documentation can be set through this hash-like object.
 Find more about `RemoteDriver` and the `DesiredCapabilities` object on [Selenium's RemoteDriver wiki](http://code.google.com/p/selenium/wiki/RemoteWebDriver).
-
-## Selenium RC API
-For Selenium RC tests, settings are given in Selenium's "browser" parameter. In Selenium RC tests this is ordinarily a string like "\*iexplore" or "\*firefox", but for use with Sauce Labs it will need to contain a full [JSON object](http://www.json.org), like this:
-```
- '{"username": "your username here",
-   "accessKey": "your access key here",
-   "os": "Windows 8",
-   "browser": "firefox",
-   "browserVersion": "29"}'
-```
 
 Any key-value pair specified in this documentation can be set through this JSON object.
 
@@ -65,30 +55,6 @@ Here's a more comprehensive example of the JSON accepted by this method:
 If you were to use this from your tests, you would probably want to build a simple set of functions that do the request for you. We've created a [Java library](https://github.com/saucelabs/saucerest-java) for this, and here are some examples for [Python](https://gist.github.com/1644439) and [Ruby](https://gist.github.com/DylanLacey/5218959). We would love to see users share libraries for other languages!
 
 [Read more about our REST API.](/reference/rest-api/)
-
-### setContext()
-setContext is an alternative to the REST API available for Selenium RC tests. In Selenium RC, the `setContext()` command is meant only for sending advisory information to the Selenium server for logging purposes. When the value passed to setContext starts with "sauce:", Sauce intercepts the command and parses it for job annotations. We allow two formats for setContext: basic and advanced. The basic format lets you set tags, name, and pass/fail status for jobs. The advanced format lets you set more fields, and you can set them all in a single command.
-
-Basic format:
-```java
-  this.selenium.setContext("sauce:job-tags=tag1,tag2,tag3")
-  this.selenium.setContext("sauce:job-name=My awesome job")
-  this.selenium.setContext("sauce:job-result=passed")
-  this.selenium.setContext("sauce:job-result=failed")
-```
- 
-Advanced format:
-
-Our advanced format involves submitting a JSON-encoded dictionary as the value of sauce:job-info. You can set as many or as few of the fields as you wish. For example, in Java, include the following code in your test to add information to a job:
-
-```java
- this.selenium.setContext("sauce:job-info={\"name\": \"my job name\"," +
-                          "\"tags\": [\"tag1\", \"tag2\", \"tag3\"]," +
-                          "\"passed\": true,"+
-                          "\"build\": \"103\","+
-                          "\"custom-data\": {\"field\": \"value\"}"+
-                          "}");
-``` 
 
 ## Job Annotation
 
@@ -277,60 +243,6 @@ Supported versions you can choose from include:<br/>
 `2.26.0` `2.27.0` `2.28.0` `2.29.0` `2.30.0` `2.31.0` `2.32.0` `2.33.0` `2.34.0` `2.35.0` `2.36.0` `2.37.0` `2.38.0` `2.39.0` `2.40.0` `2.41.0` `2.42.0` `2.42.2` `2.43.0` `2.44.0` `2.45.0`
 
 You can also specify the URL of a Selenium jar file (including Sauce Storage URLs) to use any custom version of Selenium.
-
-### Selenium RC Single Window Mode
-By default, to get the most out of videos and screenshots, Sauce Labs runs Selenium RC tests in multi-window mode. You can switch to single window mode with this setting.
-
-Notice: this setting only affects Selenium RC tests.
-
-Key: `singleWindow`
-
-Value type: bool
-
-Example:
-
-```python
-"singleWindow": true
-```
-
-### Selenium RC User Extensions
-User extensions are available for custom Selenium RC functionality on the Sauce service. Given the URL of a file on an accessible HTTP or FTP server (public or connected with Sauce Connect), Sauce will download it and use it in your test. A list of several extensions can be provided.
-
-Notice: this setting only affects Selenium RC tests.
-
-Key: `userExtensionsUrl`
-
-Value type: list
-
-Example:
-
-```python
-"userExtensionsUrl": [
-  "http://saucelabs.com/ext/flex.js",
-  "ftp://username:password@server.com/bleh.js"
-]
-```
-
-### Selenium RC Custom Firefox Profiles
-Custom Firefox profiles allow you to configure the browser running in our cloud on a per-job basis. This includes both plugins and any particular setting your tests may need.
-
-This feature is provided for Selenium RC tests. WebDriver users should use the official FirefoxProfile class [ as specified in the WebDriver documentation](http://code.google.com/p/selenium/wiki/FirefoxDriver).
-
-To use this feature, a zip file with the contents of the Firefox profile directory you wish to use needs to be provided. Given the URL of a file on an accessible HTTP or FTP server (public or connected with Sauce Connect), Sauce will download it and use it in your test.
-
-For more info on Firefox profiles, you can check [Mozilla's knowledge base](http://support.mozilla.com/en-US/kb/Managing-profiles).
-
-Key: `firefoxProfileUrl`
-
-Value type: string
-
-Example:
-
-```python
-"firefoxProfileUrl": "http://saucelabs.com/example_files/notls.zip"
-```
-
-**Note**: If you actually zip the directory, it will not work. The zip file needs to contain the contents of the profile, not a directory with the contents of it.
 
 ## Timeouts
 
