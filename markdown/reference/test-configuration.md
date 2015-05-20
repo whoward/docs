@@ -5,7 +5,7 @@
   index: 1
 }
 
-Sauce Labs refers to an individual test session as a "job". For example, if your test suite contains 100 Selenium tests, and you run the entire suite in 3 different environments, Sauce will keep records of 300 jobs, one for each test session. The following are additional settings you can use to annotate your jobs and configure Sauce on a per-job basis to collect more data, improve performance, set timeouts, and more. This is done differently depending on the API you are using: [WebDriver](#webdriver-api), [Selenium RC](#selenium-rc-api), or the [Sauce Labs REST API](#job-annotation-with-the-rest-api).
+Sauce Labs refers to an individual test session as a "job". For example, if your test suite contains 100 Selenium tests, and you run the entire suite in 3 different environments, Sauce will keep records of 300 jobs, one for each test session. The following are additional settings you can use to annotate your jobs and configure Sauce on a per-job basis to collect more data, improve performance, set timeouts, and more. This is done differently depending on the API you are using: [WebDriver](#webdriver-api) or the [Sauce Labs REST API](#job-annotation-with-the-rest-api).
 
 ## WebDriver API
 For Selenium and Appium tests using the WebDriver API, settings are provided using the `DesiredCapabilities` object provided by Remote WebDriver libraries. Any key-value pair specified in this documentation can be set through this hash-like object.
