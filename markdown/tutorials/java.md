@@ -51,7 +51,7 @@ First, create a project directory:
 mkdir -p ~/sauce-tutorial/sauce-project && cd ~/sauce-tutorial/sauce-project
 ```
 Next, download and install a sample project using your chosen testing framework using one of these Maven commands. You will be prompted to enter a group id (for example, `com.yourcompany`), artifact id (for example, `sauce-project`), version (defaults to `1.0-SNAPSHOT`), and package (default to the group id).
-**Note:** This step uses your Sauce username and access key. You can find your Sauce access key on your [Sauce account page]/(https://saucelabs.com/account).
+**Note:** This step uses your Sauce username and access key. You can find your Sauce access key on your [Sauce account page](https://saucelabs.com/account).
 **JUnit example:**
 ```bash
 mvn archetype:generate -DarchetypeGroupId=com.saucelabs -DarchetypeArtifactId=quickstart-webdriver-junit -DgroupId=com.yourcompany -DartifactId=sauce-project -Dversion=1.0-SNAPSHOT -Dpackage=com.yourcompany -DuserName=sauceUserName -DaccessKey=sauceAccessKey
