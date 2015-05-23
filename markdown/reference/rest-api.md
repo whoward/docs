@@ -453,7 +453,6 @@ Get a list of objects describing all the OS and browser platforms currently supp
 * `all`
 * `appium`
 * `webdriver`
-* `selenium-rc`
 
 **Example Request:**
 ```bash
