@@ -360,7 +360,7 @@ Valid values for Windows 8 and 8.1 are:<br/> `800x600` `1024x768` `1280x1024`
 
 ### Custom Time Zones
 
-Test VMs can be configured with custom time zones. This feature should work on all operating systems, however time zones on Windows VMs are approximate. They will default to the time zone that the provided location falls into. A complete list of valid locations [can be found here on Wikipedia](http://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Underscores should be replaced with spaces. Sauce takes only location names (not their paths), as shown in the example below. 
+Desktop Test VMs can be configured with custom time zones. This feature should work on all operating systems, however time zones on Windows VMs are approximate. They will default to the time zone that the provided location falls into.  Timezones do not currently work for Android based tests.  A complete list of valid locations [can be found here on Wikipedia](http://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Underscores should be replaced with spaces. Sauce takes only location names (not their paths), as shown in the example below. 
 
 Key: `timeZone`
 
