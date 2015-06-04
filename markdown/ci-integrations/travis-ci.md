@@ -21,7 +21,7 @@ To test with Sauce Labs on Travis, you need to make your credentials available t
 
 *If you want to learn more about secure environment variables, check out the
 [Travis
-CI documentation](http://about.travis-ci.org/docs/user/build-configuration/#Secure-environment-variables).*
+CI documentation](http://docs.travis-ci.com/user/environment-variables/#Secure-Variables).*
 
 ### Adding credentials for a public GitHub repo
 
