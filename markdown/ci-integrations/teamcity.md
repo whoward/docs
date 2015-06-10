@@ -16,7 +16,7 @@ Let's get started!
 
 The Sauce OnDemand plugin for TeamCity can be installed by following these steps
 
-Download the [plugin zip file](https://repository-saucelabs.forge.cloudbees.com/release/com/saucelabs/teamcity/sauceplugin/1.29/sauceplugin-1.29.zip)
+Download the [plugin zip file](https://repository-saucelabs.forge.cloudbees.com/release/com/saucelabs/teamcity/sauceplugin/1.32/sauceplugin-1.32.zip)
 
 Copy the zip file into your ~/.BuildServer/plugins directory
 
