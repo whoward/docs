@@ -141,6 +141,11 @@ This message occurs when our infrastructure loses communication with our vm and 
 
 However, if you are experiencing this error repeatedly for a specific test or set of tests there may be an issue on your end that is causing the failure. For example, if the error regularly appears after a specific selenium command there could be something wrong with the test that is causing selenium to crash. We have also seen issues with prerun executables: your script could be crashing the vm in any number of exciting ways, but the most common we've seen is consuming too much memory. We even had a situation once where a customer's script killed processes in a windows session, including the process we use to run jobs!
 
+##The VM's disk has filled up. Selenium likely crashed as a result.
+
+Our VMs have virtual disks which, just like hardware disks, can fill up. We make sure that our virtual machines have at least 3G free when we start a job, but sometimes complex/long-running tests fill up the guest machine's allocated space. This causes selenium to crash, which ends your test.
+
+The best thing you can do to avoid this failure is to break out your long tests into shorter tests and/or make sure that your tests are not filling up a lot of disk space on the VM.
 
 ##Unsupported OS/browser/version combo
 
