@@ -326,6 +326,8 @@ If a single string is sent as the `prerun` capability rather than a JSON object,
 
 **Multiple Pre-run Executables:** If you need to send multiple pre-run executables, the best way is to bundle them into a single executable file, such as a self-extracting zip file.
 
+**Interacting with the Android Emulator**: If you need to use Android tools to tweak the emulator before your test starts (such as `adb`), the `ANDROID_HOME` environment variable will be set before your executable is invoked. For example, you can access `adb` via `$ANDROID_HOME/platform-tools/adb`.
+
 ### Identified Tunnels
 If an [identified tunnel](/reference/sauce-connect/#managing-multiple-tunnels) is started using Sauce Connect, your jobs can choose to proxy through it using this set of keys with the right identifier. See the [Sauce Connect documentation](/reference/sauce-connect/#managing-multiple-tunnels) for more information on identified tunnels.
 
