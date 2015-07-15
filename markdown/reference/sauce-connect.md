@@ -342,7 +342,11 @@ That's it! We'll take care of the rest by making the jobs that request this capa
 
 ### What firewall rules do I need? 
 
-Sauce Connect needs to make outbound connections to saucelabs.com and \*.miso.saucelabs.com on port 443 for the REST API and the primary tunnel connection to the Sauce cloud. It can also optionally make these connections through a web proxy; see the `--proxy`, `--pac`, and `--proxy-tunnel` command line options.
+Sauce Connect needs to make outbound connections to saucelabs.com and \*.miso.saucelabs.com on port 443 for the REST API and the primary tunnel connection to the Sauce cloud.
+
+Verifying the SSL certificate in use may require an outbound connection on ports 443 and 80 to g.symcd.com.
+
+Sauce Connect can optionally make these connections through a web proxy; see the `--proxy`, `--pac`, and `--proxy-tunnel` command line options.
 
 ### I have verbose logging on, but I'm not seeing anything in stdout. What gives?
 
