@@ -37,7 +37,7 @@ driver = webdriver.Remote(desired_capabilities=desired_capabilities,
                           command_executor=sauce_url)
 driver.implicitly_wait(10)
 ```
-Now we have our own prestine Virtual Machine in the Sauce cloud,
+Now we have our own pristine Virtual Machine in the Sauce cloud,
 ready to accept commands!
 
 The [implicitly wait](https://selenium-python.readthedocs.org/waits.html#implicit-waits) method tells the browser to wait a set
