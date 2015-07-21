@@ -234,7 +234,7 @@ Value type: string
 Example:
 
 ```python
-"seleniumVersion": "2.4.0"
+"seleniumVersion": "2.46.0"
 ```
 
 
