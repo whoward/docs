@@ -234,7 +234,7 @@ Value type: string
 Example:
 
 ```python
-"seleniumVersion": "2.40.0"
+"seleniumVersion": "2.4.0"
 ```
 
 
@@ -425,7 +425,7 @@ Example:
 
 The list of supported IE Drivers you can choose from:<br/>
 
-`2.21.1`, `2.21.2`, `2.24.0`, `2.25.3`, `2.26.0`, `2.28.0`, `2.29.0`, `2.30.1`, `2.31.0`, `2.32.2`, `2.33.0`, `2.34.0`, `2.35.0`, `2.35.1`, `2.35.2`, `2.35.3`, `2.36.0`, `2.37.0`, `2.38.0`, `2.39.0`, `2.40.0`, `2.41.0`, `2.42.0`, `2.43.0`, `2.44.0`, `2.45.0`, `x64_2.29.0`, `x64_2.39.0`, `x64_2.40.0`, `x64_2.41.0`, `x64_2.42.0`, `x64_2.43.0`, `x64_2.44.0`, `x64_2.45.0`
+`2.21.1`, `2.21.2`, `2.24.0`, `2.25.3`, `2.26.0`, `2.28.0`, `2.29.0`, `2.30.1`, `2.31.0`, `2.32.2`, `2.33.0`, `2.34.0`, `2.35.0`, `2.35.1`, `2.35.2`, `2.35.3`, `2.36.0`, `2.37.0`, `2.38.0`, `2.39.0`, `2.40.0`, `2.41.0`, `2.42.0`, `2.43.0`, `2.44.0`, `2.45.0`, `2.46.0`, `x64_2.29.0`, `x64_2.39.0`, `x64_2.40.0`, `x64_2.41.0`, `x64_2.42.0`, `x64_2.43.0`, `x64_2.44.0`, `x64_2.45.0`, `x64_2.46.0`
 
 ### Pop-up Handling
 Sauce provides a pop-up handler that automatically clicks through some types of browser pop-up windows, to allow tests to continue. By default, this feature is turned on for Selenium RC and off for WebDriver tests. You can control the pop-up handler yourself with the following capability:
