@@ -182,7 +182,7 @@ contact our [support team](mailto:help@saucelabs.com) with a description of the
 issue and a copy of your setup code.
 
 
-##Client disconnected during getNewBrowserSession request
+##New session request was cancelled before a Sauce Labs virtual machine was found
 
 This means that your test runner decided to end the job before it had fully
 initialized on Sauce's end. There are a few potential causes:
