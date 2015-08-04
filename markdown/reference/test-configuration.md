@@ -207,18 +207,6 @@ Example:
 "webdriverRemoteQuietExceptions": false
 ```
 
-### Disabling Sauce Advisor
-Sauce Advisor analyzes your tests and suggests ways to make them faster and more robust. It may add a small amount of extra time to your tests. To disable this feature, use the following setting:
-
-Key: `sauceAdvisor`
-
-Value type: bool
-
-Example:
-
-```python
-"sauceAdvisor": false
-```
 
 ## Selenium-specific Modifications
 
@@ -342,7 +330,7 @@ Example:
 ```
 
 ### Specifying the Screen Resolution
-This setting specifies which screen resolution should be used during the test session. This feature is available in Windows XP, Windows 7 (except Windows 7 with IE 9), Windows 8, Windows 8.1, OS X 10.6 and OS X 10.8. We do not yet offer specific resolutions for OS X 10.9, OS X 10.10, Linux, or mobile platforms.
+This setting specifies which screen resolution should be used during the test session. This feature is available in Windows XP, Windows 7 (except Windows 7 with IE 9), Windows 8, Windows 8.1, and OS X 10.8. We do not yet offer specific resolutions for Windows 10, OS X 10.9, OS X 10.10, OS X 10.11, Linux, or mobile platforms.
 
 Key: `screenResolution`
 
@@ -354,7 +342,7 @@ Example:
 "screenResolution": "1280x1024"
 ```
 
-Valid values for Windows XP, Windows 7, and OS X 10.6 are:<br/> `800x600` `1024x768` `1052x864` `1152x864` `1280x800` `1280x960` `1280x1024` `1400x1050` `1440x900` `1600x1200` `1680x1050` `1920x1200` `2560x1600`
+Valid values for Windows XP and Windows 7 are:<br/> `800x600` `1024x768` `1052x864` `1152x864` `1280x800` `1280x960` `1280x1024` `1400x1050` `1440x900` `1600x1200` `1680x1050` `1920x1200` `2560x1600`
 
 Valid values for OS X 10.8 are:<br/> `1024x768` `1152x864` `1152x900` `1280x800` `1280x1024` `1376x1032` `1400x1050` `1600x1200` `1680x1050` `1920x1200`
 
@@ -389,7 +377,7 @@ Chrome 29 - 30: Chromedriver 2.4<br/>
 Chrome 31 - 32: Chromedriver 2.8<br/>
 Chrome 33 - 36: Chromedriver 2.10<br/>
 Chrome 37 - 39: Chromedriver 2.11<br/>
-Chrome 40 - 42: Chromedriver 2.15<br/>
+Chrome 40 - 44: Chromedriver 2.15<br/>
 
 Key: `chromedriverVersion`
 
@@ -420,33 +408,20 @@ Value Type: string
 Example:
 
 ```python
-"iedriverVersion": "2.45.0"
+"iedriverVersion": "2.46.0"
 ```
 
 The list of supported IE Drivers you can choose from:<br/>
 
 `2.21.1`, `2.21.2`, `2.24.0`, `2.25.3`, `2.26.0`, `2.28.0`, `2.29.0`, `2.30.1`, `2.31.0`, `2.32.2`, `2.33.0`, `2.34.0`, `2.35.0`, `2.35.1`, `2.35.2`, `2.35.3`, `2.36.0`, `2.37.0`, `2.38.0`, `2.39.0`, `2.40.0`, `2.41.0`, `2.42.0`, `2.43.0`, `2.44.0`, `2.45.0`, `2.46.0`, `x64_2.29.0`, `x64_2.39.0`, `x64_2.40.0`, `x64_2.41.0`, `x64_2.42.0`, `x64_2.43.0`, `x64_2.44.0`, `x64_2.45.0`, `x64_2.46.0`
 
-### Pop-up Handling
-Sauce provides a pop-up handler that automatically clicks through some types of browser pop-up windows, to allow tests to continue. By default, this feature is turned on for Selenium RC and off for WebDriver tests. You can control the pop-up handler yourself with the following capability:
 
-Key: `disablePopupHandler`
-
-Value type: bool
-
-Example:
-
-```python
-"disablePopupHandler": true
-```
 ### Avoiding the Selenium Proxy
-By default, Sauce routes traffic from all Selenium RC and some WebDriver browsers through the Selenium HTTP proxy server so that HTTPS connections with self-signed certificates work everywhere. The Selenium proxy server can cause problems for some users. If that's the case for you, you can configure Sauce to avoid using the proxy server and have browsers communicate directly with your servers.
+By default, Sauce routes traffic from some WebDriver browsers (Internet Explorer and Safari) through the Selenium HTTP proxy server so that HTTPS connections with self-signed certificates work everywhere. The Selenium proxy server can cause problems for some users. If that's the case for you, you can configure Sauce to avoid using the proxy server and have browsers communicate directly with your servers.
 
 Note: Firefox and Google Chrome under WebDriver aren't affected by this flag as they handle invalid certificates automatically and there isn't a need to proxy through Selenium.
 
 Note: This flag incompatible with [Sauce Connect](/reference/sauce-connect/).
-
-Note: Under Selenium RC, `avoidProxy` set to `true` will break safariproxy, firefoxproxy, iexploreproxy and opera browsers.
 
 Key: `avoidProxy`
 
@@ -523,8 +498,6 @@ To directly access a specific job, you will first need to note the session ID lo
     http://saucelabs.com/jobs/YOUR_JOB_ID
 
 Notice that links to jobs in this format will only work if you are logged in with the account that ran the job or if that account is a sub-account of yours. For generating public links, read the section below, [ no-login links to jobs](#no-login-links-to-jobs).
-
-**Note**: Selenium RC's Java client does not give public access to the session ID attribute of the DefaultSelenium object. However, we store a `selenium.sessionId` JavaScript variable that you can access using [getEval](http://bit.ly/cI51Dv).
 
 ### No-login links to jobs
 
