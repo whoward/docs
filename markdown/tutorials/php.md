@@ -2,7 +2,7 @@
   title: "PHP",
   description: "How to run Selenium tests on Sauce Labs using PHP",
   category: 'Tutorials',
-  index: 2,
+  index: 3,
   image: '/images/tutorials/php.png'
 }
 
