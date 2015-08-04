@@ -8,7 +8,7 @@
 ## Basic Setup
 ### Dependencies
 
-First, let's install the dependencies we'll need for the tutorial:
+First, let us install the dependencies we'll need for the tutorial:
 
 ```bash
 pip install selenium pytest pytest-xdist sauceclient
