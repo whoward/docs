@@ -1,5 +1,5 @@
  {
-  title: "Python",
+  title: "Python Quickstart",
   description: "How to run Selenium tests on Sauce Labs using python",
   category: 'Tutorials',
   index: 8,
