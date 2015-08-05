@@ -299,13 +299,16 @@ Value type: JSON object, with 3 keys:
 
   * **executable**: The URL to the executable you want to run before your browser session starts
   * **args**: A list of the command line parameters that you want the executable to receive
-  * **background**: A boolean that defines whether Sauce should wait for this executable to finish before your browser session starts. If background isn't set or is set to `false`, Sauce will wait for up to 90 seconds for the executable to finish. At that point, the browser will start and your test will proceed.
+  * **background**: A boolean that defines whether Sauce should wait for this executable to finish before your browser session starts. If background isn't set or is set to `false`, Sauce will wait for up to 90 seconds for the executable to finish. At that point, the browser will start and your test will proceed
+  * **timeout**: The amount of seconds Sauce will wait for your executable to finish before your browser session starts. If timeout isn't set, Sauce will wait for up to 90 seconds for the executable to finish. `timeout` is capped at 360 seconds and won't apply if `background` is set to `true`
 
 Example:
 
 ```python
 "prerun": { "executable": "http://url.to/your/executable.exe",
-            "args": [ "--silent", "-a", "-q" ], "background": true }
+            "args": [ "--silent", "-a", "-q" ],
+            "background": true,
+            "timeout": 120 }
 ```
 
 If a single string is sent as the `prerun` capability rather than a JSON object, this string is considered to be the URL to the executable, and the executable launches with `background` set to `false`.
