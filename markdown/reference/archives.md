@@ -56,8 +56,8 @@ Filed Name | Definition  | Example
  ---------- | ----------- | ------- 
 `TEXT`      | Used to search for any mention of the following string in across test details| `text: Appium` 
 `NAME`      | Used to search for full or partial test name| `name: SauceTest` 
-`PLATFORM`        | Search for test that ran on one or multipe OS. (Note: this field accepts only a predefined list of OS specified in our docs [here](www.saucelabs.com))| ` platform:("OS X 10.10" "Windows 8.1"))` 
-`BROWSER`   | Search for tests that ran on one or multipled browsers. Accepts only browsers that Sauce currently supports.  (A complete list of browsers is available [here](www.saucelabs.com) ) | `browser:("Google Chrome 43" "Internet Explorer 11")`
+`PLATFORM`        | Search for test that ran on one or multipe OS. (Note: this field accepts only a predefined list of OS specified in our docs [here](https://saucelabs.com/platforms/))| ` platform:("OS X 10.10" "Windows 8.1"))` 
+`BROWSER`   | Search for tests that ran on one or multipled browsers. Accepts only browsers that Sauce currently supports.  (A complete list of browsers is available [here](https://saucelabs.com/platforms/) ) | `browser:("Google Chrome 43" "Internet Explorer 11")`
 `DATE`      | Search for tests that ran on a specific date or over a specified range. Field accepts dates in YYYY-MM-DD format.| `date:[2014-05-05 TO 2015-05-05] ``date:[2014-05-05 TO *] `
 `STATUS`    | Search for tests based on their status. Currently there are 4 possible states: `failed, passed, complete, error`.| `status: failed`
 `BUILD`     | Search for tests that belond to an individual build. | `build:main AND browser:"Internet Explorer 11" ` 
