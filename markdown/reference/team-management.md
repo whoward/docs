@@ -1,12 +1,12 @@
 {title: "Team Management", description: "Using Sauce Labs Team Management features", category: 'Reference', index: 3, }
 
-Team Management
-===============
+##Team Management
+
 
 With the Sauce Team Management feature you can easily create and manage group or individual accounts within your organization, allowing everyone to test from the same batch of usage minutes under a single plan.
 
-Team Management Plans
----------------------
+##Team Management Plans
+
 
 Sauce Labs offers both Enterprise and Subscription plans that provide you with different numbers of concurrent VMs, concurrent devices, and minutes to meet your specific testing needs. Enterprise plans are invoiced on a monthly basis, while Subscription plans will charge your credit card on a monthly basis for your current plan level.
 
