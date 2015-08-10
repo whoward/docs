@@ -6,19 +6,11 @@
   image: "/images/tutorials/python.png"
 }
 
-#Getting Started with Python
+# Getting Started with Python
 
 Sauce Labs is a cloud platform for executing automated and manual mobile and web tests. Sauce Labs supports running automated tests with Selenium WebDriver (for web applications) and Appium (for native and mobile web applications). 
 
 In this tutorial we are going to show you how to run a test with Selenium WebDriver on Sauce Labs. For a mobile web application example with Appium, please follow the instructions covered [here]().
-
-##Table of Contents
-1. [Dependencies](#dependencies)
-2. [Code Example](#code-example)
-3. [Running Tests on Sauce](#running-tests-on-sauce)
-4. [Running Against Local Applications](#running-tests-against-local-applications)
-5. [Reporting to the Sauce Labs Dashboard](#reporting-to-the-sauce-labs-dashboard)
-6. [Running Tests in Parallel](https://github.com/jsmoxon/PythonDocs#running-tests-in-parallel)
 
 ##Dependencies
 First, add the [Selenium WebDriver API](http://www.seleniumhq.org/download/) to your local Python environment using [pip](https://pypi.python.org/pypi/pip):
