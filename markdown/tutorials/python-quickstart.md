@@ -13,11 +13,11 @@ Sauce Labs is a cloud platform for executing automated and manual mobile and web
 In this tutorial we are going to show you how to run a test with Selenium WebDriver on Sauce Labs. For a mobile web application example with Appium, please follow the instructions covered [here]().
 
 ##Table of Contents
-1. [Dependencies](https://github.com/jsmoxon/PythonDocs#dependencies)
-2. [Code Example](https://github.com/jsmoxon/PythonDocs#code-example)
-3. [Running Tests on Sauce](/#running-tests-on-sauce)
-4. [Running Against Local Applications](/#running-tests-against-local-applications)
-5. [Reporting to the Sauce Labs Dashboard](https://github.com/jsmoxon/PythonDocs#reporting-to-the-sauce-labs-dashboard)
+1. [Dependencies](#dependencies)
+2. [Code Example](#code-example)
+3. [Running Tests on Sauce](#running-tests-on-sauce)
+4. [Running Against Local Applications](#running-tests-against-local-applications)
+5. [Reporting to the Sauce Labs Dashboard](#reporting-to-the-sauce-labs-dashboard)
 6. [Running Tests in Parallel](https://github.com/jsmoxon/PythonDocs#running-tests-in-parallel)
 
 ##Dependencies
