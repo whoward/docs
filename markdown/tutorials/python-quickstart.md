@@ -6,20 +6,28 @@
   image: "/images/tutorials/python.png"
 }
 
-# Getting Started with Python
+## Getting Started with Python
 
 Sauce Labs is a cloud platform for executing automated and manual mobile and web tests. Sauce Labs supports running automated tests with Selenium WebDriver (for web applications) and Appium (for native and mobile web applications). 
 
 In this tutorial we are going to show you how to run a test with Selenium WebDriver on Sauce Labs. For a mobile web application example with Appium, please follow the instructions covered [here]().
 
-##Dependencies
+## Table of Contents
+1. [Dependencies]()
+2. [Code Example]()
+3. [Running Tests on Sauce](#running-tests-on-sauce)
+4. [Running Against Local Applications](#running-tests-against-local-applications)
+5. [Reporting to the Sauce Labs Dashboard](#reporting-to-the-sauce-labs-dashboard)
+6. [Running Tests in Parallel](https://github.com/jsmoxon/PythonDocs#running-tests-in-parallel)
+
+## Dependencies
 First, add the [Selenium WebDriver API](http://www.seleniumhq.org/download/) to your local Python environment using [pip](https://pypi.python.org/pypi/pip):
 
 ```
 pip install selenium
 ```
 	
-##Code Example
+## Code Example
 Now let's look at a simple Python test script testing the Google front page. Despite the simplicity of this example test, it actually contains everything you need to know in order to run an automated test on Sauce Labs:
 
 ```python
@@ -66,7 +74,7 @@ __Note:__ The [implicitly wait](https://selenium-python.readthedocs.org/waits.ht
 Let's look at the test a little closer so you can write one like it, or set your existing tests to run on Sauce.
 
 
-##Running Tests on Sauce
+## Running Tests on Sauce
 If you wanted to run Selenium locally, you might initiate a driver for the browser that you want to test on like so:
 ```python
 driver = webdriver.Firefox()
@@ -89,10 +97,10 @@ driver = webdriver.Remote(
     desired_capabilities=desired_cap)
 ```
 
-####Command Executor
+#### Command Executor
 The command_executor code tells our script to use browsers in the Sauce Labs cloud instead of a local browser. Here we simply pass in a URL that contains your Sauce username and access key, which can be found on your [dashboard](http://www.saucelabs.com/dashboard).
 
-####Testing on Different Platforms
+#### Testing on Different Platforms
 Because we are not specifying webdriver.Firefox() as we were before, we must use desired capabilities to specify what browser/OS combination(s) to spin up and execute against.
 
 If you want to run against different platforms, simply update your desired capabiltlies to something new, like so:
@@ -103,7 +111,7 @@ desired_cap = {'browserName': "chrome", 'platform': "Windows 8.1", 'version': "4
 
 The desired capabilities are a set of keys and values that will be sent to the Selenium server running in the Sauce Labs cloud. These keys and values tell the Selenium server the specifications of the automated test that you will be running. Using our [Platforms Configurator](https://docs.saucelabs.com/reference/platforms-configurator/#/) you can easily determine the correct desired capabilities for your test.
 
-##Running Tests Against Local Applications
+## Running Tests Against Local Applications
 If your test application is not publicly available, you will need to use Sauce Connect so that Sauce can reach it. 
 
 Sauce Connect is a tunneling app that allows you to execute tests securely when testing behind firewalls or on localhost. For more detailed information, please visit see the [Sauce Connect docs](https://docs.saucelabs.com/reference/sauce-connect/). 
@@ -125,7 +133,7 @@ sauce_client = SauceClient("USERNAME", "ACCESS KEY")
 # this belongs in your test logic
 sauce_client.jobs.update_job(driver.session_id, passed=True)
 ```
-####Setting a Build Number
+#### Setting a Build Number
 Now, you may want to associate this with a build id in your Continuous Integration pipeline. To do this, just include a build number in your desired capabilities:
 
 ```python
@@ -139,7 +147,7 @@ desired_cap = {
 
 This is important for organizing tests in our new dashboard. Please see our docs for more information [here](https://docs.saucelabs.com/reference/test-configuration/#recording-build-numbers). 
 
-####Tagging Your Tests
+#### Tagging Your Tests
 
 You can also create custom tags for your tests that you can use to search on the [archives](https://saucelabs.com/beta/archives) page:
 
@@ -153,7 +161,7 @@ desired_cap = {
 }
 ```
 
-##Running Tests in Parallel
+## Running Tests in Parallel
 Now that you're running tests on Sauce, you may wonder how you can run your tests more quickly. Running tests in parallel is the answer! 
 
 To do this we will need to use a third party test runner. Sauce Labs recommends using [py.test](http://pytest.org/latest/). (Py.test is an independent open source project and is not maintained by Sauce Labs.) For this demo you must use Py.test 2.5.2.
