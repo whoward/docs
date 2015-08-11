@@ -9,15 +9,40 @@
 ## Getting Started with Python
 
 Sauce Labs is a cloud platform for executing automated and manual mobile and web tests. Sauce Labs supports running automated tests with Selenium WebDriver (for web applications) and Appium (for native and mobile web applications).
-In this tutorial we are going to show you how to run a test with Selenium WebDriver on Sauce Labs. For a mobile web application example with Appium, please follow the instructions covered [here]().
+In this tutorial we are going to show you how to run a test with Selenium WebDriver on Sauce Labs. 
 
 ## Table of Contents
-1. [Dependencies](#dependencies)
-2. [Code Example](#code-example)
-3. [Running Tests on Sauce](#running-tests-on-sauce)
-4. [Running Against Local Applications](#running-tests-against-local-applications)
-5. [Reporting to the Sauce Labs Dashboard](#reporting-to-the-sauce-labs-dashboard)
-6. [Running Tests in Parallel](#running-tests-in-parallel)
+1. [Quickstart](#quickstart)
+2. [Dependencies](#dependencies)
+3. [Code Example](#code-example)
+4. [Running Tests on Sauce](#running-tests-on-sauce)
+5. [Running Against Local Applications](#running-tests-against-local-applications)
+6. [Reporting to the Sauce Labs Dashboard](#reporting-to-the-sauce-labs-dashboard)
+7. [Running Tests in Parallel](#running-tests-in-parallel)
+
+## Quickstart
+Configuring Selenium tests to run on Sauce Labs is simple. The basic change is just to switch from using a local Selenium driver:
+
+```python
+WebDriver driver = new FirefoxDriver()
+```
+
+To using a remote driver pointed at ondemand.saucelabs.com, specifying your Sauce Labs account credentials and desired browser configuration:
+
+```python
+DesiredCapabilities caps = DesiredCapabilities.chrome();
+caps.setCapability("platform", "Windows 8.1");
+caps.setCapability("version", "43.0");
+WebDriver driver = new RemoteWebDriver(new URL("http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub"), caps);
+```
+
+To get things working really well, we recommend adding a number of features to your setup from here:
+ - _test parallelization_
+ - _metadata reporting via our API_
+ - _local network access with Sauce Connect_
+
+We'll walk you through setting those things up one at a time so that you can see how each piece works.
+
 
 ## Dependencies
 First, add the [Selenium WebDriver API](http://www.seleniumhq.org/download/) to your local Python environment using [pip](https://pypi.python.org/pypi/pip):
