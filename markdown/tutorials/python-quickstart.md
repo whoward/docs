@@ -8,17 +8,16 @@
 
 ## Getting Started with Python
 
-Sauce Labs is a cloud platform for executing automated and manual mobile and web tests. Sauce Labs supports running automated tests with Selenium WebDriver (for web applications) and Appium (for native and mobile web applications). 
-
+Sauce Labs is a cloud platform for executing automated and manual mobile and web tests. Sauce Labs supports running automated tests with Selenium WebDriver (for web applications) and Appium (for native and mobile web applications).
 In this tutorial we are going to show you how to run a test with Selenium WebDriver on Sauce Labs. For a mobile web application example with Appium, please follow the instructions covered [here]().
 
 ## Table of Contents
-1. [Dependencies]()
-2. [Code Example]()
+1. [Dependencies](#dependencies)
+2. [Code Example](#code-example)
 3. [Running Tests on Sauce](#running-tests-on-sauce)
 4. [Running Against Local Applications](#running-tests-against-local-applications)
 5. [Reporting to the Sauce Labs Dashboard](#reporting-to-the-sauce-labs-dashboard)
-6. [Running Tests in Parallel](https://github.com/jsmoxon/PythonDocs#running-tests-in-parallel)
+6. [Running Tests in Parallel](#running-tests-in-parallel)
 
 ## Dependencies
 First, add the [Selenium WebDriver API](http://www.seleniumhq.org/download/) to your local Python environment using [pip](https://pypi.python.org/pypi/pip):
@@ -44,7 +43,7 @@ desired_cap = {
     'version': "31",
 }
 driver = webdriver.Remote(
-   command_executor='http://USERNAME:ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub',
+   command_executor='http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub',
    desired_capabilities=desired_cap)
 
 # This is your test logic. You can add multiple tests here.
@@ -93,7 +92,7 @@ desired_cap = {
     'version': "31",
 }
 driver = webdriver.Remote(
-    command_executor='http://USERNAME:ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub',
+    command_executor='http://sauceUsername:sauceAccessKey@ondemand.saucelabs.com:80/wd/hub',
     desired_capabilities=desired_cap)
 ```
 
@@ -128,7 +127,7 @@ Then add this to your test:
 ```python
 # this authenticates you 
 from sauceclient import SauceClient
-sauce_client = SauceClient("USERNAME", "ACCESS KEY")
+sauce_client = SauceClient("sauceUsername", "sauceAccessKey")
 
 # this belongs in your test logic
 sauce_client.jobs.update_job(driver.session_id, passed=True)
@@ -249,7 +248,7 @@ class FirstSampleTest(unittest.TestCase):
 	def setUp(self):
 		self.desired_capabilities['name'] = self.id()
 		self.driver = webdriver.Remote(
-		   command_executor='http://USERNAME:ACCESSKEY:80/wd/hub',
+		   command_executor='http://sauceUsername:sauceAccessKey:80/wd/hub',
 		   desired_capabilities=self.desired_capabilities)
 		self.driver.implicitly_wait(30)
 
@@ -279,10 +278,4 @@ Since we are running on four platforms, use -n4 like so to run your tests in par
 ```
 py.test -n4 first_test.py
 ```
-Visit your [dashboard](https://saucelabs.com/beta/dashboard) and you should see four tests running at once! Use the [py.test docs](http://pytest.org/latest/) to learn more about how to properly use py.test for running tests in parallel or use the [Sauce TestRunner]().
-
-
-## Next Steps
-This is the basic set up for getting most of the value out of using Sauce Labs as your testing platform. 
-
-However, there are a number of other best practices for configuring your tests. For more information please visit our [Best Practices]() page or our [Other Frameworks]() page. 
+Visit your [dashboard](https://saucelabs.com/beta/dashboard) and you should see four tests running at once! Use the [py.test docs](http://pytest.org/latest/) to learn more about how to properly use py.test for running tests in parallel.
