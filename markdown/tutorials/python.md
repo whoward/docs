@@ -1,10 +1,13 @@
  {
-  title: "Python",
+  title: "Python Parallelization",
   description: "How to run Selenium tests on Sauce Labs using python",
   category: 'Tutorials',
-  index: 3,
+  index: 8,
   image: "/images/tutorials/python.png"
 }
+
+This tutorial will explain how to run parallel Selenium Webdriver tests with Python on Sauce Labs.
+
 ## Basic Setup
 ### Dependencies
 
