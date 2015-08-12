@@ -133,7 +133,7 @@ If you want to run against different platforms, simply update your desired capab
 desired_cap = {'browserName': "chrome", 'platform': "Windows 8.1", 'version': "42.0"}
 ```
 
-The desired capabilities are a set of keys and values that will be sent to the Selenium server running in the Sauce Labs cloud. These keys and values tell the Selenium server the specifications of the automated test that you will be running. Using our [Platforms Configurator](https://docs.saucelabs.com/reference/platforms-configurator/#/) you can easily determine the correct desired capabilities for your test.
+The desired capabilities are a set of keys and values that will be sent to the Selenium server running in the Sauce Labs cloud. These keys and values tell the Selenium server the specifications of the automated test that you will be running. Using our [Platforms Configurator](https://docs.saucelabs.com/reference/platforms-configurator) you can easily determine the correct desired capabilities for your test.
 
 ## Running Tests Against Local Applications
 If your test application is not publicly available, you will need to use Sauce Connect so that Sauce can reach it. 
