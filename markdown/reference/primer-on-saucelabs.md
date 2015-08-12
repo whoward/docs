@@ -91,7 +91,7 @@ Choose your preferred mode of parallelism within your framework. For example, Ru
 
 ##Account Structure
 
-Many developers/testers are operating with a team of others, sometimes on the same project or differing projects. Sauce Lab's account structure allows you to create tiered accounts to manage team usage and partition teams into groups so their usage and permissions only pertain to what is applicable to them.  – more here https://docs.saucelabs.com/reference/team-management/#account-types
+Many developers/testers are operating with a team of others, sometimes on the same project or differing projects. Sauce Lab's account structure allows you to create tiered accounts to manage team usage and partition teams into groups so their usage and permissions only pertain to what is applicable to them.  – more here https://docs.saucelabs.com/reference/team-management/
 
 ###Helpful hints:
 
