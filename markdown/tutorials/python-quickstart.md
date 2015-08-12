@@ -9,6 +9,7 @@
 ## Getting Started with Python
 
 Sauce Labs is a cloud platform for executing automated and manual mobile and web tests. Sauce Labs supports running automated tests with Selenium WebDriver (for web applications) and Appium (for native and mobile web applications).
+
 In this tutorial we are going to show you how to run a test with Selenium WebDriver on Sauce Labs. 
 
 ## Table of Contents
@@ -18,7 +19,6 @@ In this tutorial we are going to show you how to run a test with Selenium WebDri
 4. [Running Tests on Sauce](#running-tests-on-sauce)
 5. [Running Against Local Applications](#running-tests-against-local-applications)
 6. [Reporting to the Sauce Labs Dashboard](#reporting-to-the-sauce-labs-dashboard)
-7. [Running Tests in Parallel](#running-tests-in-parallel)
 
 ## Quickstart
 Configuring Selenium tests to run on Sauce Labs is simple. The basic change is just to switch from using a local Selenium driver:
@@ -184,123 +184,3 @@ desired_cap = {
     'tags': [ "tag1", "tag2", "tag3" ]
 }
 ```
-
-## Running Tests in Parallel
-Now that you're running tests on Sauce, you may wonder how you can run your tests more quickly. Running tests in parallel is the answer! 
-
-To do this we will need to use a third party test runner. Sauce Labs recommends using [py.test](http://pytest.org/latest/). (Py.test is an independent open source project and is not maintained by Sauce Labs.) For this demo you must use Py.test 2.5.2.
-```
-pip install -U pytest 2.5.2 # or
-easy_install -U pytest 2.5.2
-```
-Now, let's use the [platform configurator](https://docs.saucelabs.com/reference/platforms-configurator/) to add four platforms that we want to test on. Replace "desired_cap" in our example script above with an array of configs like so: 
-
-```python
-# replace this:
-# desired_cap = {'os': 'Windows', 'os_version': 'xp', 'browser': 'IE', 'browser_version': '7.0' }
-
-# with:
-browsers = [{"platform": "Mac OS X 10.9",
-             "browserName": "chrome",
-             "version": "31"},
-            {"platform": "Windows 8.1",
-             "browserName": "internet explorer",
-             "version": "11"},
-             {"platform": "OS X 10.9",
-             "browserName": "safari",
-             "version": "7.0"},
-             {"platform": "OS X 10.9",
-             "browserName": "chrome",
-             "version": "33.0"}]
-```
-Just add and remove browsers here as you see fit. 
-
-Then create a decorator like so. You can actually just use the one here: 
-
-```python
-import sys
-import json
-import new
-import unittest
-
-def on_platforms(platforms):
-    def decorator(base_class):
-        module = sys.modules[base_class.__module__].__dict__
-        for i, platform in enumerate(platforms):
-            d = dict(base_class.__dict__)
-            d['desired_capabilities'] = platform
-            name = "%s_%s" % (base_class.__name__, i + 1)
-            module[name] = new.classobj(name, (base_class,), d)
-    return decorator
-```
-And finally, put your test script in an object-based structure and add the decorator to your test. Here is a full example with two tests on four platforms: 
-```python
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-
-import sys
-import json
-import new
-import unittest
-
-browsers = [{"platform": "Mac OS X 10.9",
-             "browserName": "chrome",
-             "version": "31"},
-            {"platform": "Windows 8.1",
-             "browserName": "internet explorer",
-             "version": "11"},
-             {"platform": "OS X 10.9",
-             "browserName": "safari",
-             "version": "7.0"},
-             {"platform": "OS X 10.9",
-             "browserName": "chrome",
-             "version": "33.0"}]
-
-# This decorator is required to iterate over browsers
-def on_platforms(platforms):
-    def decorator(base_class):
-        module = sys.modules[base_class.__module__].__dict__
-        for i, platform in enumerate(platforms):
-            d = dict(base_class.__dict__)
-            d['desired_capabilities'] = platform
-            name = "%s_%s" % (base_class.__name__, i + 1)
-            module[name] = new.classobj(name, (base_class,), d)
-    return decorator
-
-@on_platforms(browsers)
-class FirstSampleTest(unittest.TestCase):
-	def setUp(self):
-		self.desired_capabilities['name'] = self.id()
-		self.driver = webdriver.Remote(
-		   command_executor='http://sauceUsername:sauceAccessKey:80/wd/hub',
-		   desired_capabilities=self.desired_capabilities)
-		self.driver.implicitly_wait(30)
-
-# This is your test logic. You can add multiple tests here.
-	def test_google    (self):
-		self.driver.get("http://www.google.com")
-		if not "Google" in self.driver.title:
-   			raise Exception("Unable to load google page!")
-		elem = self.driver.find_element_by_name("q")
-		elem.send_keys("Sauce Labs")
-		elem.submit()
-		print self.driver.title
-
-	def test_amazon(self):
-		self.driver.get("http://www.amazon.com")
-		if not "Amazon.com" in self.driver.title:
-   			raise Exception("Unable to load amazon page!")
-		print self.driver.title		
-
-	def tearDown(self):
-		# This is where you tell Sauce Labs to stop running tests on your behalf.  
-		# It is important so that you aren't billed after your test finishes.
-		self.driver.quit()
-```
-Since we are running on four platforms, use -n4 like so to run your tests in parallel:
-
-```
-py.test -n4 first_test.py
-```
-Visit your [dashboard](https://saucelabs.com/beta/dashboard) and you should see four tests running at once! Use the [py.test docs](http://pytest.org/latest/) to learn more about how to properly use py.test for running tests in parallel.
