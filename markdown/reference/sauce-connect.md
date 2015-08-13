@@ -208,9 +208,9 @@ Sauce Connect can be monitored more easily using a Service Managment tool like s
 
 #### Systemd
 1. cd /usr/local/bin
-2. wget https://saucelabs.com/downloads/sc-4.3-linux.tar.gz
-3. tar -zxvf sc-4.3-linux.tar.gz
-4. cp sc-4.3-linux/bin/sc .
+2. wget https://saucelabs.com/downloads/sc-4.3.11-linux.tar.gz
+3. tar -zxvf sc-4.3.11-linux.tar.gz
+4. cp sc-4.3.11-linux/bin/sc .
 5. ls /usr/local/bin/sc —- verify Sauce Connect is in correct location
 
 6. cd /etc/systemd/system
@@ -237,9 +237,9 @@ WantedBy=multi-user.target
 ```
 #### Upstart
 1. cd /usr/local/bin
-2. wget https://saucelabs.com/downloads/sc-4.3.9-linux.tar.gz
-3. tar -zxvf sc-4.3.9-linux.tar.gz
-4. cp sc-4.3.9-linux/bin/sc .
+2. wget https://saucelabs.com/downloads/sc-4.3.11-linux.tar.gz
+3. tar -zxvf sc-4.3.11-linux.tar.gz
+4. cp sc-4.3.11-linux/bin/sc .
 5. ls /usr/local/bin/sc —- verify Sauce Connect is in correct location
 
 6. cd /etc/init
