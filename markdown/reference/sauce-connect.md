@@ -22,14 +22,14 @@ You can also use Sauce Connect:
 
 1. Get the latest Sauce Connect:
 <ul>
-<li><a href="https://saucelabs.com/downloads/sc-4.3.10-osx.zip"><i class="fa fa-apple"></i> Download Sauce Connect v4.3.10 for OS X</a><br>
-SHA1 checksum: 6ec6f7e2af76a189ed8ceadd31282c5fce1e7dae
-</li><li><a href="https://saucelabs.com/downloads/sc-4.3.10-win32.zip"><i class="fa fa-windows"></i> Download Sauce Connect v4.3.10 for Windows</a><br>
-SHA1 checksum: 0f29c39d062cb761a1c297b739301d7ef09bdd12<br>
-</li><li><a href="https://saucelabs.com/downloads/sc-4.3.10-linux.tar.gz"><i class="fa fa-linux"></i> Download Sauce Connect v4.3.10 for Linux</a><br>
-SHA1 checksum: 744039a0f9530463eca62baf6d16cb9db8f836c7
-</li><li><a href="https://saucelabs.com/downloads/sc-4.3.10-linux32.tar.gz"><i class="fa fa-linux"></i> Download Sauce Connect v4.3.10 for Linux 32-bit</a><br>
-SHA1 checksum: 66d8e16b368dc65819f3a758de07234285ec6658<br>
+<li><a href="https://saucelabs.com/downloads/sc-4.3.11-osx.zip"><i class="fa fa-apple"></i> Download Sauce Connect v4.3.11 for OS X</a><br>
+SHA1 checksum: 5d0aa851d21f3d4a21f298b6a921761c6aa15217
+</li><li><a href="https://saucelabs.com/downloads/sc-4.3.11-win32.zip"><i class="fa fa-windows"></i> Download Sauce Connect v4.3.11 for Windows</a><br>
+SHA1 checksum: 7806e9753f66eece56a174fddbba4455ecaf72a4<br>
+</li><li><a href="https://saucelabs.com/downloads/sc-4.3.11-linux.tar.gz"><i class="fa fa-linux"></i> Download Sauce Connect v4.3.11 for Linux</a><br>
+SHA1 checksum: b4f3464738dbcba57d9c6d316d711cfc98dd70f3
+</li><li><a href="https://saucelabs.com/downloads/sc-4.3.11-linux32.tar.gz"><i class="fa fa-linux"></i> Download Sauce Connect v4.3.11 for Linux 32-bit</a><br>
+SHA1 checksum: f27be22c5e7b8ba905c5886cf93a4e63e6c370b3<br>
 </li>
 </ul>
 2. Open outbound port 443 (or configure Sauce Connect with a proxy that can reach saucelabs.com, using the `--proxy` or `--pac` [command line options](#advanced-configuration)).
