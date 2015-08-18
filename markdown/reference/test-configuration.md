@@ -45,7 +45,7 @@ Here's a more comprehensive example of the JSON accepted by this method:
       "public": "public",
       "tags": ["tag1", "tag2", "tag3"],
       "build": 234,
-      "customData": {
+      "custom-data": {
           "release": "1.0",
           "server": "test.customer.com"
       }
@@ -115,14 +115,14 @@ Example:
 ### Recording Custom Data
 To give you an extensible way to annotate and differentiate tests, Sauce provides a custom annotation you can set that will accept any valid JSON object. This field is limited to 64KB in size.
 
-Key: `customData`
+Key: `custom-data`
 
 Value type: object
 
 Example:
 
 ```python
-"customData": {"release": "1.0", 
+"custom-data": {"release": "1.0", 
                 "commit": "0k392a9dkjr", 
                 "staging": true, 
                 "execution_number": 5, 
